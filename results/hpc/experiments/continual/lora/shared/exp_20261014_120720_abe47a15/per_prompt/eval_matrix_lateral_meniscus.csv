@@ -1,0 +1,8 @@
+,Pretrained,After skm_tea_lateral_tibial,After skm_tea_medial_tibial,After skm_tea_femoral,After skm_tea_patellar,After skm_tea_medial_meniscus,After skm_tea_lateral_meniscus
+skm_tea_lateral_tibial (CL),nan,nan,nan,nan,nan,nan,nan
+skm_tea_medial_tibial (CL),nan,nan,nan,nan,nan,nan,nan
+skm_tea_femoral (CL),nan,nan,nan,nan,nan,nan,nan
+skm_tea_patellar (CL),nan,nan,nan,nan,nan,nan,nan
+skm_tea_medial_meniscus (CL),nan,nan,nan,nan,nan,nan,nan
+skm_tea_lateral_meniscus (CL),0.0,4.081166177153743e-06,0.028186054286379658,0.02088519763977577,0.02650973370327847,0.082139925838419,0.41388601375122863
+aeropath (Retention),nan,nan,nan,nan,nan,nan,nan

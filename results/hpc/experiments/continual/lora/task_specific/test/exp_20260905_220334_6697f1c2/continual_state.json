@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "strategy": "lora",
+  "status": "completed",
+  "current_task_index": 0,
+  "current_task_name": "skm_tea_patellar",
+  "current_checkpoint": null,
+  "completed_tasks": [
+    0
+  ],
+  "updated_at": "2026-09-06T11:20:49.812867+00:00"
+}

@@ -1,0 +1,4 @@
+row_label,Pretrained,Patellar,Average Performance,Final Performance,Final Forgetting,Transfer,Final Retention Drop
+Patellar,0,0.83858853578567505,0.83858853578567505,,,,
+aeropath (Retention),0.97939328849315599,0.97939328849315599,,,,,0
+,,,0.83858853578567505,0.83858853578567505,,,

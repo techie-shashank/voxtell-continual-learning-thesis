@@ -1,0 +1,10 @@
+{
+    "lateral meniscus": {
+        "mean_dice": 0.082139925838419,
+        "count": 24,
+        "min": 0.0,
+        "max": 0.2529224753379822
+    },
+    "Average Loss": 0.9229267711440722,
+    "Average Dice": 0.082139925838419
+}

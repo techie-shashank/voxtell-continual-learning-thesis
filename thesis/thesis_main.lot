@@ -1,0 +1,4 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces Summary of the works reviewed in this chapter. DSC: Dice similarity coefficient; FFT: full fine-tuning; TIL, CIL, DIL: task-, class-, and domain-incremental learning; MTIL: the eleven-dataset multi-domain task-incremental benchmark of ZSCL; --: no single headline value.}}{18}{table.2.1}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Position of this thesis relative to the closest prior work. 3D FM: pretrained 3D foundation model; TIL, CIL, DIL: task-, class-, and domain-incremental learning.}}{21}{table.caption.5}%

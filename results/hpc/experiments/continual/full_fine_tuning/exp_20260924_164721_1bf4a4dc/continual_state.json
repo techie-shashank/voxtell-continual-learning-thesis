@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "strategy": "naive_sequential_finetuning",
+  "status": "completed",
+  "current_task_index": 5,
+  "current_task_name": "skm_tea_lateral_tibial",
+  "current_checkpoint": null,
+  "completed_tasks": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "updated_at": "2026-09-25T14:36:00.473233+00:00"
+}

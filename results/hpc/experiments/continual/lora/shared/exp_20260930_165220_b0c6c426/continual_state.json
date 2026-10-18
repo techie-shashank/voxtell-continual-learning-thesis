@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "strategy": "shared_lora",
+  "status": "completed",
+  "current_task_index": 5,
+  "current_task_name": "skm_tea_lateral_meniscus",
+  "current_checkpoint": null,
+  "completed_tasks": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "updated_at": "2026-09-30T18:34:47.782942+00:00"
+}

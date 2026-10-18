@@ -1,0 +1,10 @@
+{
+    "lung": {
+        "mean_dice": 0.0,
+        "count": 4,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "Average Loss": 4.296838283538818,
+    "Average Dice": 0.0
+}

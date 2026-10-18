@@ -1,0 +1,38 @@
+{
+    "Average Performance": [
+        0.0,
+        0.0,
+        0.6848581983811326,
+        0.0,
+        0.0,
+        0.0
+    ],
+    "Forgetting measure": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+    ],
+    "Zero shot transfer": [
+        NaN,
+        0.0,
+        0.6847248810033004,
+        0.0,
+        0.0,
+        0.0
+    ],
+    "A_final": 0.11418747218946616,
+    "retention_drop": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+    ],
+    "Final Forgetting": 0.0,
+    "Average Zero Shot Transfer": 0.1369449762006601,
+    "Average Retention drop": 0.0
+}

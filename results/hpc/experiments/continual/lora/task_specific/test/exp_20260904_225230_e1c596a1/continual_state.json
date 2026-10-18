@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "strategy": "lora",
+  "status": "in_progress",
+  "current_task_index": 0,
+  "current_task_name": "skm_tea_patellar",
+  "current_checkpoint": "/home/vault/iwi5/iwi5326h/projects/VoxTell/experiments/continual/lora/task_specific/test/exp_20260904_225230_e1c596a1/tasks/task_01_skm_tea_patellar/checkpoints/latest_recovery.pt",
+  "completed_tasks": [],
+  "updated_at": "2026-09-05T08:29:19.646086+00:00",
+  "resume_position": {
+    "epoch": 38,
+    "batch_idx": 107,
+    "stage": "train_batch"
+  }
+}

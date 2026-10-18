@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "strategy": "zscl",
+  "status": "completed",
+  "current_task_index": 5,
+  "current_task_name": "skm_tea_lateral_meniscus",
+  "current_checkpoint": null,
+  "completed_tasks": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "updated_at": "2026-09-26T20:49:15.909281+00:00",
+  "resume_position": {
+    "epoch": 0,
+    "batch_idx": 32,
+    "stage": "train_batch"
+  }
+}

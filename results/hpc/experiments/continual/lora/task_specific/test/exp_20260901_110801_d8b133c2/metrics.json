@@ -1,0 +1,18 @@
+{
+    "Average Performance": [
+        0.0
+    ],
+    "Forgetting measure": [
+        0.0
+    ],
+    "Zero shot transfer": [
+        NaN
+    ],
+    "A_final": 0.0,
+    "retention_drop": [
+        0.0
+    ],
+    "Final Forgetting": 0.0,
+    "Average Zero Shot Transfer": NaN,
+    "Average Retention drop": 0.0
+}

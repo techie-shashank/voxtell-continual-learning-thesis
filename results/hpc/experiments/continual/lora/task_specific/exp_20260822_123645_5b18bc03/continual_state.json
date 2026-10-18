@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "strategy": "lora",
+  "status": "completed",
+  "current_task_index": 5,
+  "current_task_name": "skm_tea_lateral_tibial",
+  "current_checkpoint": null,
+  "completed_tasks": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "updated_at": "2026-08-23T04:32:29.831243+00:00"
+}

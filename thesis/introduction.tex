@@ -1,0 +1,80 @@
+\chapter{Introduction}
+
+Medical image segmentation aims to delineate anatomical structures or pathological regions and produce masks that support the analysis of anatomy, disease, and treatment-related findings. Deep learning-based segmentation has progressed from task-specific models developed for individual datasets towards text-promptable universal models designed to support segmentation across multiple structures, modalities, and tasks \cite{zhao2025sat, Zhao_2024, text3dsam, rokuss2025voxtellfreetextpromptableuniversal}. However, text-promptable universal models can still exhibit reduced performance on previously unseen tasks, particularly when the target task or imaging characteristics differ substantially from those represented during pretraining \cite{rokuss2025voxtellfreetextpromptableuniversal, zhao2025sat}. Adapting the model to such tasks therefore becomes necessary.
+
+This thesis investigates this problem from a continual-learning perspective, focusing on free-text promptable universal models for three-dimensional (3D) medical image segmentation. The central challenge is to adapt the model to newly introduced tasks while preserving its performance on previously learned tasks, particularly when only a small number of labelled volumes are available. The following sections establish the background and problem formulation for this study.
+
+\section{Universal Models for Medical Image Segmentation}
+
+Three-dimensional medical imaging is obtained using modalities such as computed tomography (CT), magnetic resonance imaging (MRI), and positron emission tomography (PET), which commonly produce volumetric data composed of spatially aligned slices. Unlike two-dimensional images, these volumes preserve spatial context across adjacent slices, which must be considered when segmenting anatomical structures or pathological regions \cite{DAYARATHNA2024103046}. 
+
+Deep learning is a widely used approach for automated medical image segmentation. Convolutional neural networks (CNNs), including U-Net-based architectures, have been extensively adapted to 3D medical imaging \cite{3d_unet, li2018hdenseunethybriddenselyconnected, wang2020nonlocalunetbiomedicalimage}. Many of these approaches are specialised for a particular combination of imaging modality, dataset, and target structure. The nnU-Net framework provides a systematic implementation of this task-specific paradigm by automatically adapting its configuration and training pipeline to a given dataset \cite{isensee2018nnunetselfadaptingframeworkunetbased}. Although task-specific models can achieve strong segmentation performance within their intended settings, deploying separate models for an increasing number of anatomical structures, modalities, and datasets becomes less practical \cite{zhao2025sat}.
+
+Universal medical image segmentation models aim to address this limitation by allowing a common model to produce different segmentation outputs for different target structures or regions specified through an input prompt. Early approaches to promptable universal segmentation models relied primarily on visual interaction mechanisms, requiring users to provide spatial prompts, such as points or bounding boxes, to specify the segmentation target \cite{Ma_2024, du2025segvoluniversalinteractivevolumetric, cheng2023sammed2d}. Text-promptable segmentation \cite{carion2026sam3segmentconcepts} offers clinicians a more intuitive alternative by allowing them to extract anatomical structures or pathological regions using simple natural language descriptions, such as 'segment the left ventricle' and obtain the corresponding mask. 
+
+However, medical imaging systems deployed in practice may encounter changes in data distributions as new imaging conditions, anatomical targets, pathologies, or acquisition settings are introduced \cite{qazi2026clmedicalimaging}. When multiple new tasks are introduced sequentially, adapting the model can also affect its performance on previously learned tasks \cite{kemker2017measuringcatastrophicforgettingneural}. This challenge motivates the continual-learning setting considered in this thesis.
+
+
+\section{Continual and Few-Shot Learning}
+
+One straightforward adaptation strategy is to fine-tune the pretrained model using data from the newly introduced task. However, sequential fine-tuning can cause catastrophic forgetting, where performance on previously learned tasks can decrease after subsequent updates \cite{french1999catastrophic}. For multimodal models, catastrophic forgetting can be particularly severe, with different modalities exhibiting different rates of forgetting and interactions between modalities further complicating continual adaptation \cite{yu2026recentadvancesmultimodalcontinual}.
+
+Continual learning (CL) addresses this problem by considering learning as a sequence of updates rather than a single training stage \cite{van_de_Ven_2025}. At each step, a model receives data associated with a newly introduced task and is expected to learn the corresponding capability while retaining knowledge acquired from earlier tasks. This requires balancing stability, the ability to preserve previously learned knowledge, and plasticity, the ability to acquire new knowledge. Several methods have been proposed to mitigate catastrophic forgetting in unimodal models, including regularisation-based \cite{Kirkpatrick_2017}, rehearsal-based \cite{icarl2017}, and dynamic architecture-based \cite{yoon2018lifelonglearningdynamicallyexpandable} approaches. However, applying continual learning to multimodal foundation models introduces additional challenges due to their large scale and architectural complexity \cite{liu2026continuallearningvlmssurvey}. Continual learning can be formulated under different settings, including task-incremental, class-incremental, and domain-incremental learning, which differ in how task identity, class information, and data distributions are treated across learning steps \cite{liu2026continuallearningvlmssurvey}.
+
+The continual adaptation problem becomes more challenging when only a limited number of labelled examples are available for each newly introduced task. In medical imaging, obtaining high-quality voxel-level annotations requires domain expertise and can involve substantial effort, particularly for three-dimensional volumes \cite{Litjens_2017}. Few-shot learning refers to the adaptation of a model using only a small number of labelled examples from the target task \cite{theekshana26fewshot}. Few-shot conditions are used to evaluate how continual-learning strategies behave under limited supervision.
+
+\section{Problem Statement and Motivation}
+Early work on continual learning in medical image segmentation has largely considered task-specific or relatively compact models \cite{karani2018lifelonglearningapproachbrain, memmel2021adversarialcontinuallearningmultidomain, ranem2022continualhippocampussegmentationtransformers, gonzalez2023lifelong}. Modern free-text promptable universal segmentation models, in contrast, combine large-scale visual and language representations with cross-modal interaction components. Their architectural complexity and multimodal nature introduce additional considerations for continual adaptation \cite{liu2026continuallearningvlmssurvey} that are not necessarily captured by approaches developed for conventional segmentation models.
+
+Although recent studies have begun to investigate continual learning for medical foundation models \cite{chen2026fewshotcontinuallearning3d, Zhang_2025, chen2025forgingdynamicmemoryretrievalguided}, a systematic comparison of continual-learning strategies for free-text promptable universal 3D medical image segmentation remains limited. In particular, the behaviour of different continual-learning strategies in this setting remains insufficiently understood. This question is especially relevant under few-shot conditions.
+
+\section{Research Question and Objectives}
+
+Based on the problem formulated in the previous section, this thesis investigates the following research question:
+
+\medskip
+\noindent\textbf{How do different continual-learning strategies trade off adaptation performance and catastrophic forgetting when adapting free-text promptable universal 3D medical image segmentation models under few-shot conditions?}
+
+\medskip
+\noindent The research question is addressed through the following objectives:
+\begin{enumerate}
+    \item \textbf{Develop a few-shot continual-learning evaluation protocol}
+    for free-text promptable universal 3D medical image segmentation.
+
+    \item \textbf{Compare different continual-learning strategies} under the
+    proposed evaluation protocol in terms of their adaptation and forgetting
+    behaviour.
+
+    \item \textbf{Investigate the influence of the amount of labelled training
+    data} on the performance of the evaluated strategies under few-shot
+    conditions.
+
+    \item \textbf{Analyse the influence of experimental factors} on adaptation and forgetting through quantitative experiments and ablation studies.
+\end{enumerate}
+
+\section{Contributions}
+
+The main contributions of this thesis are:
+
+\begin{enumerate}
+    \item \textbf{A systematic empirical evaluation of continual adaptation for free-text promptable universal 3D medical image segmentation.}
+
+    \item \textbf{A comparative analysis of adaptation, forgetting, transfer, and retention under limited supervision,} providing an empirical basis for understanding the behaviour of continual-learning approaches in this setting.
+
+    \item \textbf{An investigation of factors affecting continual adaptation performance,} including the amount of available labelled data, task ordering, and adaptation configuration.
+
+\end{enumerate}
+
+\section{Scope and Delimitations}
+
+The scope of this thesis is defined by the model, datasets, continual-learning
+protocol, adaptation strategies, and evaluation measures considered in the experiments. The study is limited to the VoxTell \cite{rokuss2025voxtellfreetextpromptableuniversal} model and the datasets \cite{desai2021skmtea, støverud2023aeropathairwaysegmentationbenchmark} included in the defined experimental protocol. 
+
+The continual-learning experiments are conducted using the task sequences and few-shot conditions specified in the experimental design. The study compares selected continual-learning strategies that employ different mechanisms for adaptation and mitigating catastrophic forgetting, including parameter-efficient adaptation, prompt-based adaptation, and regularisation. In addition, the study evaluates the combination of parameter-efficient adaptation with replay. The study does not aim to develop a new continual-learning algorithm or to establish a universally optimal strategy for medical image segmentation.
+
+Evaluation is based on segmentation performance and continual-learning measures that quantify adaptation to newly introduced tasks and forgetting of existing capabilities. Factors such as clinical deployment, inference latency, computational cost in clinical environments, and prospective validation with clinical users are outside the scope of this study. The experiments are conducted within the available computational and storage resources, which constrain the model configurations and experimental settings considered.
+
+Finally, the conclusions are limited to the model, datasets, task sequences, adaptation methods, and few-shot conditions evaluated in this work; their generalisability to other medical imaging tasks or foundation models remains to be established.
+
+
+% The remainder of this thesis is organised as follows. Chapter 2 reviews the state of the art in universal medical image segmentation, continual learning, and related adaptation approaches. Chapter 3 presents the theoretical background required to understand the methods and evaluation used in this thesis. Chapter 4 describes the datasets used in the experiments. Chapter 5 presents the experimental setup, results, and analysis of the investigated continual-adaptation strategies. Finally, Chapter 6 summarises the main findings of the thesis, discusses its limitations, and outlines directions for future work.
