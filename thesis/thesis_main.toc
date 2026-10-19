@@ -20,8 +20,16 @@
 \contentsline {section}{\numberline {2.3}Continual Learning for Medical Segmentation}{13}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Segmentation Networks}{13}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Segmentation Foundation Models}{15}{subsection.2.3.2}%
-\contentsline {section}{\numberline {2.4}Summary}{17}{section.2.4}%
-\contentsline {chapter}{List of Abbreviations}{23}{section*.6}%
-\contentsline {chapter}{List of Figures}{25}{appendix*.7}%
-\contentsline {chapter}{List of Tables}{27}{appendix*.8}%
-\contentsline {chapter}{Bibliography}{29}{appendix*.9}%
+\contentsline {section}{\numberline {2.4}Summary}{16}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Data Description}{23}{chapter.3}%
+\contentsline {section}{\numberline {3.1}SKM-TEA}{23}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Acquisition and Annotation}{23}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Continual-Learning Tasks}{25}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}AeroPath}{26}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Data Splits and Few-Shot Subsets}{28}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Preprocessing}{29}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Data Quality and Limitations}{30}{section.3.5}%
+\contentsline {chapter}{List of Abbreviations}{31}{section*.19}%
+\contentsline {chapter}{List of Figures}{33}{appendix*.20}%
+\contentsline {chapter}{List of Tables}{35}{appendix*.21}%
+\contentsline {chapter}{Bibliography}{37}{appendix*.22}%

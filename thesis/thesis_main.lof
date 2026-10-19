@@ -1,2 +1,5 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Volume of each SKM-TEA structure over all 155 volumes (logarithmic axis). Boxes show the median and the interquartile range, whiskers extend to 1.5 times the interquartile range, and each point is one volume.}}{26}{figure.caption.9}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Example volumes with their labels. (a)~Sagittal slice of SKM-TEA volume MTR\_005 through the lateral compartment, showing patellar, femoral and lateral tibial cartilage and the lateral meniscus. (b)~Coronal slice of the same volume through the tibial plateau, showing femoral cartilage, both tibial cartilages and both menisci. (c)~Coronal slice of AeroPath volume~1 with the lung label of the control task. Both example volumes belong to the test split.}}{27}{figure.caption.10}%

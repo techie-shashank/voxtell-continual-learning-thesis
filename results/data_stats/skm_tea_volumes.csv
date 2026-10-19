@@ -1,0 +1,931 @@
+case_id,task,prompt,split,label_value,mask_file,structure_voxels,all_label_values,shape,voxel_size_mm,affine_is_identity,intensity_min,intensity_p1,intensity_p50,intensity_p99,intensity_max
+MTR_001,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_001.nii.gz,18666,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1036.0,6571.0,17891.0
+MTR_001,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_001.nii.gz,22626,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1036.0,6571.0,17891.0
+MTR_001,skm_tea_femoral,femoral cartilage,train,2,MTR_001.nii.gz,89027,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1036.0,6571.0,17891.0
+MTR_001,skm_tea_patellar,patellar cartilage,train,1,MTR_001.nii.gz,26032,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1036.0,6571.0,17891.0
+MTR_001,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_001.nii.gz,33079,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1036.0,6571.0,17891.0
+MTR_001,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_001.nii.gz,21828,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1036.0,6571.0,17891.0
+MTR_005,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_005.nii.gz,40821,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,212.0,2210.0,5068.0
+MTR_005,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_005.nii.gz,37000,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,212.0,2210.0,5068.0
+MTR_005,skm_tea_femoral,femoral cartilage,test,2,MTR_005.nii.gz,198915,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,212.0,2210.0,5068.0
+MTR_005,skm_tea_patellar,patellar cartilage,test,1,MTR_005.nii.gz,49975,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,212.0,2210.0,5068.0
+MTR_005,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_005.nii.gz,33032,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,212.0,2210.0,5068.0
+MTR_005,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_005.nii.gz,25386,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,212.0,2210.0,5068.0
+MTR_006,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_006.nii.gz,19210,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,203.0,1981.0,5270.0
+MTR_006,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_006.nii.gz,26227,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,203.0,1981.0,5270.0
+MTR_006,skm_tea_femoral,femoral cartilage,train,2,MTR_006.nii.gz,112720,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,203.0,1981.0,5270.0
+MTR_006,skm_tea_patellar,patellar cartilage,train,1,MTR_006.nii.gz,30297,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,203.0,1981.0,5270.0
+MTR_006,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_006.nii.gz,33769,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,203.0,1981.0,5270.0
+MTR_006,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_006.nii.gz,18584,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,203.0,1981.0,5270.0
+MTR_008,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_008.nii.gz,38397,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,302.0,2436.0,5451.0
+MTR_008,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_008.nii.gz,39448,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,302.0,2436.0,5451.0
+MTR_008,skm_tea_femoral,femoral cartilage,train,2,MTR_008.nii.gz,139272,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,302.0,2436.0,5451.0
+MTR_008,skm_tea_patellar,patellar cartilage,train,1,MTR_008.nii.gz,55155,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,302.0,2436.0,5451.0
+MTR_008,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_008.nii.gz,39493,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,302.0,2436.0,5451.0
+MTR_008,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_008.nii.gz,22686,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,302.0,2436.0,5451.0
+MTR_010,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_010.nii.gz,30301,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,230.0,2323.0,4810.0
+MTR_010,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_010.nii.gz,32833,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,230.0,2323.0,4810.0
+MTR_010,skm_tea_femoral,femoral cartilage,train,2,MTR_010.nii.gz,147695,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,230.0,2323.0,4810.0
+MTR_010,skm_tea_patellar,patellar cartilage,train,1,MTR_010.nii.gz,39228,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,230.0,2323.0,4810.0
+MTR_010,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_010.nii.gz,35126,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,230.0,2323.0,4810.0
+MTR_010,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_010.nii.gz,25649,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,230.0,2323.0,4810.0
+MTR_013,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_013.nii.gz,44810,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,237.0,2160.0,5369.0
+MTR_013,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_013.nii.gz,36244,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,237.0,2160.0,5369.0
+MTR_013,skm_tea_femoral,femoral cartilage,val,2,MTR_013.nii.gz,172296,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,237.0,2160.0,5369.0
+MTR_013,skm_tea_patellar,patellar cartilage,val,1,MTR_013.nii.gz,58413,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,237.0,2160.0,5369.0
+MTR_013,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_013.nii.gz,43169,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,237.0,2160.0,5369.0
+MTR_013,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_013.nii.gz,34858,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,237.0,2160.0,5369.0
+MTR_015,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_015.nii.gz,27390,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,148.0,2093.0,4304.0
+MTR_015,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_015.nii.gz,25154,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,148.0,2093.0,4304.0
+MTR_015,skm_tea_femoral,femoral cartilage,test,2,MTR_015.nii.gz,136889,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,148.0,2093.0,4304.0
+MTR_015,skm_tea_patellar,patellar cartilage,test,1,MTR_015.nii.gz,36604,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,148.0,2093.0,4304.0
+MTR_015,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_015.nii.gz,17574,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,148.0,2093.0,4304.0
+MTR_015,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_015.nii.gz,22050,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,148.0,2093.0,4304.0
+MTR_016,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_016.nii.gz,24736,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,142.0,1761.0,4274.0
+MTR_016,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_016.nii.gz,23702,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,142.0,1761.0,4274.0
+MTR_016,skm_tea_femoral,femoral cartilage,test,2,MTR_016.nii.gz,100293,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,142.0,1761.0,4274.0
+MTR_016,skm_tea_patellar,patellar cartilage,test,1,MTR_016.nii.gz,17352,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,142.0,1761.0,4274.0
+MTR_016,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_016.nii.gz,27791,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,142.0,1761.0,4274.0
+MTR_016,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_016.nii.gz,18019,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,142.0,1761.0,4274.0
+MTR_018,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_018.nii.gz,27903,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,258.0,2129.0,5783.0
+MTR_018,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_018.nii.gz,28392,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,258.0,2129.0,5783.0
+MTR_018,skm_tea_femoral,femoral cartilage,test,2,MTR_018.nii.gz,147573,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,258.0,2129.0,5783.0
+MTR_018,skm_tea_patellar,patellar cartilage,test,1,MTR_018.nii.gz,38392,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,258.0,2129.0,5783.0
+MTR_018,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_018.nii.gz,14438,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,258.0,2129.0,5783.0
+MTR_018,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_018.nii.gz,14586,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,258.0,2129.0,5783.0
+MTR_019,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_019.nii.gz,31214,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,143.0,1958.0,3680.0
+MTR_019,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_019.nii.gz,36845,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,143.0,1958.0,3680.0
+MTR_019,skm_tea_femoral,femoral cartilage,train,2,MTR_019.nii.gz,143421,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,143.0,1958.0,3680.0
+MTR_019,skm_tea_patellar,patellar cartilage,train,1,MTR_019.nii.gz,43509,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,143.0,1958.0,3680.0
+MTR_019,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_019.nii.gz,55960,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,143.0,1958.0,3680.0
+MTR_019,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_019.nii.gz,39992,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,143.0,1958.0,3680.0
+MTR_020,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_020.nii.gz,21857,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1061.0,7560.0,19450.0
+MTR_020,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_020.nii.gz,37369,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1061.0,7560.0,19450.0
+MTR_020,skm_tea_femoral,femoral cartilage,train,2,MTR_020.nii.gz,244733,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1061.0,7560.0,19450.0
+MTR_020,skm_tea_patellar,patellar cartilage,train,1,MTR_020.nii.gz,57568,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1061.0,7560.0,19450.0
+MTR_020,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_020.nii.gz,42457,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1061.0,7560.0,19450.0
+MTR_020,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_020.nii.gz,38503,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1061.0,7560.0,19450.0
+MTR_023,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_023.nii.gz,51990,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,333.0,2768.0,6080.0
+MTR_023,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_023.nii.gz,34896,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,333.0,2768.0,6080.0
+MTR_023,skm_tea_femoral,femoral cartilage,val,2,MTR_023.nii.gz,193918,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,333.0,2768.0,6080.0
+MTR_023,skm_tea_patellar,patellar cartilage,val,1,MTR_023.nii.gz,42910,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,333.0,2768.0,6080.0
+MTR_023,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_023.nii.gz,46527,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,333.0,2768.0,6080.0
+MTR_023,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_023.nii.gz,35016,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,333.0,2768.0,6080.0
+MTR_026,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_026.nii.gz,54055,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,1.0,196.0,2042.0,4578.0
+MTR_026,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_026.nii.gz,42017,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,1.0,196.0,2042.0,4578.0
+MTR_026,skm_tea_femoral,femoral cartilage,val,2,MTR_026.nii.gz,218072,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,1.0,196.0,2042.0,4578.0
+MTR_026,skm_tea_patellar,patellar cartilage,val,1,MTR_026.nii.gz,55100,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,1.0,196.0,2042.0,4578.0
+MTR_026,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_026.nii.gz,39738,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,1.0,196.0,2042.0,4578.0
+MTR_026,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_026.nii.gz,45157,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,1.0,196.0,2042.0,4578.0
+MTR_028,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_028.nii.gz,23548,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,1732.0,3343.0
+MTR_028,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_028.nii.gz,20773,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,1732.0,3343.0
+MTR_028,skm_tea_femoral,femoral cartilage,val,2,MTR_028.nii.gz,120500,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,1732.0,3343.0
+MTR_028,skm_tea_patellar,patellar cartilage,val,1,MTR_028.nii.gz,42655,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,1732.0,3343.0
+MTR_028,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_028.nii.gz,23174,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,1732.0,3343.0
+MTR_028,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_028.nii.gz,23604,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,1732.0,3343.0
+MTR_030,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_030.nii.gz,19118,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,226.0,2037.0,5858.0
+MTR_030,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_030.nii.gz,23659,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,226.0,2037.0,5858.0
+MTR_030,skm_tea_femoral,femoral cartilage,train,2,MTR_030.nii.gz,113662,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,226.0,2037.0,5858.0
+MTR_030,skm_tea_patellar,patellar cartilage,train,1,MTR_030.nii.gz,22884,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,226.0,2037.0,5858.0
+MTR_030,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_030.nii.gz,11169,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,226.0,2037.0,5858.0
+MTR_030,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_030.nii.gz,20163,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,226.0,2037.0,5858.0
+MTR_033,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_033.nii.gz,47905,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,227.0,2302.0,5197.0
+MTR_033,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_033.nii.gz,39896,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,227.0,2302.0,5197.0
+MTR_033,skm_tea_femoral,femoral cartilage,val,2,MTR_033.nii.gz,203360,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,227.0,2302.0,5197.0
+MTR_033,skm_tea_patellar,patellar cartilage,val,1,MTR_033.nii.gz,43271,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,227.0,2302.0,5197.0
+MTR_033,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_033.nii.gz,31961,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,227.0,2302.0,5197.0
+MTR_033,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_033.nii.gz,32917,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,227.0,2302.0,5197.0
+MTR_034,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_034.nii.gz,37005,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,176.0,2264.0,4912.0
+MTR_034,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_034.nii.gz,30945,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,176.0,2264.0,4912.0
+MTR_034,skm_tea_femoral,femoral cartilage,train,2,MTR_034.nii.gz,156541,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,176.0,2264.0,4912.0
+MTR_034,skm_tea_patellar,patellar cartilage,train,1,MTR_034.nii.gz,42804,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,176.0,2264.0,4912.0
+MTR_034,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_034.nii.gz,29736,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,176.0,2264.0,4912.0
+MTR_034,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_034.nii.gz,22309,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,176.0,2264.0,4912.0
+MTR_037,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_037.nii.gz,36577,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,197.0,2048.0,3951.0
+MTR_037,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_037.nii.gz,43234,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,197.0,2048.0,3951.0
+MTR_037,skm_tea_femoral,femoral cartilage,train,2,MTR_037.nii.gz,189615,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,197.0,2048.0,3951.0
+MTR_037,skm_tea_patellar,patellar cartilage,train,1,MTR_037.nii.gz,72073,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,197.0,2048.0,3951.0
+MTR_037,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_037.nii.gz,34071,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,197.0,2048.0,3951.0
+MTR_037,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_037.nii.gz,29580,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,197.0,2048.0,3951.0
+MTR_038,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_038.nii.gz,38627,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,248.0,2200.0,6457.0
+MTR_038,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_038.nii.gz,30045,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,248.0,2200.0,6457.0
+MTR_038,skm_tea_femoral,femoral cartilage,train,2,MTR_038.nii.gz,140622,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,248.0,2200.0,6457.0
+MTR_038,skm_tea_patellar,patellar cartilage,train,1,MTR_038.nii.gz,44843,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,248.0,2200.0,6457.0
+MTR_038,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_038.nii.gz,29618,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,248.0,2200.0,6457.0
+MTR_038,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_038.nii.gz,27798,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,248.0,2200.0,6457.0
+MTR_040,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_040.nii.gz,21546,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,2156.0,6614.0
+MTR_040,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_040.nii.gz,28125,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,2156.0,6614.0
+MTR_040,skm_tea_femoral,femoral cartilage,train,2,MTR_040.nii.gz,117767,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,2156.0,6614.0
+MTR_040,skm_tea_patellar,patellar cartilage,train,1,MTR_040.nii.gz,28368,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,2156.0,6614.0
+MTR_040,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_040.nii.gz,27924,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,2156.0,6614.0
+MTR_040,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_040.nii.gz,18709,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,2156.0,6614.0
+MTR_043,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_043.nii.gz,29677,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,191.0,2399.0,6157.0
+MTR_043,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_043.nii.gz,27154,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,191.0,2399.0,6157.0
+MTR_043,skm_tea_femoral,femoral cartilage,train,2,MTR_043.nii.gz,115893,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,191.0,2399.0,6157.0
+MTR_043,skm_tea_patellar,patellar cartilage,train,1,MTR_043.nii.gz,31424,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,191.0,2399.0,6157.0
+MTR_043,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_043.nii.gz,35017,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,191.0,2399.0,6157.0
+MTR_043,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_043.nii.gz,28126,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,191.0,2399.0,6157.0
+MTR_044,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_044.nii.gz,21101,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,947.0,5427.0,16598.0
+MTR_044,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_044.nii.gz,23764,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,947.0,5427.0,16598.0
+MTR_044,skm_tea_femoral,femoral cartilage,train,2,MTR_044.nii.gz,84316,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,947.0,5427.0,16598.0
+MTR_044,skm_tea_patellar,patellar cartilage,train,1,MTR_044.nii.gz,29708,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,947.0,5427.0,16598.0
+MTR_044,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_044.nii.gz,36215,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,947.0,5427.0,16598.0
+MTR_044,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_044.nii.gz,28113,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,947.0,5427.0,16598.0
+MTR_045,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_045.nii.gz,23970,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,311.0,2217.0,7052.0
+MTR_045,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_045.nii.gz,25763,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,311.0,2217.0,7052.0
+MTR_045,skm_tea_femoral,femoral cartilage,test,2,MTR_045.nii.gz,111451,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,311.0,2217.0,7052.0
+MTR_045,skm_tea_patellar,patellar cartilage,test,1,MTR_045.nii.gz,32453,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,311.0,2217.0,7052.0
+MTR_045,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_045.nii.gz,28482,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,311.0,2217.0,7052.0
+MTR_045,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_045.nii.gz,22580,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,311.0,2217.0,7052.0
+MTR_046,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_046.nii.gz,15711,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,223.0,1794.0,4930.0
+MTR_046,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_046.nii.gz,13764,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,223.0,1794.0,4930.0
+MTR_046,skm_tea_femoral,femoral cartilage,test,2,MTR_046.nii.gz,68954,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,223.0,1794.0,4930.0
+MTR_046,skm_tea_patellar,patellar cartilage,test,1,MTR_046.nii.gz,27250,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,223.0,1794.0,4930.0
+MTR_046,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_046.nii.gz,28271,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,223.0,1794.0,4930.0
+MTR_046,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_046.nii.gz,15243,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,223.0,1794.0,4930.0
+MTR_047,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_047.nii.gz,22714,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,196.0,2205.0,5517.0
+MTR_047,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_047.nii.gz,21196,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,196.0,2205.0,5517.0
+MTR_047,skm_tea_femoral,femoral cartilage,train,2,MTR_047.nii.gz,103994,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,196.0,2205.0,5517.0
+MTR_047,skm_tea_patellar,patellar cartilage,train,1,MTR_047.nii.gz,20234,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,196.0,2205.0,5517.0
+MTR_047,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_047.nii.gz,23859,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,196.0,2205.0,5517.0
+MTR_047,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_047.nii.gz,27754,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,196.0,2205.0,5517.0
+MTR_048,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_048.nii.gz,37368,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,176.0,2259.0,4586.0
+MTR_048,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_048.nii.gz,27155,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,176.0,2259.0,4586.0
+MTR_048,skm_tea_femoral,femoral cartilage,train,2,MTR_048.nii.gz,173258,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,176.0,2259.0,4586.0
+MTR_048,skm_tea_patellar,patellar cartilage,train,1,MTR_048.nii.gz,53948,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,176.0,2259.0,4586.0
+MTR_048,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_048.nii.gz,29480,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,176.0,2259.0,4586.0
+MTR_048,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_048.nii.gz,29675,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,176.0,2259.0,4586.0
+MTR_049,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_049.nii.gz,27196,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,148.0,2270.0,5324.0
+MTR_049,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_049.nii.gz,28103,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,148.0,2270.0,5324.0
+MTR_049,skm_tea_femoral,femoral cartilage,test,2,MTR_049.nii.gz,170917,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,148.0,2270.0,5324.0
+MTR_049,skm_tea_patellar,patellar cartilage,test,1,MTR_049.nii.gz,52240,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,148.0,2270.0,5324.0
+MTR_049,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_049.nii.gz,33658,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,148.0,2270.0,5324.0
+MTR_049,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_049.nii.gz,35501,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,148.0,2270.0,5324.0
+MTR_051,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_051.nii.gz,25813,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,120.0,1595.0,3042.0
+MTR_051,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_051.nii.gz,24281,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,120.0,1595.0,3042.0
+MTR_051,skm_tea_femoral,femoral cartilage,val,2,MTR_051.nii.gz,118039,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,120.0,1595.0,3042.0
+MTR_051,skm_tea_patellar,patellar cartilage,val,1,MTR_051.nii.gz,34755,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,120.0,1595.0,3042.0
+MTR_051,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_051.nii.gz,17740,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,120.0,1595.0,3042.0
+MTR_051,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_051.nii.gz,15360,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,120.0,1595.0,3042.0
+MTR_052,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_052.nii.gz,17522,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,233.0,2040.0,5031.0
+MTR_052,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_052.nii.gz,19390,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,233.0,2040.0,5031.0
+MTR_052,skm_tea_femoral,femoral cartilage,test,2,MTR_052.nii.gz,109760,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,233.0,2040.0,5031.0
+MTR_052,skm_tea_patellar,patellar cartilage,test,1,MTR_052.nii.gz,7953,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,233.0,2040.0,5031.0
+MTR_052,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_052.nii.gz,23377,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,233.0,2040.0,5031.0
+MTR_052,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_052.nii.gz,7126,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,233.0,2040.0,5031.0
+MTR_053,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_053.nii.gz,32434,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,234.0,2698.0,5602.0
+MTR_053,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_053.nii.gz,29049,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,234.0,2698.0,5602.0
+MTR_053,skm_tea_femoral,femoral cartilage,train,2,MTR_053.nii.gz,196211,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,234.0,2698.0,5602.0
+MTR_053,skm_tea_patellar,patellar cartilage,train,1,MTR_053.nii.gz,38767,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,234.0,2698.0,5602.0
+MTR_053,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_053.nii.gz,31422,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,234.0,2698.0,5602.0
+MTR_053,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_053.nii.gz,29890,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,234.0,2698.0,5602.0
+MTR_056,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_056.nii.gz,34824,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,180.0,2062.0,4753.0
+MTR_056,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_056.nii.gz,36297,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,180.0,2062.0,4753.0
+MTR_056,skm_tea_femoral,femoral cartilage,train,2,MTR_056.nii.gz,146497,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,180.0,2062.0,4753.0
+MTR_056,skm_tea_patellar,patellar cartilage,train,1,MTR_056.nii.gz,38621,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,180.0,2062.0,4753.0
+MTR_056,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_056.nii.gz,32300,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,180.0,2062.0,4753.0
+MTR_056,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_056.nii.gz,28245,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,180.0,2062.0,4753.0
+MTR_057,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_057.nii.gz,14668,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,2541.0,4753.0
+MTR_057,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_057.nii.gz,20043,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,2541.0,4753.0
+MTR_057,skm_tea_femoral,femoral cartilage,train,2,MTR_057.nii.gz,105662,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,2541.0,4753.0
+MTR_057,skm_tea_patellar,patellar cartilage,train,1,MTR_057.nii.gz,7290,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,2541.0,4753.0
+MTR_057,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_057.nii.gz,35068,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,2541.0,4753.0
+MTR_057,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_057.nii.gz,19791,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,2541.0,4753.0
+MTR_061,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_061.nii.gz,18391,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,146.0,1883.0,3706.0
+MTR_061,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_061.nii.gz,25993,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,146.0,1883.0,3706.0
+MTR_061,skm_tea_femoral,femoral cartilage,train,2,MTR_061.nii.gz,106272,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,146.0,1883.0,3706.0
+MTR_061,skm_tea_patellar,patellar cartilage,train,1,MTR_061.nii.gz,27806,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,146.0,1883.0,3706.0
+MTR_061,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_061.nii.gz,17701,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,146.0,1883.0,3706.0
+MTR_061,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_061.nii.gz,12450,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,146.0,1883.0,3706.0
+MTR_062,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_062.nii.gz,35620,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,175.0,2094.0,5452.0
+MTR_062,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_062.nii.gz,30389,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,175.0,2094.0,5452.0
+MTR_062,skm_tea_femoral,femoral cartilage,val,2,MTR_062.nii.gz,136011,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,175.0,2094.0,5452.0
+MTR_062,skm_tea_patellar,patellar cartilage,val,1,MTR_062.nii.gz,29972,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,175.0,2094.0,5452.0
+MTR_062,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_062.nii.gz,25206,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,175.0,2094.0,5452.0
+MTR_062,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_062.nii.gz,22820,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,175.0,2094.0,5452.0
+MTR_065,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_065.nii.gz,32593,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,202.0,2140.0,4440.0
+MTR_065,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_065.nii.gz,26785,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,202.0,2140.0,4440.0
+MTR_065,skm_tea_femoral,femoral cartilage,train,2,MTR_065.nii.gz,156144,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,202.0,2140.0,4440.0
+MTR_065,skm_tea_patellar,patellar cartilage,train,1,MTR_065.nii.gz,45385,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,202.0,2140.0,4440.0
+MTR_065,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_065.nii.gz,32290,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,202.0,2140.0,4440.0
+MTR_065,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_065.nii.gz,21377,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,202.0,2140.0,4440.0
+MTR_066,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_066.nii.gz,28603,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,885.0,6099.0,24010.0
+MTR_066,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_066.nii.gz,15822,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,885.0,6099.0,24010.0
+MTR_066,skm_tea_femoral,femoral cartilage,test,2,MTR_066.nii.gz,90018,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,885.0,6099.0,24010.0
+MTR_066,skm_tea_patellar,patellar cartilage,test,1,MTR_066.nii.gz,27383,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,885.0,6099.0,24010.0
+MTR_066,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_066.nii.gz,13082,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,885.0,6099.0,24010.0
+MTR_066,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_066.nii.gz,20007,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,885.0,6099.0,24010.0
+MTR_069,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_069.nii.gz,23205,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1131.0,6805.0,22105.0
+MTR_069,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_069.nii.gz,26185,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1131.0,6805.0,22105.0
+MTR_069,skm_tea_femoral,femoral cartilage,train,2,MTR_069.nii.gz,112817,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1131.0,6805.0,22105.0
+MTR_069,skm_tea_patellar,patellar cartilage,train,1,MTR_069.nii.gz,35383,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1131.0,6805.0,22105.0
+MTR_069,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_069.nii.gz,22685,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1131.0,6805.0,22105.0
+MTR_069,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_069.nii.gz,22772,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1131.0,6805.0,22105.0
+MTR_071,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_071.nii.gz,37387,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,320.0,2295.0,5416.0
+MTR_071,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_071.nii.gz,31820,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,320.0,2295.0,5416.0
+MTR_071,skm_tea_femoral,femoral cartilage,train,2,MTR_071.nii.gz,143097,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,320.0,2295.0,5416.0
+MTR_071,skm_tea_patellar,patellar cartilage,train,1,MTR_071.nii.gz,50472,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,320.0,2295.0,5416.0
+MTR_071,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_071.nii.gz,26438,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,320.0,2295.0,5416.0
+MTR_071,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_071.nii.gz,24791,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,320.0,2295.0,5416.0
+MTR_074,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_074.nii.gz,26504,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,225.0,2087.0,5365.0
+MTR_074,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_074.nii.gz,22362,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,225.0,2087.0,5365.0
+MTR_074,skm_tea_femoral,femoral cartilage,train,2,MTR_074.nii.gz,123769,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,225.0,2087.0,5365.0
+MTR_074,skm_tea_patellar,patellar cartilage,train,1,MTR_074.nii.gz,33750,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,225.0,2087.0,5365.0
+MTR_074,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_074.nii.gz,21406,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,225.0,2087.0,5365.0
+MTR_074,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_074.nii.gz,18918,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,225.0,2087.0,5365.0
+MTR_077,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_077.nii.gz,35129,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,223.0,2407.0,6110.0
+MTR_077,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_077.nii.gz,33663,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,223.0,2407.0,6110.0
+MTR_077,skm_tea_femoral,femoral cartilage,val,2,MTR_077.nii.gz,158100,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,223.0,2407.0,6110.0
+MTR_077,skm_tea_patellar,patellar cartilage,val,1,MTR_077.nii.gz,52963,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,223.0,2407.0,6110.0
+MTR_077,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_077.nii.gz,35506,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,223.0,2407.0,6110.0
+MTR_077,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_077.nii.gz,34746,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,223.0,2407.0,6110.0
+MTR_079,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_079.nii.gz,25394,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,178.0,2086.0,4981.0
+MTR_079,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_079.nii.gz,19169,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,178.0,2086.0,4981.0
+MTR_079,skm_tea_femoral,femoral cartilage,test,2,MTR_079.nii.gz,91715,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,178.0,2086.0,4981.0
+MTR_079,skm_tea_patellar,patellar cartilage,test,1,MTR_079.nii.gz,17677,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,178.0,2086.0,4981.0
+MTR_079,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_079.nii.gz,14791,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,178.0,2086.0,4981.0
+MTR_079,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_079.nii.gz,12710,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,178.0,2086.0,4981.0
+MTR_080,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_080.nii.gz,39089,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,178.0,2517.0,5003.0
+MTR_080,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_080.nii.gz,36262,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,178.0,2517.0,5003.0
+MTR_080,skm_tea_femoral,femoral cartilage,train,2,MTR_080.nii.gz,151459,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,178.0,2517.0,5003.0
+MTR_080,skm_tea_patellar,patellar cartilage,train,1,MTR_080.nii.gz,47095,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,178.0,2517.0,5003.0
+MTR_080,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_080.nii.gz,37514,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,178.0,2517.0,5003.0
+MTR_080,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_080.nii.gz,31596,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,178.0,2517.0,5003.0
+MTR_083,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_083.nii.gz,24757,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,251.0,2169.0,4898.0
+MTR_083,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_083.nii.gz,8594,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,251.0,2169.0,4898.0
+MTR_083,skm_tea_femoral,femoral cartilage,train,2,MTR_083.nii.gz,140817,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,251.0,2169.0,4898.0
+MTR_083,skm_tea_patellar,patellar cartilage,train,1,MTR_083.nii.gz,22317,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,251.0,2169.0,4898.0
+MTR_083,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_083.nii.gz,34272,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,251.0,2169.0,4898.0
+MTR_083,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_083.nii.gz,25778,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,251.0,2169.0,4898.0
+MTR_084,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_084.nii.gz,35913,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,142.0,1720.0,3578.0
+MTR_084,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_084.nii.gz,28952,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,142.0,1720.0,3578.0
+MTR_084,skm_tea_femoral,femoral cartilage,val,2,MTR_084.nii.gz,176330,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,142.0,1720.0,3578.0
+MTR_084,skm_tea_patellar,patellar cartilage,val,1,MTR_084.nii.gz,46757,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,142.0,1720.0,3578.0
+MTR_084,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_084.nii.gz,24927,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,142.0,1720.0,3578.0
+MTR_084,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_084.nii.gz,11683,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,142.0,1720.0,3578.0
+MTR_087,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_087.nii.gz,22978,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,164.0,2011.0,5069.0
+MTR_087,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_087.nii.gz,22878,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,164.0,2011.0,5069.0
+MTR_087,skm_tea_femoral,femoral cartilage,val,2,MTR_087.nii.gz,119567,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,164.0,2011.0,5069.0
+MTR_087,skm_tea_patellar,patellar cartilage,val,1,MTR_087.nii.gz,41155,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,164.0,2011.0,5069.0
+MTR_087,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_087.nii.gz,18315,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,164.0,2011.0,5069.0
+MTR_087,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_087.nii.gz,17114,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,164.0,2011.0,5069.0
+MTR_093,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_093.nii.gz,36288,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,149.0,1997.0,3408.0
+MTR_093,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_093.nii.gz,30740,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,149.0,1997.0,3408.0
+MTR_093,skm_tea_femoral,femoral cartilage,val,2,MTR_093.nii.gz,142459,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,149.0,1997.0,3408.0
+MTR_093,skm_tea_patellar,patellar cartilage,val,1,MTR_093.nii.gz,38240,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,149.0,1997.0,3408.0
+MTR_093,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_093.nii.gz,28750,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,149.0,1997.0,3408.0
+MTR_093,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_093.nii.gz,23546,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,149.0,1997.0,3408.0
+MTR_094,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_094.nii.gz,29045,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,2357.0,5029.0
+MTR_094,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_094.nii.gz,22433,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,2357.0,5029.0
+MTR_094,skm_tea_femoral,femoral cartilage,train,2,MTR_094.nii.gz,94575,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,2357.0,5029.0
+MTR_094,skm_tea_patellar,patellar cartilage,train,1,MTR_094.nii.gz,23029,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,2357.0,5029.0
+MTR_094,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_094.nii.gz,32342,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,2357.0,5029.0
+MTR_094,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_094.nii.gz,29906,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,2357.0,5029.0
+MTR_095,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_095.nii.gz,30375,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,183.0,2213.0,4593.0
+MTR_095,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_095.nii.gz,28095,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,183.0,2213.0,4593.0
+MTR_095,skm_tea_femoral,femoral cartilage,train,2,MTR_095.nii.gz,203620,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,183.0,2213.0,4593.0
+MTR_095,skm_tea_patellar,patellar cartilage,train,1,MTR_095.nii.gz,43241,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,183.0,2213.0,4593.0
+MTR_095,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_095.nii.gz,18702,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,183.0,2213.0,4593.0
+MTR_095,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_095.nii.gz,41498,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,183.0,2213.0,4593.0
+MTR_096,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_096.nii.gz,45065,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,156.0,2183.0,4128.0
+MTR_096,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_096.nii.gz,38549,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,156.0,2183.0,4128.0
+MTR_096,skm_tea_femoral,femoral cartilage,val,2,MTR_096.nii.gz,199299,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,156.0,2183.0,4128.0
+MTR_096,skm_tea_patellar,patellar cartilage,val,1,MTR_096.nii.gz,55372,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,156.0,2183.0,4128.0
+MTR_096,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_096.nii.gz,27613,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,156.0,2183.0,4128.0
+MTR_096,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_096.nii.gz,28204,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,156.0,2183.0,4128.0
+MTR_097,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_097.nii.gz,35998,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,287.0,2898.0,5546.0
+MTR_097,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_097.nii.gz,28059,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,287.0,2898.0,5546.0
+MTR_097,skm_tea_femoral,femoral cartilage,train,2,MTR_097.nii.gz,149942,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,287.0,2898.0,5546.0
+MTR_097,skm_tea_patellar,patellar cartilage,train,1,MTR_097.nii.gz,47665,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,287.0,2898.0,5546.0
+MTR_097,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_097.nii.gz,23286,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,287.0,2898.0,5546.0
+MTR_097,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_097.nii.gz,24236,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,287.0,2898.0,5546.0
+MTR_098,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_098.nii.gz,30259,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,183.0,2303.0,4886.0
+MTR_098,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_098.nii.gz,27035,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,183.0,2303.0,4886.0
+MTR_098,skm_tea_femoral,femoral cartilage,test,2,MTR_098.nii.gz,152411,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,183.0,2303.0,4886.0
+MTR_098,skm_tea_patellar,patellar cartilage,test,1,MTR_098.nii.gz,46332,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,183.0,2303.0,4886.0
+MTR_098,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_098.nii.gz,27602,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,183.0,2303.0,4886.0
+MTR_098,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_098.nii.gz,24183,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,183.0,2303.0,4886.0
+MTR_099,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_099.nii.gz,36699,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,2122.0,4082.0
+MTR_099,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_099.nii.gz,27755,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,2122.0,4082.0
+MTR_099,skm_tea_femoral,femoral cartilage,train,2,MTR_099.nii.gz,177300,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,2122.0,4082.0
+MTR_099,skm_tea_patellar,patellar cartilage,train,1,MTR_099.nii.gz,49513,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,2122.0,4082.0
+MTR_099,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_099.nii.gz,38011,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,2122.0,4082.0
+MTR_099,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_099.nii.gz,31903,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,2122.0,4082.0
+MTR_100,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_100.nii.gz,38059,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,232.0,2684.0,5892.0
+MTR_100,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_100.nii.gz,28803,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,232.0,2684.0,5892.0
+MTR_100,skm_tea_femoral,femoral cartilage,train,2,MTR_100.nii.gz,204515,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,232.0,2684.0,5892.0
+MTR_100,skm_tea_patellar,patellar cartilage,train,1,MTR_100.nii.gz,54171,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,232.0,2684.0,5892.0
+MTR_100,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_100.nii.gz,24051,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,232.0,2684.0,5892.0
+MTR_100,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_100.nii.gz,19955,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,232.0,2684.0,5892.0
+MTR_101,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_101.nii.gz,55864,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,157.0,2283.0,3418.0
+MTR_101,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_101.nii.gz,38075,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,157.0,2283.0,3418.0
+MTR_101,skm_tea_femoral,femoral cartilage,train,2,MTR_101.nii.gz,227054,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,157.0,2283.0,3418.0
+MTR_101,skm_tea_patellar,patellar cartilage,train,1,MTR_101.nii.gz,83329,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,157.0,2283.0,3418.0
+MTR_101,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_101.nii.gz,27320,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,157.0,2283.0,3418.0
+MTR_101,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_101.nii.gz,23436,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,157.0,2283.0,3418.0
+MTR_103,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_103.nii.gz,31959,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,312.0,2528.0,4938.0
+MTR_103,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_103.nii.gz,33975,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,312.0,2528.0,4938.0
+MTR_103,skm_tea_femoral,femoral cartilage,train,2,MTR_103.nii.gz,157671,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,312.0,2528.0,4938.0
+MTR_103,skm_tea_patellar,patellar cartilage,train,1,MTR_103.nii.gz,61095,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,312.0,2528.0,4938.0
+MTR_103,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_103.nii.gz,47522,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,312.0,2528.0,4938.0
+MTR_103,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_103.nii.gz,30857,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,312.0,2528.0,4938.0
+MTR_104,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_104.nii.gz,32128,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,246.0,1757.0,5950.0
+MTR_104,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_104.nii.gz,25858,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,246.0,1757.0,5950.0
+MTR_104,skm_tea_femoral,femoral cartilage,test,2,MTR_104.nii.gz,92146,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,246.0,1757.0,5950.0
+MTR_104,skm_tea_patellar,patellar cartilage,test,1,MTR_104.nii.gz,39979,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,246.0,1757.0,5950.0
+MTR_104,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_104.nii.gz,35426,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,246.0,1757.0,5950.0
+MTR_104,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_104.nii.gz,29086,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,246.0,1757.0,5950.0
+MTR_105,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_105.nii.gz,39799,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,192.0,2154.0,5808.0
+MTR_105,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_105.nii.gz,31548,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,192.0,2154.0,5808.0
+MTR_105,skm_tea_femoral,femoral cartilage,test,2,MTR_105.nii.gz,182355,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,192.0,2154.0,5808.0
+MTR_105,skm_tea_patellar,patellar cartilage,test,1,MTR_105.nii.gz,41648,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,192.0,2154.0,5808.0
+MTR_105,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_105.nii.gz,25811,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,192.0,2154.0,5808.0
+MTR_105,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_105.nii.gz,24812,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,192.0,2154.0,5808.0
+MTR_107,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_107.nii.gz,23343,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,147.0,1769.0,4599.0
+MTR_107,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_107.nii.gz,17495,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,147.0,1769.0,4599.0
+MTR_107,skm_tea_femoral,femoral cartilage,test,2,MTR_107.nii.gz,84187,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,147.0,1769.0,4599.0
+MTR_107,skm_tea_patellar,patellar cartilage,test,1,MTR_107.nii.gz,21184,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,147.0,1769.0,4599.0
+MTR_107,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_107.nii.gz,35168,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,147.0,1769.0,4599.0
+MTR_107,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_107.nii.gz,27026,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,147.0,1769.0,4599.0
+MTR_109,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_109.nii.gz,24482,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,136.0,1692.0,3792.0
+MTR_109,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_109.nii.gz,22569,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,136.0,1692.0,3792.0
+MTR_109,skm_tea_femoral,femoral cartilage,val,2,MTR_109.nii.gz,112043,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,136.0,1692.0,3792.0
+MTR_109,skm_tea_patellar,patellar cartilage,val,1,MTR_109.nii.gz,32815,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,136.0,1692.0,3792.0
+MTR_109,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_109.nii.gz,31890,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,136.0,1692.0,3792.0
+MTR_109,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_109.nii.gz,17174,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,136.0,1692.0,3792.0
+MTR_110,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_110.nii.gz,22954,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,248.0,1908.0,5107.0
+MTR_110,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_110.nii.gz,25899,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,248.0,1908.0,5107.0
+MTR_110,skm_tea_femoral,femoral cartilage,test,2,MTR_110.nii.gz,117002,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,248.0,1908.0,5107.0
+MTR_110,skm_tea_patellar,patellar cartilage,test,1,MTR_110.nii.gz,23273,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,248.0,1908.0,5107.0
+MTR_110,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_110.nii.gz,26674,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,248.0,1908.0,5107.0
+MTR_110,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_110.nii.gz,14673,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,248.0,1908.0,5107.0
+MTR_112,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_112.nii.gz,23968,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,207.0,2002.0,4559.0
+MTR_112,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_112.nii.gz,19607,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,207.0,2002.0,4559.0
+MTR_112,skm_tea_femoral,femoral cartilage,train,2,MTR_112.nii.gz,101832,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,207.0,2002.0,4559.0
+MTR_112,skm_tea_patellar,patellar cartilage,train,1,MTR_112.nii.gz,37106,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,207.0,2002.0,4559.0
+MTR_112,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_112.nii.gz,21567,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,207.0,2002.0,4559.0
+MTR_112,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_112.nii.gz,24255,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,207.0,2002.0,4559.0
+MTR_113,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_113.nii.gz,26003,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,158.0,1720.0,4082.0
+MTR_113,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_113.nii.gz,16439,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,158.0,1720.0,4082.0
+MTR_113,skm_tea_femoral,femoral cartilage,train,2,MTR_113.nii.gz,108200,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,158.0,1720.0,4082.0
+MTR_113,skm_tea_patellar,patellar cartilage,train,1,MTR_113.nii.gz,29921,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,158.0,1720.0,4082.0
+MTR_113,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_113.nii.gz,24446,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,158.0,1720.0,4082.0
+MTR_113,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_113.nii.gz,15275,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,158.0,1720.0,4082.0
+MTR_115,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_115.nii.gz,34733,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,187.0,2460.0,6107.0
+MTR_115,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_115.nii.gz,25672,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,187.0,2460.0,6107.0
+MTR_115,skm_tea_femoral,femoral cartilage,test,2,MTR_115.nii.gz,98943,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,187.0,2460.0,6107.0
+MTR_115,skm_tea_patellar,patellar cartilage,test,1,MTR_115.nii.gz,27700,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,187.0,2460.0,6107.0
+MTR_115,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_115.nii.gz,30778,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,187.0,2460.0,6107.0
+MTR_115,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_115.nii.gz,30973,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,187.0,2460.0,6107.0
+MTR_116,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_116.nii.gz,50684,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,193.0,2110.0,4467.0
+MTR_116,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_116.nii.gz,35385,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,193.0,2110.0,4467.0
+MTR_116,skm_tea_femoral,femoral cartilage,train,2,MTR_116.nii.gz,195904,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,193.0,2110.0,4467.0
+MTR_116,skm_tea_patellar,patellar cartilage,train,1,MTR_116.nii.gz,52217,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,193.0,2110.0,4467.0
+MTR_116,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_116.nii.gz,27044,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,193.0,2110.0,4467.0
+MTR_116,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_116.nii.gz,28157,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,193.0,2110.0,4467.0
+MTR_118,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_118.nii.gz,50698,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,192.0,2357.0,4956.0
+MTR_118,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_118.nii.gz,39686,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,192.0,2357.0,4956.0
+MTR_118,skm_tea_femoral,femoral cartilage,train,2,MTR_118.nii.gz,173508,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,192.0,2357.0,4956.0
+MTR_118,skm_tea_patellar,patellar cartilage,train,1,MTR_118.nii.gz,60904,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,192.0,2357.0,4956.0
+MTR_118,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_118.nii.gz,25916,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,192.0,2357.0,4956.0
+MTR_118,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_118.nii.gz,29321,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,192.0,2357.0,4956.0
+MTR_120,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_120.nii.gz,37277,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,270.0,2393.0,5078.0
+MTR_120,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_120.nii.gz,31482,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,270.0,2393.0,5078.0
+MTR_120,skm_tea_femoral,femoral cartilage,train,2,MTR_120.nii.gz,139824,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,270.0,2393.0,5078.0
+MTR_120,skm_tea_patellar,patellar cartilage,train,1,MTR_120.nii.gz,41867,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,270.0,2393.0,5078.0
+MTR_120,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_120.nii.gz,21060,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,270.0,2393.0,5078.0
+MTR_120,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_120.nii.gz,30954,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,270.0,2393.0,5078.0
+MTR_122,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_122.nii.gz,30237,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,170.0,2046.0,4203.0
+MTR_122,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_122.nii.gz,32915,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,170.0,2046.0,4203.0
+MTR_122,skm_tea_femoral,femoral cartilage,train,2,MTR_122.nii.gz,158812,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,170.0,2046.0,4203.0
+MTR_122,skm_tea_patellar,patellar cartilage,train,1,MTR_122.nii.gz,60066,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,170.0,2046.0,4203.0
+MTR_122,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_122.nii.gz,20916,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,170.0,2046.0,4203.0
+MTR_122,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_122.nii.gz,11672,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,170.0,2046.0,4203.0
+MTR_124,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_124.nii.gz,37890,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,200.0,2138.0,4720.0
+MTR_124,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_124.nii.gz,27478,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,200.0,2138.0,4720.0
+MTR_124,skm_tea_femoral,femoral cartilage,train,2,MTR_124.nii.gz,188761,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,200.0,2138.0,4720.0
+MTR_124,skm_tea_patellar,patellar cartilage,train,1,MTR_124.nii.gz,56247,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,200.0,2138.0,4720.0
+MTR_124,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_124.nii.gz,24199,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,200.0,2138.0,4720.0
+MTR_124,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_124.nii.gz,16950,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,200.0,2138.0,4720.0
+MTR_126,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_126.nii.gz,37846,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,391.0,3024.0,7347.0
+MTR_126,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_126.nii.gz,30686,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,391.0,3024.0,7347.0
+MTR_126,skm_tea_femoral,femoral cartilage,val,2,MTR_126.nii.gz,168913,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,391.0,3024.0,7347.0
+MTR_126,skm_tea_patellar,patellar cartilage,val,1,MTR_126.nii.gz,53364,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,391.0,3024.0,7347.0
+MTR_126,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_126.nii.gz,28849,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,391.0,3024.0,7347.0
+MTR_126,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_126.nii.gz,29370,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,391.0,3024.0,7347.0
+MTR_127,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_127.nii.gz,38746,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,220.0,2011.0,4639.0
+MTR_127,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_127.nii.gz,30177,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,220.0,2011.0,4639.0
+MTR_127,skm_tea_femoral,femoral cartilage,train,2,MTR_127.nii.gz,147755,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,220.0,2011.0,4639.0
+MTR_127,skm_tea_patellar,patellar cartilage,train,1,MTR_127.nii.gz,40250,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,220.0,2011.0,4639.0
+MTR_127,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_127.nii.gz,25778,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,220.0,2011.0,4639.0
+MTR_127,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_127.nii.gz,18637,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,220.0,2011.0,4639.0
+MTR_129,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_129.nii.gz,39123,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,172.0,2047.0,4132.0
+MTR_129,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_129.nii.gz,30820,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,172.0,2047.0,4132.0
+MTR_129,skm_tea_femoral,femoral cartilage,test,2,MTR_129.nii.gz,153205,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,172.0,2047.0,4132.0
+MTR_129,skm_tea_patellar,patellar cartilage,test,1,MTR_129.nii.gz,37664,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,172.0,2047.0,4132.0
+MTR_129,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_129.nii.gz,23806,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,172.0,2047.0,4132.0
+MTR_129,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_129.nii.gz,24500,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,172.0,2047.0,4132.0
+MTR_130,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_130.nii.gz,31255,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,302.0,2078.0,5303.0
+MTR_130,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_130.nii.gz,26974,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,302.0,2078.0,5303.0
+MTR_130,skm_tea_femoral,femoral cartilage,test,2,MTR_130.nii.gz,152335,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,302.0,2078.0,5303.0
+MTR_130,skm_tea_patellar,patellar cartilage,test,1,MTR_130.nii.gz,44727,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,302.0,2078.0,5303.0
+MTR_130,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_130.nii.gz,28033,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,302.0,2078.0,5303.0
+MTR_130,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_130.nii.gz,24380,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,302.0,2078.0,5303.0
+MTR_133,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_133.nii.gz,41556,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,205.0,2281.0,5016.0
+MTR_133,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_133.nii.gz,25117,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,205.0,2281.0,5016.0
+MTR_133,skm_tea_femoral,femoral cartilage,train,2,MTR_133.nii.gz,112977,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,205.0,2281.0,5016.0
+MTR_133,skm_tea_patellar,patellar cartilage,train,1,MTR_133.nii.gz,39158,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,205.0,2281.0,5016.0
+MTR_133,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_133.nii.gz,20172,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,205.0,2281.0,5016.0
+MTR_133,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_133.nii.gz,20621,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,205.0,2281.0,5016.0
+MTR_135,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_135.nii.gz,25900,0 1 2 3 4 5 6,512x512x168,1.0000x1.0000x1.0000,True,0.0,0.0,225.0,2035.0,5241.0
+MTR_135,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_135.nii.gz,24592,0 1 2 3 4 5 6,512x512x168,1.0000x1.0000x1.0000,True,0.0,0.0,225.0,2035.0,5241.0
+MTR_135,skm_tea_femoral,femoral cartilage,train,2,MTR_135.nii.gz,137596,0 1 2 3 4 5 6,512x512x168,1.0000x1.0000x1.0000,True,0.0,0.0,225.0,2035.0,5241.0
+MTR_135,skm_tea_patellar,patellar cartilage,train,1,MTR_135.nii.gz,54687,0 1 2 3 4 5 6,512x512x168,1.0000x1.0000x1.0000,True,0.0,0.0,225.0,2035.0,5241.0
+MTR_135,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_135.nii.gz,29771,0 1 2 3 4 5 6,512x512x168,1.0000x1.0000x1.0000,True,0.0,0.0,225.0,2035.0,5241.0
+MTR_135,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_135.nii.gz,29926,0 1 2 3 4 5 6,512x512x168,1.0000x1.0000x1.0000,True,0.0,0.0,225.0,2035.0,5241.0
+MTR_139,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_139.nii.gz,36702,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,211.0,2068.0,5625.0
+MTR_139,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_139.nii.gz,31963,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,211.0,2068.0,5625.0
+MTR_139,skm_tea_femoral,femoral cartilage,train,2,MTR_139.nii.gz,177707,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,211.0,2068.0,5625.0
+MTR_139,skm_tea_patellar,patellar cartilage,train,1,MTR_139.nii.gz,44988,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,211.0,2068.0,5625.0
+MTR_139,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_139.nii.gz,28625,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,211.0,2068.0,5625.0
+MTR_139,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_139.nii.gz,34722,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,211.0,2068.0,5625.0
+MTR_140,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_140.nii.gz,17330,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,157.0,1729.0,3516.0
+MTR_140,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_140.nii.gz,16852,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,157.0,1729.0,3516.0
+MTR_140,skm_tea_femoral,femoral cartilage,train,2,MTR_140.nii.gz,74312,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,157.0,1729.0,3516.0
+MTR_140,skm_tea_patellar,patellar cartilage,train,1,MTR_140.nii.gz,34297,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,157.0,1729.0,3516.0
+MTR_140,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_140.nii.gz,23052,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,157.0,1729.0,3516.0
+MTR_140,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_140.nii.gz,21465,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,157.0,1729.0,3516.0
+MTR_142,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_142.nii.gz,29366,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,241.0,1744.0,5323.0
+MTR_142,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_142.nii.gz,22445,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,241.0,1744.0,5323.0
+MTR_142,skm_tea_femoral,femoral cartilage,train,2,MTR_142.nii.gz,95888,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,241.0,1744.0,5323.0
+MTR_142,skm_tea_patellar,patellar cartilage,train,1,MTR_142.nii.gz,35055,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,241.0,1744.0,5323.0
+MTR_142,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_142.nii.gz,21773,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,241.0,1744.0,5323.0
+MTR_142,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_142.nii.gz,14097,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,241.0,1744.0,5323.0
+MTR_144,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_144.nii.gz,46805,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,233.0,2346.0,6555.0
+MTR_144,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_144.nii.gz,26019,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,233.0,2346.0,6555.0
+MTR_144,skm_tea_femoral,femoral cartilage,val,2,MTR_144.nii.gz,231873,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,233.0,2346.0,6555.0
+MTR_144,skm_tea_patellar,patellar cartilage,val,1,MTR_144.nii.gz,74171,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,233.0,2346.0,6555.0
+MTR_144,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_144.nii.gz,30360,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,233.0,2346.0,6555.0
+MTR_144,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_144.nii.gz,31280,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,233.0,2346.0,6555.0
+MTR_145,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_145.nii.gz,33855,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,144.0,1946.0,3759.0
+MTR_145,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_145.nii.gz,25722,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,144.0,1946.0,3759.0
+MTR_145,skm_tea_femoral,femoral cartilage,train,2,MTR_145.nii.gz,154230,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,144.0,1946.0,3759.0
+MTR_145,skm_tea_patellar,patellar cartilage,train,1,MTR_145.nii.gz,44023,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,144.0,1946.0,3759.0
+MTR_145,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_145.nii.gz,16802,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,144.0,1946.0,3759.0
+MTR_145,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_145.nii.gz,25106,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,144.0,1946.0,3759.0
+MTR_146,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_146.nii.gz,42425,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,172.0,2078.0,3840.0
+MTR_146,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_146.nii.gz,42928,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,172.0,2078.0,3840.0
+MTR_146,skm_tea_femoral,femoral cartilage,train,2,MTR_146.nii.gz,168674,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,172.0,2078.0,3840.0
+MTR_146,skm_tea_patellar,patellar cartilage,train,1,MTR_146.nii.gz,43502,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,172.0,2078.0,3840.0
+MTR_146,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_146.nii.gz,37604,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,172.0,2078.0,3840.0
+MTR_146,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_146.nii.gz,38433,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,172.0,2078.0,3840.0
+MTR_148,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_148.nii.gz,21446,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,265.0,2657.0,9490.0
+MTR_148,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_148.nii.gz,21713,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,265.0,2657.0,9490.0
+MTR_148,skm_tea_femoral,femoral cartilage,train,2,MTR_148.nii.gz,98916,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,265.0,2657.0,9490.0
+MTR_148,skm_tea_patellar,patellar cartilage,train,1,MTR_148.nii.gz,18123,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,265.0,2657.0,9490.0
+MTR_148,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_148.nii.gz,16029,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,265.0,2657.0,9490.0
+MTR_148,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_148.nii.gz,21265,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,265.0,2657.0,9490.0
+MTR_149,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_149.nii.gz,32740,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,216.0,2202.0,4321.0
+MTR_149,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_149.nii.gz,27455,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,216.0,2202.0,4321.0
+MTR_149,skm_tea_femoral,femoral cartilage,train,2,MTR_149.nii.gz,126533,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,216.0,2202.0,4321.0
+MTR_149,skm_tea_patellar,patellar cartilage,train,1,MTR_149.nii.gz,33990,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,216.0,2202.0,4321.0
+MTR_149,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_149.nii.gz,25726,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,216.0,2202.0,4321.0
+MTR_149,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_149.nii.gz,25758,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,216.0,2202.0,4321.0
+MTR_150,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_150.nii.gz,21623,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1047.0,6642.0,24413.0
+MTR_150,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_150.nii.gz,23016,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1047.0,6642.0,24413.0
+MTR_150,skm_tea_femoral,femoral cartilage,train,2,MTR_150.nii.gz,91668,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1047.0,6642.0,24413.0
+MTR_150,skm_tea_patellar,patellar cartilage,train,1,MTR_150.nii.gz,15070,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1047.0,6642.0,24413.0
+MTR_150,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_150.nii.gz,28065,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1047.0,6642.0,24413.0
+MTR_150,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_150.nii.gz,17821,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1047.0,6642.0,24413.0
+MTR_151,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_151.nii.gz,58801,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,183.0,2125.0,6006.0
+MTR_151,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_151.nii.gz,28254,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,183.0,2125.0,6006.0
+MTR_151,skm_tea_femoral,femoral cartilage,train,2,MTR_151.nii.gz,210477,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,183.0,2125.0,6006.0
+MTR_151,skm_tea_patellar,patellar cartilage,train,1,MTR_151.nii.gz,60395,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,183.0,2125.0,6006.0
+MTR_151,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_151.nii.gz,29899,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,183.0,2125.0,6006.0
+MTR_151,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_151.nii.gz,36671,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,183.0,2125.0,6006.0
+MTR_152,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_152.nii.gz,25013,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,251.0,2039.0,6184.0
+MTR_152,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_152.nii.gz,23390,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,251.0,2039.0,6184.0
+MTR_152,skm_tea_femoral,femoral cartilage,train,2,MTR_152.nii.gz,123451,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,251.0,2039.0,6184.0
+MTR_152,skm_tea_patellar,patellar cartilage,train,1,MTR_152.nii.gz,33134,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,251.0,2039.0,6184.0
+MTR_152,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_152.nii.gz,30478,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,251.0,2039.0,6184.0
+MTR_152,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_152.nii.gz,31913,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,251.0,2039.0,6184.0
+MTR_154,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_154.nii.gz,13056,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,145.0,1888.0,4222.0
+MTR_154,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_154.nii.gz,11981,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,145.0,1888.0,4222.0
+MTR_154,skm_tea_femoral,femoral cartilage,train,2,MTR_154.nii.gz,72090,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,145.0,1888.0,4222.0
+MTR_154,skm_tea_patellar,patellar cartilage,train,1,MTR_154.nii.gz,17510,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,145.0,1888.0,4222.0
+MTR_154,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_154.nii.gz,16309,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,145.0,1888.0,4222.0
+MTR_154,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_154.nii.gz,14712,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,145.0,1888.0,4222.0
+MTR_156,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_156.nii.gz,36106,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,215.0,2613.0,5712.0
+MTR_156,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_156.nii.gz,34505,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,215.0,2613.0,5712.0
+MTR_156,skm_tea_femoral,femoral cartilage,train,2,MTR_156.nii.gz,179469,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,215.0,2613.0,5712.0
+MTR_156,skm_tea_patellar,patellar cartilage,train,1,MTR_156.nii.gz,53198,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,215.0,2613.0,5712.0
+MTR_156,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_156.nii.gz,51716,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,215.0,2613.0,5712.0
+MTR_156,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_156.nii.gz,54699,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,215.0,2613.0,5712.0
+MTR_158,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_158.nii.gz,38570,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,203.0,2389.0,4540.0
+MTR_158,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_158.nii.gz,35024,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,203.0,2389.0,4540.0
+MTR_158,skm_tea_femoral,femoral cartilage,val,2,MTR_158.nii.gz,188117,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,203.0,2389.0,4540.0
+MTR_158,skm_tea_patellar,patellar cartilage,val,1,MTR_158.nii.gz,52423,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,203.0,2389.0,4540.0
+MTR_158,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_158.nii.gz,51826,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,203.0,2389.0,4540.0
+MTR_158,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_158.nii.gz,46590,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,203.0,2389.0,4540.0
+MTR_159,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_159.nii.gz,24419,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,1942.0,5564.0
+MTR_159,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_159.nii.gz,16760,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,1942.0,5564.0
+MTR_159,skm_tea_femoral,femoral cartilage,train,2,MTR_159.nii.gz,73997,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,1942.0,5564.0
+MTR_159,skm_tea_patellar,patellar cartilage,train,1,MTR_159.nii.gz,25141,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,1942.0,5564.0
+MTR_159,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_159.nii.gz,19247,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,1942.0,5564.0
+MTR_159,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_159.nii.gz,12554,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,1942.0,5564.0
+MTR_161,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_161.nii.gz,24997,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,197.0,1882.0,4337.0
+MTR_161,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_161.nii.gz,21344,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,197.0,1882.0,4337.0
+MTR_161,skm_tea_femoral,femoral cartilage,train,2,MTR_161.nii.gz,105489,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,197.0,1882.0,4337.0
+MTR_161,skm_tea_patellar,patellar cartilage,train,1,MTR_161.nii.gz,40901,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,197.0,1882.0,4337.0
+MTR_161,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_161.nii.gz,16566,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,197.0,1882.0,4337.0
+MTR_161,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_161.nii.gz,22835,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,197.0,1882.0,4337.0
+MTR_163,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_163.nii.gz,11649,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,129.0,1877.0,3248.0
+MTR_163,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_163.nii.gz,22902,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,129.0,1877.0,3248.0
+MTR_163,skm_tea_femoral,femoral cartilage,train,2,MTR_163.nii.gz,156083,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,129.0,1877.0,3248.0
+MTR_163,skm_tea_patellar,patellar cartilage,train,1,MTR_163.nii.gz,9327,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,129.0,1877.0,3248.0
+MTR_163,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_163.nii.gz,25114,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,129.0,1877.0,3248.0
+MTR_163,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_163.nii.gz,16095,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,129.0,1877.0,3248.0
+MTR_164,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_164.nii.gz,47396,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,258.0,2529.0,6255.0
+MTR_164,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_164.nii.gz,45189,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,258.0,2529.0,6255.0
+MTR_164,skm_tea_femoral,femoral cartilage,train,2,MTR_164.nii.gz,232305,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,258.0,2529.0,6255.0
+MTR_164,skm_tea_patellar,patellar cartilage,train,1,MTR_164.nii.gz,63103,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,258.0,2529.0,6255.0
+MTR_164,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_164.nii.gz,50104,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,258.0,2529.0,6255.0
+MTR_164,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_164.nii.gz,47348,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,258.0,2529.0,6255.0
+MTR_167,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_167.nii.gz,32521,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,215.0,2450.0,5347.0
+MTR_167,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_167.nii.gz,29521,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,215.0,2450.0,5347.0
+MTR_167,skm_tea_femoral,femoral cartilage,train,2,MTR_167.nii.gz,168556,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,215.0,2450.0,5347.0
+MTR_167,skm_tea_patellar,patellar cartilage,train,1,MTR_167.nii.gz,38706,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,215.0,2450.0,5347.0
+MTR_167,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_167.nii.gz,43796,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,215.0,2450.0,5347.0
+MTR_167,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_167.nii.gz,38706,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,215.0,2450.0,5347.0
+MTR_172,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_172.nii.gz,17787,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,202.0,2325.0,4566.0
+MTR_172,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_172.nii.gz,39099,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,202.0,2325.0,4566.0
+MTR_172,skm_tea_femoral,femoral cartilage,val,2,MTR_172.nii.gz,199357,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,202.0,2325.0,4566.0
+MTR_172,skm_tea_patellar,patellar cartilage,val,1,MTR_172.nii.gz,50112,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,202.0,2325.0,4566.0
+MTR_172,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_172.nii.gz,31513,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,202.0,2325.0,4566.0
+MTR_172,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_172.nii.gz,30590,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,202.0,2325.0,4566.0
+MTR_173,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_173.nii.gz,29375,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,990.0,6178.0,14046.0
+MTR_173,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_173.nii.gz,23686,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,990.0,6178.0,14046.0
+MTR_173,skm_tea_femoral,femoral cartilage,train,2,MTR_173.nii.gz,145690,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,990.0,6178.0,14046.0
+MTR_173,skm_tea_patellar,patellar cartilage,train,1,MTR_173.nii.gz,42932,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,990.0,6178.0,14046.0
+MTR_173,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_173.nii.gz,19958,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,990.0,6178.0,14046.0
+MTR_173,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_173.nii.gz,18550,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,990.0,6178.0,14046.0
+MTR_174,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_174.nii.gz,27232,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,310.0,1936.0,5371.0
+MTR_174,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_174.nii.gz,27581,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,310.0,1936.0,5371.0
+MTR_174,skm_tea_femoral,femoral cartilage,train,2,MTR_174.nii.gz,127397,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,310.0,1936.0,5371.0
+MTR_174,skm_tea_patellar,patellar cartilage,train,1,MTR_174.nii.gz,34887,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,310.0,1936.0,5371.0
+MTR_174,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_174.nii.gz,21614,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,310.0,1936.0,5371.0
+MTR_174,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_174.nii.gz,22330,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,310.0,1936.0,5371.0
+MTR_175,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_175.nii.gz,32683,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,175.0,1991.0,4763.0
+MTR_175,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_175.nii.gz,31130,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,175.0,1991.0,4763.0
+MTR_175,skm_tea_femoral,femoral cartilage,train,2,MTR_175.nii.gz,185304,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,175.0,1991.0,4763.0
+MTR_175,skm_tea_patellar,patellar cartilage,train,1,MTR_175.nii.gz,35132,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,175.0,1991.0,4763.0
+MTR_175,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_175.nii.gz,30772,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,175.0,1991.0,4763.0
+MTR_175,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_175.nii.gz,15083,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,175.0,1991.0,4763.0
+MTR_176,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_176.nii.gz,23820,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,211.0,2397.0,4343.0
+MTR_176,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_176.nii.gz,21382,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,211.0,2397.0,4343.0
+MTR_176,skm_tea_femoral,femoral cartilage,val,2,MTR_176.nii.gz,143836,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,211.0,2397.0,4343.0
+MTR_176,skm_tea_patellar,patellar cartilage,val,1,MTR_176.nii.gz,41897,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,211.0,2397.0,4343.0
+MTR_176,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_176.nii.gz,28107,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,211.0,2397.0,4343.0
+MTR_176,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_176.nii.gz,34992,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,211.0,2397.0,4343.0
+MTR_177,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_177.nii.gz,19497,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,247.0,2449.0,6256.0
+MTR_177,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_177.nii.gz,22330,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,247.0,2449.0,6256.0
+MTR_177,skm_tea_femoral,femoral cartilage,train,2,MTR_177.nii.gz,137759,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,247.0,2449.0,6256.0
+MTR_177,skm_tea_patellar,patellar cartilage,train,1,MTR_177.nii.gz,38444,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,247.0,2449.0,6256.0
+MTR_177,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_177.nii.gz,29994,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,247.0,2449.0,6256.0
+MTR_177,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_177.nii.gz,24332,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,247.0,2449.0,6256.0
+MTR_178,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_178.nii.gz,42197,0 1 2 3 4 5 6,512x512x156,1.0000x1.0000x1.0000,True,0.0,0.0,226.0,2488.0,4815.0
+MTR_178,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_178.nii.gz,30874,0 1 2 3 4 5 6,512x512x156,1.0000x1.0000x1.0000,True,0.0,0.0,226.0,2488.0,4815.0
+MTR_178,skm_tea_femoral,femoral cartilage,train,2,MTR_178.nii.gz,165153,0 1 2 3 4 5 6,512x512x156,1.0000x1.0000x1.0000,True,0.0,0.0,226.0,2488.0,4815.0
+MTR_178,skm_tea_patellar,patellar cartilage,train,1,MTR_178.nii.gz,53948,0 1 2 3 4 5 6,512x512x156,1.0000x1.0000x1.0000,True,0.0,0.0,226.0,2488.0,4815.0
+MTR_178,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_178.nii.gz,34241,0 1 2 3 4 5 6,512x512x156,1.0000x1.0000x1.0000,True,0.0,0.0,226.0,2488.0,4815.0
+MTR_178,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_178.nii.gz,27777,0 1 2 3 4 5 6,512x512x156,1.0000x1.0000x1.0000,True,0.0,0.0,226.0,2488.0,4815.0
+MTR_179,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_179.nii.gz,43217,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,167.0,2058.0,4314.0
+MTR_179,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_179.nii.gz,33285,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,167.0,2058.0,4314.0
+MTR_179,skm_tea_femoral,femoral cartilage,train,2,MTR_179.nii.gz,143456,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,167.0,2058.0,4314.0
+MTR_179,skm_tea_patellar,patellar cartilage,train,1,MTR_179.nii.gz,43791,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,167.0,2058.0,4314.0
+MTR_179,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_179.nii.gz,37501,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,167.0,2058.0,4314.0
+MTR_179,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_179.nii.gz,27525,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,167.0,2058.0,4314.0
+MTR_182,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_182.nii.gz,16796,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,206.0,2104.0,4746.0
+MTR_182,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_182.nii.gz,22324,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,206.0,2104.0,4746.0
+MTR_182,skm_tea_femoral,femoral cartilage,train,2,MTR_182.nii.gz,118571,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,206.0,2104.0,4746.0
+MTR_182,skm_tea_patellar,patellar cartilage,train,1,MTR_182.nii.gz,30810,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,206.0,2104.0,4746.0
+MTR_182,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_182.nii.gz,26487,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,206.0,2104.0,4746.0
+MTR_182,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_182.nii.gz,21423,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,206.0,2104.0,4746.0
+MTR_183,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_183.nii.gz,22013,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,1964.0,4863.0
+MTR_183,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_183.nii.gz,22929,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,1964.0,4863.0
+MTR_183,skm_tea_femoral,femoral cartilage,train,2,MTR_183.nii.gz,112405,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,1964.0,4863.0
+MTR_183,skm_tea_patellar,patellar cartilage,train,1,MTR_183.nii.gz,26139,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,1964.0,4863.0
+MTR_183,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_183.nii.gz,18526,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,1964.0,4863.0
+MTR_183,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_183.nii.gz,23043,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,1964.0,4863.0
+MTR_184,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_184.nii.gz,28627,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,256.0,2758.0,5668.0
+MTR_184,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_184.nii.gz,35899,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,256.0,2758.0,5668.0
+MTR_184,skm_tea_femoral,femoral cartilage,val,2,MTR_184.nii.gz,209134,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,256.0,2758.0,5668.0
+MTR_184,skm_tea_patellar,patellar cartilage,val,1,MTR_184.nii.gz,54743,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,256.0,2758.0,5668.0
+MTR_184,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_184.nii.gz,45372,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,256.0,2758.0,5668.0
+MTR_184,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_184.nii.gz,33142,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,256.0,2758.0,5668.0
+MTR_186,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_186.nii.gz,57182,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,267.0,2510.0,7676.0
+MTR_186,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_186.nii.gz,44243,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,267.0,2510.0,7676.0
+MTR_186,skm_tea_femoral,femoral cartilage,train,2,MTR_186.nii.gz,239069,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,267.0,2510.0,7676.0
+MTR_186,skm_tea_patellar,patellar cartilage,train,1,MTR_186.nii.gz,71037,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,267.0,2510.0,7676.0
+MTR_186,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_186.nii.gz,33358,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,267.0,2510.0,7676.0
+MTR_186,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_186.nii.gz,25644,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,267.0,2510.0,7676.0
+MTR_188,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_188.nii.gz,25912,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,158.0,2103.0,4169.0
+MTR_188,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_188.nii.gz,18704,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,158.0,2103.0,4169.0
+MTR_188,skm_tea_femoral,femoral cartilage,train,2,MTR_188.nii.gz,110544,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,158.0,2103.0,4169.0
+MTR_188,skm_tea_patellar,patellar cartilage,train,1,MTR_188.nii.gz,41177,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,158.0,2103.0,4169.0
+MTR_188,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_188.nii.gz,29969,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,158.0,2103.0,4169.0
+MTR_188,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_188.nii.gz,24769,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,158.0,2103.0,4169.0
+MTR_189,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_189.nii.gz,40905,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,279.0,2655.0,7619.0
+MTR_189,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_189.nii.gz,32321,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,279.0,2655.0,7619.0
+MTR_189,skm_tea_femoral,femoral cartilage,train,2,MTR_189.nii.gz,177473,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,279.0,2655.0,7619.0
+MTR_189,skm_tea_patellar,patellar cartilage,train,1,MTR_189.nii.gz,48878,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,279.0,2655.0,7619.0
+MTR_189,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_189.nii.gz,17007,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,279.0,2655.0,7619.0
+MTR_189,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_189.nii.gz,19543,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,279.0,2655.0,7619.0
+MTR_190,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_190.nii.gz,21447,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,144.0,1962.0,4835.0
+MTR_190,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_190.nii.gz,18400,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,144.0,1962.0,4835.0
+MTR_190,skm_tea_femoral,femoral cartilage,test,2,MTR_190.nii.gz,78784,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,144.0,1962.0,4835.0
+MTR_190,skm_tea_patellar,patellar cartilage,test,1,MTR_190.nii.gz,20855,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,144.0,1962.0,4835.0
+MTR_190,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_190.nii.gz,23579,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,144.0,1962.0,4835.0
+MTR_190,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_190.nii.gz,15914,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,144.0,1962.0,4835.0
+MTR_191,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_191.nii.gz,19115,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,141.0,1548.0,3803.0
+MTR_191,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_191.nii.gz,17252,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,141.0,1548.0,3803.0
+MTR_191,skm_tea_femoral,femoral cartilage,test,2,MTR_191.nii.gz,94431,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,141.0,1548.0,3803.0
+MTR_191,skm_tea_patellar,patellar cartilage,test,1,MTR_191.nii.gz,27166,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,141.0,1548.0,3803.0
+MTR_191,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_191.nii.gz,13723,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,141.0,1548.0,3803.0
+MTR_191,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_191.nii.gz,12619,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,141.0,1548.0,3803.0
+MTR_192,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_192.nii.gz,54691,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,284.0,2476.0,6578.0
+MTR_192,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_192.nii.gz,47252,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,284.0,2476.0,6578.0
+MTR_192,skm_tea_femoral,femoral cartilage,train,2,MTR_192.nii.gz,220234,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,284.0,2476.0,6578.0
+MTR_192,skm_tea_patellar,patellar cartilage,train,1,MTR_192.nii.gz,48457,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,284.0,2476.0,6578.0
+MTR_192,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_192.nii.gz,35861,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,284.0,2476.0,6578.0
+MTR_192,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_192.nii.gz,41079,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,284.0,2476.0,6578.0
+MTR_193,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_193.nii.gz,58766,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,259.0,2423.0,6207.0
+MTR_193,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_193.nii.gz,46991,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,259.0,2423.0,6207.0
+MTR_193,skm_tea_femoral,femoral cartilage,train,2,MTR_193.nii.gz,285282,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,259.0,2423.0,6207.0
+MTR_193,skm_tea_patellar,patellar cartilage,train,1,MTR_193.nii.gz,77533,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,259.0,2423.0,6207.0
+MTR_193,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_193.nii.gz,37360,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,259.0,2423.0,6207.0
+MTR_193,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_193.nii.gz,37611,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,259.0,2423.0,6207.0
+MTR_194,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_194.nii.gz,38289,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,226.0,2129.0,4823.0
+MTR_194,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_194.nii.gz,42324,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,226.0,2129.0,4823.0
+MTR_194,skm_tea_femoral,femoral cartilage,train,2,MTR_194.nii.gz,225634,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,226.0,2129.0,4823.0
+MTR_194,skm_tea_patellar,patellar cartilage,train,1,MTR_194.nii.gz,41751,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,226.0,2129.0,4823.0
+MTR_194,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_194.nii.gz,42696,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,226.0,2129.0,4823.0
+MTR_194,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_194.nii.gz,73716,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,226.0,2129.0,4823.0
+MTR_196,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_196.nii.gz,30488,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,141.0,1743.0,3751.0
+MTR_196,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_196.nii.gz,30037,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,141.0,1743.0,3751.0
+MTR_196,skm_tea_femoral,femoral cartilage,train,2,MTR_196.nii.gz,120058,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,141.0,1743.0,3751.0
+MTR_196,skm_tea_patellar,patellar cartilage,train,1,MTR_196.nii.gz,38096,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,141.0,1743.0,3751.0
+MTR_196,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_196.nii.gz,34831,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,141.0,1743.0,3751.0
+MTR_196,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_196.nii.gz,29045,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,141.0,1743.0,3751.0
+MTR_198,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_198.nii.gz,43815,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,1982.0,3513.0
+MTR_198,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_198.nii.gz,36556,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,1982.0,3513.0
+MTR_198,skm_tea_femoral,femoral cartilage,train,2,MTR_198.nii.gz,193327,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,1982.0,3513.0
+MTR_198,skm_tea_patellar,patellar cartilage,train,1,MTR_198.nii.gz,47524,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,1982.0,3513.0
+MTR_198,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_198.nii.gz,38866,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,1982.0,3513.0
+MTR_198,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_198.nii.gz,25149,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,1982.0,3513.0
+MTR_199,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_199.nii.gz,35534,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,2073.0,4269.0
+MTR_199,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_199.nii.gz,33748,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,2073.0,4269.0
+MTR_199,skm_tea_femoral,femoral cartilage,test,2,MTR_199.nii.gz,154433,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,2073.0,4269.0
+MTR_199,skm_tea_patellar,patellar cartilage,test,1,MTR_199.nii.gz,46026,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,2073.0,4269.0
+MTR_199,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_199.nii.gz,27258,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,2073.0,4269.0
+MTR_199,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_199.nii.gz,26292,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,2073.0,4269.0
+MTR_200,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_200.nii.gz,24183,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,158.0,2083.0,3390.0
+MTR_200,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_200.nii.gz,16314,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,158.0,2083.0,3390.0
+MTR_200,skm_tea_femoral,femoral cartilage,train,2,MTR_200.nii.gz,75299,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,158.0,2083.0,3390.0
+MTR_200,skm_tea_patellar,patellar cartilage,train,1,MTR_200.nii.gz,21317,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,158.0,2083.0,3390.0
+MTR_200,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_200.nii.gz,16872,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,158.0,2083.0,3390.0
+MTR_200,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_200.nii.gz,10548,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,158.0,2083.0,3390.0
+MTR_201,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_201.nii.gz,12835,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,212.0,2372.0,5174.0
+MTR_201,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_201.nii.gz,20134,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,212.0,2372.0,5174.0
+MTR_201,skm_tea_femoral,femoral cartilage,train,2,MTR_201.nii.gz,125302,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,212.0,2372.0,5174.0
+MTR_201,skm_tea_patellar,patellar cartilage,train,1,MTR_201.nii.gz,41836,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,212.0,2372.0,5174.0
+MTR_201,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_201.nii.gz,25424,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,212.0,2372.0,5174.0
+MTR_201,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_201.nii.gz,30553,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,212.0,2372.0,5174.0
+MTR_203,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_203.nii.gz,32005,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,421.0,2721.0,6030.0
+MTR_203,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_203.nii.gz,31462,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,421.0,2721.0,6030.0
+MTR_203,skm_tea_femoral,femoral cartilage,train,2,MTR_203.nii.gz,165418,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,421.0,2721.0,6030.0
+MTR_203,skm_tea_patellar,patellar cartilage,train,1,MTR_203.nii.gz,30320,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,421.0,2721.0,6030.0
+MTR_203,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_203.nii.gz,17581,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,421.0,2721.0,6030.0
+MTR_203,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_203.nii.gz,20906,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,421.0,2721.0,6030.0
+MTR_204,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_204.nii.gz,25405,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,222.0,1948.0,4737.0
+MTR_204,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_204.nii.gz,23472,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,222.0,1948.0,4737.0
+MTR_204,skm_tea_femoral,femoral cartilage,train,2,MTR_204.nii.gz,99928,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,222.0,1948.0,4737.0
+MTR_204,skm_tea_patellar,patellar cartilage,train,1,MTR_204.nii.gz,33992,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,222.0,1948.0,4737.0
+MTR_204,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_204.nii.gz,22324,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,222.0,1948.0,4737.0
+MTR_204,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_204.nii.gz,16419,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,222.0,1948.0,4737.0
+MTR_205,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_205.nii.gz,23272,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,1861.0,3914.0
+MTR_205,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_205.nii.gz,20395,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,1861.0,3914.0
+MTR_205,skm_tea_femoral,femoral cartilage,train,2,MTR_205.nii.gz,122059,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,1861.0,3914.0
+MTR_205,skm_tea_patellar,patellar cartilage,train,1,MTR_205.nii.gz,29567,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,1861.0,3914.0
+MTR_205,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_205.nii.gz,28092,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,1861.0,3914.0
+MTR_205,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_205.nii.gz,21387,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,179.0,1861.0,3914.0
+MTR_206,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_206.nii.gz,42399,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,233.0,2185.0,4809.0
+MTR_206,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_206.nii.gz,35483,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,233.0,2185.0,4809.0
+MTR_206,skm_tea_femoral,femoral cartilage,train,2,MTR_206.nii.gz,187498,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,233.0,2185.0,4809.0
+MTR_206,skm_tea_patellar,patellar cartilage,train,1,MTR_206.nii.gz,47325,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,233.0,2185.0,4809.0
+MTR_206,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_206.nii.gz,37723,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,233.0,2185.0,4809.0
+MTR_206,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_206.nii.gz,30961,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,233.0,2185.0,4809.0
+MTR_207,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_207.nii.gz,21430,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1090.0,7104.0,17513.0
+MTR_207,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_207.nii.gz,18894,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1090.0,7104.0,17513.0
+MTR_207,skm_tea_femoral,femoral cartilage,train,2,MTR_207.nii.gz,138061,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1090.0,7104.0,17513.0
+MTR_207,skm_tea_patellar,patellar cartilage,train,1,MTR_207.nii.gz,41021,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1090.0,7104.0,17513.0
+MTR_207,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_207.nii.gz,11903,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1090.0,7104.0,17513.0
+MTR_207,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_207.nii.gz,29465,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,1090.0,7104.0,17513.0
+MTR_208,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_208.nii.gz,36470,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,191.0,2553.0,5111.0
+MTR_208,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_208.nii.gz,33207,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,191.0,2553.0,5111.0
+MTR_208,skm_tea_femoral,femoral cartilage,val,2,MTR_208.nii.gz,158516,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,191.0,2553.0,5111.0
+MTR_208,skm_tea_patellar,patellar cartilage,val,1,MTR_208.nii.gz,43220,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,191.0,2553.0,5111.0
+MTR_208,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_208.nii.gz,20857,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,191.0,2553.0,5111.0
+MTR_208,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_208.nii.gz,31894,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,191.0,2553.0,5111.0
+MTR_209,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_209.nii.gz,36260,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,181.0,2090.0,4133.0
+MTR_209,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_209.nii.gz,25703,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,181.0,2090.0,4133.0
+MTR_209,skm_tea_femoral,femoral cartilage,train,2,MTR_209.nii.gz,139375,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,181.0,2090.0,4133.0
+MTR_209,skm_tea_patellar,patellar cartilage,train,1,MTR_209.nii.gz,47738,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,181.0,2090.0,4133.0
+MTR_209,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_209.nii.gz,28056,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,181.0,2090.0,4133.0
+MTR_209,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_209.nii.gz,23043,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,181.0,2090.0,4133.0
+MTR_210,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_210.nii.gz,22985,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,135.0,1846.0,3227.0
+MTR_210,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_210.nii.gz,17881,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,135.0,1846.0,3227.0
+MTR_210,skm_tea_femoral,femoral cartilage,train,2,MTR_210.nii.gz,86082,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,135.0,1846.0,3227.0
+MTR_210,skm_tea_patellar,patellar cartilage,train,1,MTR_210.nii.gz,32982,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,135.0,1846.0,3227.0
+MTR_210,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_210.nii.gz,18802,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,135.0,1846.0,3227.0
+MTR_210,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_210.nii.gz,14937,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,135.0,1846.0,3227.0
+MTR_211,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_211.nii.gz,41117,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,278.0,2461.0,7023.0
+MTR_211,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_211.nii.gz,23261,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,278.0,2461.0,7023.0
+MTR_211,skm_tea_femoral,femoral cartilage,train,2,MTR_211.nii.gz,152165,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,278.0,2461.0,7023.0
+MTR_211,skm_tea_patellar,patellar cartilage,train,1,MTR_211.nii.gz,57606,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,278.0,2461.0,7023.0
+MTR_211,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_211.nii.gz,35339,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,278.0,2461.0,7023.0
+MTR_211,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_211.nii.gz,20109,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,278.0,2461.0,7023.0
+MTR_212,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_212.nii.gz,26543,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,245.0,2378.0,5546.0
+MTR_212,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_212.nii.gz,30217,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,245.0,2378.0,5546.0
+MTR_212,skm_tea_femoral,femoral cartilage,train,2,MTR_212.nii.gz,168041,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,245.0,2378.0,5546.0
+MTR_212,skm_tea_patellar,patellar cartilage,train,1,MTR_212.nii.gz,35499,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,245.0,2378.0,5546.0
+MTR_212,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_212.nii.gz,17493,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,245.0,2378.0,5546.0
+MTR_212,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_212.nii.gz,23347,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,245.0,2378.0,5546.0
+MTR_213,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_213.nii.gz,55285,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,271.0,2602.0,6417.0
+MTR_213,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_213.nii.gz,46137,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,271.0,2602.0,6417.0
+MTR_213,skm_tea_femoral,femoral cartilage,train,2,MTR_213.nii.gz,243979,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,271.0,2602.0,6417.0
+MTR_213,skm_tea_patellar,patellar cartilage,train,1,MTR_213.nii.gz,77898,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,271.0,2602.0,6417.0
+MTR_213,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_213.nii.gz,34812,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,271.0,2602.0,6417.0
+MTR_213,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_213.nii.gz,30290,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,271.0,2602.0,6417.0
+MTR_214,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_214.nii.gz,18728,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,143.0,2005.0,6247.0
+MTR_214,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_214.nii.gz,14459,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,143.0,2005.0,6247.0
+MTR_214,skm_tea_femoral,femoral cartilage,train,2,MTR_214.nii.gz,62956,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,143.0,2005.0,6247.0
+MTR_214,skm_tea_patellar,patellar cartilage,train,1,MTR_214.nii.gz,16218,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,143.0,2005.0,6247.0
+MTR_214,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_214.nii.gz,23429,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,143.0,2005.0,6247.0
+MTR_214,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_214.nii.gz,14448,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,143.0,2005.0,6247.0
+MTR_215,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_215.nii.gz,22512,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,150.0,1580.0,3723.0
+MTR_215,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_215.nii.gz,14460,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,150.0,1580.0,3723.0
+MTR_215,skm_tea_femoral,femoral cartilage,test,2,MTR_215.nii.gz,88940,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,150.0,1580.0,3723.0
+MTR_215,skm_tea_patellar,patellar cartilage,test,1,MTR_215.nii.gz,23870,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,150.0,1580.0,3723.0
+MTR_215,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_215.nii.gz,24735,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,150.0,1580.0,3723.0
+MTR_215,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_215.nii.gz,11526,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,150.0,1580.0,3723.0
+MTR_216,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_216.nii.gz,20170,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,157.0,1700.0,5021.0
+MTR_216,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_216.nii.gz,20497,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,157.0,1700.0,5021.0
+MTR_216,skm_tea_femoral,femoral cartilage,val,2,MTR_216.nii.gz,80190,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,157.0,1700.0,5021.0
+MTR_216,skm_tea_patellar,patellar cartilage,val,1,MTR_216.nii.gz,24473,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,157.0,1700.0,5021.0
+MTR_216,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_216.nii.gz,32679,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,157.0,1700.0,5021.0
+MTR_216,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_216.nii.gz,20499,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,157.0,1700.0,5021.0
+MTR_218,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_218.nii.gz,13625,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,184.0,2263.0,5264.0
+MTR_218,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_218.nii.gz,20942,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,184.0,2263.0,5264.0
+MTR_218,skm_tea_femoral,femoral cartilage,train,2,MTR_218.nii.gz,111376,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,184.0,2263.0,5264.0
+MTR_218,skm_tea_patellar,patellar cartilage,train,1,MTR_218.nii.gz,31440,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,184.0,2263.0,5264.0
+MTR_218,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_218.nii.gz,25640,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,184.0,2263.0,5264.0
+MTR_218,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_218.nii.gz,12423,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,184.0,2263.0,5264.0
+MTR_219,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_219.nii.gz,39091,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,307.0,2730.0,5726.0
+MTR_219,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_219.nii.gz,32873,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,307.0,2730.0,5726.0
+MTR_219,skm_tea_femoral,femoral cartilage,train,2,MTR_219.nii.gz,171773,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,307.0,2730.0,5726.0
+MTR_219,skm_tea_patellar,patellar cartilage,train,1,MTR_219.nii.gz,44307,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,307.0,2730.0,5726.0
+MTR_219,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_219.nii.gz,35356,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,307.0,2730.0,5726.0
+MTR_219,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_219.nii.gz,30477,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,307.0,2730.0,5726.0
+MTR_220,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_220.nii.gz,20715,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,173.0,1814.0,4643.0
+MTR_220,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_220.nii.gz,17757,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,173.0,1814.0,4643.0
+MTR_220,skm_tea_femoral,femoral cartilage,val,2,MTR_220.nii.gz,104565,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,173.0,1814.0,4643.0
+MTR_220,skm_tea_patellar,patellar cartilage,val,1,MTR_220.nii.gz,20799,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,173.0,1814.0,4643.0
+MTR_220,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_220.nii.gz,25086,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,173.0,1814.0,4643.0
+MTR_220,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_220.nii.gz,17245,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,173.0,1814.0,4643.0
+MTR_221,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_221.nii.gz,23908,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,216.0,2594.0,6288.0
+MTR_221,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_221.nii.gz,15661,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,216.0,2594.0,6288.0
+MTR_221,skm_tea_femoral,femoral cartilage,train,2,MTR_221.nii.gz,122693,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,216.0,2594.0,6288.0
+MTR_221,skm_tea_patellar,patellar cartilage,train,1,MTR_221.nii.gz,26543,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,216.0,2594.0,6288.0
+MTR_221,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_221.nii.gz,29486,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,216.0,2594.0,6288.0
+MTR_221,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_221.nii.gz,27243,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,216.0,2594.0,6288.0
+MTR_222,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_222.nii.gz,40748,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,215.0,2666.0,6246.0
+MTR_222,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_222.nii.gz,30526,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,215.0,2666.0,6246.0
+MTR_222,skm_tea_femoral,femoral cartilage,train,2,MTR_222.nii.gz,159502,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,215.0,2666.0,6246.0
+MTR_222,skm_tea_patellar,patellar cartilage,train,1,MTR_222.nii.gz,54874,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,215.0,2666.0,6246.0
+MTR_222,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_222.nii.gz,31913,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,215.0,2666.0,6246.0
+MTR_222,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_222.nii.gz,20151,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,215.0,2666.0,6246.0
+MTR_223,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_223.nii.gz,28011,0 1 2 3 4 5 6,512x512x144,1.0000x1.0000x1.0000,True,0.0,0.0,153.0,1811.0,3115.0
+MTR_223,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_223.nii.gz,27203,0 1 2 3 4 5 6,512x512x144,1.0000x1.0000x1.0000,True,0.0,0.0,153.0,1811.0,3115.0
+MTR_223,skm_tea_femoral,femoral cartilage,train,2,MTR_223.nii.gz,115950,0 1 2 3 4 5 6,512x512x144,1.0000x1.0000x1.0000,True,0.0,0.0,153.0,1811.0,3115.0
+MTR_223,skm_tea_patellar,patellar cartilage,train,1,MTR_223.nii.gz,41008,0 1 2 3 4 5 6,512x512x144,1.0000x1.0000x1.0000,True,0.0,0.0,153.0,1811.0,3115.0
+MTR_223,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_223.nii.gz,24144,0 1 2 3 4 5 6,512x512x144,1.0000x1.0000x1.0000,True,0.0,0.0,153.0,1811.0,3115.0
+MTR_223,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_223.nii.gz,17571,0 1 2 3 4 5 6,512x512x144,1.0000x1.0000x1.0000,True,0.0,0.0,153.0,1811.0,3115.0
+MTR_224,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_224.nii.gz,18101,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,173.0,1812.0,4104.0
+MTR_224,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_224.nii.gz,23620,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,173.0,1812.0,4104.0
+MTR_224,skm_tea_femoral,femoral cartilage,train,2,MTR_224.nii.gz,120675,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,173.0,1812.0,4104.0
+MTR_224,skm_tea_patellar,patellar cartilage,train,1,MTR_224.nii.gz,26910,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,173.0,1812.0,4104.0
+MTR_224,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_224.nii.gz,29762,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,173.0,1812.0,4104.0
+MTR_224,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_224.nii.gz,14456,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,173.0,1812.0,4104.0
+MTR_225,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_225.nii.gz,32371,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,197.0,2384.0,4412.0
+MTR_225,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_225.nii.gz,29477,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,197.0,2384.0,4412.0
+MTR_225,skm_tea_femoral,femoral cartilage,train,2,MTR_225.nii.gz,135029,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,197.0,2384.0,4412.0
+MTR_225,skm_tea_patellar,patellar cartilage,train,1,MTR_225.nii.gz,38488,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,197.0,2384.0,4412.0
+MTR_225,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_225.nii.gz,27862,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,197.0,2384.0,4412.0
+MTR_225,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_225.nii.gz,28847,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,197.0,2384.0,4412.0
+MTR_227,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_227.nii.gz,25641,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,231.0,2398.0,4050.0
+MTR_227,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_227.nii.gz,22320,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,231.0,2398.0,4050.0
+MTR_227,skm_tea_femoral,femoral cartilage,test,2,MTR_227.nii.gz,121698,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,231.0,2398.0,4050.0
+MTR_227,skm_tea_patellar,patellar cartilage,test,1,MTR_227.nii.gz,40215,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,231.0,2398.0,4050.0
+MTR_227,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_227.nii.gz,34602,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,231.0,2398.0,4050.0
+MTR_227,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_227.nii.gz,23755,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,231.0,2398.0,4050.0
+MTR_228,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_228.nii.gz,26195,0 1 2 3 4 5 6,512x512x152,1.0000x1.0000x1.0000,True,0.0,0.0,184.0,1847.0,3469.0
+MTR_228,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_228.nii.gz,23069,0 1 2 3 4 5 6,512x512x152,1.0000x1.0000x1.0000,True,0.0,0.0,184.0,1847.0,3469.0
+MTR_228,skm_tea_femoral,femoral cartilage,train,2,MTR_228.nii.gz,99343,0 1 2 3 4 5 6,512x512x152,1.0000x1.0000x1.0000,True,0.0,0.0,184.0,1847.0,3469.0
+MTR_228,skm_tea_patellar,patellar cartilage,train,1,MTR_228.nii.gz,40520,0 1 2 3 4 5 6,512x512x152,1.0000x1.0000x1.0000,True,0.0,0.0,184.0,1847.0,3469.0
+MTR_228,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_228.nii.gz,25527,0 1 2 3 4 5 6,512x512x152,1.0000x1.0000x1.0000,True,0.0,0.0,184.0,1847.0,3469.0
+MTR_228,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_228.nii.gz,16663,0 1 2 3 4 5 6,512x512x152,1.0000x1.0000x1.0000,True,0.0,0.0,184.0,1847.0,3469.0
+MTR_229,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_229.nii.gz,49156,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,274.0,2231.0,5006.0
+MTR_229,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_229.nii.gz,31329,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,274.0,2231.0,5006.0
+MTR_229,skm_tea_femoral,femoral cartilage,train,2,MTR_229.nii.gz,257643,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,274.0,2231.0,5006.0
+MTR_229,skm_tea_patellar,patellar cartilage,train,1,MTR_229.nii.gz,58974,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,274.0,2231.0,5006.0
+MTR_229,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_229.nii.gz,30884,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,274.0,2231.0,5006.0
+MTR_229,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_229.nii.gz,33656,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,274.0,2231.0,5006.0
+MTR_230,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_230.nii.gz,18233,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,280.0,2474.0,6171.0
+MTR_230,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_230.nii.gz,29764,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,280.0,2474.0,6171.0
+MTR_230,skm_tea_femoral,femoral cartilage,train,2,MTR_230.nii.gz,119451,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,280.0,2474.0,6171.0
+MTR_230,skm_tea_patellar,patellar cartilage,train,1,MTR_230.nii.gz,26641,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,280.0,2474.0,6171.0
+MTR_230,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_230.nii.gz,36913,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,280.0,2474.0,6171.0
+MTR_230,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_230.nii.gz,30501,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,280.0,2474.0,6171.0
+MTR_232,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_232.nii.gz,27402,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,171.0,2058.0,5369.0
+MTR_232,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_232.nii.gz,23720,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,171.0,2058.0,5369.0
+MTR_232,skm_tea_femoral,femoral cartilage,train,2,MTR_232.nii.gz,122691,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,171.0,2058.0,5369.0
+MTR_232,skm_tea_patellar,patellar cartilage,train,1,MTR_232.nii.gz,36940,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,171.0,2058.0,5369.0
+MTR_232,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_232.nii.gz,40456,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,171.0,2058.0,5369.0
+MTR_232,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_232.nii.gz,32749,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,171.0,2058.0,5369.0
+MTR_233,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_233.nii.gz,20428,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,130.0,1876.0,4813.0
+MTR_233,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_233.nii.gz,16759,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,130.0,1876.0,4813.0
+MTR_233,skm_tea_femoral,femoral cartilage,train,2,MTR_233.nii.gz,80335,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,130.0,1876.0,4813.0
+MTR_233,skm_tea_patellar,patellar cartilage,train,1,MTR_233.nii.gz,28031,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,130.0,1876.0,4813.0
+MTR_233,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_233.nii.gz,19574,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,130.0,1876.0,4813.0
+MTR_233,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_233.nii.gz,17044,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,130.0,1876.0,4813.0
+MTR_235,skm_tea_lateral_tibial,lateral tibial cartilage,val,4,MTR_235.nii.gz,38381,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,248.0,2350.0,5193.0
+MTR_235,skm_tea_medial_tibial,medial tibial cartilage,val,3,MTR_235.nii.gz,49184,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,248.0,2350.0,5193.0
+MTR_235,skm_tea_femoral,femoral cartilage,val,2,MTR_235.nii.gz,226428,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,248.0,2350.0,5193.0
+MTR_235,skm_tea_patellar,patellar cartilage,val,1,MTR_235.nii.gz,48031,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,248.0,2350.0,5193.0
+MTR_235,skm_tea_medial_meniscus,medial meniscus,val,5,MTR_235.nii.gz,40305,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,248.0,2350.0,5193.0
+MTR_235,skm_tea_lateral_meniscus,lateral meniscus,val,6,MTR_235.nii.gz,22329,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,248.0,2350.0,5193.0
+MTR_236,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_236.nii.gz,39507,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,2003.0,3729.0
+MTR_236,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_236.nii.gz,28751,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,2003.0,3729.0
+MTR_236,skm_tea_femoral,femoral cartilage,train,2,MTR_236.nii.gz,168387,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,2003.0,3729.0
+MTR_236,skm_tea_patellar,patellar cartilage,train,1,MTR_236.nii.gz,44900,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,2003.0,3729.0
+MTR_236,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_236.nii.gz,33794,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,2003.0,3729.0
+MTR_236,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_236.nii.gz,28917,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,190.0,2003.0,3729.0
+MTR_237,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_237.nii.gz,25364,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,168.0,2111.0,3977.0
+MTR_237,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_237.nii.gz,32672,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,168.0,2111.0,3977.0
+MTR_237,skm_tea_femoral,femoral cartilage,train,2,MTR_237.nii.gz,174307,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,168.0,2111.0,3977.0
+MTR_237,skm_tea_patellar,patellar cartilage,train,1,MTR_237.nii.gz,53790,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,168.0,2111.0,3977.0
+MTR_237,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_237.nii.gz,19029,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,168.0,2111.0,3977.0
+MTR_237,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_237.nii.gz,20193,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,168.0,2111.0,3977.0
+MTR_240,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_240.nii.gz,24035,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,282.0,2863.0,6556.0
+MTR_240,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_240.nii.gz,28646,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,282.0,2863.0,6556.0
+MTR_240,skm_tea_femoral,femoral cartilage,train,2,MTR_240.nii.gz,140100,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,282.0,2863.0,6556.0
+MTR_240,skm_tea_patellar,patellar cartilage,train,1,MTR_240.nii.gz,33098,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,282.0,2863.0,6556.0
+MTR_240,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_240.nii.gz,49536,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,282.0,2863.0,6556.0
+MTR_240,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_240.nii.gz,29942,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,282.0,2863.0,6556.0
+MTR_241,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_241.nii.gz,21848,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,254.0,2596.0,5345.0
+MTR_241,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_241.nii.gz,21716,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,254.0,2596.0,5345.0
+MTR_241,skm_tea_femoral,femoral cartilage,train,2,MTR_241.nii.gz,113771,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,254.0,2596.0,5345.0
+MTR_241,skm_tea_patellar,patellar cartilage,train,1,MTR_241.nii.gz,22696,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,254.0,2596.0,5345.0
+MTR_241,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_241.nii.gz,18283,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,254.0,2596.0,5345.0
+MTR_241,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_241.nii.gz,26949,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,254.0,2596.0,5345.0
+MTR_243,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_243.nii.gz,15996,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,139.0,1843.0,3602.0
+MTR_243,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_243.nii.gz,12519,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,139.0,1843.0,3602.0
+MTR_243,skm_tea_femoral,femoral cartilage,train,2,MTR_243.nii.gz,62278,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,139.0,1843.0,3602.0
+MTR_243,skm_tea_patellar,patellar cartilage,train,1,MTR_243.nii.gz,25359,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,139.0,1843.0,3602.0
+MTR_243,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_243.nii.gz,22212,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,139.0,1843.0,3602.0
+MTR_243,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_243.nii.gz,16124,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,139.0,1843.0,3602.0
+MTR_244,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_244.nii.gz,28433,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,202.0,2161.0,4952.0
+MTR_244,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_244.nii.gz,23197,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,202.0,2161.0,4952.0
+MTR_244,skm_tea_femoral,femoral cartilage,train,2,MTR_244.nii.gz,127635,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,202.0,2161.0,4952.0
+MTR_244,skm_tea_patellar,patellar cartilage,train,1,MTR_244.nii.gz,37918,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,202.0,2161.0,4952.0
+MTR_244,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_244.nii.gz,45354,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,202.0,2161.0,4952.0
+MTR_244,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_244.nii.gz,36043,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,202.0,2161.0,4952.0
+MTR_245,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_245.nii.gz,34025,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,378.0,3076.0,8777.0
+MTR_245,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_245.nii.gz,44606,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,378.0,3076.0,8777.0
+MTR_245,skm_tea_femoral,femoral cartilage,train,2,MTR_245.nii.gz,160377,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,378.0,3076.0,8777.0
+MTR_245,skm_tea_patellar,patellar cartilage,train,1,MTR_245.nii.gz,32830,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,378.0,3076.0,8777.0
+MTR_245,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_245.nii.gz,21148,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,378.0,3076.0,8777.0
+MTR_245,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_245.nii.gz,37339,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,378.0,3076.0,8777.0
+MTR_248,skm_tea_lateral_tibial,lateral tibial cartilage,test,4,MTR_248.nii.gz,33448,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,336.0,2970.0,5968.0
+MTR_248,skm_tea_medial_tibial,medial tibial cartilage,test,3,MTR_248.nii.gz,36584,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,336.0,2970.0,5968.0
+MTR_248,skm_tea_femoral,femoral cartilage,test,2,MTR_248.nii.gz,226782,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,336.0,2970.0,5968.0
+MTR_248,skm_tea_patellar,patellar cartilage,test,1,MTR_248.nii.gz,52350,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,336.0,2970.0,5968.0
+MTR_248,skm_tea_medial_meniscus,medial meniscus,test,5,MTR_248.nii.gz,34767,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,336.0,2970.0,5968.0
+MTR_248,skm_tea_lateral_meniscus,lateral meniscus,test,6,MTR_248.nii.gz,30737,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,336.0,2970.0,5968.0
+MTR_251,skm_tea_lateral_tibial,lateral tibial cartilage,train,4,MTR_251.nii.gz,25588,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,1756.0,3946.0
+MTR_251,skm_tea_medial_tibial,medial tibial cartilage,train,3,MTR_251.nii.gz,23948,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,1756.0,3946.0
+MTR_251,skm_tea_femoral,femoral cartilage,train,2,MTR_251.nii.gz,107173,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,1756.0,3946.0
+MTR_251,skm_tea_patellar,patellar cartilage,train,1,MTR_251.nii.gz,44925,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,1756.0,3946.0
+MTR_251,skm_tea_medial_meniscus,medial meniscus,train,5,MTR_251.nii.gz,33056,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,1756.0,3946.0
+MTR_251,skm_tea_lateral_meniscus,lateral meniscus,train,6,MTR_251.nii.gz,20785,0 1 2 3 4 5 6,512x512x160,1.0000x1.0000x1.0000,True,0.0,0.0,155.0,1756.0,3946.0

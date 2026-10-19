@@ -1987,89 +1987,65 @@
       \verb https://arxiv.org/abs/2407.14143
       \endverb
     \endentry
-    \entry{isensee2018nnunetselfadaptingframeworkunetbased}{misc}{}{}
-      \name{author}{11}{}{%
+    \entry{isensee2018nnunetselfadaptingframeworkunetbased}{article}{}{}
+      \name{author}{5}{}{%
         {{hash=fd2491b31394637fa717b80729281018}{%
            family={Isensee},
            familyi={I\bibinitperiod},
            given={Fabian},
            giveni={F\bibinitperiod}}}%
-        {{hash=819f9996aeeb7b20b1a97e1d23488871}{%
-           family={Petersen},
-           familyi={P\bibinitperiod},
-           given={Jens},
-           giveni={J\bibinitperiod}}}%
-        {{hash=7cb1051ca664a667bc062d2b441facae}{%
-           family={Klein},
-           familyi={K\bibinitperiod},
-           given={Andre},
-           giveni={A\bibinitperiod}}}%
-        {{hash=3469d0d31046c0993af523306a0c9309}{%
-           family={Zimmerer},
-           familyi={Z\bibinitperiod},
-           given={David},
-           giveni={D\bibinitperiod}}}%
         {{hash=63350393ee74dce2bfeda809cbb2f459}{%
            family={Jaeger},
            familyi={J\bibinitperiod},
            given={Paul\bibnamedelima F.},
            giveni={P\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
-        {{hash=1e0e68448b49ce6539eadb2049340399}{%
+        {{hash=c8db325f01e156e511c9a87a5e890d22}{%
            family={Kohl},
            familyi={K\bibinitperiod},
-           given={Simon},
-           giveni={S\bibinitperiod}}}%
-        {{hash=83150ba565524d555bf73b33a1152967}{%
-           family={Wasserthal},
-           familyi={W\bibinitperiod},
-           given={Jakob},
+           given={Simon\bibnamedelimb A.\bibnamedelimi A.},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=819f9996aeeb7b20b1a97e1d23488871}{%
+           family={Petersen},
+           familyi={P\bibinitperiod},
+           given={Jens},
            giveni={J\bibinitperiod}}}%
-        {{hash=d11ded8e3c814f249cb4a3e360a2c2de}{%
-           family={Koehler},
-           familyi={K\bibinitperiod},
-           given={Gregor},
-           giveni={G\bibinitperiod}}}%
-        {{hash=ccf4e4ce0a34ca01324d7d52ee06976d}{%
-           family={Norajitra},
-           familyi={N\bibinitperiod},
-           given={Tobias},
-           giveni={T\bibinitperiod}}}%
-        {{hash=c796db62494d7044573e86e0ab22ff03}{%
-           family={Wirkert},
-           familyi={W\bibinitperiod},
-           given={Sebastian},
-           giveni={S\bibinitperiod}}}%
         {{hash=f673cd141cf85e311274bfdcd9fd11f6}{%
            family={Maier-Hein},
            familyi={M\bibinithyphendelim H\bibinitperiod},
            given={Klaus\bibnamedelima H.},
            giveni={K\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
       }
-      \strng{namehash}{74932e4f0eaa0e37c452e87f044ced03}
-      \strng{fullhash}{74932e4f0eaa0e37c452e87f044ced03}
-      \strng{fullhashraw}{74932e4f0eaa0e37c452e87f044ced03}
-      \strng{bibnamehash}{74932e4f0eaa0e37c452e87f044ced03}
-      \strng{authorbibnamehash}{74932e4f0eaa0e37c452e87f044ced03}
-      \strng{authornamehash}{74932e4f0eaa0e37c452e87f044ced03}
-      \strng{authorfullhash}{74932e4f0eaa0e37c452e87f044ced03}
-      \strng{authorfullhashraw}{74932e4f0eaa0e37c452e87f044ced03}
-      \field{labelalpha}{Ise\textsuperscript {+}18}
+      \strng{namehash}{690e21c850de111b35f42dadf0160683}
+      \strng{fullhash}{690e21c850de111b35f42dadf0160683}
+      \strng{fullhashraw}{690e21c850de111b35f42dadf0160683}
+      \strng{bibnamehash}{690e21c850de111b35f42dadf0160683}
+      \strng{authorbibnamehash}{690e21c850de111b35f42dadf0160683}
+      \strng{authornamehash}{690e21c850de111b35f42dadf0160683}
+      \strng{authorfullhash}{690e21c850de111b35f42dadf0160683}
+      \strng{authorfullhashraw}{690e21c850de111b35f42dadf0160683}
+      \field{labelalpha}{Ise\textsuperscript {+}21}
       \field{sortinit}{I}
       \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{eprintclass}{cs.CV}
-      \field{eprinttype}{arXiv}
-      \field{title}{nnU-Net: Self-adapting Framework for U-Net-Based Medical Image Segmentation}
-      \field{year}{2018}
-      \verb{eprint}
-      \verb 1809.10486
+      \field{abstract}{Biomedical imaging is a driver of scientific discovery and a core component of medical care and is being stimulated by the field of deep learning. While semantic segmentation algorithms enable image analysis and quantification in many applications, the design of respective specialized solutions is non-trivial and highly dependent on dataset properties and hardware conditions. We developed nnU-Net, a deep learning-based segmentation method that automatically configures itself, including preprocessing, network architecture, training and post-processing for any new task. The key design choices in this process are modeled as a set of fixed parameters, interdependent rules and empirical decisions. Without manual intervention, nnU-Net surpasses most existing approaches, including highly specialized solutions on 23 public datasets used in international biomedical segmentation competitions. We make nnU-Net publicly available as an out-of-the-box tool, rendering state-of-the-art segmentation accessible to a broad audience by requiring neither expert knowledge nor computing resources beyond standard network training.}
+      \field{issn}{1548-7105}
+      \field{journaltitle}{Nature Methods}
+      \field{month}{2}
+      \field{number}{2}
+      \field{title}{{nnU}-{Net}: a self-configuring method for deep learning-based biomedical image segmentation}
+      \field{volume}{18}
+      \field{year}{2021}
+      \field{pages}{203\bibrangedash 211}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1038/s41592-020-01008-z
       \endverb
       \verb{urlraw}
-      \verb https://arxiv.org/abs/1809.10486
+      \verb https://doi.org/10.1038/s41592-020-01008-z
       \endverb
       \verb{url}
-      \verb https://arxiv.org/abs/1809.10486
+      \verb https://doi.org/10.1038/s41592-020-01008-z
       \endverb
     \endentry
     \entry{ji2023continualsegmentsingleunified}{misc}{}{}
@@ -3933,6 +3909,39 @@
       \verb https://arxiv.org/abs/2511.11450
       \endverb
     \endentry
+    \entry{skmtea_tutorial}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=6bb407c6abce25f7b1616661118935f9}{%
+           family={{Stanford MIMI Lab}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{6bb407c6abce25f7b1616661118935f9}
+      \strng{fullhash}{6bb407c6abce25f7b1616661118935f9}
+      \strng{fullhashraw}{6bb407c6abce25f7b1616661118935f9}
+      \strng{bibnamehash}{6bb407c6abce25f7b1616661118935f9}
+      \strng{authorbibnamehash}{6bb407c6abce25f7b1616661118935f9}
+      \strng{authornamehash}{6bb407c6abce25f7b1616661118935f9}
+      \strng{authorfullhash}{6bb407c6abce25f7b1616661118935f9}
+      \strng{authorfullhashraw}{6bb407c6abce25f7b1616661118935f9}
+      \field{labelalpha}{Sta}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{title}{{SKM-TEA} Tutorial}
+      \field{titleaddon}{Google Colab notebook, linked as Tutorial from the SKM-TEA code repository (\url{https://github.com/StanfordMIMI/skm-tea})}
+      \field{urlday}{19}
+      \field{urlmonth}{10}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://colab.research.google.com/drive/1PluqK77pobD5dXE7zzBLEAeBgaaeGKXa
+      \endverb
+      \verb{url}
+      \verb https://colab.research.google.com/drive/1PluqK77pobD5dXE7zzBLEAeBgaaeGKXa
+      \endverb
+    \endentry
     \entry{støverud2023aeropathairwaysegmentationbenchmark}{misc}{}{}
       \name{author}{6}{}{%
         {{hash=46fc62709612a387aa78a104bcaf0f88}{%
@@ -5083,27 +5092,8 @@
       \endverb
     \endentry
   \enddatalist
-  \missing{buzzega2020der}
-  \missing{chaudhry2018riemannian}
-  \missing{chaudhry2019tiny}
-  \missing{dalessandro_multimodal_2023}
-  \missing{desai_skm-tea_2022}
-  \missing{dice1945}
-  \missing{hu2022lora}
-  \missing{isensee2024resenc}
-  \missing{isensee_nnu-net_2018}
-  \missing{lopezpaz2017gem}
-  \missing{mccloskey1989catastrophic}
-  \missing{mermillod2013stability}
   \missing{moe4cl2024}
-  \missing{qwen3embedding2025}
-  \missing{radford2021clip}
-  \missing{ronneberger2015unet}
-  \missing{stoverud_aeropath_2023}
   \missing{wu2024gift}
-  \missing{zhao_biomedparse_2025}
-  \missing{zhao_sat_2025}
-  \missing{zheng_preventing_2023}
 \endrefsection
 \endinput
 

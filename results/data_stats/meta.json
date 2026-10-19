@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-19T11:37:15",
+  "host": "tg06b",
+  "cwd": "/home/hpc/iwi5/iwi5326h/projects/VoxTell",
+  "args": {
+    "skm_root": "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/",
+    "aeropath_root": "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/AeroPath/",
+    "seed": 42,
+    "train_fraction": 0.7,
+    "val_fraction": 0.15,
+    "out": "./data_stats"
+  },
+  "split_sizes": {
+    "skm_tea_lateral_tibial": {
+      "train": 108,
+      "val": 23,
+      "test": 24
+    },
+    "skm_tea_medial_tibial": {
+      "train": 108,
+      "val": 23,
+      "test": 24
+    },
+    "skm_tea_femoral": {
+      "train": 108,
+      "val": 23,
+      "test": 24
+    },
+    "skm_tea_patellar": {
+      "train": 108,
+      "val": 23,
+      "test": 24
+    },
+    "skm_tea_medial_meniscus": {
+      "train": 108,
+      "val": 23,
+      "test": 24
+    },
+    "skm_tea_lateral_meniscus": {
+      "train": 108,
+      "val": 23,
+      "test": 24
+    },
+    "aeropath": {
+      "train": 19,
+      "val": 4,
+      "test": 4
+    }
+  },
+  "code_commit": "50a654bb46b35c3dc954f926b5fa15fc1c232076",
+  "code_dirty": true
+}

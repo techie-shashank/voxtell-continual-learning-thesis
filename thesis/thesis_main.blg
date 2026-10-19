@@ -1,42 +1,18 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
-[0] Config.pm:331> INFO - Logfile is 'thesis_main.blg'
-[120] biber-MSWIN64:342> INFO - === 
-[164] Biber.pm:421> INFO - Reading 'thesis_main.bcf'
-[309] Biber.pm:1002> INFO - Found 90 citekeys in bib section 0
-[322] Biber.pm:4487> INFO - Processing section 0
-[335] Biber.pm:4678> INFO - Looking for bibtex file 'literature.bib' for section 0
-[478] bibtex.pm:1713> INFO - LaTeX decoding ...
-[646] bibtex.pm:1519> INFO - Found BibTeX data source 'literature.bib'
-[1538] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1538] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1538] Biber.pm:4307> INFO - Sorting list 'anyt/global//global/global/global' of type 'entry' with template 'anyt' and locale 'en-US'
-[1538] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
-[1664] bbl.pm:676> INFO - Writing 'thesis_main.bbl' with encoding 'UTF-8'
-[1833] bbl.pm:779> INFO - Output to thesis_main.bbl
-[1834] Biber.pm:132> WARN - Duplicate entry key: 'du2025segvoluniversalinteractivevolumetric' in file 'literature.bib', skipping ...
-[1835] Biber.pm:132> WARN - Duplicate entry key: 'Kirkpatrick_2017' in file 'literature.bib', skipping ...
-[1835] Biber.pm:132> WARN - Duplicate entry key: 'gonzalez2023lifelong' in file 'literature.bib', skipping ...
-[1836] Biber.pm:132> WARN - Duplicate entry key: 'ranem2022continualhippocampussegmentationtransformers' in file 'literature.bib', skipping ...
-[1836] Biber.pm:132> WARN - Duplicate entry key: 'cermelli2020modelingbackgroundincrementallearning' in file 'literature.bib', skipping ...
-[1837] Biber.pm:132> WARN - I didn't find a database entry for 'wu2024gift' (section 0)
-[1837] Biber.pm:132> WARN - I didn't find a database entry for 'moe4cl2024' (section 0)
-[1837] Biber.pm:132> WARN - I didn't find a database entry for 'ronneberger2015unet' (section 0)
-[1837] Biber.pm:132> WARN - I didn't find a database entry for 'isensee_nnu-net_2018' (section 0)
-[1838] Biber.pm:132> WARN - I didn't find a database entry for 'radford2021clip' (section 0)
-[1838] Biber.pm:132> WARN - I didn't find a database entry for 'dalessandro_multimodal_2023' (section 0)
-[1839] Biber.pm:132> WARN - I didn't find a database entry for 'zheng_preventing_2023' (section 0)
-[1840] Biber.pm:132> WARN - I didn't find a database entry for 'zhao_sat_2025' (section 0)
-[1841] Biber.pm:132> WARN - I didn't find a database entry for 'zhao_biomedparse_2025' (section 0)
-[1841] Biber.pm:132> WARN - I didn't find a database entry for 'isensee2024resenc' (section 0)
-[1841] Biber.pm:132> WARN - I didn't find a database entry for 'qwen3embedding2025' (section 0)
-[1841] Biber.pm:132> WARN - I didn't find a database entry for 'desai_skm-tea_2022' (section 0)
-[1842] Biber.pm:132> WARN - I didn't find a database entry for 'mccloskey1989catastrophic' (section 0)
-[1842] Biber.pm:132> WARN - I didn't find a database entry for 'hu2022lora' (section 0)
-[1842] Biber.pm:132> WARN - I didn't find a database entry for 'chaudhry2019tiny' (section 0)
-[1842] Biber.pm:132> WARN - I didn't find a database entry for 'buzzega2020der' (section 0)
-[1842] Biber.pm:132> WARN - I didn't find a database entry for 'mermillod2013stability' (section 0)
-[1843] Biber.pm:132> WARN - I didn't find a database entry for 'dice1945' (section 0)
-[1843] Biber.pm:132> WARN - I didn't find a database entry for 'lopezpaz2017gem' (section 0)
-[1843] Biber.pm:132> WARN - I didn't find a database entry for 'chaudhry2018riemannian' (section 0)
-[1844] Biber.pm:132> WARN - I didn't find a database entry for 'stoverud_aeropath_2023' (section 0)
-[1844] Biber.pm:134> INFO - WARNINGS: 26
+[1] Config.pm:331> INFO - Logfile is 'thesis_main.blg'
+[218] biber-MSWIN64:342> INFO - === 
+[314] Biber.pm:421> INFO - Reading 'thesis_main.bcf'
+[439] Biber.pm:1002> INFO - Found 72 citekeys in bib section 0
+[452] Biber.pm:4487> INFO - Processing section 0
+[468] Biber.pm:4678> INFO - Looking for bibtex file 'literature.bib' for section 0
+[655] bibtex.pm:1713> INFO - LaTeX decoding ...
+[859] bibtex.pm:1519> INFO - Found BibTeX data source 'literature.bib'
+[2140] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[2140] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[2140] Biber.pm:4307> INFO - Sorting list 'anyt/global//global/global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[2140] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[2225] bbl.pm:676> INFO - Writing 'thesis_main.bbl' with encoding 'UTF-8'
+[2309] bbl.pm:779> INFO - Output to thesis_main.bbl
+[2309] Biber.pm:132> WARN - I didn't find a database entry for 'wu2024gift' (section 0)
+[2309] Biber.pm:132> WARN - I didn't find a database entry for 'moe4cl2024' (section 0)
+[2309] Biber.pm:134> INFO - WARNINGS: 2
