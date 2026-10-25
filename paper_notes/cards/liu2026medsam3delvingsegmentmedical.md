@@ -1,0 +1,26 @@
+# MedSAM-3 — fact card (tier B)
+| | |
+|---|---|
+| Paper | A. Liu, X. R. Cao, Y. Shen, Y. Lu, X. Li, Q. Chen, J. Chen, "MedSAM3: Delving into Segment Anything with Medical Concepts", arXiv:2511.19046v2 (14 Sep 2026); 9 pages incl. references |
+| Bib key / Local PDF | liu2026medsam3delvingsegmentmedical / papers/t1_text_promptable/liu2026medsam3delvingsegmentmedical.pdf |
+| Version read | arXiv v2; no peer-reviewed venue stated in the PDF |
+| Written | 2026-10-23, by Claude |
+
+## Facts (from the paper, each with location: Sec./p./Table/Fig.)
+- Task / problem: adapt SAM 3's Promptable Concept Segmentation (PCS) to medical images and videos, so that targets are selected by short text concepts instead of only geometric prompts; plus an MLLM agent for complex queries (Abstract; Sec. 1; Sec. 3.1).
+- Data (Sec. 4.1, p. 4–5): 15 public datasets collected over X-ray, MRI, US, OCT, fundus, dermoscopy, histopathology, infrared, endoscopy, CT; 2D, 3D and video. 3D datasets: Parse2022 (100 CT, pulmonary artery), LiTS (130 CT, liver and tumour), PROMISE12 (80 T2 MRI, prostate), ISLES 2024 (250 MRI, stroke lesion). All 3D data converted to frame sequences. 80/20 split where no official split exists. MedSAM-3 itself is evaluated only on four 2D datasets: BUSI (780 US images), RIM-ONE (485 fundus images; cup), ISIC 2018 (2,594 train / 1,000 test), Kvasir-SEG (1,000 endoscopy images) (Sec. 4.2, p. 5–6; Table 2). The size and composition of the fine-tuning set are not stated beyond "curated dataset" and "small amount of domain-specific fine-tuning data" (Sec. 1; Sec. 4.3).
+- Method (two sentences): SAM 3 (Perception Encoder backbone, detector, tracker with memory) is fine-tuned with its image and text encoders frozen and only the remaining detector components updated, on medical images paired with concept phrases of at most three words taken from dataset documentation (Sec. 3.1–3.2; Fig. 2; Sec. 4.2). Two variants are trained: text only (MedSAM-3 T) and text plus a ground-truth-derived bounding box (MedSAM-3 T+I); an agent with Gemini 3 Pro plans, calls MedSAM-3 and refines over three feedback rounds (Sec. 3.3; Sec. 4.2; Sec. 4.4).
+- Setting: text conditioning by short open-vocabulary noun phrases (≤ 3 words; per-dataset phrases in Table 1), optionally with box/point/mask prompts; longer free text only via the MLLM agent; no continual learning; no few-shot setting (k not applicable).
+- Evaluation: Dice score (Tables 2–5). Baselines: U-Net, MedSAM, SAM 3 T / T+I for MedSAM-3 (Table 2); additionally Unet3+, Polyp-PVT (2D) and nnU-Net, Swin UNETR, U-Mamba (3D) for the SAM 3 benchmark (Sec. 4.2; Tables 4–5). Specialist baselines trained per dataset; SAM 3 tested without training (Sec. 4.2).
+- Best result (Table 2, p. 6): MedSAM-3 T+I Dice BUSI 0.7772, RIM-ONE (Cup) 0.8977, ISIC 2018 0.9058, Kvasir-SEG 0.8831; best on three of four datasets (MedSAM higher on ISIC 2018, 0.9177, shown in bold), although the text (Sec. 4.3) says best on all four. Text only (MedSAM-3 T): 0.2674, 0.0826, 0.5687, 0.1441. Agent with Gemini 3 Pro on BUSI: 0.8064 vs 0.7772 (Table 3). Off-the-shelf SAM 3 T on 3D datasets is far below the specialists: Parse2022 0.5295, LiTS 0.1374, PROMISE12 0.6110, ISLES 2024 0.3033 vs best 0.8311, 0.7910, 0.9011, 0.7718 (Table 5; value/arrow pairs reconstructed from the text extraction, arrows sum to the best value). No variability or significance test reported, although "significant" is used (Sec. 4.4).
+- Limitations stated by the authors: text-only inference "insufficient" for reliable segmentation (Sec. 4.3); fine-tuning constrained by limited scale of medical datasets and scarce concept-rich text (Sec. 5.2); agent gains depend on base model quality (Sec. 5.3); future work on concept granularity and text–image alignment (Sec. 6).
+
+## Check of the author's notes
+- related_work.tex:34 "MedSAM-3 adapts a general-domain model in the same direction, fine-tuning the detector of SAM~3 on medical image--text pairs while its image and text encoders remain frozen" → correct (Sec. 3.2; Sec. 4.2).
+- related_work.tex:34 "so that short medical noun phrases of at most three words can serve as concept prompts alongside points and boxes" → correct (Sec. 3.1–3.2; Sec. 4.2). Note: the three-word limit is how training phrases were curated; the evaluated geometric prompt is a box (T+I).
+- related_work.tex:34 "Like BiomedParse, it does not treat 3D scans as volumes, processing them instead as sequences of frames" → correct for the data handling (Sec. 4.1: all 3D datasets converted to frame sequences); note that MedSAM-3 is not evaluated on any 3D dataset at all, only SAM 3 is (Table 5).
+- related_work.tex:162 (table) "Four 2D benchmarks | Concept prompts; SAM~3 detector fine-tuned | DSC $77.72$--$90.58\,\%$ (text and box)" → partly correct: range matches Table 2 (0.7772–0.9058, the paper reports fractions, not %), but the table omits that text-only results are much lower (0.0826–0.5687), which is the setting comparable to free-text promptable segmentation; suggest adding "text only 8.26–56.87".
+- introduction.tex: not cited → not found.
+
+## Relevance (NOT from the paper)
+Shows that concept-prompted 2D foundation models adapted to medicine still depend on box prompts; text-only performance is weak, and 3D is handled slice/frame-wise, unlike VoxTell.

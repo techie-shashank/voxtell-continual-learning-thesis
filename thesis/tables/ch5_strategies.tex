@@ -1,0 +1,16 @@
+% Table 5.1: overview of the strategies (descriptive, written by hand; facts from
+% thesis_notes.md §2 "Method fact sheet"). Bare tabular, caption in method.tex.
+% CLAUDE-DRAFT
+\small\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{2.1cm}>{\raggedright\arraybackslash}p{1.9cm}@{}}
+\toprule
+Strategy & Trained parameters $\phi$ & Start of task $t$ (\textsc{Init}) & Added data / loss & Evaluated checkpoint \\
+\midrule
+Sequential fine-tuning & all parameters except the text encoder & parameters of task $t-1$ & -- & best validation \\
+Task-specific LoRA & low-rank factors $\mat{B}, \mat{A}$ in $\mat{W}_q, \mat{W}_v$ of the cross-attention of all layers & pretrained model with a new adapter & -- & last epoch \\
+Shared LoRA & as task-specific LoRA & adapter of task $t-1$ & -- & last epoch \\
+Shared LoRA + replay & as task-specific LoRA & adapter of task $t-1$ & replay memory $\mathcal{M}_{t-1}$ & last epoch \\
+Distillation-based & all parameters except the text encoder & parameters of task $t-1$ & $\lambda\,\mathcal{L}_{\mathrm{KD}}$ & best validation \\
+Prompt tuning & tokens $\mat{V}_l$ and meta-net $h_\psi$ in layers $l \le L_p$ & tokens and meta-net of task $t-1$ & -- & best validation \\
+\bottomrule
+\end{tabularx}

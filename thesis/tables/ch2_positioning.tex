@@ -1,0 +1,25 @@
+% Table 2.2: position of this thesis relative to the closest works.
+% Written by hand from paper_notes/; not generated.
+% CLAUDE-DRAFT (table content)
+\begin{table}[tb]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.1}
+\caption{Position of this thesis relative to the closest works. Pretrained model: the continual sequence starts from a model pretrained on other data; few-shot: number of labelled samples per task; task identity: whether the task identity selects parameters at inference; pretrained ability: whether the ability of the pretrained model outside the task sequence is measured after the sequence.}
+\label{tab:positioning}
+\begin{tabular}{@{}L{2.2cm}L{2.1cm}L{0.7cm}L{1.9cm}L{1.6cm}L{1.5cm}L{1.9cm}L{3.0cm}@{}}
+\toprule
+\textbf{Work} & \textbf{Text prompt} & \textbf{3D} & \textbf{Pretrained model} & \textbf{Few-shot} & \textbf{Task identity} & \textbf{Pretrained ability} & \textbf{Strategies compared}\\
+\midrule
+Zhang et al., Liu et al. \mbox{}\cite{zhang2023continuallearningabdominalmultiorgan,liu2024universalextensible} & Fixed CLIP class names & yes & not stated & no & no & no & Proposed, LwF, ILT, PLOP\\
+MedSeqFT \mbox{}\cite{ye2025medseqft} & none & yes & yes & no & head per task & no & Proposed, parallel FT, parameter-efficient FT, multi-task\\
+Chen et al. \mbox{}\cite{chen2026fewshotcontinuallearning3d} & none & yes & yes & 16, 32, 64 & yes & no & Proposed, seq.\ FT, EWC, LwF, replay\\
+MedCRP-CL \mbox{}\cite{gao2026medcrpcl} & Descriptive sentences & no & yes & no & not stated & no & Proposed, seq.\ FT, EWC, RAPF, CL-LoRA, MoE-Adapters\\
+PA-EWC \mbox{}\cite{gao2025paewc} & Templated phrases & no & yes & no & not stated & no & Proposed, seq.\ FT, EWC, LwF, LoRA, ZSCL, MoE-Adapters and others\\
+MedPEFT-CL \mbox{}\cite{gao2026medpeftcl} & Descriptive sentences & no & yes & no & not stated & no & Proposed, seq.\ FT, EWC, DER, low-rank MoE, MoE-Adapters\\
+\midrule
+This thesis & Free text, one fixed prompt per task & yes & yes (VoxTell) & 5, 10, 20 for three strategies & task-specific LoRA only & yes (control task) & Seq.\ FT, task-specific LoRA, shared LoRA, shared LoRA + replay, distillation-based, prompt tuning\\
+\bottomrule
+\end{tabular}
+\end{table}

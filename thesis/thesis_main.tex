@@ -36,6 +36,12 @@
 %Load additional packages
 \usepackage{lmedoc/packages}
 \usepackage{tabularx}
+% Pseudocode for the Method chapter (chair guidelines: "strukto" or "algorithmic")
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+% \vec and \mat (bold) are already defined by the template in lmedoc/math.sty
 % Open points during writing (CLAUDE.md: \todo{...}); remove all \todo before submission.
 \setlength{\marginparwidth}{2cm}
 \usepackage{todonotes}
@@ -136,6 +142,9 @@ Die Richtlinien des Lehrstuhls fur Examensarbeiten habe ich gelesen und anerkann
 \cleardoublepage
 
 \tableofcontents
+
+\cleardoublepage
+\input{notation}   % Table of notation (front matter, required by supervisor and chair)
 
 \cleardoublepage \pagenumbering{arabic}
 

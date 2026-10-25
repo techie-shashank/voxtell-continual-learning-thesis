@@ -49,6 +49,51 @@ def legend_right(ax, **kw):
     ax.legend(loc="center left", bbox_to_anchor=(1.01, 0.5), frameon=False, **kw)
 
 
+def training_loss_per_epoch(run) -> dict[int, float]:
+    """Mean training loss per epoch from the run.log of a single-task run (a resumed epoch overwrites itself)."""
+    import re
+    pattern = re.compile(r"Epoch (\d+)/(\d+) completed \| Training Loss=([0-9.]+)")
+    logs = sorted((REPO / run["path"] / "tasks").glob("task_[0-9][0-9]_*/logs/run.log"))
+    if len(logs) != 1:
+        raise SystemExit(f"{run['label']}: expected one task log, found {len(logs)}")
+    loss = {}
+    for line in logs[0].read_text(encoding="utf-8", errors="replace").splitlines():
+        m = pattern.search(line)
+        if m:
+            loss[int(m.group(1))] = float(m.group(3))
+    return loss
+
+
+def patellar_curves(diag):
+    """Training loss per epoch of the single-task patellar runs; one setting changed per run."""
+    base = {"lora_rank": "4", "lr": "0.0001", "train_seed": "42", "epochs": "10"}
+    name = {"lora_rank": lambda r: f"rank $r={r['lora_rank']}$", "lr": lambda r: r"$\eta_0 = 3\cdot 10^{-4}$",
+            "train_seed": lambda r: f"seed {r['train_seed']}", "epochs": lambda r: f"{r['epochs']} epochs"}
+    colours = ["#52514e", "#2a78d6", "#eda100", "#1baf7a", "#eb6834"]
+    fig, ax = plt.subplots(figsize=(TEXT_WIDTH_IN, 2.5))
+    order = [None, "lora_rank", "lr", "train_seed", "epochs"]
+
+    def changed(r):
+        d = [k for k in base if r[k] != base[k]]
+        return d[0] if d else None
+
+    for colour, r in zip(colours, sorted(diag, key=lambda r: order.index(changed(r)))):
+        loss = training_loss_per_epoch(r)
+        k = changed(r)
+        label = "as in the sequence" if k is None else name[k](r)
+        ax.plot(list(loss), list(loss.values()), color=colour, linewidth=1.4, marker="o", markersize=2.5,
+                label=label, zorder=3)
+    ax.axvline(10, color=REFERENCE_COLOUR, linestyle="--", linewidth=1.0)
+    ax.set_xlim(0.5, 50.5)
+    ax.set_ylim(0, 1.3)
+    ax.set_xlabel("Epoch")
+    ax.set_ylabel("Training loss")
+    y_grid(ax)
+    legend_right(ax)
+    fig.tight_layout(pad=0.3)
+    save(fig, "ch6_patellar_loss")
+
+
 # --------------------------------------------------------------------------
 
 def control_task_curve(main_runs):
@@ -69,7 +114,7 @@ def control_task_curve(main_runs):
     ax.set_xlim(-0.2, len(tasks) + 0.2)
     ax.set_ylim(0, 1)
     ax.set_xlabel("Checkpoint (after training on task)")
-    ax.set_ylabel("Control-task Dice")
+    ax.set_ylabel("Control-task DSC")
     y_grid(ax)
     legend_right(ax)
     fig.tight_layout(pad=0.3)
@@ -93,7 +138,7 @@ def metric_bars(runs, ref, name, height=2.9):
     ax.set_xticks(x, [METRIC_LABEL[m].replace(" ", "\n", 1) for m in METRICS])
     ax.set_xlim(-0.5, len(METRICS) - 0.5)
     ax.set_ylim(0, 1)
-    ax.set_ylabel("Dice")
+    ax.set_ylabel("DSC")
     y_grid(ax)
     ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=3, frameon=False)
     fig.tight_layout(pad=0.3)
@@ -104,7 +149,7 @@ def matrices(main_runs):
     n = len(main_runs)
     cols = 3
     rows = int(np.ceil(n / cols))
-    fig, axes = plt.subplots(rows, cols, figsize=(TEXT_WIDTH_IN, 2.25 * rows), layout="constrained")
+    fig, axes = plt.subplots(rows, cols, figsize=(TEXT_WIDTH_IN, 2.9 * rows), layout="constrained")
     axes = axes.ravel()
     for ax, r in zip(axes, main_runs):
         labels, _, values = load_eval_matrix(REPO / r["path"])
@@ -113,28 +158,28 @@ def matrices(main_runs):
         for i in range(values.shape[0]):
             for j in range(values.shape[1]):
                 v = values[i, j]
-                ax.text(j, i, f"{v:.2f}"[1:] if v < 1 else "1.0", ha="center", va="center", fontsize=6,
+                ax.text(j, i, f"{v:.2f}"[1:] if v < 1 else "1.0", ha="center", va="center", fontsize=10,
                         color="white" if v > 0.55 else "#0b0b0b")
         ax.set_xticks(range(values.shape[1]), ["Pre"] + [TASK_SHORT[t] for t in tasks[:values.shape[1] - 1]],
-                      fontsize=7)
-        ax.set_yticks(range(values.shape[0]), [TASK_SHORT[t] for t in tasks], fontsize=7)
+                      fontsize=10, rotation=90)
+        ax.set_yticks(range(values.shape[0]), [TASK_SHORT[t] for t in tasks], fontsize=10)
         ax.axhline(values.shape[0] - 1.5, color="white", linewidth=1.5)
         ax.tick_params(length=0)
         for s in ax.spines.values():
             s.set_visible(False)
-        ax.set_title(strategy_name(r), fontsize=9)
+        ax.set_title(strategy_name(r), fontsize=10)
     for ax in axes[n:]:
         ax.axis("off")
-    fig.colorbar(im, ax=axes.tolist(), label="Dice", shrink=0.5, aspect=25, pad=0.02)
-    fig.supxlabel("Checkpoint (after training on task)", fontsize=9)
-    fig.supylabel("Evaluated task", fontsize=9)
+    fig.colorbar(im, ax=axes.tolist(), label="DSC", shrink=0.5, aspect=25, pad=0.02)
+    fig.supxlabel("Checkpoint (after training on task)", fontsize=10)
+    fig.supylabel("Evaluated task", fontsize=10)
     save(fig, "ch6_main_matrices")
 
 
 def rank_sweep(rank_runs, ref):
     fig, ax = plt.subplots(figsize=(TEXT_WIDTH_IN, 2.7))
     ranks = [int(r["lora_rank"]) for r in rank_runs]
-    shown = ["adaptation", "final_performance", "final_forgetting", "control_drop"]
+    shown = ["adaptation", "final_forgetting", "control_drop", "final_performance"]
     styles = {"adaptation": ("#2a78d6", "o"), "final_performance": ("#eb6834", "s"),
               "final_forgetting": ("#1baf7a", "^"), "control_drop": ("#eda100", "D")}
     for m in shown:
@@ -150,7 +195,7 @@ def rank_sweep(rank_runs, ref):
     ax.minorticks_off()
     ax.set_ylim(0, 1)
     ax.set_xlabel("LoRA rank $r$ (shared LoRA)")
-    ax.set_ylabel("Dice")
+    ax.set_ylabel("DSC")
     y_grid(ax)
     legend_right(ax)
     fig.tight_layout(pad=0.3)
@@ -158,7 +203,7 @@ def rank_sweep(rank_runs, ref):
 
 
 def task_order(pairs, refs):
-    shown = ["adaptation", "final_performance", "final_forgetting", "control_drop"]
+    shown = ["adaptation", "final_forgetting", "control_drop", "final_performance"]
     fig, axes = plt.subplots(1, len(shown), figsize=(TEXT_WIDTH_IN, 2.5), sharey=True)
     x = np.arange(len(pairs))
     for ax, m in zip(axes, shown):
@@ -176,7 +221,7 @@ def task_order(pairs, refs):
         ax.set_title(METRIC_LABEL[m].replace(" ", "\n", 1) if len(METRIC_LABEL[m]) > 14 else METRIC_LABEL[m])
         ax.set_ylim(0, 1)
         y_grid(ax)
-    axes[0].set_ylabel("Dice")
+    axes[0].set_ylabel("DSC")
     from matplotlib.patches import Patch
     from matplotlib.lines import Line2D
     top = [Patch(facecolor=STRATEGY[p[0]["strategy"]][1], label=strategy_name(p[0])) for p in pairs]
@@ -191,7 +236,7 @@ def task_order(pairs, refs):
 
 
 def few_shot(groups, ref):
-    shown = ["adaptation", "final_performance", "final_forgetting", "control_drop"]
+    shown = ["adaptation", "final_forgetting", "control_drop", "final_performance"]
     fig, axes = plt.subplots(1, len(shown), figsize=(TEXT_WIDTH_IN, 2.5), sharey=True)
     for ax, m in zip(axes, shown):
         for runs in groups:
@@ -213,7 +258,7 @@ def few_shot(groups, ref):
         ax.set_title(METRIC_LABEL[m])
         ax.set_ylim(0, 1)
         y_grid(ax)
-    axes[0].set_ylabel("Dice")
+    axes[0].set_ylabel("DSC")
     fig.supxlabel("Training volumes per task", fontsize=10)
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", ncol=2, frameon=False, bbox_to_anchor=(0.5, 1.0))
@@ -236,8 +281,12 @@ def main():
     metric_bars(main_runs, refs["original"], "ch6_main_metrics")
     matrices(main_runs)
 
-    rank_runs = sorted([r for r in runs if "Rank Ablation" in roles(r)], key=lambda r: int(r["lora_rank"]))
+    # The sweep plot shows shared LoRA only; the two task-specific ranks are in the table.
+    rank_runs = sorted([r for r in runs if "Rank Ablation" in roles(r) and r["strategy"] == "shared_lora"],
+                       key=lambda r: int(r["lora_rank"]))
     rank_sweep(rank_runs, refs["original"])
+
+    patellar_curves([r for r in runs if "Convergence Diagnosis" in roles(r)])
 
     reverse = sorted([r for r in runs if "Task Order Ablation" in roles(r)], key=by_strategy)
     task_order([(counterpart(r, runs), r) for r in reverse], refs)

@@ -1,8 +1,26 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Summary of the works reviewed in this chapter. DSC: Dice similarity coefficient; FFT: full fine-tuning; TIL, CIL, DIL: task-, class-, and domain-incremental learning; MTIL: the eleven-dataset multi-domain task-incremental benchmark of ZSCL; --: no single headline value.}}{18}{table.2.1}%
-\contentsline {table}{\numberline {2.2}{\ignorespaces Position of this thesis relative to the closest prior work. 3D FM: pretrained 3D foundation model; TIL, CIL, DIL: task-, class-, and domain-incremental learning.}}{21}{table.caption.5}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Works reviewed in this chapter, grouped by section. Works cited only for a definition, a mechanism or a single finding are not listed. Results are given as reported by the authors, in the paper's metric, with the main comparison in parentheses; settings are named in the paper's own terms. FT: fine-tuning; seq.: sequential; TIL, DIL, CIL: task-, domain- and class-incremental learning; MTIL: the eleven-dataset benchmark of ZSCL; ODCL-CIL, ODCL-TIL: open-domain class- and task-incremental learning; CSS: continual semantic segmentation; FSCIL: few-shot class-incremental learning.}}{22}{table.2.1}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Position of this thesis relative to the closest works. Pretrained model: the continual sequence starts from a model pretrained on other data; few-shot: number of labelled samples per task; task identity: whether the task identity selects parameters at inference; pretrained ability: whether the ability of the pretrained model outside the task sequence is measured after the sequence.}}{27}{table.caption.16}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Datasets used in this thesis. Values computed from the data and the official SKM-TEA annotation files (version 1.0.0), except imaging, source and access, which are taken from the dataset publications~\blx@tocontentsinit {0}\cite {desai2021skmtea, støverud2023aeropathairwaysegmentationbenchmark}.}}{24}{table.caption.6}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Structures of the six continual-learning tasks and of the control task, with the text prompt, the label value in the converted label maps (\cref {sec:data-preprocessing}) and the structure volume over all volumes of the dataset. SKM-TEA volumes are computed from the voxel counts and the voxel size of the official annotation files; AeroPath volumes from the voxel size stored in each file.}}{25}{table.caption.8}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces Number of SKM-TEA volumes in each split of this thesis (rows) and of the official SKM-TEA split~\blx@tocontentsinit {0}\cite {desai2021skmtea} (columns).}}{28}{table.caption.14}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Datasets used in this thesis}}{42}{table.caption.19}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Structures, text prompts and label values of the tasks and the control task}}{43}{table.caption.20}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Number of SKM-TEA volumes in each split of this thesis (rows) and of the official SKM-TEA split~\blx@tocontentsinit {0}\cite {desai2021skmtea} (columns).}}{46}{table.caption.23}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Overview of the continual-learning strategies}}{56}{table.caption.32}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Computational cost of the strategies}}{62}{table.caption.38}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Overview of the experiments}}{66}{table.caption.39}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces Training and evaluation settings shared by all runs}}{68}{table.caption.41}%
+\contentsline {table}{\numberline {6.3}{\ignorespaces Parameters of the strategies}}{69}{table.caption.42}%
+\contentsline {table}{\numberline {6.4}{\ignorespaces Results of the comparison of the strategies}}{71}{table.caption.46}%
+\contentsline {table}{\numberline {6.5}{\ignorespaces Results of the LoRA rank experiment}}{76}{table.caption.52}%
+\contentsline {table}{\numberline {6.6}{\ignorespaces Diagnosis of the patellar failure}}{78}{table.caption.56}%
+\contentsline {table}{\numberline {6.7}{\ignorespaces Results of the few-shot experiment}}{79}{table.caption.59}%
+\contentsline {table}{\numberline {6.8}{\ignorespaces Results of the task-order experiment}}{81}{table.caption.63}%
+\contentsline {table}{\numberline {6.9}{\ignorespaces Measured cost of the strategies}}{84}{table.caption.66}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {A.1}{\ignorespaces Few-shot training volumes and test volumes}}{102}{table.caption.84}%

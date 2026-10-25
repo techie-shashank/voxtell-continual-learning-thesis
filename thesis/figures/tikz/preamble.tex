@@ -1,0 +1,29 @@
+% Shared preamble of the standalone TikZ figures: same engine, class size, fonts and
+% math packages as thesis_main.tex (pdfLaTeX, 12 pt, T1 + Latin Modern, amsmath, bm).
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usetikzlibrary{arrows.meta, positioning, calc, fit, backgrounds, decorations.pathreplacing}
+\pgfdeclarelayer{panel}            % below the background layer: large panel frames
+\pgfsetlayers{panel,background,main}
+\def\mat#1{\ensuremath{\bm#1}}   % as lmedoc/math.sty
+\def\vec#1{\ensuremath{\bm#1}}
+% Colours: base colours of the VoxTell sketch, one colour per strategy component
+\definecolor{voxorange}{HTML}{F2A65A}
+\definecolor{voxblue}{HTML}{6CA6E0}
+\definecolor{voxgreen}{HTML}{8DBF8B}
+\definecolor{voxyellow}{HTML}{F5D76E}
+\definecolor{voxred}{HTML}{E8877F}
+\definecolor{voxlora}{HTML}{D1495B}
+\definecolor{voxprompt}{HTML}{7A4FC9}
+\definecolor{voxmeta}{HTML}{1B8A8F}
+\definecolor{voxkd}{HTML}{C2308F}
+\tikzset{lock/.pic={
+  \draw[line width=0.6pt] (-0.07,0.02) -- (-0.07,0.09) arc[start angle=180, end angle=0, radius=0.07] -- (0.07,0.02);
+  \fill[black!70] (-0.1,-0.1) rectangle (0.1,0.03);
+}}
+\newif\ifvoxannotate
+\newif\ifvoxpanel

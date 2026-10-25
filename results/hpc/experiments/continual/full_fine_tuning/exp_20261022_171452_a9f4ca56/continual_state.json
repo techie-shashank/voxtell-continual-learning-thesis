@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "strategy": "naive_sequential_finetuning",
+  "status": "in_progress",
+  "current_task_index": 5,
+  "current_task_name": "skm_tea_lateral_meniscus",
+  "current_checkpoint": "/home/vault/iwi5/iwi5326h/projects/VoxTell/experiments/continual/full_fine_tuning/exp_20261022_171452_a9f4ca56/tasks/task_06_skm_tea_lateral_meniscus/checkpoints/latest_recovery.pt",
+  "completed_tasks": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "updated_at": "2026-10-23T15:14:30.419806+00:00",
+  "resume_position": {
+    "epoch": 2,
+    "batch_idx": 107,
+    "stage": "train_batch"
+  }
+}

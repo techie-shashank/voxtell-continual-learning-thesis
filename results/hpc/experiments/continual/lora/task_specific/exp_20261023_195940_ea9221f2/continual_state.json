@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "strategy": "lora",
+  "status": "in_progress",
+  "current_task_index": 4,
+  "current_task_name": "skm_tea_medial_meniscus",
+  "current_checkpoint": "/home/vault/iwi5/iwi5326h/projects/VoxTell/experiments/continual/lora/task_specific/exp_20261023_195940_ea9221f2/tasks/task_05_skm_tea_medial_meniscus/checkpoints/latest_recovery.pt",
+  "completed_tasks": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "updated_at": "2026-10-24T09:53:53.697084+00:00",
+  "resume_position": {
+    "epoch": 180,
+    "batch_idx": 3,
+    "stage": "train_batch"
+  }
+}

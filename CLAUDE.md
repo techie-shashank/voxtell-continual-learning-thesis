@@ -36,7 +36,7 @@ Every objective must be addressed in the Method or Experiment & Results chapters
 
 Where the supervisor and chair guidelines differ, follow the supervisor. If one of my instructions conflicts with a guideline, point out the conflict before doing it.
 
-Chapters 1 and 2 are early drafts and may contain errors, weak arguments, inconsistent terms and poor style. Do not use them as a reference for facts, style or terminology. When you notice a problem in them while working on something else, list it in your summary instead of fixing it silently.
+Chapters 1 and 2 (current text) are the author's notes, not drafts (decision 2026-10-22). They are redrafted like the other chapters: outline, approval, section-by-section drafting with `% CLAUDE-DRAFT`, interview first for reasoning-heavy parts. Use them for content and selection of works, not as a reference for facts, style or terminology; claims about papers need the paper or paper notes (citation-verifier for the rest). They may contain errors, weak arguments and inconsistent terms.
 
 ## Project layout
 - `thesis/` — LaTeX source. Main file: `thesis/thesis_main.tex`
@@ -52,25 +52,26 @@ Chapters 1 and 2 are early drafts and may contain errors, weak arguments, incons
 - `guidelines/` — supervisor and chair guidelines
 - `ai_use_log.md` — log of how AI was used (see below)
 - `thesis_notes.md` — decisions, verified facts about the experiments (with sources), limitations, open questions. **Read before writing any chapter**; update it when a decision is made or a fact is verified
-- `paper_notes/` — one notes file per key paper, with page/table locations, written from the PDF. **`paper_notes/voxtell.md` covers the VoxTell paper (`voxtell_paper/voxtell.pdf`) completely; use it instead of re-reading the PDF.** Its last section is analysis, not paper content
+- `thesis_tracker.md` — defense points (examiner questions with current answer, location, status), items waiting for the reruns, open items for the author, and the generated list of `\todo` markers (`python scripts/list_todos.py`). Keep it current at the end of every task
+- `paper_notes/` — one notes file per key paper, with page/table locations, written from the PDF. **`paper_notes/voxtell.md` covers the VoxTell paper (`voxtell_paper/voxtell.pdf`) completely; use it instead of re-reading the PDF.** Its last section is analysis, not paper content. `paper_notes/zscl.md`, `cpe_clip.md` and `lora_hu.md` cover ZSCL, CPE-CLIP and LoRA the same way; `liu2026_vlm_cl_survey.md` holds partial notes (author excerpt) on the VLM continual-learning survey
 - `datasets/` — the dataset papers (SKM-TEA, AeroPath); `voxtell_paper/` — the VoxTell paper
 - `FINAL_REVIEW.md` — the final review procedure. Use it only when I ask for a final review pass.
 
 ## Chapter status
 | # | Chapter | File | Status |
 |---|---------|------|--------|
-| 1 | Introduction | `thesis/introduction.tex` | Early draft — needs revision |
-| 2 | State of the Art | `thesis/related_work.tex` | Early draft — needs revision |
-| 3 | Theoretical Background | `thesis/background.tex` | To do |
+| 1 | Introduction | `thesis/introduction.tex` | Author's notes — to be redrafted (decision 2026-10-22); objectives/contributions final after the results |
+| 2 | State of the Art | `thesis/related_work.tex` | Author's notes — to be redrafted (decision 2026-10-22), next |
+| 3 | Theoretical Background | `thesis/background.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`, 2026-10-22) — author rewrite pending |
 | 4 | Data Description | `thesis/data_description.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`, 2026-10-19) — author rewrite pending |
-| 5 | Method | `thesis/method.tex` | To do |
-| 6 | Experiment & Results | `thesis/experiment_results.tex` | To do |
-| 7 | Discussion | `thesis/discussion.tex` | To do |
+| 5 | Method | `thesis/method.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`, 2026-10-21) — author rewrite pending |
+| 6 | Experiment & Results | `thesis/experiment_results.tex` | Partial draft (`% CLAUDE-DRAFT`, 2026-10-22): 6.1, 6.3, 6.4, 6.8 and LoRA parts of 6.5/6.6 done; 6.2, 6.7 and rerun parts wait for the reruns. Appendix A drafted |
+| 7 | Discussion | `thesis/discussion.tex` | Partial draft (`% CLAUDE-DRAFT`, 2026-10-24): outline rev. 2 approved; intro, 7.2, 7.3, 7.4 and 7.1 objectives 1 and 4 done; objectives 2, 3 after the reruns |
 | 8 | Summary | `thesis/summary.tex` | To do |
 
 Structure decisions (provisional, to confirm with the supervisor):
 - **Method** is a separate chapter, although the supervisor's outline doesn't list one: the chair requires a practical part with algorithms, pseudocode and complexity, and this needs its own place.
-- **Discussion** is a separate but compact chapter. Each experiment's own conclusion stays in Experiment & Results (supervisor); the Discussion covers what spans all experiments.
+- **Discussion** is a separate but compact chapter (approved by the author 2026-10-24; neither guideline prescribes it, but the chair grades critical discussion, limitations and generalisation, and its Summary is results-only, 3-4 pages; fallback: last section of Ch. 6). Each experiment's own conclusion stays in Experiment & Results (supervisor); the Discussion covers what spans all experiments.
 - The last chapter is called **Summary**, as both the supervisor's outline and the chair guidelines name it.
 
 ## Build
@@ -83,8 +84,8 @@ Document class and packages (from `thesis_main.tex` and `thesis/lmedoc/`; read 2
 - **Bibliography:** `biblatex` (backend biber, style `trad-alpha`, `backref`), `\addbibresource{literature.bib}`.
 - **Glossaries:** yes, `glossaries-extra` with `abbreviations`, `shortcuts=true`, style `long-short`. Define acronyms with `\newabbreviation` in `thesis/abbreviations.tex`, use `\gls{}`; printed with `\printunsrtglossary` (no makeglossaries step).
 - **Cross-references:** `hyperref` (so `\autoref` works), `cleveref` (options `noabbrev,capitalise,nameinlink`, so `\cref` works too), `varioref`, `hypcap`.
-- **Algorithms:** `algorithm`/`algorithmic` are **not** loaded. They have to be added to the preamble before the Method chapter needs pseudocode.
-- **Vectors/matrices:** `\vec{}` is only the default LaTeX arrow accent and `\mat{}` is undefined. Bold macros have to be defined in the preamble before they are used.
+- **Algorithms:** `algorithm`/`algorithmic` loaded in `thesis_main.tex` (added 2026-10-21).
+- **Vectors/matrices:** `\vec{}` and `\mat{}` are both bold (`\bm`), defined by the template in `lmedoc/math.sty:138-139` (checked 2026-10-21). Don't redefine them.
 - **Other:** `booktabs`, `tabularx`, `caption`/`subcaption`, `siunitx`, `tikz`, `amsmath`/`amssymb`/`mathtools`/`bm`, `xcolor`, `enumitem`, `nowidow`, `microtype`.
 
 After every LaTeX edit, compile and fix any errors you introduced, including undefined references or citations. The final version must compile without errors and without warnings (the lab checks this at archiving).
@@ -105,9 +106,43 @@ After every LaTeX edit, compile and fix any errors you introduced, including und
 - Font family the same as the main text, size about the same. Generate plots at their final printed width so they are not scaled; use LaTeX-matching fonts.
 - Every figure has a number and a caption and is referenced in the text (`\autoref{}` or `\figurename~\ref{}`).
 - Figures not created by me must cite their source in the caption and the bibliography.
-- Placement `[tb]` or `[p]`. Width only via `\linewidth` (e.g. `width=0.45\linewidth`).
+- Placement `[tb]` or `[p]`. Width only via `\linewidth` (e.g. `width=0.45\linewidth`). Exception: TikZ diagrams and script plots that are built at their final width are included at natural size (no `width=`), so their fonts are not rescaled.
+- Font size in all figures (plots and diagrams): 10–11 pt at print size, i.e. about the text size as the supervisor requires (decided 2026-10-21). Plot scripts use 10 pt for labels, ticks, legends and cell values.
 - File names relate to the section where the figure appears (e.g. `figures/ch4_class_distribution.pdf`).
 - When a results table is too dense, add a bar plot (supervisor).
+- How figures are made (decided 2026-10-21): plots by Python scripts in `scripts/` (vector PDF); architecture and concept diagrams in TikZ following the rules below; image content inside diagrams only from our own data (`scripts/make_diagram_assets.py`); figures from papers only redrawn, with "adapted from~\cite[Fig.~X]{key}" in the caption.
+
+**TikZ diagram rules** (author's rules, 2026-10-21; font size adapted to the chair guideline)
+
+*Process (mandatory)*
+1. Each figure is its own standalone file `thesis/figures/tikz/<chN_name>.tex` (`\documentclass[12pt,tikz,border=2pt]{standalone}`, shared preamble `figures/tikz/preamble.tex` with the thesis fonts and packages). `scripts/build_tikz.py` compiles it to `thesis/figures/<chN_name>.pdf`, which the thesis includes with `\includegraphics`. Variants of one design share a body file.
+2. Before writing code, list the nodes, their rows/columns, and every connection (source anchor → target anchor, straight or orthogonal).
+3. After writing, compile, then render with `pdftoppm -png -r 400`. View the full image and zoomed crops of every region (a grid of at least 3×2 crops).
+4. Check every item of the visual checklist against the crops. Fix, recompile, re-inspect. Repeat until every item passes.
+5. Only then report back, stating which checks were verified and any compromise made.
+
+*Code rules*
+- No absolute coordinates except a single origin. Place nodes with `positioning` (`right=6mm of x`), `matrix` or `chains`; derived points (`(a |- b)`) are fine.
+- Every connection goes between named anchors (`(a.east) -- (b.west)`), never to hand-tuned points.
+- Orthogonal routing (`-|`, `|-`) for all non-trivial connections. No diagonal lines unless they are semantically meaningful.
+- Define junction points with `\coordinate`; branch residual/skip connections from a point on the line at least 3 mm from any node.
+- Define spacing, line widths, arrow tips, colours and fonts once as styles or macros at the top of the file. Elements of the same kind use the same style.
+- When several arrows enter one node, give each its own anchor (`north west`, `west`, `south west`, or `yshift` offsets). Never converge them on one point.
+- Draw each path exactly once.
+- At least 5 mm between consecutive boxes in a chain, so arrows have a visible shaft.
+- Labels go on edges with `node[above]` / `node[midway, right]` and get `inner sep` padding. They never sit on lines or in gaps between boxes.
+
+*Visual checklist (on the 400 dpi crops)*
+- [ ] No arrowhead overlaps a node border or enters a node.
+- [ ] No line crosses a label, a box, or another box's border unless it intentionally enters that box.
+- [ ] No two parallel lines closer than 2 mm.
+- [ ] Nodes meant to align (rows, columns, matching boxes/circles) share exact x or y coordinates.
+- [ ] Every line starts and ends exactly on its intended element, with no gaps and no overshoot.
+- [ ] All dashed/dotted lines of one kind look identical in weight.
+- [ ] Labels of corresponding elements have consistent spacing (e.g. the input and output image captions).
+- [ ] Text fits inside its box with padding; nothing is clipped.
+- [ ] Font at final print width matches the thesis: 10–11 pt (`\small`, `\footnotesize` in the 12 pt class); never `\scriptsize` for labels. (The author's original rule said 7–9 pt; the chair guideline requires font size matching the main text, l. 74 of `guidelines/chair_guidelines.md`.)
+- [ ] The figure fits the text width (16.2 cm) without scaling below 100 %.
 
 **Mathematics and notation**
 - Every symbol without a universal meaning is explained in the text at first use, even though there is a table of notation.
@@ -186,6 +221,31 @@ The goal is clear, precise, concise writing in my voice. Good human writing is s
 - Repeating the same point in different words; empty signposting beyond one short sentence at chapter starts.
 - Overclaiming or promotional tone about my own work.
 
+**Sentence and paragraph rules** (derived from the Ch. 1 revision, 2026-10-25). Three tiers; don't apply tier 3 as if it were tier 1.
+
+*Tier 1 — always*
+- Nothing inserted between subject and verb or between a verb and its number; definitions get their own sentence or follow the main clause with "where …" (not "a mean DSC, the overlap between …, of 70.85 %").
+- Every "this", "such a", "it" has its referent in the preceding sentence; never across a paragraph break or at a section start.
+- Modal verbs no stronger than the argument ("has to" only for real necessity; otherwise "would have to", "can").
+- No term before it is introduced, in text, captions and figure labels alike (e.g. "strategy", $k$, "control task").
+- General claims state the condition under which they hold (e.g. "fewer volumes mean fewer updates" only with a fixed number of epochs).
+- Claims about prior work match how Ch. 2 and `paper_notes/` describe it; check before generalising over several works.
+- A sentence starting with a cross-reference uses `\Cref`.
+
+*Tier 2 — depends on the chapter*
+- Detail belongs where it is defined or used: Introduction and problem statement stay conceptual; Method and Experiment & Results give every parameter.
+- A caption contains what is needed to read the figure, using only terms already defined: short in Ch. 1; self-contained in results chapters (metric, task order, $k$, number of runs). Figures don't repeat a paragraph or contradict the text's definitions.
+- Each point once within an argument and across neighbouring paragraphs; deliberate recaps are expected in chapter openings, Discussion and Summary.
+- Each definition in one place; later chapters may remind in a half-sentence with a reference, never redefine differently.
+
+*Tier 3 — preferences*
+- Two sentences instead of a semicolon when the clauses are separate statements; keep a semicolon for short, tightly linked clauses. Don't let splitting make the prose choppy.
+- Subject first; avoid long participial openers and fronted clauses that hide the main claim.
+- Say what is actually measured (a property of a structure, not the structure); no clumsy doubles.
+- Paragraph openings pick up the previous paragraph's end, and a section opening continues from the previous section (most important in Ch. 1, 2, 7, 8; Method and Results sections may open with a plain statement of scope).
+- Claim → reason → definition or detail; a definition does not interrupt an argument.
+- Define positively and leave contrasts to the chapter that covers them (except Ch. 2 and 3, where the contrast is the content).
+
 ## Consistency across the whole thesis
 - Terminology: one term per concept, used everywhere (see list below). Add new terms when introduced.
 - Notation: one symbol per quantity, defined before first use, listed in the table of notation.
@@ -207,7 +267,7 @@ The goal is clear, precise, concise writing in my voice. Good human writing is s
 
 Every research question raised in the Introduction must be answered explicitly in the Discussion and Summary.
 
-## Revising existing drafts (chapters 1 and 2, and any finished draft)
+## Revising existing drafts (any finished draft; no longer chapters 1 and 2, which are redrafted, decision 2026-10-22)
 1. **Diagnose first, no edits.** Review the chapter against the guidelines, this file and the section checklist below. Output an issue list grouped as structure, content and argument, citations, and language, each with file and line and a severity (must fix / should fix / minor).
 2. **I decide** which issues to address.
 3. **Fix in order:** structure → content and argument → citations → language. Never polish sentences in a section whose structure may still change.
@@ -221,7 +281,7 @@ Every research question raised in the Introduction must be answered explicitly i
 - Mark anything uncertain with `\todo{}` rather than guessing.
 - Be direct in feedback. Tell me when an argument is weak, unclear or unsupported; don't flatter.
 - Don't run git commits; I review the diff and commit myself.
-- End every task with a short summary: what changed, open `\todo`s, issues I need to verify, and the line added to `ai_use_log.md`.
+- End every task with a short summary: what changed, open `\todo`s, issues I need to verify, and the line added to `ai_use_log.md`. Before the summary, update `thesis_tracker.md` (new or resolved defense points and open items; rerun `python scripts/list_todos.py`).
 
 ## Review levels
 Reviews happen at three levels. In every review, report issues only; don't edit unless I ask.
@@ -238,7 +298,7 @@ After a chapter passes chapter review, update its status in the chapter table to
 4. Is every design choice justified, with alternatives considered? What would an examiner ask?
 5. Consistency: terminology, notation, tense, person, figure style.
 6. Compactness: any repetition, filler or vague sentences to cut?
-7. Comprehensibility and style: any sentence that breaks the writing style rules?
+7. Comprehensibility and style: any sentence that breaks the writing style rules? Check the tier-1 sentence and paragraph rules explicitly (insertions, referents, modal strength, terms before introduction, conditions of claims, prior work); report tier-3 cases only where they hurt readability.
 8. Formal rules: figures, captions, references, notation, as in "Formal requirements".
 9. Any `% CLAUDE-DRAFT` paragraphs I still need to rewrite?
 
@@ -253,8 +313,11 @@ Provisional choices; change them here if I decide otherwise, then apply everywhe
 - **task order / task sequence** — the order in which the tasks are trained; use these two terms only (not "ordering"). The two orders used are **original** and **reverse**
 - **adaptation** — performance on the current task after training on it. Metric "Adaptation": mean of the diagonal a_{i,i} of the evaluation matrix, i.e. the a_{k,k} term of the intransigence measure of Chaudhry et al. (2018), reported without its joint-training reference. Not "learning accuracy" or "plasticity" (plasticity is the broader property; intransigence needs the reference)
 - **Pretrained model (reference row)** — the same metrics computed for the never-updated pretrained model, one row per task order; not a strategy
-- **retention** — performance kept on earlier tasks after training on later ones [CONFIRM METRIC]
-- **transfer** — effect of training on one task on performance for other tasks [CONFIRM: forward and/or backward, and the metric]
+- **retention** — performance kept on earlier tasks after training on later ones, and on the control task; a property, not a metric: measured by Final Forgetting (within the sequence) and the control-task drop (outside it) (decided 2026-10-22)
+- **transfer** — forward transfer: performance on a task before it is trained, metric Transfer (ZSCL); backward transfer appears as negative Final Forgetting (Chaudhry) and has no metric of its own (decided 2026-10-22)
+- **families (of continual-learning methods)** — replay, regularisation, parameter isolation (De Lange) and, for vision–language models, multimodal replay, cross-modal regularisation, parameter-efficient adaptation (Liu et al.). Not "groups", "paradigms" or "categories", except when quoting a paper (decided 2026-10-25)
+- **primary / secondary metrics** — primary: Adaptation, Final Forgetting, control-task drop; secondary: Final Performance, Transfer. Average Performance is not reported (decided 2026-10-22)
+- **DSC** — Dice similarity coefficient (`\gls{dsc}`), not "Dice score". Own results as fractions with three decimals (0.979); values quoted from a paper keep that paper's % form (10.72 %)
 - **control task** — a held-out task that is never trained on and is used only to measure the loss of pretrained ability (AeroPath, prompt "lung", test split). Term follows SPU's "control set". Not "retention task" and not "zero-shot" (lung is a known concept for VoxTell; AeroPath itself was held out)
 - **control-task drop** — Dice on the control task of the pretrained model minus that of the final checkpoint; absolute, positive = loss. Not "retention drop"
 
@@ -263,9 +326,9 @@ Strategies (decided 2026-10-18; names describe the mechanism, not a CL scenario)
 - **sequential fine-tuning** — all parameters trained on each task in turn, no continual-learning mechanism (code `naive_sequential_finetuning`). The **baseline**; never "lower bound" (it has the highest Adaptation). Table/figure label: "Seq. fine-tuning". Not "naive", "full fine-tuning", "FFT" (except inside a related work's description)
 - **task-specific LoRA** — one LoRA adapter per task, selected by the task identity at inference (code `lora`, folder `task_specific`). Always state the rank r. Not "TIL-LoRA"
 - **shared LoRA** — one LoRA adapter shared by all tasks (code `shared_lora`). Always state the rank r. Not "CIL-LoRA"
-- **shared LoRA with replay** — shared LoRA plus a replay memory; the memory includes control-task volumes (`thesis_notes.md`). Label: "Shared LoRA + replay"
-- **ZSCL-based strategy** — this thesis's adaptation of ZSCL (distillation on current-task data plus weight ensembling, no reference dataset). Label: "ZSCL-based". Plain "ZSCL" only for the original paper
-- **CPE-CLIP-based strategy** — this thesis's adaptation of CPE-CLIP (learned prompt tokens in the decoder, frozen pretrained weights, per-task gradient scaling). Label: "CPE-CLIP-based". Plain "CPE-CLIP" only for the original paper
+- **shared LoRA with replay** — shared LoRA plus a replay memory. Until the rerun results are in, the text describes the existing run, whose memory includes 2 control-task volumes (control task not held out for this strategy). If the rerun without control-task volumes finishes, the text switches to it (option c, `thesis_notes.md` §1 and §4). Label: "Shared LoRA + replay"
+- **distillation-based strategy (adapted from ZSCL)** — this thesis's adaptation of ZSCL as evaluated: all parameters trained, plus feature distillation from the frozen pretrained model on current-task data; no reference dataset. Weight ensembling was implemented but is not part of the evaluated models (renamed 2026-10-21, `thesis_notes.md` §1). Full name at first use: "distillation-based strategy (adapted from ZSCL)"; afterwards "distillation-based strategy". Table/figure label: "Distillation-based". Never "ZSCL-based"; plain "ZSCL" only for the original paper
+- **prompt-tuning strategy (adapted from CPE-CLIP)** — this thesis's adaptation of CPE-CLIP as evaluated: all pretrained weights frozen; trained are learned prompt tokens appended to the cross-attention memory of the first prompt-decoder layers plus a meta-net that shifts the text query. Per-task gradient scaling was implemented but inactive (renamed 2026-10-21, `thesis_notes.md` §1). Full name at first use: "prompt-tuning strategy (adapted from CPE-CLIP)"; afterwards "prompt-tuning strategy". Table/figure label: "Prompt tuning". Never "CPE-CLIP-based"; plain "CPE-CLIP" only for the original paper. Here "prompt" always means the learned prompt tokens, never the text prompt
 - **task-aware inference** — the task identity is given at inference and selects task-specific parameters (task-specific LoRA only). All other strategies use **one parameter set for all tasks**. The text prompt names the target structure in every strategy. Use TIL/CIL/DIL only to describe related work in its own terms
-- **learned prompt tokens** — the trainable vectors of the CPE-CLIP-based strategy; **text prompt** — the free-text input naming the target structure. Never a bare "prompt" where both are possible
+- **learned prompt tokens** — the trainable vectors of the prompt-tuning strategy; **text prompt** — the free-text input naming the target structure. Never a bare "prompt" where both are possible
 - [Symbol]: [meaning]

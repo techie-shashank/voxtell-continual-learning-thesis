@@ -23,8 +23,10 @@ FIGURES = REPO / "thesis" / "figures"
 # Training volumes per task without a cap: "Train/Val/Test Split: 108/23/24" in the SLURM logs.
 FULL_TRAIN_VOLUMES = 108
 
-METRICS = ["adaptation", "average_performance", "final_performance",
-           "final_forgetting", "transfer", "control_drop"]
+# Reported metrics: primary first (Adaptation, Final Forgetting, control-task drop), then secondary
+# (Final Performance, Transfer). Average Performance is still computed in cl_metrics.csv but not
+# reported (author decision 2026-10-22: it mixes adaptation, retention and transfer).
+METRICS = ["adaptation", "final_forgetting", "control_drop", "final_performance", "transfer"]
 METRIC_LABEL = {
     "adaptation": "Adaptation",
     "average_performance": "Average Performance",
@@ -42,8 +44,8 @@ STRATEGY = {
     "naive_sequential_finetuning": ("Seq. fine-tuning", "#2a78d6", "o"),
     "lora": ("Task-specific LoRA", "#eb6834", "s"),
     "shared_lora": ("Shared LoRA", "#1baf7a", "^"),
-    "cpe_clip": ("CPE-CLIP-based", "#eda100", "D"),
-    "zscl": ("ZSCL-based", "#e87ba4", "v"),
+    "cpe_clip": ("Prompt tuning", "#eda100", "D"),
+    "zscl": ("Distillation-based", "#e87ba4", "v"),
 }
 STRATEGY_ORDER = list(STRATEGY)
 REFERENCE_COLOUR = "#52514e"
@@ -127,9 +129,9 @@ def setup_style():
         "font.size": 10,
         "axes.labelsize": 10,
         "axes.titlesize": 10,
-        "legend.fontsize": 9,
-        "xtick.labelsize": 9,
-        "ytick.labelsize": 9,
+        "legend.fontsize": 10,
+        "xtick.labelsize": 10,
+        "ytick.labelsize": 10,
         "axes.spines.top": False,
         "axes.spines.right": False,
         "axes.edgecolor": "#52514e",

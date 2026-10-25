@@ -1,0 +1,113 @@
+key,theme,status,source,path
+zhao2025sat,t1_text_promptable,ok,arXiv 2312.17183 | https://arxiv.org/pdf/2312.17183,papers\t1_text_promptable\zhao2025sat.pdf
+isensee2018nnunetselfadaptingframeworkunetbased,other,ok,OpenAlex OA | https://arxiv.org/pdf/1904.08128,papers\other\isensee2018nnunetselfadaptingframeworkunetbased.pdf
+universeg,t2_few_shot,ok,arXiv 2304.06131 | https://arxiv.org/pdf/2304.06131,papers\t2_few_shot\universeg.pdf
+Zhao_2024,other,ok,OpenAlex OA | https://arxiv.org/pdf/2405.12971,papers\other\Zhao_2024.pdf
+dolz2019hyperdensenethyperdenselyconnectedcnn,other,ok,arXiv 1804.02967 | https://arxiv.org/pdf/1804.02967,papers\other\dolz2019hyperdensenethyperdenselyconnectedcnn.pdf
+ma2023unleashingstrengthsunlabeleddata,other,ok,arXiv 2308.05862 | https://arxiv.org/pdf/2308.05862,papers\other\ma2023unleashingstrengthsunlabeleddata.pdf
+ma2021abdomenct1kabdominalorgansegmentation,other,ok,arXiv 2010.14808 | https://arxiv.org/pdf/2010.14808,papers\other\ma2021abdomenct1kabdominalorgansegmentation.pdf
+baid2021rsnaasnrmiccaibrats2021benchmark,other,ok,arXiv 2107.02314 | https://arxiv.org/pdf/2107.02314,papers\other\baid2021rsnaasnrmiccaibrats2021benchmark.pdf
+heller2023kits21challengeautomaticsegmentation,other,ok,arXiv 2307.01984 | https://arxiv.org/pdf/2307.01984,papers\other\heller2023kits21challengeautomaticsegmentation.pdf
+MP-COVID-19-SegBenchmark,other,ok,OpenAlex OA | https://arxiv.org/pdf/2004.12537,papers\other\MP-COVID-19-SegBenchmark.pdf
+du2025segvoluniversalinteractivevolumetric,t1_text_promptable,ok,arXiv 2311.13385 | https://arxiv.org/pdf/2311.13385,papers\t1_text_promptable\du2025segvoluniversalinteractivevolumetric.pdf
+text3dsam,t1_text_promptable,manual,,
+rokuss2025voxtellfreetextpromptableuniversal,t1_text_promptable,local,,voxtell_paper/voxtell.pdf
+fm_review,other,manual,,
+harnessprogresscancer,other,manual,,
+wang2019organrisksegmentationhead,other,ok,arXiv 1809.00960 | https://arxiv.org/pdf/1809.00960,papers\other\wang2019organrisksegmentationhead.pdf
+nauffal2024noninvasive,other,manual,,
+pham2000current,other,manual,,
+3d_unet,other,ok,OpenAlex OA | https://arxiv.org/pdf/1606.06650,papers\other\3d_unet.pdf
+li2018hdenseunethybriddenselyconnected,other,ok,arXiv 1709.07330 | https://arxiv.org/pdf/1709.07330,papers\other\li2018hdenseunethybriddenselyconnected.pdf
+weightedresunet,other,manual,,
+oktay2018attentionunetlearninglook,other,ok,arXiv 1804.03999 | https://arxiv.org/pdf/1804.03999,papers\other\oktay2018attentionunetlearninglook.pdf
+wang2020nonlocalunetbiomedicalimage,other,ok,arXiv 1812.04103 | https://arxiv.org/pdf/1812.04103,papers\other\wang2020nonlocalunetbiomedicalimage.pdf
+Ma_2024,t1_text_promptable,ok,arXiv 2304.12306 | https://arxiv.org/pdf/2304.12306,papers\t1_text_promptable\Ma_2024.pdf
+cheng2023sammed2d,t1_text_promptable,ok,arXiv 2308.16184 | https://arxiv.org/pdf/2308.16184,papers\t1_text_promptable\cheng2023sammed2d.pdf
+kemker2017measuringcatastrophicforgettingneural,t3_cl_foundations,ok,arXiv 1708.02072 | https://arxiv.org/pdf/1708.02072,papers\t3_cl_foundations\kemker2017measuringcatastrophicforgettingneural.pdf
+yu2026recentadvancesmultimodalcontinual,t3_cl_foundations,ok,arXiv 2410.05352 | https://arxiv.org/pdf/2410.05352,papers\t3_cl_foundations\yu2026recentadvancesmultimodalcontinual.pdf
+Kirkpatrick_2017,t3_cl_foundations,ok,arXiv 1612.00796 | https://arxiv.org/pdf/1612.00796,papers\t3_cl_foundations\Kirkpatrick_2017.pdf
+icarl2017,t3_cl_foundations,ok,arXiv 1611.07725 | https://arxiv.org/pdf/1611.07725,papers\t3_cl_foundations\icarl2017.pdf
+yoon2018lifelonglearningdynamicallyexpandable,t3_cl_foundations,ok,arXiv 1708.01547 | https://arxiv.org/pdf/1708.01547,papers\t3_cl_foundations\yoon2018lifelonglearningdynamicallyexpandable.pdf
+PARISI201954,t3_cl_foundations,ok,OpenAlex OA | https://arxiv.org/pdf/1802.07569,papers\t3_cl_foundations\PARISI201954.pdf
+delange2022,t3_cl_foundations,local,,voxtell_paper/delange.pdf
+liu2026continuallearningvlmssurvey,t3_cl_foundations,ok,arXiv 2508.04227 | https://arxiv.org/pdf/2508.04227,papers\t3_cl_foundations\liu2026continuallearningvlmssurvey.pdf
+gonzalez2023lifelong,t5_cl_medseg_networks,ok,OpenAlex OA | https://www.researchsquare.com/article/rs-1582100/latest.pdf,papers\t5_cl_medseg_networks\gonzalez2023lifelong.pdf
+chen2026fewshotcontinuallearning3d,t6_cl_medseg_foundation,ok,arXiv 2602.23533 | https://arxiv.org/pdf/2602.23533,papers\t6_cl_medseg_foundation\chen2026fewshotcontinuallearning3d.pdf
+Zhang_2025,t6_cl_medseg_foundation,ok,arXiv 2508.11673 | https://arxiv.org/pdf/2508.11673,papers\t6_cl_medseg_foundation\Zhang_2025.pdf
+chen2025forgingdynamicmemoryretrievalguided,t6_cl_medseg_foundation,ok,arXiv 2512.13072 | https://arxiv.org/pdf/2512.13072,papers\t6_cl_medseg_foundation\chen2025forgingdynamicmemoryretrievalguided.pdf
+ranem2022continualhippocampussegmentationtransformers,t5_cl_medseg_networks,ok,arXiv 2204.08043 | https://arxiv.org/pdf/2204.08043,papers\t5_cl_medseg_networks\ranem2022continualhippocampussegmentationtransformers.pdf
+karani2018lifelonglearningapproachbrain,t5_cl_medseg_networks,ok,arXiv 1805.10170 | https://arxiv.org/pdf/1805.10170,papers\t5_cl_medseg_networks\karani2018lifelonglearningapproachbrain.pdf
+memmel2021adversarialcontinuallearningmultidomain,t5_cl_medseg_networks,ok,arXiv 2107.08751 | https://arxiv.org/pdf/2107.08751,papers\t5_cl_medseg_networks\memmel2021adversarialcontinuallearningmultidomain.pdf
+DAYARATHNA2024103046,other,ok,OpenAlex OA | https://researchmgt.monash.edu/ws/files/571406139/564650350_oa.pdf,papers\other\DAYARATHNA2024103046.pdf
+carion2026sam3segmentconcepts,t1_text_promptable,ok,arXiv 2511.16719 | https://arxiv.org/pdf/2511.16719,papers\t1_text_promptable\carion2026sam3segmentconcepts.pdf
+qazi2026clmedicalimaging,t3_cl_foundations,ok,arXiv 2405.13482 | https://arxiv.org/pdf/2405.13482,papers\t3_cl_foundations\qazi2026clmedicalimaging.pdf
+french1999catastrophic,t3_cl_foundations,manual,,
+van_de_Ven_2025,t3_cl_foundations,ok,arXiv 2403.05175 | https://arxiv.org/pdf/2403.05175,papers\t3_cl_foundations\van_de_Ven_2025.pdf
+Litjens_2017,other,ok,arXiv 1702.05747 | https://arxiv.org/pdf/1702.05747,papers\other\Litjens_2017.pdf
+theekshana26fewshot,t2_few_shot,manual,,
+støverud2023aeropathairwaysegmentationbenchmark,other,ok,arXiv 2311.01138 | https://arxiv.org/pdf/2311.01138,papers\other\stverud2023aeropathairwaysegmentationbenchmark.pdf
+desai2021skmtea,other,local,,datasets/skm_tea_paper.pdf
+li2023lvitlanguagemeetsvision,t1_text_promptable,ok,arXiv 2206.14718 | https://arxiv.org/pdf/2206.14718,papers\t1_text_promptable\li2023lvitlanguagemeetsvision.pdf
+Degerli_2022,t1_text_promptable,ok,OpenAlex OA | https://arxiv.org/pdf/2202.10185,papers\t1_text_promptable\Degerli_2022.pdf
+textmatch2024,t1_text_promptable,manual,,
+bassi2025learningsegmentationradiologyreports,t1_text_promptable,ok,arXiv 2507.05582 | https://arxiv.org/pdf/2507.05582,papers\t1_text_promptable\bassi2025learningsegmentationradiologyreports.pdf
+Liu_2023,t1_text_promptable,ok,OpenAlex OA | https://arxiv.org/pdf/2301.00785,papers\t1_text_promptable\Liu_2023.pdf
+radford2021learningtransferablevisualmodels,t1_text_promptable,ok,arXiv 2103.00020 | https://arxiv.org/pdf/2103.00020,papers\t1_text_promptable\radford2021learningtransferablevisualmodels.pdf
+zhao2025foundation-9de,t1_text_promptable,ok,OpenAlex OA | https://arxiv.org/pdf/2405.12971,papers\t1_text_promptable\zhao2025foundation-9de.pdf
+zou2023segment,t1_text_promptable,ok,arXiv 2304.06718 | https://arxiv.org/pdf/2304.06718,papers\t1_text_promptable\zou2023segment.pdf
+liu2022learningincrementallysegmentmultiple,t5_cl_medseg_networks,ok,arXiv 2203.02100 | https://arxiv.org/pdf/2203.02100,papers\t5_cl_medseg_networks\liu2022learningincrementallysegmentmultiple.pdf
+ji2023continualsegmentsingleunified,t5_cl_medseg_networks,ok,arXiv 2302.00162 | https://arxiv.org/pdf/2302.00162,papers\t5_cl_medseg_networks\ji2023continualsegmentsingleunified.pdf
+ukbiobank,t5_cl_medseg_networks,manual,,
+baweja2018continuallearningmedicalimaging,t5_cl_medseg_networks,ok,arXiv 1811.02496 | https://arxiv.org/pdf/1811.02496,papers\t5_cl_medseg_networks\baweja2018continuallearningmedicalimaging.pdf
+li2017learningforgetting,t3_cl_foundations,ok,arXiv 1606.09282 | https://arxiv.org/pdf/1606.09282,papers\t3_cl_foundations\li2017learningforgetting.pdf
+Chaudhry_2018,t3_cl_foundations,local,,voxtell_paper/chaudhary_riemann.pdf
+cermelli2020modelingbackgroundincrementallearning,t5_cl_medseg_networks,ok,arXiv 2002.00718 | https://arxiv.org/pdf/2002.00718,papers\t5_cl_medseg_networks\cermelli2020modelingbackgroundincrementallearning.pdf
+Ozdemir_2018,t5_cl_medseg_networks,ok,OpenAlex OA | https://arxiv.org/pdf/1806.00265,papers\t5_cl_medseg_networks\Ozdemir_2018.pdf
+michieli2019incrementallearningtechniquessemantic,t5_cl_medseg_networks,ok,arXiv 1907.13372 | https://arxiv.org/pdf/1907.13372,papers\t5_cl_medseg_networks\michieli2019incrementallearningtechniquessemantic.pdf
+liu2023incrementallearningheterogeneousstructure,t5_cl_medseg_networks,ok,arXiv 2305.19404 | https://arxiv.org/pdf/2305.19404,papers\t5_cl_medseg_networks\liu2023incrementallearningheterogeneousstructure.pdf
+memory_replay_cropping,t5_cl_medseg_networks,manual,,
+newgenerativereplayapproach,t5_cl_medseg_networks,manual,,
+gonzalez2023wrongcontinuallearningmedical,t5_cl_medseg_networks,ok,arXiv 2010.11008 | https://arxiv.org/pdf/2010.11008,papers\t5_cl_medseg_networks\gonzalez2023wrongcontinuallearningmedical.pdf
+guo2025continuallearningdrivenmodelaccurate,t5_cl_medseg_networks,ok,arXiv 2503.12698 | https://arxiv.org/pdf/2503.12698,papers\t5_cl_medseg_networks\guo2025continuallearningdrivenmodelaccurate.pdf
+douillard2021ploplearningforgettingcontinual,t5_cl_medseg_networks,ok,arXiv 2011.11390 | https://arxiv.org/pdf/2011.11390,papers\t5_cl_medseg_networks\douillard2021ploplearningforgettingcontinual.pdf
+zhang2023continuallearningabdominalmultiorgan,t5_cl_medseg_networks,ok,arXiv 2306.00988 | https://arxiv.org/pdf/2306.00988,papers\t5_cl_medseg_networks\zhang2023continuallearningabdominalmultiorgan.pdf
+liu2026medsam3delvingsegmentmedical,t1_text_promptable,ok,arXiv 2511.19046 | https://arxiv.org/pdf/2511.19046,papers\t1_text_promptable\liu2026medsam3delvingsegmentmedical.pdf
+baharoon2025rexgroundingct3dchestct,t1_text_promptable,ok,arXiv 2507.22030 | https://arxiv.org/pdf/2507.22030,papers\t1_text_promptable\baharoon2025rexgroundingct3dchestct.pdf
+zheng2023preventingzeroshottransferdegradation,t4_cl_vlm,local,,voxtell_paper/zscl.pdf
+frascaroli2024clipgenerativelatentreplay,t4_cl_vlm,ok,arXiv 2407.15793 | https://arxiv.org/pdf/2407.15793,papers\t4_cl_vlm\frascaroli2024clipgenerativelatentreplay.pdf
+huang2024classincrementallearningclipadaptive,t4_cl_vlm,ok,arXiv 2407.14143 | https://arxiv.org/pdf/2407.14143,papers\t4_cl_vlm\huang2024classincrementallearningclipadaptive.pdf
+zanella2024lowrankfewshotadaptationvisionlanguage,t2_few_shot,ok,arXiv 2405.18541 | https://arxiv.org/pdf/2405.18541,papers\t2_few_shot\zanella2024lowrankfewshotadaptationvisionlanguage.pdf
+wang2023orthogonalsubspacelearninglanguage,t4_cl_vlm,ok,arXiv 2310.14152 | https://arxiv.org/pdf/2310.14152,papers\t4_cl_vlm\wang2023orthogonalsubspacelearninglanguage.pdf
+che2026loraloraparameterefficientarchitecture,t4_cl_vlm,ok,arXiv 2508.06202 | https://arxiv.org/pdf/2508.06202,papers\t4_cl_vlm\che2026loraloraparameterefficientarchitecture.pdf
+wang2023spromptslearningpretrainedtransformers,t4_cl_vlm,ok,arXiv 2207.12819 | https://arxiv.org/pdf/2207.12819,papers\t4_cl_vlm\wang2023spromptslearningpretrainedtransformers.pdf
+li2024coleclipopendomaincontinuallearning,t4_cl_vlm,ok,arXiv 2403.10245 | https://arxiv.org/pdf/2403.10245,papers\t4_cl_vlm\li2024coleclipopendomaincontinuallearning.pdf
+D_Alessandro_2023,t4_cl_vlm,local,,voxtell_paper/cpe_clip.pdf
+yu2024boostingcontinuallearningvisionlanguage,t4_cl_vlm,ok,arXiv 2403.11549 | https://arxiv.org/pdf/2403.11549,papers\t4_cl_vlm\yu2024boostingcontinuallearningvisionlanguage.pdf
+wang2024comprehensivesurveycontinuallearning,t3_cl_foundations,ok,arXiv 2302.00487 | https://arxiv.org/pdf/2302.00487,papers\t3_cl_foundations\wang2024comprehensivesurveycontinuallearning.pdf
+Zhang_2024_CVPR,t3_cl_foundations,local,,voxtell_paper/spu.pdf
+wang2023tracecomprehensivebenchmarkcontinual,other,ok,arXiv 2310.06762 | https://arxiv.org/pdf/2310.06762,papers\other\wang2023tracecomprehensivebenchmarkcontinual.pdf
+luo2025empiricalstudycatastrophicforgetting,other,ok,arXiv 2308.08747 | https://arxiv.org/pdf/2308.08747,papers\other\luo2025empiricalstudycatastrophicforgetting.pdf
+ilharco2022patchingopenvocabularymodelsinterpolating,other,ok,arXiv 2208.05592 | https://arxiv.org/pdf/2208.05592,papers\other\ilharco2022patchingopenvocabularymodelsinterpolating.pdf
+kalajdzievski2023rankstabilizationscalingfactor,other,local,,voxtell_paper/rslora.pdf
+hu2022lora,other,local,,voxtell_paper/lora_hu.pdf
+zhou2022cocoop,other,local,,voxtell_paper/Zhou_Conditional_Prompt_Learning_for_Vision-Language_Models_CVPR_2022_paper.pdf
+NIPS2017_3f5ee243,other,ok,arXiv 1706.03762 | https://arxiv.org/pdf/1706.03762,papers\other\NIPS2017_3f5ee243.pdf
+hinton2015distilling,other,ok,arXiv 1503.02531 | https://arxiv.org/pdf/1503.02531,papers\other\hinton2015distilling.pdf
+zhou2022coop,other,ok,OpenAlex OA | https://arxiv.org/pdf/2109.01134,papers\other\zhou2022coop.pdf
+zhang2025qwen3embedding,other,ok,arXiv 2506.05176 | https://arxiv.org/pdf/2506.05176,papers\other\zhang2025qwen3embedding.pdf
+milletari2016vnet,other,ok,OpenAlex OA | https://arxiv.org/pdf/1606.04797,papers\other\milletari2016vnet.pdf
+dice1945measures,other,manual,,
+isensee2024nnunetrevisited,other,ok,OpenAlex OA | https://arxiv.org/pdf/2404.09556,papers\other\isensee2024nnunetrevisited.pdf
+efron1993bootstrap,other,manual,,
+NEW_liu2024universal,t1_text_promptable,manual,,
+NEW_silvarodriguez2023fseft,t2_few_shot,manual,,
+wu2024gift,t4_cl_vlm,ok,arXiv 2503.04229 | https://arxiv.org/pdf/2503.04229,papers\t4_cl_vlm\wu2024gift.pdf
+NEW_lorammoe2024,t5_cl_medseg_networks,ok,OpenAlex OA | https://arxiv.org/pdf/2406.13583,papers\t5_cl_medseg_networks\NEW_lorammoe2024.pdf
+NEW_wang2024sammed3dmoe,t6_cl_medseg_foundation,ok,arXiv 2407.04938 | https://arxiv.org/pdf/2407.04938,papers\t6_cl_medseg_foundation\NEW_wang2024sammed3dmoe.pdf
+NEW_wang2026casam,t6_cl_medseg_foundation,ok,arXiv 2511.17201 | https://arxiv.org/pdf/2511.17201,papers\t6_cl_medseg_foundation\NEW_wang2026casam.pdf
+NEW_ye2025medseqft,t6_cl_medseg_foundation,ok,arXiv 2509.06096 | https://arxiv.org/pdf/2509.06096,papers\t6_cl_medseg_foundation\NEW_ye2025medseqft.pdf
+NEW_medcrpcl2026,t6_cl_medseg_foundation,manual,,
+NEW_paewc2025,t6_cl_medseg_foundation,manual,,
+NEW_medpeftcl2025,t6_cl_medseg_foundation,manual,,
+NEW_regcl2025,t6_cl_medseg_foundation,manual,,

@@ -58,3 +58,9 @@ dist/
 .pytest_cache/
 .coverage
 htmlcov/
+
+# Paper PDFs (copyrighted; local only)
+papers/**/*.pdf
+papers/text/
+voxtell_paper/*.pdf
+!voxtell_paper/voxtell.pdf

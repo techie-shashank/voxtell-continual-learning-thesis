@@ -247,7 +247,7 @@ def example_figure(ex, aero_spacing, extra=None, skm_spacing=None):
         for task in SKM_TASKS:
             overlay[lab == label_of[task]] = matplotlib_rgba(TASK_COLOUR[task], 0.75)
         ax.imshow(overlay, aspect=aspect)
-        ax.set_title(title, fontsize=9)
+        ax.set_title(title, fontsize=10)
 
     # Sagittal (fixed LR index): rows SI, columns AP, both in-plane -> square pixels.
     knee(axes[0], ex["skm_img_ax2"], ex["skm_lab_ax2"], 1.0, "(a) SKM-TEA, sagittal")
@@ -264,7 +264,7 @@ def example_figure(ex, aero_spacing, extra=None, skm_spacing=None):
     overlay[lab.T > 0] = matplotlib_rgba(LUNG_COLOUR, 0.35)
     axes[-1].imshow(overlay, origin="lower", aspect=aspect)
     axes[-1].invert_xaxis()
-    axes[-1].set_title(f"({letter}) AeroPath, coronal", fontsize=9)
+    axes[-1].set_title(f"({letter}) AeroPath, coronal", fontsize=10)
     for ax in axes:
         ax.set_xticks([])
         ax.set_yticks([])
@@ -272,7 +272,7 @@ def example_figure(ex, aero_spacing, extra=None, skm_spacing=None):
             s.set_visible(False)
     handles = [Patch(facecolor=TASK_COLOUR[t], label=TASK_NAME[t]) for t in SKM_TASKS]
     handles.append(Patch(facecolor=LUNG_COLOUR, alpha=0.5, label="Lung (control task)"))
-    fig.legend(handles=handles, loc="outside lower center", ncol=4, frameon=False, fontsize=8)
+    fig.legend(handles=handles, loc="outside lower center", ncol=3, frameon=False, fontsize=10)
     # Case IDs contain '_', which the Computer Modern font cannot render; name them in the caption.
     print(f"Example volumes: SKM-TEA {ex['skm_case']} (slices {ex['skm_index'].tolist()}), "
           f"AeroPath {ex['aero_case']} (slices {ex['aero_index'].tolist()})")

@@ -1,0 +1,176 @@
+{
+  "raw_metrics": [
+    [
+      {
+        "lateral tibial cartilage": {
+          "mean_dice": 0.0,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "Average Loss": 1.0258491983016331,
+        "Average Dice": 0.0
+      },
+      {
+        "lateral tibial cartilage": {
+          "mean_dice": 0.493111797918876,
+          "count": 24,
+          "min": 0.3272167146205902,
+          "max": 0.6030839681625366
+        },
+        "Average Loss": 0.517750916381677,
+        "Average Dice": 0.493111797918876
+      }
+    ],
+    [
+      {
+        "medial tibial cartilage": {
+          "mean_dice": 0.0,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "Average Loss": 1.0238358775774639,
+        "Average Dice": 0.0
+      },
+      {
+        "medial tibial cartilage": {
+          "mean_dice": 0.43047769616047543,
+          "count": 24,
+          "min": 0.24945908784866333,
+          "max": 0.5917983055114746
+        },
+        "Average Loss": 0.5880942791700363,
+        "Average Dice": 0.43047769616047543
+      }
+    ],
+    [
+      {
+        "femoral cartilage": {
+          "mean_dice": 0.684150921801726,
+          "count": 24,
+          "min": 0.41484999656677246,
+          "max": 0.8035404086112976
+        },
+        "Average Loss": 0.3333938581248124,
+        "Average Dice": 0.684150921801726
+      },
+      {
+        "femoral cartilage": {
+          "mean_dice": 0.7621516560514768,
+          "count": 24,
+          "min": 0.6205456256866455,
+          "max": 0.8540836572647095
+        },
+        "Average Loss": 0.2573272616912921,
+        "Average Dice": 0.7621516560514768
+      }
+    ],
+    [
+      {
+        "patellar cartilage": {
+          "mean_dice": 0.0,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "Average Loss": 1.0359754115343094,
+        "Average Dice": 0.0
+      },
+      {
+        "patellar cartilage": {
+          "mean_dice": 0.46388325840234756,
+          "count": 24,
+          "min": 0.17310810089111328,
+          "max": 0.6397148370742798
+        },
+        "Average Loss": 0.5550959967076778,
+        "Average Dice": 0.46388325840234756
+      }
+    ],
+    [
+      {
+        "medial meniscus": {
+          "mean_dice": 0.0,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "Average Loss": 1.0243988633155823,
+        "Average Dice": 0.0
+      },
+      {
+        "medial meniscus": {
+          "mean_dice": 0.5382997815807661,
+          "count": 24,
+          "min": 0.3394727408885956,
+          "max": 0.652597188949585
+        },
+        "Average Loss": 0.48105036715666455,
+        "Average Dice": 0.5382997815807661
+      }
+    ],
+    [
+      {
+        "lateral meniscus": {
+          "mean_dice": 0.0,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "Average Loss": 1.0209571868181229,
+        "Average Dice": 0.0
+      },
+      {
+        "lateral meniscus": {
+          "mean_dice": 0.6159337448577086,
+          "count": 24,
+          "min": 0.37199583649635315,
+          "max": 0.8120413422584534
+        },
+        "Average Loss": 0.3984954506158829,
+        "Average Dice": 0.6159337448577086
+      }
+    ],
+    [
+      {
+        "lung": {
+          "mean_dice": 0.9793932884931564,
+          "count": 4,
+          "min": 0.977437436580658,
+          "max": 0.9813187718391418
+        },
+        "Average Loss": 0.04602053947746754,
+        "Average Dice": 0.9793932884931564
+      },
+      {
+        "lung": {
+          "mean_dice": 0.09349051117897034,
+          "count": 4,
+          "min": 0.0691630095243454,
+          "max": 0.1299326866865158
+        },
+        "Average Loss": 1.60031858086586,
+        "Average Dice": 0.09349051117897034
+      }
+    ]
+  ],
+  "prompt_set": [
+    "femoral cartilage",
+    "lateral meniscus",
+    "lateral tibial cartilage",
+    "lung",
+    "medial meniscus",
+    "medial tibial cartilage",
+    "patellar cartilage"
+  ],
+  "prompt_to_task": {
+    "lateral tibial cartilage": 0,
+    "medial tibial cartilage": 1,
+    "femoral cartilage": 2,
+    "patellar cartilage": 3,
+    "medial meniscus": 4,
+    "lateral meniscus": 5,
+    "lung": 6
+  }
+}

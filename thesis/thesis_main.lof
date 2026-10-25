@@ -1,5 +1,22 @@
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Setting of this thesis}}{3}{figure.caption.6}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Volume of each SKM-TEA structure over all 155 volumes (logarithmic axis). Boxes show the median and the interquartile range, whiskers extend to 1.5 times the interquartile range, and each point is one volume.}}{26}{figure.caption.9}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Example volumes with their labels. (a)~Sagittal slice of SKM-TEA volume MTR\_005 through the lateral compartment, showing patellar, femoral and lateral tibial cartilage and the lateral meniscus. (b)~Coronal slice of the same volume through the tibial plateau, showing femoral cartilage, both tibial cartilages and both menisci. (c)~Coronal slice of AeroPath volume~1 with the lung label of the control task. Both example volumes belong to the test split.}}{27}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Architecture of VoxTell}}{33}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Entries of the evaluation matrix used by each metric}}{38}{figure.caption.18}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Volume of each SKM-TEA structure}}{44}{figure.caption.21}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Example volumes with their labels}}{45}{figure.caption.22}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces VoxTell as used in this thesis and the parts changed by the strategies}}{63}{figure.caption.27}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Metrics of the strategies}}{72}{figure.caption.47}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Evaluation matrices of the strategies}}{73}{figure.caption.48}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Control task over the task sequence}}{74}{figure.caption.49}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Metrics of shared LoRA over the rank}}{77}{figure.caption.53}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Training loss of the patellar diagnosis runs}}{78}{figure.caption.57}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Metrics over the number of training volumes}}{80}{figure.caption.60}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Metrics in the original and the reverse task order}}{82}{figure.caption.64}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

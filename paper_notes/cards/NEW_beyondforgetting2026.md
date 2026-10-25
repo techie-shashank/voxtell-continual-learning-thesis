@@ -1,0 +1,25 @@
+# Beyond Forgetting (continual medical segmentation benchmark) — fact card (tier B)
+| | |
+|---|---|
+| Paper | B. Wang, H. Zhou, Y. Gao, X. Zhuang, "Beyond Forgetting in Continual Medical Image Segmentation: A Comprehensive Benchmark Study", arXiv:2605.06160v1 (7 May 2026); 16 pages (IEEE journal template) |
+| Bib key / Local PDF | NEW_beyondforgetting2026 (no bib entry yet) / papers/t3_cl_foundations/NEW_beyondforgetting2026.pdf |
+| Version read | arXiv v1; no peer-reviewed venue stated in the PDF (header is the generic "Journal of LaTeX Class Files" template) |
+| Written | 2026-10-23, by Claude |
+
+## Facts (from the paper, each with location: Sec./p./Table/Fig.)
+- Task / problem: benchmark of continual learning for medical image segmentation in three scenarios: Domain-CL (same labels, shifted centres), Class-CL (new structures, same image distribution), Organ-CL (disjoint labels and different images) (Abstract; Sec. 3.1, Table 2, p. 4).
+- Data (Sec. 3.5, pp. 6–7): Domain-CL = six-centre prostate T2 MRI built from NCI-ISBI13 (centres A, B), I2CVB (C), PROMISE12 (D, E, F); Class-CL = MMWHS cardiac CT, 7 structures split into 3 tasks (LV, LA, MYO / RV, RA / AA, PA); Organ-CL = 4 tasks in the fixed order left atrium (LAScarQS LGE MRI), prostate (PROMISE12), liver (LiTS CT), brain tumour (FeTS FLAIR MRI). Per-task random split 60/15/25 % train/val/test. Slices resized to 256 × 256, i.e. slice-wise (2D) processing; the segmentation backbone network is not named ("the same backbone network", Sec. 3.3, p. 5). Number of shots / training volumes per task not stated as a variable; no few-shot study.
+- Strategies compared (Sec. 3.4, pp. 5–6; Fig. 1): regularisation (EWC, SI, LwF), replay (ER, GSS, GEM, GPM, A-GEM, DER, DER++, FDR; buffer size fixed at 32, Sec. 4.1 p. 7), parameter isolation (PNN, DAN), Class-CL specific (PLOP, MiB), plus Non-CL (sequential training, called the lower bound) and JointTrain (upper bound).
+- Metrics beyond forgetting (Sec. 3.3, Eq. 1–6, p. 5): A-Dice (mean final Dice over tasks); BWTR (backward transfer divided by d_{i,i}, i.e. relative forgetting); RMA = plasticity, mean over tasks 2..T of d_{i,i} divided by the Dice of a model trained only on task i (needs per-task single-task references); E-FWT = forward transfer averaged over all future tasks relative to a randomly initialised model (Domain-CL only); WCD (Class-CL, Dice over all seen classes); MPE (parameter growth rate); DRR (replayed fraction of training data, raw replay flagged). Pretrained-ability retention outside the task sequence (control set) is not measured.
+- Task order: Domain-CL only, ten random permutations (Order A–J), A-Dice and BWTR for 2 regularisation and 6 replay methods (Sec. 4.4, Fig. 2, p. 10). Task order "affects CL performance"; EWC and LwF vary most; GSS least (std A-Dice 0.0134, BWTR 0.0123) (p. 9).
+- Best results (Table 3, p. 8, Domain-CL): PNN A-Dice .789, DAN .786 (BWTR 0, MPE 1.112 vs .111), ER .750, Non-CL .676 (BWTR −0.237), JointTrain .830. LwF lowest RMA .894. E-FWT: most methods below Non-CL (.260); only DAN above (.312). Organ-CL (Table 5, p. 9): PNN .839, DAN .824, ER .729, Non-CL .603, JointTrain .881. Class-CL (Table 4, p. 9): PNN .770, MiB .751, PLOP .708, Non-CL .471, JointTrain 0.810. Mean ± std given; number of runs/seeds not stated.
+- Inconsistency in the paper: text on p. 7 gives the Non-CL Domain-CL BWTR as −0.196, Table 3 gives −0.237 ± .038.
+- Main conclusions (Abstract; Sec. 5, p. 10): no single strategy satisfies all requirements; replay gives the best stability–plasticity balance; parameter isolation removes forgetting at the cost of growing model size; forward generalisability remains limited; buffer-size gains saturate (Sec. 4.5, Fig. 3a).
+- Foundation models (Sec. 5.2, pp. 12–13; Fig. 3b): preliminary Domain-CL test with SAM (box/point prompts not described; no text prompts): sequential full fine-tuning (encoder and decoder) vs sequential LoRA (encoder frozen, LoRA + decoder trained). Average Dice of the 6 × 6 matrix 0.747 → 0.823, average off-diagonal Dice 0.719 → 0.808 with LoRA. Authors state LoRA does not fully solve forgetting because the decoder is still updated sequentially. No free-text promptable or 3D model evaluated.
+- Limitations stated by the authors: no separate limitations section; Sec. 5.1 and 5.3 list open directions incl. few-shot continual learning (Fig. 4, only as a related paradigm), limited annotation, privacy of replay.
+
+## Where it fits in Ch. 2 (suggestion)
+Section on continual-learning evaluation in medical segmentation: precedent for metrics beyond forgetting (plasticity relative to single-task training, forward transfer) and for a task-order study; contrast that it is 2D, full-data, closed-label and has no text prompts or pretrained-ability control set.
+
+## Relevance (NOT from the paper)
+Supports the thesis's choice to report adaptation and transfer next to forgetting, and its finding that replay/PEFT balance stability and plasticity is a reference point; its SAM+LoRA experiment is the closest it comes to foundation-model CL, and it does not touch the few-shot, free-text promptable 3D setting.
