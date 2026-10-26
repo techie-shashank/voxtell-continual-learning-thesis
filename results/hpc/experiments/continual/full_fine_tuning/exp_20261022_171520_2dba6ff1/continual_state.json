@@ -1,18 +1,19 @@
 {
   "version": 1,
   "strategy": "naive_sequential_finetuning",
-  "status": "in_progress",
+  "status": "completed",
   "current_task_index": 5,
   "current_task_name": "skm_tea_lateral_tibial",
-  "current_checkpoint": "/home/vault/iwi5/iwi5326h/projects/VoxTell/experiments/continual/full_fine_tuning/exp_20261022_171520_2dba6ff1/tasks/task_06_skm_tea_lateral_tibial/checkpoints/latest_recovery.pt",
+  "current_checkpoint": null,
   "completed_tasks": [
     0,
     1,
     2,
     3,
-    4
+    4,
+    5
   ],
-  "updated_at": "2026-10-23T15:15:00.451223+00:00",
+  "updated_at": "2026-10-25T02:30:35.937902+00:00",
   "resume_position": {
     "epoch": 2,
     "batch_idx": 10,

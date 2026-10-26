@@ -10,5 +10,8 @@ Diagnosis of the patellar failure & Task-specific LoRA ($r = 4, 16$), patellar c
 Amount of labelled data & Seq. fine-tuning; Task-specific LoRA ($r = 4$); Shared LoRA ($r = 1024$) & 5, 10, 20, 108 & 3 & \ref{sec:exp-few-shot} \\
 Task order & Seq. fine-tuning in original and reverse order; Task-specific LoRA ($r = 4$) in original and reverse order; Shared LoRA ($r = 1024$) in original and reverse order & 108 & 4 & \ref{sec:exp-task-order} \\
 Replay & Shared LoRA ($r = 1024$) with and without replay & 108 & 4 & \ref{sec:exp-main} \\
+Gradient scaling of the prompt-tuning strategy & Prompt tuning without per-task gradient scaling & 108 & 4 & \ref{sec:exp-main} \\
+Amount of labelled data with the update count of the full data & Seq. fine-tuning, 216 epochs per task; Task-specific LoRA ($r = 4$), 216 epochs per task; Shared LoRA ($r = 1024$), 216 epochs per task & 5 & 3 & \ref{sec:exp-few-shot} \\
+Upper reference: joint training & Joint fine-tuning & 5, 10, 20, 108 & 2, 3 & \ref{sec:exp-main} \\
 \bottomrule
 \end{tabularx}

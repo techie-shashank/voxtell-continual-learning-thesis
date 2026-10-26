@@ -1,0 +1,10 @@
+{
+    "medial tibial cartilage": {
+        "mean_dice": 0.012808380501761954,
+        "count": 24,
+        "min": 0.0,
+        "max": 0.0744316428899765
+    },
+    "Average Loss": 1.0089761142929394,
+    "Average Dice": 0.012808380501761954
+}

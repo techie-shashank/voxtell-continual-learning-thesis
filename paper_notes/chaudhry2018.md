@@ -22,5 +22,5 @@ Partial notes: Sec. 3 (metrics). Sections 1–2 are what the **paper** says; sec
 
 ## 3. Analysis for this thesis (NOT from the paper)
 - Thesis a_{i,j} = task i after stage j, so Chaudhry's a_{k,j} corresponds to the thesis's a_{j,k}. Final Forgetting = F_T with this mapping; the max over l = 1, …, T−1 includes stages before task i was trained, which exist in the thesis matrix because every task is evaluated at every stage (kept unchanged, `thesis_notes.md` §1 2026-10-18).
-- Adaptation = mean of a_{k,k}, the second term of Eq. 4, without the reference a*_k (no joint run until the reruns).
+- Adaptation = mean of a_{k,k}, the second term of Eq. 4, without the reference a*_k (the joint reruns of 2026-10 train on all six tasks only, so a*_k is available for k = T only; intransigence not reported, thesis_notes.md §1, 2026-10-26).
 - DSC in place of accuracy is covered by the IoU remark on p. 5.

@@ -72,7 +72,6 @@ In the original design, each decoder layer applies self-attention to its queries
 
 % CLAUDE-DRAFT
 VoxTell is a vision--language model that maps a 3D volume and a free-text prompt, from a single word to a clinical sentence, to a segmentation mask of the described structure~\cite[p.~1]{rokuss2025voxtellfreetextpromptableuniversal}.
-It was trained on more than 62{,}000 \gls{ct}, \gls{mri} and \gls{pet} volumes from 158 public datasets, with a vocabulary of 1{,}087 anatomical and pathological concepts~\cite[p.~4]{rokuss2025voxtellfreetextpromptableuniversal}.
 The model has four parts (\cref{fig:ch3_voxtell}): a frozen text encoder, a convolutional image encoder, a transformer prompt decoder that relates the text to the image, and a convolutional decoder into which the text is fused at every resolution~\cite[Sec.~3]{rokuss2025voxtellfreetextpromptableuniversal}.
 
 % CLAUDE-DRAFT
@@ -138,11 +137,11 @@ In this matrix, catastrophic forgetting (\cref{sec:intro-problem}) appears as $a
 The loss of abilities that the pretrained model had before the first task does not appear in the matrix, because its rows cover only the tasks of the sequence; \cref{sec:bg-metrics} measures it on a control task and defines the metrics that summarise the matrix.
 
 % CLAUDE-DRAFT
-Our setting does not fit any of the three continual-learning scenarios of \cref{sec:cl-vlm} cleanly.
+Of the three continual-learning scenarios of \cref{sec:cl-vlm}, our setting is closest to task-incremental learning.
 All tasks share the same images, and each task adds a new target structure with its own masks.
-At inference, the text prompt names the structure to segment in every strategy, so the model never has to infer which of the learned targets is wanted, the difficulty that defines class-incremental learning.
-At the same time, all strategies except task-specific LoRA use one parameter set for all tasks and receive no task identity, unlike in task-incremental learning.
-We therefore describe the strategies by their mechanism and distinguish only whether they use the task identity at inference, which we call task-aware inference, or one parameter set for all tasks; the scenario names are used only to describe related work in its own terms.
+At inference, the text prompt names the structure to segment, so the model never has to infer which of the learned targets is wanted, the difficulty that defines class-incremental learning.
+Since each task has one fixed text prompt, the prompt also identifies the task.
+The strategies differ in whether they use the task identity to select task-specific parameters: task-specific LoRA does, which we call task-aware inference, whereas all other strategies use one parameter set for all tasks.
 
 % ---------------------------------------------------------------------
 \section{Methods Adapted by the Strategies}
@@ -274,7 +273,7 @@ Lower values are better for Final Forgetting and the control-task drop, higher v
 
 % CLAUDE-DRAFT
 Adaptation measures how well each task is learned when it is trained.
-It is the term $a_{k,k}$ of the intransigence measure of Chaudhry et al., which subtracts it from the performance of a reference model trained on the data of all tasks at once~\cite[Sec.~3, Eq.~4]{Chaudhry_2018}; Adaptation reports this term without the reference.
+It is the term $a_{k,k}$ of the intransigence measure of Chaudhry et al., which subtracts it from the performance on task~$k$ of a reference model trained on the data of tasks $1, \dots, k$ together~\cite[Sec.~3, Eq.~4]{Chaudhry_2018}; Adaptation reports this term without the reference.
 
 % CLAUDE-DRAFT
 Final Forgetting is the average forgetting of Chaudhry et al.\ after the last task: for each earlier task, the best performance at any previous stage minus the performance at the end~\cite[Sec.~3, Eq.~3]{Chaudhry_2018}.

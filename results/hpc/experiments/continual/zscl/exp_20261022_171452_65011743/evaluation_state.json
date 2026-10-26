@@ -1,0 +1,526 @@
+{
+  "raw_metrics": [
+    [
+      {
+        "lateral tibial cartilage": {
+          "mean_dice": 0.0,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "Average Loss": 1.0258491983016331,
+        "Average Dice": 0.0
+      },
+      {
+        "lateral tibial cartilage": {
+          "mean_dice": 0.8406190251310667,
+          "count": 24,
+          "min": 0.724541187286377,
+          "max": 0.9174154996871948
+        },
+        "Average Loss": 0.16540693833182255,
+        "Average Dice": 0.8406190251310667
+      },
+      {
+        "lateral tibial cartilage": {
+          "mean_dice": 3.545940065426597e-05,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0006485998746939003
+        },
+        "Average Loss": 1.0684797714153926,
+        "Average Dice": 3.545940065426597e-05
+      },
+      {
+        "lateral tibial cartilage": {
+          "mean_dice": 0.0008690709867475258,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.008893442340195179
+        },
+        "Average Loss": 1.0402303487062454,
+        "Average Dice": 0.0008690709867475258
+      },
+      {
+        "lateral tibial cartilage": {
+          "mean_dice": 0.004511756830121764,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.024094972759485245
+        },
+        "Average Loss": 1.0260859827200572,
+        "Average Dice": 0.004511756830121764
+      },
+      {
+        "lateral tibial cartilage": {
+          "mean_dice": 0.0,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "Average Loss": 1.0313958724339802,
+        "Average Dice": 0.0
+      },
+      {
+        "lateral tibial cartilage": {
+          "mean_dice": 0.007094931944569301,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.028419090434908867
+        },
+        "Average Loss": 1.0126501818497975,
+        "Average Dice": 0.007094931944569301
+      }
+    ],
+    [
+      {
+        "medial tibial cartilage": {
+          "mean_dice": 0.0,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "Average Loss": 1.0238358775774639,
+        "Average Dice": 0.0
+      },
+      {
+        "medial tibial cartilage": {
+          "mean_dice": 0.0,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "Average Loss": 1.0173046092192333,
+        "Average Dice": 0.0
+      },
+      {
+        "medial tibial cartilage": {
+          "mean_dice": 0.8305833513538042,
+          "count": 24,
+          "min": 0.7073704600334167,
+          "max": 0.9124939441680908
+        },
+        "Average Loss": 0.17452381582309803,
+        "Average Dice": 0.8305833513538042
+      },
+      {
+        "medial tibial cartilage": {
+          "mean_dice": 0.0030276612045175475,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.021656302735209465
+        },
+        "Average Loss": 1.0331792657574017,
+        "Average Dice": 0.0030276612045175475
+      },
+      {
+        "medial tibial cartilage": {
+          "mean_dice": 0.0027290656019734647,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.016821065917611122
+        },
+        "Average Loss": 1.0240583370129268,
+        "Average Dice": 0.0027290656019734647
+      },
+      {
+        "medial tibial cartilage": {
+          "mean_dice": 0.012808380501761954,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0744316428899765
+        },
+        "Average Loss": 1.0089761142929394,
+        "Average Dice": 0.012808380501761954
+      },
+      {
+        "medial tibial cartilage": {
+          "mean_dice": 0.0,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "Average Loss": 1.0212406317392986,
+        "Average Dice": 0.0
+      }
+    ],
+    [
+      {
+        "femoral cartilage": {
+          "mean_dice": 0.684150921801726,
+          "count": 24,
+          "min": 0.41484999656677246,
+          "max": 0.8035404086112976
+        },
+        "Average Loss": 0.3333938581248124,
+        "Average Dice": 0.684150921801726
+      },
+      {
+        "femoral cartilage": {
+          "mean_dice": 0.0006946870826141094,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.005886818282306194
+        },
+        "Average Loss": 1.0585396786530812,
+        "Average Dice": 0.0006946870826141094
+      },
+      {
+        "femoral cartilage": {
+          "mean_dice": 0.0012666572023742144,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.008014252409338951
+        },
+        "Average Loss": 1.1301536709070206,
+        "Average Dice": 0.0012666572023742144
+      },
+      {
+        "femoral cartilage": {
+          "mean_dice": 0.8232262755433718,
+          "count": 24,
+          "min": 0.7063288688659668,
+          "max": 0.9005928039550781
+        },
+        "Average Loss": 0.19457495833436647,
+        "Average Dice": 0.8232262755433718
+      },
+      {
+        "femoral cartilage": {
+          "mean_dice": 0.25471389790376026,
+          "count": 24,
+          "min": 0.18920882046222687,
+          "max": 0.31827208399772644
+        },
+        "Average Loss": 0.8148892720540365,
+        "Average Dice": 0.25471389790376026
+      },
+      {
+        "femoral cartilage": {
+          "mean_dice": 0.0051465512660797685,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.026392359286546707
+        },
+        "Average Loss": 1.0995465020338695,
+        "Average Dice": 0.0051465512660797685
+      },
+      {
+        "femoral cartilage": {
+          "mean_dice": 0.0024655055791906,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.012819238007068634
+        },
+        "Average Loss": 1.0807960728804271,
+        "Average Dice": 0.0024655055791906
+      }
+    ],
+    [
+      {
+        "patellar cartilage": {
+          "mean_dice": 0.0,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "Average Loss": 1.0359754115343094,
+        "Average Dice": 0.0
+      },
+      {
+        "patellar cartilage": {
+          "mean_dice": 0.0,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "Average Loss": 1.0219107419252396,
+        "Average Dice": 0.0
+      },
+      {
+        "patellar cartilage": {
+          "mean_dice": 2.0749592901362728e-05,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0004979902296327055
+        },
+        "Average Loss": 1.0348899215459824,
+        "Average Dice": 2.0749592901362728e-05
+      },
+      {
+        "patellar cartilage": {
+          "mean_dice": 0.008429090006757178,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.06832923740148544
+        },
+        "Average Loss": 1.027589884897073,
+        "Average Dice": 0.008429090006757178
+      },
+      {
+        "patellar cartilage": {
+          "mean_dice": 0.4723823455472787,
+          "count": 24,
+          "min": 0.13674280047416687,
+          "max": 0.592765212059021
+        },
+        "Average Loss": 0.5431016273796558,
+        "Average Dice": 0.4723823455472787
+      },
+      {
+        "patellar cartilage": {
+          "mean_dice": 0.0,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "Average Loss": 1.0433960457642872,
+        "Average Dice": 0.0
+      },
+      {
+        "patellar cartilage": {
+          "mean_dice": 6.313210784962091e-06,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.00015151705883909017
+        },
+        "Average Loss": 1.0255057960748672,
+        "Average Dice": 6.313210784962091e-06
+      }
+    ],
+    [
+      {
+        "medial meniscus": {
+          "mean_dice": 0.0,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "Average Loss": 1.0243988633155823,
+        "Average Dice": 0.0
+      },
+      {
+        "medial meniscus": {
+          "mean_dice": 0.0,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "Average Loss": 1.0199059496323268,
+        "Average Dice": 0.0
+      },
+      {
+        "medial meniscus": {
+          "mean_dice": 0.011076324881893621,
+          "count": 24,
+          "min": 7.825491775292903e-05,
+          "max": 0.06466664373874664
+        },
+        "Average Loss": 1.014175685743491,
+        "Average Dice": 0.011076324881893621
+      },
+      {
+        "medial meniscus": {
+          "mean_dice": 0.0012553499298443664,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.004867414478212595
+        },
+        "Average Loss": 1.0371792316436768,
+        "Average Dice": 0.0012553499298443664
+      },
+      {
+        "medial meniscus": {
+          "mean_dice": 1.0444199991373656e-05,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.00023541701375506818
+        },
+        "Average Loss": 1.0277659992376964,
+        "Average Dice": 1.0444199991373656e-05
+      },
+      {
+        "medial meniscus": {
+          "mean_dice": 0.712689183652401,
+          "count": 24,
+          "min": 0.5519571304321289,
+          "max": 0.848707914352417
+        },
+        "Average Loss": 0.29981886347134906,
+        "Average Dice": 0.712689183652401
+      },
+      {
+        "medial meniscus": {
+          "mean_dice": 2.25595116110829e-05,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0005414282786659896
+        },
+        "Average Loss": 1.020805463194847,
+        "Average Dice": 2.25595116110829e-05
+      }
+    ],
+    [
+      {
+        "lateral meniscus": {
+          "mean_dice": 0.0,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "Average Loss": 1.0209571868181229,
+        "Average Dice": 0.0
+      },
+      {
+        "lateral meniscus": {
+          "mean_dice": 0.00553002846330249,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0266631580889225
+        },
+        "Average Loss": 1.0113012865185738,
+        "Average Dice": 0.00553002846330249
+      },
+      {
+        "lateral meniscus": {
+          "mean_dice": 0.0,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "Average Loss": 1.0408313423395157,
+        "Average Dice": 0.0
+      },
+      {
+        "lateral meniscus": {
+          "mean_dice": 0.0013979451027050043,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.012909980490803719
+        },
+        "Average Loss": 1.0344181259473164,
+        "Average Dice": 0.0013979451027050043
+      },
+      {
+        "lateral meniscus": {
+          "mean_dice": 6.364286946336506e-07,
+          "count": 24,
+          "min": 0.0,
+          "max": 1.5274288671207614e-05
+        },
+        "Average Loss": 1.0262074967225392,
+        "Average Dice": 6.364286946336506e-07
+      },
+      {
+        "lateral meniscus": {
+          "mean_dice": 0.0003042673039696335,
+          "count": 24,
+          "min": 0.0,
+          "max": 0.005258397664874792
+        },
+        "Average Loss": 1.0212152550617855,
+        "Average Dice": 0.0003042673039696335
+      },
+      {
+        "lateral meniscus": {
+          "mean_dice": 0.8010967535277208,
+          "count": 24,
+          "min": 0.49729081988334656,
+          "max": 0.8832442164421082
+        },
+        "Average Loss": 0.20607230688134828,
+        "Average Dice": 0.8010967535277208
+      }
+    ],
+    [
+      {
+        "lung": {
+          "mean_dice": 0.9793932884931564,
+          "count": 4,
+          "min": 0.977437436580658,
+          "max": 0.9813187718391418
+        },
+        "Average Loss": 0.04602053947746754,
+        "Average Dice": 0.9793932884931564
+      },
+      {
+        "lung": {
+          "mean_dice": 0.0012877570261480287,
+          "count": 4,
+          "min": 0.00085911137284711,
+          "max": 0.0017406351398676634
+        },
+        "Average Loss": 2.1636330485343933,
+        "Average Dice": 0.0012877570261480287
+      },
+      {
+        "lung": {
+          "mean_dice": 0.0002902657797676511,
+          "count": 4,
+          "min": 0.00021524449402932078,
+          "max": 0.0003838945413008332
+        },
+        "Average Loss": 4.315879464149475,
+        "Average Dice": 0.0002902657797676511
+      },
+      {
+        "lung": {
+          "mean_dice": 0.0030942740850150585,
+          "count": 4,
+          "min": 0.002627139212563634,
+          "max": 0.0038543434347957373
+        },
+        "Average Loss": 2.676580488681793,
+        "Average Dice": 0.0030942740850150585
+      },
+      {
+        "lung": {
+          "mean_dice": 0.00222234774264507,
+          "count": 4,
+          "min": 0.0016469951951876283,
+          "max": 0.0027518568094819784
+        },
+        "Average Loss": 2.9400437474250793,
+        "Average Dice": 0.00222234774264507
+      },
+      {
+        "lung": {
+          "mean_dice": 3.873471598581091e-05,
+          "count": 4,
+          "min": 0.0,
+          "max": 0.00015232981240842491
+        },
+        "Average Loss": 5.07316267490387,
+        "Average Dice": 3.873471598581091e-05
+      },
+      {
+        "lung": {
+          "mean_dice": 0.00020811461763514671,
+          "count": 4,
+          "min": 0.0,
+          "max": 0.0006505034980364144
+        },
+        "Average Loss": 3.404651641845703,
+        "Average Dice": 0.00020811461763514671
+      }
+    ]
+  ],
+  "prompt_set": [
+    "femoral cartilage",
+    "lateral meniscus",
+    "lateral tibial cartilage",
+    "lung",
+    "medial meniscus",
+    "medial tibial cartilage",
+    "patellar cartilage"
+  ],
+  "prompt_to_task": {
+    "lateral tibial cartilage": 0,
+    "medial tibial cartilage": 1,
+    "femoral cartilage": 2,
+    "patellar cartilage": 3,
+    "medial meniscus": 4,
+    "lateral meniscus": 5,
+    "lung": 6
+  }
+}

@@ -2,22 +2,30 @@
 \small\setlength{\tabcolsep}{3pt}
 \begin{tabular}{llrrrrr}
 \toprule
-Strategy & Volumes & Adapt.\,$\uparrow$ & Forg.\,$\downarrow$ & Ctrl.\ drop\,$\downarrow$ & Final\,$\uparrow$ & Transf.\,$\uparrow$ \\
+Strategy & Vol.\ (updates) & Adapt.\,$\uparrow$ & Forg.\,$\downarrow$ & Ctrl.\ drop\,$\downarrow$ & Final\,$\uparrow$ & Transf.\,$\uparrow$ \\
 \midrule
-Seq. fine-tuning & 5 & 0.530 & 0.368 & 0.009 & 0.223 & 0.105 \\
-Seq. fine-tuning & 10 & 0.612 & 0.518 & 0.305 & 0.180 & 0.038 \\
-Seq. fine-tuning & 20 & 0.598 & 0.552 & 0.979 & 0.138 & 0.024 \\
-Seq. fine-tuning & 108 & 0.717 & 0.704 & 0.979 & 0.130 & 0.001 \\
+Seq. fine-tuning & 5 (50) & 0.545 & 0.382 & 0.010 & 0.227 & 0.092 \\
+Seq. fine-tuning & 5 (1{,}080) & 0.712 & 0.714 & 0.979 & 0.117 & 0.023 \\
+Seq. fine-tuning & 10 (100) & 0.616 & 0.522 & 0.305 & 0.180 & 0.035 \\
+Seq. fine-tuning & 20 (200) & 0.616 & 0.573 & 0.979 & 0.138 & 0.022 \\
+Seq. fine-tuning & 108 (1{,}080) & 0.781 & 0.782 & 0.979 & 0.130 & 0.001 \\
 \addlinespace
-Task-specific LoRA ($r=4$) & 5 & 0.114 & 0.000 & 0.000 & 0.114 & 0.137 \\
-Task-specific LoRA ($r=4$) & 10 & 0.115 & 0.000 & 0.000 & 0.115 & 0.137 \\
-Task-specific LoRA ($r=4$) & 20 & 0.116 & 0.000 & 0.000 & 0.116 & 0.138 \\
-Task-specific LoRA ($r=4$) & 108 & 0.485 & 0.000 & 0.000 & 0.485 & 0.129 \\
+Task-specific LoRA ($r=4$) & 5 (50) & 0.114 & 0.000 & 0.000 & 0.114 & 0.137 \\
+Task-specific LoRA ($r=4$) & 5 (1{,}080) & 0.429 & 0.000 & 0.000 & 0.429 & 0.059 \\
+Task-specific LoRA ($r=4$) & 10 (100) & 0.115 & 0.000 & 0.000 & 0.115 & 0.137 \\
+Task-specific LoRA ($r=4$) & 20 (200) & 0.116 & 0.000 & 0.000 & 0.116 & 0.138 \\
+Task-specific LoRA ($r=4$) & 108 (1{,}080) & 0.485 & 0.000 & 0.000 & 0.485 & 0.129 \\
 \addlinespace
-Shared LoRA ($r=1024$) & 5 & 0.115 & 0.000 & $-$0.001 & 0.115 & 0.137 \\
-Shared LoRA ($r=1024$) & 10 & 0.116 & 0.000 & $-$0.001 & 0.117 & 0.138 \\
-Shared LoRA ($r=1024$) & 20 & 0.140 & $-$0.009 & 0.004 & 0.165 & 0.140 \\
-Shared LoRA ($r=1024$) & 108 & 0.471 & 0.289 & 0.237 & 0.233 & 0.174 \\
+Shared LoRA ($r=1024$) & 5 (50) & 0.115 & 0.000 & $-$0.001 & 0.115 & 0.137 \\
+Shared LoRA ($r=1024$) & 5 (1{,}080) & 0.438 & 0.296 & 0.334 & 0.192 & 0.175 \\
+Shared LoRA ($r=1024$) & 10 (100) & 0.116 & 0.000 & $-$0.001 & 0.117 & 0.138 \\
+Shared LoRA ($r=1024$) & 20 (200) & 0.140 & $-$0.009 & 0.004 & 0.165 & 0.140 \\
+Shared LoRA ($r=1024$) & 108 (1{,}080) & 0.471 & 0.289 & 0.237 & 0.233 & 0.174 \\
+\midrule
+Joint fine-tuning & 5 (--) & -- & -- & 0.733 & 0.600 & -- \\
+Joint fine-tuning & 10 (--) & -- & -- & 0.894 & 0.585 & -- \\
+Joint fine-tuning & 20 (--) & -- & -- & 0.979 & 0.753 & -- \\
+Joint fine-tuning & 108 (--) & -- & -- & 0.979 & 0.852 & -- \\
 \midrule
 Pretrained model &  & 0.114 & 0.000 & 0.000 & 0.114 & 0.137 \\
 \bottomrule

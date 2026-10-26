@@ -11,18 +11,12 @@ exp_20260816_155157_668e608d,"TIL-LoRA (Rank=4, Task Order=Original)",Main;Rank 
 exp_20260816_155157_668e608d,"TIL-LoRA (Rank=4, Task Order=Original)",Main;Rank Ablation,lora,4,skm_tea_patellar,last_epoch,10,7,10,True,1.019205,1.1096
 exp_20260816_155157_668e608d,"TIL-LoRA (Rank=4, Task Order=Original)",Main;Rank Ablation,lora,5,skm_tea_medial_meniscus,last_epoch,10,8,10,True,0.442402,0.4573
 exp_20260816_155157_668e608d,"TIL-LoRA (Rank=4, Task Order=Original)",Main;Rank Ablation,lora,6,skm_tea_lateral_meniscus,last_epoch,10,10,10,True,0.541756,0.5418
-exp_20260816_155351_cfa776e7,Fine-Tuning (Task Order=Original),Main,naive_sequential_finetuning,1,skm_tea_lateral_tibial,best_validation,10,6,6,False,0.143254,0.1756
-exp_20260816_155351_cfa776e7,Fine-Tuning (Task Order=Original),Main,naive_sequential_finetuning,2,skm_tea_medial_tibial,best_validation,10,8,8,False,0.143082,0.1823
-exp_20260816_155351_cfa776e7,Fine-Tuning (Task Order=Original),Main,naive_sequential_finetuning,3,skm_tea_femoral,best_validation,10,8,8,False,0.163184,0.1793
-exp_20260816_155351_cfa776e7,Fine-Tuning (Task Order=Original),Main,naive_sequential_finetuning,4,skm_tea_patellar,best_validation,10,2,2,False,0.1543,0.1579
-exp_20260816_155351_cfa776e7,Fine-Tuning (Task Order=Original),Main,naive_sequential_finetuning,5,skm_tea_medial_meniscus,best_validation,10,8,8,False,0.230104,0.2546
-exp_20260816_155351_cfa776e7,Fine-Tuning (Task Order=Original),Main,naive_sequential_finetuning,6,skm_tea_lateral_meniscus,best_validation,10,8,8,False,0.231187,0.2314
-exp_20260816_161201_b39ea60e,CPE-CLIP (Task Order=Original),Main,cpe_clip,1,skm_tea_lateral_tibial,best_validation,10,6,6,False,0.299558,0.309
-exp_20260816_161201_b39ea60e,CPE-CLIP (Task Order=Original),Main,cpe_clip,2,skm_tea_medial_tibial,best_validation,10,8,8,False,0.381824,0.3992
-exp_20260816_161201_b39ea60e,CPE-CLIP (Task Order=Original),Main,cpe_clip,3,skm_tea_femoral,best_validation,10,6,6,False,0.218754,0.2244
-exp_20260816_161201_b39ea60e,CPE-CLIP (Task Order=Original),Main,cpe_clip,4,skm_tea_patellar,best_validation,10,2,2,False,0.161839,0.1756
-exp_20260816_161201_b39ea60e,CPE-CLIP (Task Order=Original),Main,cpe_clip,5,skm_tea_medial_meniscus,best_validation,10,8,8,False,0.38264,0.3892
-exp_20260816_161201_b39ea60e,CPE-CLIP (Task Order=Original),Main,cpe_clip,6,skm_tea_lateral_meniscus,best_validation,10,8,8,False,0.39211,0.4149
+exp_20260816_161201_b39ea60e,CPE-CLIP (Task Order=Original),Scaling Ablation,cpe_clip,1,skm_tea_lateral_tibial,best_validation,10,6,6,False,0.299558,0.309
+exp_20260816_161201_b39ea60e,CPE-CLIP (Task Order=Original),Scaling Ablation,cpe_clip,2,skm_tea_medial_tibial,best_validation,10,8,8,False,0.381824,0.3992
+exp_20260816_161201_b39ea60e,CPE-CLIP (Task Order=Original),Scaling Ablation,cpe_clip,3,skm_tea_femoral,best_validation,10,6,6,False,0.218754,0.2244
+exp_20260816_161201_b39ea60e,CPE-CLIP (Task Order=Original),Scaling Ablation,cpe_clip,4,skm_tea_patellar,best_validation,10,2,2,False,0.161839,0.1756
+exp_20260816_161201_b39ea60e,CPE-CLIP (Task Order=Original),Scaling Ablation,cpe_clip,5,skm_tea_medial_meniscus,best_validation,10,8,8,False,0.38264,0.3892
+exp_20260816_161201_b39ea60e,CPE-CLIP (Task Order=Original),Scaling Ablation,cpe_clip,6,skm_tea_lateral_meniscus,best_validation,10,8,8,False,0.39211,0.4149
 exp_20260817_172554_da49178a,"CIL-LoRA (Rank=256, Task Order=Original)",Rank Ablation,shared_lora,1,skm_tea_lateral_tibial,last_epoch,10,8,10,True,0.553368,0.5612
 exp_20260817_172554_da49178a,"CIL-LoRA (Rank=256, Task Order=Original)",Rank Ablation,shared_lora,2,skm_tea_medial_tibial,last_epoch,10,8,10,True,0.481809,0.4841
 exp_20260817_172554_da49178a,"CIL-LoRA (Rank=256, Task Order=Original)",Rank Ablation,shared_lora,3,skm_tea_femoral,last_epoch,10,6,10,True,0.282465,0.3046
@@ -52,30 +46,12 @@ exp_20260924_163047_f4aa9c98,"CIL-LoRA (Rank=512, Task Order=Original)",Rank Abl
 exp_20260924_163047_f4aa9c98,"CIL-LoRA (Rank=512, Task Order=Original)",Rank Ablation,shared_lora,4,skm_tea_patellar,last_epoch,10,10,10,True,0.191922,0.1919
 exp_20260924_163047_f4aa9c98,"CIL-LoRA (Rank=512, Task Order=Original)",Rank Ablation,shared_lora,5,skm_tea_medial_meniscus,last_epoch,10,8,10,True,0.478047,0.4941
 exp_20260924_163047_f4aa9c98,"CIL-LoRA (Rank=512, Task Order=Original)",Rank Ablation,shared_lora,6,skm_tea_lateral_meniscus,last_epoch,10,8,10,True,0.52657,0.5307
-exp_20260924_164721_1bf4a4dc,Fine-Tuning (Task Order=Reverse),Task Order Ablation,naive_sequential_finetuning,1,skm_tea_lateral_meniscus,best_validation,10,8,8,False,0.188051,0.2135
-exp_20260924_164721_1bf4a4dc,Fine-Tuning (Task Order=Reverse),Task Order Ablation,naive_sequential_finetuning,2,skm_tea_medial_meniscus,best_validation,10,8,8,False,0.19356,0.2168
-exp_20260924_164721_1bf4a4dc,Fine-Tuning (Task Order=Reverse),Task Order Ablation,naive_sequential_finetuning,3,skm_tea_patellar,best_validation,10,2,2,False,0.136595,0.1506
-exp_20260924_164721_1bf4a4dc,Fine-Tuning (Task Order=Reverse),Task Order Ablation,naive_sequential_finetuning,4,skm_tea_femoral,best_validation,10,8,8,False,0.156746,0.1744
-exp_20260924_164721_1bf4a4dc,Fine-Tuning (Task Order=Reverse),Task Order Ablation,naive_sequential_finetuning,5,skm_tea_medial_tibial,best_validation,10,8,8,False,0.15968,0.1952
-exp_20260924_164721_1bf4a4dc,Fine-Tuning (Task Order=Reverse),Task Order Ablation,naive_sequential_finetuning,6,skm_tea_lateral_tibial,best_validation,10,6,6,False,0.15493,0.1952
 exp_20260924_202757_88afb75d,"CIL-LoRA (Rank=4, Task Order=Original)",Rank Ablation,shared_lora,1,skm_tea_lateral_tibial,last_epoch,10,6,10,True,0.337933,0.3502
 exp_20260924_202757_88afb75d,"CIL-LoRA (Rank=4, Task Order=Original)",Rank Ablation,shared_lora,2,skm_tea_medial_tibial,last_epoch,10,8,10,True,0.43313,0.4454
 exp_20260924_202757_88afb75d,"CIL-LoRA (Rank=4, Task Order=Original)",Rank Ablation,shared_lora,3,skm_tea_femoral,last_epoch,10,6,10,True,0.213467,0.2168
 exp_20260924_202757_88afb75d,"CIL-LoRA (Rank=4, Task Order=Original)",Rank Ablation,shared_lora,4,skm_tea_patellar,last_epoch,10,2,10,True,0.161579,0.1794
 exp_20260924_202757_88afb75d,"CIL-LoRA (Rank=4, Task Order=Original)",Rank Ablation,shared_lora,5,skm_tea_medial_meniscus,last_epoch,10,9,10,True,0.391538,0.3945
 exp_20260924_202757_88afb75d,"CIL-LoRA (Rank=4, Task Order=Original)",Rank Ablation,shared_lora,6,skm_tea_lateral_meniscus,last_epoch,10,8,10,True,0.453223,0.4645
-exp_20260924_204124_7ce6758c,ZSCL (Task Order=Original),Main,zscl,1,skm_tea_lateral_tibial,best_validation,10,8,8,False,0.14886,0.1826
-exp_20260924_204124_7ce6758c,ZSCL (Task Order=Original),Main,zscl,2,skm_tea_medial_tibial,best_validation,10,8,8,False,0.147794,0.1862
-exp_20260924_204124_7ce6758c,ZSCL (Task Order=Original),Main,zscl,3,skm_tea_femoral,best_validation,10,8,8,False,0.160438,0.191
-exp_20260924_204124_7ce6758c,ZSCL (Task Order=Original),Main,zscl,4,skm_tea_patellar,best_validation,10,8,8,False,0.155202,0.156
-exp_20260924_204124_7ce6758c,ZSCL (Task Order=Original),Main,zscl,5,skm_tea_medial_meniscus,best_validation,10,8,8,False,0.281321,0.2898
-exp_20260924_204124_7ce6758c,ZSCL (Task Order=Original),Main,zscl,6,skm_tea_lateral_meniscus,best_validation,10,8,8,False,0.215346,0.2375
-exp_20260925_000502_4e1f0da2,20-shot Fine-Tuning (Task Order=Original),Few-shot,naive_sequential_finetuning,1,skm_tea_lateral_tibial,best_validation,10,8,8,False,0.216408,0.2522
-exp_20260925_000502_4e1f0da2,20-shot Fine-Tuning (Task Order=Original),Few-shot,naive_sequential_finetuning,2,skm_tea_medial_tibial,best_validation,10,10,10,True,0.263951,0.264
-exp_20260925_000502_4e1f0da2,20-shot Fine-Tuning (Task Order=Original),Few-shot,naive_sequential_finetuning,3,skm_tea_femoral,best_validation,10,8,8,False,0.191241,0.2254
-exp_20260925_000502_4e1f0da2,20-shot Fine-Tuning (Task Order=Original),Few-shot,naive_sequential_finetuning,4,skm_tea_patellar,best_validation,10,10,10,True,0.185478,0.1855
-exp_20260925_000502_4e1f0da2,20-shot Fine-Tuning (Task Order=Original),Few-shot,naive_sequential_finetuning,5,skm_tea_medial_meniscus,best_validation,10,9,9,False,0.514928,0.5439
-exp_20260925_000502_4e1f0da2,20-shot Fine-Tuning (Task Order=Original),Few-shot,naive_sequential_finetuning,6,skm_tea_lateral_meniscus,best_validation,10,8,8,False,0.388979,0.3975
 exp_20260926_095539_90e8b4e6,"CIL-LoRA (Rank=1024, Task Order=Original)",Main;Rank Ablation,shared_lora,1,skm_tea_lateral_tibial,last_epoch,10,9,10,True,0.626905,0.6308
 exp_20260926_095539_90e8b4e6,"CIL-LoRA (Rank=1024, Task Order=Original)",Main;Rank Ablation,shared_lora,2,skm_tea_medial_tibial,last_epoch,10,10,10,True,0.50966,0.5097
 exp_20260926_095539_90e8b4e6,"CIL-LoRA (Rank=1024, Task Order=Original)",Main;Rank Ablation,shared_lora,3,skm_tea_femoral,last_epoch,10,6,10,True,0.29156,0.3141
@@ -88,24 +64,12 @@ exp_20260926_095635_1dd1adb4,"CIL-LoRA (Rank=32, Task Order=Original)",Rank Abla
 exp_20260926_095635_1dd1adb4,"CIL-LoRA (Rank=32, Task Order=Original)",Rank Ablation,shared_lora,4,skm_tea_patellar,last_epoch,10,10,10,True,0.190251,0.1903
 exp_20260926_095635_1dd1adb4,"CIL-LoRA (Rank=32, Task Order=Original)",Rank Ablation,shared_lora,5,skm_tea_medial_meniscus,last_epoch,10,8,10,True,0.470217,0.4802
 exp_20260926_095635_1dd1adb4,"CIL-LoRA (Rank=32, Task Order=Original)",Rank Ablation,shared_lora,6,skm_tea_lateral_meniscus,last_epoch,10,8,10,True,0.484477,0.493
-exp_20260926_104124_ccaf6702,10-shot Fine-Tuning (Task Order=Original),Few-shot,naive_sequential_finetuning,1,skm_tea_lateral_tibial,best_validation,10,8,8,False,0.311298,0.319
-exp_20260926_104124_ccaf6702,10-shot Fine-Tuning (Task Order=Original),Few-shot,naive_sequential_finetuning,2,skm_tea_medial_tibial,best_validation,10,10,10,True,0.299818,0.2998
-exp_20260926_104124_ccaf6702,10-shot Fine-Tuning (Task Order=Original),Few-shot,naive_sequential_finetuning,3,skm_tea_femoral,best_validation,10,8,8,False,0.222966,0.2245
-exp_20260926_104124_ccaf6702,10-shot Fine-Tuning (Task Order=Original),Few-shot,naive_sequential_finetuning,4,skm_tea_patellar,best_validation,10,10,10,True,0.18684,0.1868
-exp_20260926_104124_ccaf6702,10-shot Fine-Tuning (Task Order=Original),Few-shot,naive_sequential_finetuning,5,skm_tea_medial_meniscus,best_validation,10,8,8,False,0.429946,0.495
-exp_20260926_104124_ccaf6702,10-shot Fine-Tuning (Task Order=Original),Few-shot,naive_sequential_finetuning,6,skm_tea_lateral_meniscus,best_validation,10,10,10,True,0.380494,0.3805
 exp_20260926_105629_ba181db6,"20-shot TIL-LoRA (Rank=4, Task Order=Original)",Few-shot,lora,1,skm_tea_lateral_tibial,last_epoch,10,9,10,True,1.053349,1.1041
 exp_20260926_105629_ba181db6,"20-shot TIL-LoRA (Rank=4, Task Order=Original)",Few-shot,lora,2,skm_tea_medial_tibial,last_epoch,10,9,10,True,1.057251,1.1034
 exp_20260926_105629_ba181db6,"20-shot TIL-LoRA (Rank=4, Task Order=Original)",Few-shot,lora,3,skm_tea_femoral,last_epoch,10,5,10,True,0.33034,0.3857
 exp_20260926_105629_ba181db6,"20-shot TIL-LoRA (Rank=4, Task Order=Original)",Few-shot,lora,4,skm_tea_patellar,last_epoch,10,9,10,True,1.11538,1.2225
 exp_20260926_105629_ba181db6,"20-shot TIL-LoRA (Rank=4, Task Order=Original)",Few-shot,lora,5,skm_tea_medial_meniscus,last_epoch,10,5,10,True,1.030471,1.0934
 exp_20260926_105629_ba181db6,"20-shot TIL-LoRA (Rank=4, Task Order=Original)",Few-shot,lora,6,skm_tea_lateral_meniscus,last_epoch,10,9,10,True,1.004155,1.1057
-exp_20260926_112746_e697f061,5-shot Fine-Tuning (Task Order=Original),Few-shot,naive_sequential_finetuning,1,skm_tea_lateral_tibial,best_validation,10,8,8,False,0.387244,0.4184
-exp_20260926_112746_e697f061,5-shot Fine-Tuning (Task Order=Original),Few-shot,naive_sequential_finetuning,2,skm_tea_medial_tibial,best_validation,10,8,8,False,0.537961,0.558
-exp_20260926_112746_e697f061,5-shot Fine-Tuning (Task Order=Original),Few-shot,naive_sequential_finetuning,3,skm_tea_femoral,best_validation,10,8,8,False,0.218636,0.2378
-exp_20260926_112746_e697f061,5-shot Fine-Tuning (Task Order=Original),Few-shot,naive_sequential_finetuning,4,skm_tea_patellar,best_validation,10,8,8,False,0.198668,0.1997
-exp_20260926_112746_e697f061,5-shot Fine-Tuning (Task Order=Original),Few-shot,naive_sequential_finetuning,5,skm_tea_medial_meniscus,best_validation,10,9,9,False,0.46546,0.4823
-exp_20260926_112746_e697f061,5-shot Fine-Tuning (Task Order=Original),Few-shot,naive_sequential_finetuning,6,skm_tea_lateral_meniscus,best_validation,10,8,8,False,0.469195,0.4755
 exp_20260926_120018_3ab58c90,"5-shot TIL-LoRA (Rank=4, Task Order=Original)",Few-shot,lora,1,skm_tea_lateral_tibial,last_epoch,10,9,10,True,1.080024,1.1308
 exp_20260926_120018_3ab58c90,"5-shot TIL-LoRA (Rank=4, Task Order=Original)",Few-shot,lora,2,skm_tea_medial_tibial,last_epoch,10,9,10,True,1.06735,1.1151
 exp_20260926_120018_3ab58c90,"5-shot TIL-LoRA (Rank=4, Task Order=Original)",Few-shot,lora,3,skm_tea_femoral,last_epoch,10,5,10,True,0.336848,0.3993
@@ -148,9 +112,73 @@ exp_20260930_165220_b0c6c426,"CIL-LoRA (Rank=1024, Task Order=Original, 10-shot)
 exp_20260930_165220_b0c6c426,"CIL-LoRA (Rank=1024, Task Order=Original, 10-shot)",Few-shot,shared_lora,4,skm_tea_patellar,last_epoch,10,9,10,True,1.124863,1.2341
 exp_20260930_165220_b0c6c426,"CIL-LoRA (Rank=1024, Task Order=Original, 10-shot)",Few-shot,shared_lora,5,skm_tea_medial_meniscus,last_epoch,10,1,10,True,1.024394,1.0662
 exp_20260930_165220_b0c6c426,"CIL-LoRA (Rank=1024, Task Order=Original, 10-shot)",Few-shot,shared_lora,6,skm_tea_lateral_meniscus,last_epoch,10,9,10,True,1.016271,1.0769
-exp_20261014_120720_abe47a15,"CIL-LoRA (Rank=1024, Task Order=Original, replay_fraction=0.1)",Replay Ablation,shared_lora,1,skm_tea_lateral_tibial,last_epoch,10,9,10,True,0.923455,0.9657
-exp_20261014_120720_abe47a15,"CIL-LoRA (Rank=1024, Task Order=Original, replay_fraction=0.1)",Replay Ablation,shared_lora,2,skm_tea_medial_tibial,last_epoch,10,10,10,True,0.538933,0.5389
-exp_20261014_120720_abe47a15,"CIL-LoRA (Rank=1024, Task Order=Original, replay_fraction=0.1)",Replay Ablation,shared_lora,3,skm_tea_femoral,last_epoch,10,6,10,True,0.291545,0.3125
-exp_20261014_120720_abe47a15,"CIL-LoRA (Rank=1024, Task Order=Original, replay_fraction=0.1)",Replay Ablation,shared_lora,4,skm_tea_patellar,last_epoch,10,10,10,True,0.197407,0.1974
-exp_20261014_120720_abe47a15,"CIL-LoRA (Rank=1024, Task Order=Original, replay_fraction=0.1)",Replay Ablation,shared_lora,5,skm_tea_medial_meniscus,last_epoch,10,8,10,True,0.465077,0.485
-exp_20261014_120720_abe47a15,"CIL-LoRA (Rank=1024, Task Order=Original, replay_fraction=0.1)",Replay Ablation,shared_lora,6,skm_tea_lateral_meniscus,last_epoch,10,8,10,True,0.538233,0.5847
+exp_20261022_171452_65011743,,Main,zscl,1,skm_tea_lateral_tibial,last_epoch,10,8,10,True,0.14886,0.1826
+exp_20261022_171452_65011743,,Main,zscl,2,skm_tea_medial_tibial,last_epoch,10,8,10,True,0.147794,0.1862
+exp_20261022_171452_65011743,,Main,zscl,3,skm_tea_femoral,last_epoch,10,8,10,True,0.160438,0.191
+exp_20261022_171452_65011743,,Main,zscl,4,skm_tea_patellar,last_epoch,10,7,10,True,0.124595,0.1941
+exp_20261022_171452_65011743,,Main,zscl,5,skm_tea_medial_meniscus,last_epoch,10,8,10,True,0.299731,0.3019
+exp_20261022_171452_65011743,,Main,zscl,6,skm_tea_lateral_meniscus,last_epoch,10,8,10,True,0.203095,0.221
+exp_20261022_171452_a9f4ca56,,Main,naive_sequential_finetuning,1,skm_tea_lateral_tibial,last_epoch,10,6,10,True,0.143254,0.1756
+exp_20261022_171452_a9f4ca56,,Main,naive_sequential_finetuning,2,skm_tea_medial_tibial,last_epoch,10,8,10,True,0.143082,0.1823
+exp_20261022_171452_a9f4ca56,,Main,naive_sequential_finetuning,3,skm_tea_femoral,last_epoch,10,8,10,True,0.163184,0.1793
+exp_20261022_171452_a9f4ca56,,Main,naive_sequential_finetuning,4,skm_tea_patellar,last_epoch,10,2,10,True,0.1543,0.1579
+exp_20261022_171452_a9f4ca56,,Main,naive_sequential_finetuning,5,skm_tea_medial_meniscus,last_epoch,10,8,10,True,0.230104,0.2546
+exp_20261022_171452_a9f4ca56,,Main,naive_sequential_finetuning,6,skm_tea_lateral_meniscus,last_epoch,10,9,10,True,0.215514,0.2715
+exp_20261022_171520_2dba6ff1,,Task Order Ablation,naive_sequential_finetuning,1,skm_tea_lateral_meniscus,last_epoch,10,8,10,True,0.188051,0.2135
+exp_20261022_171520_2dba6ff1,,Task Order Ablation,naive_sequential_finetuning,2,skm_tea_medial_meniscus,last_epoch,10,8,10,True,0.19356,0.2168
+exp_20261022_171520_2dba6ff1,,Task Order Ablation,naive_sequential_finetuning,3,skm_tea_patellar,last_epoch,10,2,10,True,0.136595,0.1506
+exp_20261022_171520_2dba6ff1,,Task Order Ablation,naive_sequential_finetuning,4,skm_tea_femoral,last_epoch,10,8,10,True,0.156746,0.1744
+exp_20261022_171520_2dba6ff1,,Task Order Ablation,naive_sequential_finetuning,5,skm_tea_medial_tibial,last_epoch,10,8,10,True,0.15968,0.1952
+exp_20261022_171520_2dba6ff1,,Task Order Ablation,naive_sequential_finetuning,6,skm_tea_lateral_tibial,last_epoch,10,6,10,True,0.15493,0.1952
+exp_20261022_171655_6a6e9cb5,,Joint Reference,joint_fine_tuning,1,skm_tea_joint,last_epoch,10,8,10,True,0.186277,
+exp_20261022_180923_7bcbb6cc,,Main,cpe_clip,1,skm_tea_lateral_tibial,last_epoch,10,6,10,True,0.293896,0.3046
+exp_20261022_180923_7bcbb6cc,,Main,cpe_clip,2,skm_tea_medial_tibial,last_epoch,10,8,10,True,0.430468,0.4457
+exp_20261022_180923_7bcbb6cc,,Main,cpe_clip,3,skm_tea_femoral,last_epoch,10,10,10,True,0.282724,0.2827
+exp_20261022_180923_7bcbb6cc,,Main,cpe_clip,4,skm_tea_patellar,last_epoch,10,10,10,True,0.192042,0.192
+exp_20261022_180923_7bcbb6cc,,Main,cpe_clip,5,skm_tea_medial_meniscus,last_epoch,10,9,10,True,0.456482,0.4904
+exp_20261022_180923_7bcbb6cc,,Main,cpe_clip,6,skm_tea_lateral_meniscus,last_epoch,10,8,10,True,0.471398,0.4778
+exp_20261023_014438_55e6abcf,,Replay Ablation,shared_lora,1,skm_tea_lateral_tibial,last_epoch,10,9,10,True,0.635892,0.6395
+exp_20261023_014438_55e6abcf,,Replay Ablation,shared_lora,2,skm_tea_medial_tibial,last_epoch,10,10,10,True,0.515276,0.5153
+exp_20261023_014438_55e6abcf,,Replay Ablation,shared_lora,3,skm_tea_femoral,last_epoch,10,6,10,True,0.298182,0.3187
+exp_20261023_014438_55e6abcf,,Replay Ablation,shared_lora,4,skm_tea_patellar,last_epoch,10,10,10,True,0.195625,0.1956
+exp_20261023_014438_55e6abcf,,Replay Ablation,shared_lora,5,skm_tea_medial_meniscus,last_epoch,10,8,10,True,0.461105,0.4847
+exp_20261023_014438_55e6abcf,,Replay Ablation,shared_lora,6,skm_tea_lateral_meniscus,last_epoch,10,10,10,True,0.523398,0.5234
+exp_20261023_195739_6044ad8d,,Equal Updates,naive_sequential_finetuning,1,skm_tea_lateral_tibial,last_epoch,216,48,216,True,0.28799,0.3893
+exp_20261023_195739_6044ad8d,,Equal Updates,naive_sequential_finetuning,2,skm_tea_medial_tibial,last_epoch,216,144,216,True,0.319292,0.4215
+exp_20261023_195739_6044ad8d,,Equal Updates,naive_sequential_finetuning,3,skm_tea_femoral,last_epoch,216,168,216,True,0.210879,0.2776
+exp_20261023_195739_6044ad8d,,Equal Updates,naive_sequential_finetuning,4,skm_tea_patellar,last_epoch,216,48,216,True,0.15399,0.2346
+exp_20261023_195739_6044ad8d,,Equal Updates,naive_sequential_finetuning,5,skm_tea_medial_meniscus,last_epoch,216,192,216,True,0.365617,0.4
+exp_20261023_195739_6044ad8d,,Equal Updates,naive_sequential_finetuning,6,skm_tea_lateral_meniscus,last_epoch,216,144,216,True,0.406144,0.4847
+exp_20261023_195940_ea9221f2,,Equal Updates,lora,1,skm_tea_lateral_tibial,last_epoch,216,144,216,True,0.435777,0.4884
+exp_20261023_195940_ea9221f2,,Equal Updates,lora,2,skm_tea_medial_tibial,last_epoch,216,144,216,True,0.467201,0.4798
+exp_20261023_195940_ea9221f2,,Equal Updates,lora,3,skm_tea_femoral,last_epoch,216,192,216,True,0.25857,0.2763
+exp_20261023_195940_ea9221f2,,Equal Updates,lora,4,skm_tea_patellar,last_epoch,216,168,216,True,1.015416,1.0486
+exp_20261023_195940_ea9221f2,,Equal Updates,lora,5,skm_tea_medial_meniscus,last_epoch,216,192,216,True,0.526181,0.5434
+exp_20261023_195940_ea9221f2,,Equal Updates,lora,6,skm_tea_lateral_meniscus,last_epoch,216,216,216,True,0.751144,0.7511
+exp_20261023_200332_9840ab20,,Equal Updates,shared_lora,1,skm_tea_lateral_tibial,last_epoch,216,216,216,True,0.704089,0.7041
+exp_20261023_200332_9840ab20,,Equal Updates,shared_lora,2,skm_tea_medial_tibial,last_epoch,216,144,216,True,0.560715,0.5696
+exp_20261023_200332_9840ab20,,Equal Updates,shared_lora,3,skm_tea_femoral,last_epoch,216,144,216,True,0.288806,0.3499
+exp_20261023_200332_9840ab20,,Equal Updates,shared_lora,4,skm_tea_patellar,last_epoch,216,192,216,True,0.208832,0.2692
+exp_20261023_200332_9840ab20,,Equal Updates,shared_lora,5,skm_tea_medial_meniscus,last_epoch,216,144,216,True,0.496018,0.5109
+exp_20261023_200332_9840ab20,,Equal Updates,shared_lora,6,skm_tea_lateral_meniscus,last_epoch,216,192,216,True,0.55194,0.6074
+exp_20261023_212327_a67fb8c9,,Few-shot,naive_sequential_finetuning,1,skm_tea_lateral_tibial,last_epoch,10,8,10,True,0.387244,0.4184
+exp_20261023_212327_a67fb8c9,,Few-shot,naive_sequential_finetuning,2,skm_tea_medial_tibial,last_epoch,10,8,10,True,0.537961,0.558
+exp_20261023_212327_a67fb8c9,,Few-shot,naive_sequential_finetuning,3,skm_tea_femoral,last_epoch,10,8,10,True,0.218636,0.2378
+exp_20261023_212327_a67fb8c9,,Few-shot,naive_sequential_finetuning,4,skm_tea_patellar,last_epoch,10,8,10,True,0.198668,0.1997
+exp_20261023_212327_a67fb8c9,,Few-shot,naive_sequential_finetuning,5,skm_tea_medial_meniscus,last_epoch,10,9,10,True,0.46546,0.4823
+exp_20261023_212327_a67fb8c9,,Few-shot,naive_sequential_finetuning,6,skm_tea_lateral_meniscus,last_epoch,10,8,10,True,0.469195,0.4755
+exp_20261023_234659_f041f82f,,Few-shot,naive_sequential_finetuning,1,skm_tea_lateral_tibial,last_epoch,10,8,10,True,0.311298,0.319
+exp_20261023_234659_f041f82f,,Few-shot,naive_sequential_finetuning,2,skm_tea_medial_tibial,last_epoch,10,10,10,True,0.299818,0.2998
+exp_20261023_234659_f041f82f,,Few-shot,naive_sequential_finetuning,3,skm_tea_femoral,last_epoch,10,8,10,True,0.222966,0.2245
+exp_20261023_234659_f041f82f,,Few-shot,naive_sequential_finetuning,4,skm_tea_patellar,last_epoch,10,10,10,True,0.18684,0.1868
+exp_20261023_234659_f041f82f,,Few-shot,naive_sequential_finetuning,5,skm_tea_medial_meniscus,last_epoch,10,8,10,True,0.429946,0.495
+exp_20261023_234659_f041f82f,,Few-shot,naive_sequential_finetuning,6,skm_tea_lateral_meniscus,last_epoch,10,10,10,True,0.380494,0.3805
+exp_20261024_001927_861cfa24,,Few-shot,naive_sequential_finetuning,1,skm_tea_lateral_tibial,last_epoch,10,8,10,True,0.216408,0.2522
+exp_20261024_001927_861cfa24,,Few-shot,naive_sequential_finetuning,2,skm_tea_medial_tibial,last_epoch,10,10,10,True,0.263951,0.264
+exp_20261024_001927_861cfa24,,Few-shot,naive_sequential_finetuning,3,skm_tea_femoral,last_epoch,10,8,10,True,0.191241,0.2254
+exp_20261024_001927_861cfa24,,Few-shot,naive_sequential_finetuning,4,skm_tea_patellar,last_epoch,10,10,10,True,0.185478,0.1855
+exp_20261024_001927_861cfa24,,Few-shot,naive_sequential_finetuning,5,skm_tea_medial_meniscus,last_epoch,10,9,10,True,0.514928,0.5439
+exp_20261024_001927_861cfa24,,Few-shot,naive_sequential_finetuning,6,skm_tea_lateral_meniscus,last_epoch,10,8,10,True,0.388979,0.3975
+exp_20261024_002524_abc243ff,,Joint Reference,joint_fine_tuning,1,skm_tea_joint,last_epoch,10,8,10,True,0.357768,0.3634
+exp_20261024_014447_afb34098,,Joint Reference,joint_fine_tuning,1,skm_tea_joint,last_epoch,10,8,10,True,0.381186,0.3829
+exp_20261024_051245_f9067927,,Joint Reference,joint_fine_tuning,1,skm_tea_joint,last_epoch,10,10,10,True,0.258333,0.2583

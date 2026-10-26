@@ -121,7 +121,7 @@ def control_task_curve(main_runs):
     save(fig, "ch6_control_task_main")
 
 
-def metric_bars(runs, ref, name, height=2.9):
+def metric_bars(runs, ref, name, height=2.9, joint=None):
     fig, ax = plt.subplots(figsize=(TEXT_WIDTH_IN, height))
     n = len(runs)
     width = 0.8 / n
@@ -135,12 +135,27 @@ def metric_bars(runs, ref, name, height=2.9):
     for j, m in enumerate(METRICS):
         ax.hlines(value(ref, m), j - 0.42, j + 0.42, colors=REFERENCE_COLOUR, linestyles="--",
                   linewidth=1.0, zorder=3, label="Pretrained model" if j == 0 else None)
+    # Joint fine-tuning (upper reference): only Final Performance and the control-task drop are defined.
+    if joint is not None:
+        first = True
+        for j, m in enumerate(METRICS):
+            if value(joint, m) is None:
+                continue
+            ax.hlines(value(joint, m), j - 0.42, j + 0.42, colors=STRATEGY["joint_fine_tuning"][1],
+                      linestyles="-.", linewidth=1.4, zorder=3,
+                      label="Joint fine-tuning" if first else None)
+            first = False
     ax.set_xticks(x, [METRIC_LABEL[m].replace(" ", "\n", 1) for m in METRICS])
     ax.set_xlim(-0.5, len(METRICS) - 0.5)
     ax.set_ylim(0, 1)
     ax.set_ylabel("DSC")
     y_grid(ax)
-    ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=3, frameon=False)
+    # Strategies first, then the reference lines.
+    handles, labels = ax.get_legend_handles_labels()
+    refs_first = [i for i, l in enumerate(labels) if l in ("Pretrained model", "Joint fine-tuning")]
+    order = [i for i in range(len(labels)) if i not in refs_first] + refs_first
+    ax.legend([handles[i] for i in order], [labels[i] for i in order],
+              loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=3, frameon=False)
     fig.tight_layout(pad=0.3)
     save(fig, name)
 
@@ -235,7 +250,7 @@ def task_order(pairs, refs):
     save(fig, "ch6_task_order")
 
 
-def few_shot(groups, ref):
+def few_shot(groups, ref, equal=(), joint=()):
     shown = ["adaptation", "final_forgetting", "control_drop", "final_performance"]
     fig, axes = plt.subplots(1, len(shown), figsize=(TEXT_WIDTH_IN, 2.5), sharey=True)
     for ax, m in zip(axes, shown):
@@ -249,6 +264,24 @@ def few_shot(groups, ref):
             ax.fill_between(xs, lo, hi, color=colour, alpha=0.15, linewidth=0)
             ax.plot(xs, vals, color=colour, marker=marker, markersize=4.5, markeredgecolor="white",
                     markeredgewidth=0.7, linewidth=1.4, label=strategy_name(runs[0]), zorder=3)
+        # Equal-updates runs: k = 5 with the 1,080 updates per task of the full split, hollow marker
+        # in the colour of the strategy.
+        # Small horizontal offsets (log axis) keep the three markers at k = 5 apart.
+        offset = {"naive_sequential_finetuning": 1.1, "lora": 0.9, "shared_lora": 1.21}
+        for r in equal:
+            _, colour, marker = STRATEGY[r["strategy"]]
+            v = value(r, m)
+            err = [[v - float(r[f"{m}_ci_low"])], [float(r[f"{m}_ci_high"]) - v]]
+            ax.errorbar([train_volumes(r) * offset.get(r["strategy"], 1.0)], [v], yerr=err, fmt=marker, markersize=6, markerfacecolor="white",
+                        markeredgecolor=colour, markeredgewidth=1.3, ecolor=colour, elinewidth=0.9,
+                        capsize=1.5, zorder=4)
+        # Joint fine-tuning: defined for Final Performance and the control-task drop only.
+        js = sorted([r for r in joint if value(r, m) is not None], key=train_volumes)
+        if js:
+            _, colour, marker = STRATEGY["joint_fine_tuning"]
+            ax.plot([train_volumes(r) for r in js], [value(r, m) for r in js], color=colour, marker=marker,
+                    markersize=5, markeredgecolor="white", markeredgewidth=0.6, linewidth=1.4, linestyle="-.",
+                    label="Joint fine-tuning", zorder=3)
         ax.axhline(value(ref, m), color=REFERENCE_COLOUR, linestyle="--", linewidth=1.0,
                    label="Pretrained model")
         ax.set_xscale("log")
@@ -260,9 +293,17 @@ def few_shot(groups, ref):
         y_grid(ax)
     axes[0].set_ylabel("DSC")
     fig.supxlabel("Training volumes per task", fontsize=10)
-    handles, labels = axes[0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper center", ncol=2, frameon=False, bbox_to_anchor=(0.5, 1.0))
-    fig.tight_layout(pad=0.3, rect=(0, 0, 1, 0.8))
+    # Legend: strategies and references from the panel with all entries, plus one neutral hollow marker
+    # for the equal-updates runs (their colour follows the strategy).
+    full = axes[shown.index("final_performance")]
+    handles, labels = full.get_legend_handles_labels()
+    if equal:
+        from matplotlib.lines import Line2D
+        handles.append(Line2D([], [], linestyle="none", marker="o", markersize=6, markerfacecolor="white",
+                              markeredgecolor=REFERENCE_COLOUR, markeredgewidth=1.3))
+        labels.append("1,080 updates per task")
+    fig.legend(handles, labels, loc="upper center", ncol=3, frameon=False, bbox_to_anchor=(0.5, 1.0))
+    fig.tight_layout(pad=0.3, rect=(0.015, 0, 1, 0.78))
     save(fig, "ch6_few_shot")
 
 
@@ -278,7 +319,9 @@ def main():
 
     main_runs = sorted([r for r in runs if "Main" in roles(r)], key=by_strategy)
     control_task_curve(main_runs)
-    metric_bars(main_runs, refs["original"], "ch6_main_metrics")
+    joint = [r for r in runs if "Joint Reference" in roles(r)]
+    joint_full = [r for r in joint if not r["train_max_cases"]]
+    metric_bars(main_runs, refs["original"], "ch6_main_metrics", joint=joint_full[0] if joint_full else None)
     matrices(main_runs)
 
     # The sweep plot shows shared LoRA only; the two task-specific ranks are in the table.
@@ -297,7 +340,8 @@ def main():
     for key in keys:
         g = [r for r in few if (r["strategy"], r["lora_rank"]) == key]
         groups.append(g + [counterpart(g[0], runs)])
-    few_shot(groups, refs["original"])
+    equal = [r for r in runs if "Equal Updates" in roles(r)]
+    few_shot(groups, refs["original"], equal=equal, joint=joint)
 
 
 if __name__ == "__main__":

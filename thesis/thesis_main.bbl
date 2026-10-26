@@ -3202,113 +3202,6 @@
       \verb 10.1109/TPAMI.2017.2773081
       \endverb
     \endentry
-    \entry{textmatch2024}{inproceedings}{}{}
-      \name{author}{7}{}{%
-        {{hash=ca316faab04e4f9e1102e3eaa4b16785}{%
-           family={Li},
-           familyi={L\bibinitperiod},
-           given={Aibing},
-           giveni={A\bibinitperiod}}}%
-        {{hash=2ab201769ca77710a298c666ae8f487f}{%
-           family={Zeng},
-           familyi={Z\bibinitperiod},
-           given={Xinyi},
-           giveni={X\bibinitperiod}}}%
-        {{hash=93ead962fcd0d9d29ae27b6ac47604d6}{%
-           family={Zeng},
-           familyi={Z\bibinitperiod},
-           given={Pinxian},
-           giveni={P\bibinitperiod}}}%
-        {{hash=b72ad5128e016aebcae195ae771818b8}{%
-           family={Ding},
-           familyi={D\bibinitperiod},
-           given={Sixian},
-           giveni={S\bibinitperiod}}}%
-        {{hash=c26cc02bbb5db725a2c79cb200894d76}{%
-           family={Wang},
-           familyi={W\bibinitperiod},
-           given={Peng},
-           giveni={P\bibinitperiod}}}%
-        {{hash=cb88bc85c2d6f5102dd5b7003928b9cc}{%
-           family={Wang},
-           familyi={W\bibinitperiod},
-           given={Chengdi},
-           giveni={C\bibinitperiod}}}%
-        {{hash=5c786d9afb3cf178271120f1fd926d21}{%
-           family={Wang},
-           familyi={W\bibinitperiod},
-           given={Yan},
-           giveni={Y\bibinitperiod}}}%
-      }
-      \name{editor}{7}{}{%
-        {{hash=c34c4f7c18633edaff22f31e16d067d1}{%
-           family={Linguraru},
-           familyi={L\bibinitperiod},
-           given={Marius\bibnamedelima George},
-           giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
-        {{hash=9654fa8a13dc7c57bdb7b4b35aa01ff6}{%
-           family={Dou},
-           familyi={D\bibinitperiod},
-           given={Qi},
-           giveni={Q\bibinitperiod}}}%
-        {{hash=e0b97a8d968a77967f24520cd9f76af9}{%
-           family={Feragen},
-           familyi={F\bibinitperiod},
-           given={Aasa},
-           giveni={A\bibinitperiod}}}%
-        {{hash=54eaabb93e8af6ca3e0517fded1a10a3}{%
-           family={Giannarou},
-           familyi={G\bibinitperiod},
-           given={Stamatia},
-           giveni={S\bibinitperiod}}}%
-        {{hash=5bc19448e90c8f3e88e5fbd50f12ac15}{%
-           family={Glocker},
-           familyi={G\bibinitperiod},
-           given={Ben},
-           giveni={B\bibinitperiod}}}%
-        {{hash=7afea3dacf80d06a4da14f3689e1b2ae}{%
-           family={Lekadir},
-           familyi={L\bibinitperiod},
-           given={Karim},
-           giveni={K\bibinitperiod}}}%
-        {{hash=5453a61ff8b92c0abf2be4ab6013c641}{%
-           family={Schnabel},
-           familyi={S\bibinitperiod},
-           given={Julia\bibnamedelima A.},
-           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {Cham}%
-      }
-      \list{publisher}{1}{%
-        {Springer Nature Switzerland}%
-      }
-      \strng{namehash}{2a48ed24eb0a1dfdb94e9521e872d287}
-      \strng{fullhash}{2a48ed24eb0a1dfdb94e9521e872d287}
-      \strng{fullhashraw}{2a48ed24eb0a1dfdb94e9521e872d287}
-      \strng{bibnamehash}{2a48ed24eb0a1dfdb94e9521e872d287}
-      \strng{authorbibnamehash}{2a48ed24eb0a1dfdb94e9521e872d287}
-      \strng{authornamehash}{2a48ed24eb0a1dfdb94e9521e872d287}
-      \strng{authorfullhash}{2a48ed24eb0a1dfdb94e9521e872d287}
-      \strng{authorfullhashraw}{2a48ed24eb0a1dfdb94e9521e872d287}
-      \strng{editorbibnamehash}{db88870da2075528682ce61301d0d361}
-      \strng{editornamehash}{db88870da2075528682ce61301d0d361}
-      \strng{editorfullhash}{db88870da2075528682ce61301d0d361}
-      \strng{editorfullhashraw}{db88870da2075528682ce61301d0d361}
-      \field{labelalpha}{Li\textsuperscript {+}24}
-      \field{sortinit}{L}
-      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
-      \field{extraalpha}{1}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Semi-supervised learning, a paradigm involving training models with limited labeled data alongside abundant unlabeled images, has significantly advanced medical image segmentation. However, the absence of label supervision introduces noise during training, posing a challenge in achieving a well-clustered feature space essential for acquiring discriminative representations in segmentation tasks. In this context, the emergence of vision-language (VL) models in natural image processing has showcased promising capabilities in aiding object localization through the utilization of text prompts, demonstrating potential as an effective solution for addressing annotation scarcity. Building upon this insight, we present Textmatch, a novel framework that leverages text prompts to enhance segmentation performance in semi-supervised medical image segmentation. Specifically, our approach introduces a Bilateral Prompt Decoder (BPD) to address modal discrepancies between visual and linguistic features, facilitating the extraction of complementary information from multi-modal data. Then, we propose the Multi-views Consistency Regularization (MCR) strategy to ensure consistency among multiple views derived from perturbations in both image and text domains, reducing the impact of noise and generating more reliable pseudo-labels. Furthermore, we leverage these pseudo-labels and conduct Pseudo-Label Guided Contrastive Learning (PGCL) in the feature space to encourage intra-class aggregation and inter-class separation between features and prototypes, thus enhancing the generation of more discriminative representations for segmentation. Extensive experiments on two publicly available datasets demonstrate that our framework outperforms previous methods employing image-only and multi-modal approaches, establishing a new state-of-the-art performance.}
-      \field{booktitle}{Medical Image Computing and Computer Assisted Intervention -- MICCAI 2024}
-      \field{isbn}{978-3-031-72111-3}
-      \field{title}{Textmatch: Using Text Prompts to Improve Semi-supervised Medical Image Segmentation}
-      \field{year}{2024}
-      \field{pages}{699\bibrangedash 709}
-      \range{pages}{11}
-    \endentry
     \entry{li2023lvitlanguagemeetsvision}{article}{}{}
       \name{author}{9}{}{%
         {{hash=97349038b99a34940746c1ddc0133723}{%
@@ -3368,7 +3261,6 @@
       \field{labelalpha}{Li\textsuperscript {+}24}
       \field{sortinit}{L}
       \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
-      \field{extraalpha}{2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{{IEEE} Transactions on Medical Imaging}
@@ -5765,77 +5657,6 @@
       \verb{doi}
       \verb 10.1109/CVPR52734.2025.00268
       \endverb
-    \endentry
-    \entry{text3dsam}{inproceedings}{}{}
-      \name{author}{3}{}{%
-        {{hash=8b7b07d630755b88041e7120a65f8f6b}{%
-           family={Xin},
-           familyi={X\bibinitperiod},
-           given={Yu},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=591c3285ae290a7ce2364ef7a2b941b6}{%
-           family={Ates},
-           familyi={A\bibinitperiod},
-           given={Gorkem\bibnamedelima Can},
-           giveni={G\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
-        {{hash=349faac9cd775a5a8d09f8cef1c0fd43}{%
-           family={Shao},
-           familyi={S\bibinitperiod},
-           given={Wei},
-           giveni={W\bibinitperiod}}}%
-      }
-      \name{editor}{4}{}{%
-        {{hash=70d98ba727cc8114a6e494cf39de84a7}{%
-           family={Ma},
-           familyi={M\bibinitperiod},
-           given={Jun},
-           giveni={J\bibinitperiod}}}%
-        {{hash=7e189e9226c83dc55162b724b0bb9400}{%
-           family={Kim},
-           familyi={K\bibinitperiod},
-           given={Sumin},
-           giveni={S\bibinitperiod}}}%
-        {{hash=a148a3c0a883fe5b1f247769b33e63c5}{%
-           family={Zhou},
-           familyi={Z\bibinitperiod},
-           given={Yuyin},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=2938deb5048323c6e1bfdd80975d5b28}{%
-           family={Wang},
-           familyi={W\bibinitperiod},
-           given={Bo},
-           giveni={B\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {Cham}%
-      }
-      \list{publisher}{1}{%
-        {Springer Nature Switzerland}%
-      }
-      \strng{namehash}{5d2e6808ee437d98393b2e9e870a4bcd}
-      \strng{fullhash}{5d2e6808ee437d98393b2e9e870a4bcd}
-      \strng{fullhashraw}{5d2e6808ee437d98393b2e9e870a4bcd}
-      \strng{bibnamehash}{5d2e6808ee437d98393b2e9e870a4bcd}
-      \strng{authorbibnamehash}{5d2e6808ee437d98393b2e9e870a4bcd}
-      \strng{authornamehash}{5d2e6808ee437d98393b2e9e870a4bcd}
-      \strng{authorfullhash}{5d2e6808ee437d98393b2e9e870a4bcd}
-      \strng{authorfullhashraw}{5d2e6808ee437d98393b2e9e870a4bcd}
-      \strng{editorbibnamehash}{4ff627f612360244e5d385df7504c1dc}
-      \strng{editornamehash}{4ff627f612360244e5d385df7504c1dc}
-      \strng{editorfullhash}{4ff627f612360244e5d385df7504c1dc}
-      \strng{editorfullhashraw}{4ff627f612360244e5d385df7504c1dc}
-      \field{labelalpha}{Xin\textsuperscript {+}26}
-      \field{sortinit}{X}
-      \field{sortinithash}{1965c258adceecf23ce3d67b05113442}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Existing 3D medical image segmentation methods are often constrained by a fixed set of predefined classes or by reliance on manually defined prompts such as bounding boxes and scribbles, which are often labor-intensive and prone to ambiguity. To address these limitations, we present a framework for 3D medical image segmentation across diverse modalities guided solely by free-text descriptions of target anatomies or diseases. Our solution is built on a multi-component architecture that integrates efficient feature encoding via decomposed 3D convolutions and self-attention, multi-scale text-visual alignment, and a SAM-inspired mask decoder with iterative refinement. The model is further conditioned through a prompt encoder that transforms language and intermediate visual cues into spatially aligned embeddings. To train and evaluate our model, we used a large-scale dataset of over 200,000 3D image-mask pairs spanning CT, MRI, PET, ultrasound, and microscopy. Our method achieved an average Dice of 0.6091 and F1{\_}50 score of 0.1131 on the open validation set, outperforming baselines such as CAT (Dice 0.5316, F1{\_}50 0.1935) and SAT (Dice 0.5573, F1{\_}50 0.0956). It showed strong generalization across modalities, with particularly high performance on ultrasound (Dice 0.8337) and CT (Dice 0.6707). These results confirm the feasibility of free-text-guided 3D segmentation and establish our approach as a strong foundation model for general-purpose medical image segmentation. Our code is publicly available at: https://github.com/mirthAI/Text3DSAM/.}
-      \field{booktitle}{Foundation Models for 3D Biomedical Image Segmentation}
-      \field{isbn}{978-3-032-23496-4}
-      \field{title}{Text3DSAM: Text-Guided 3D Medical Image Segmentation Using SAM-Inspired Architecture}
-      \field{year}{2026}
-      \field{pages}{194\bibrangedash 207}
-      \range{pages}{14}
     \endentry
     \entry{ye2025medseqft}{misc}{}{}
       \name{author}{8}{}{%

@@ -1,0 +1,8 @@
+,Pretrained,After skm_tea_joint
+skm_tea_lateral_tibial (CL),0.0,0.8097150834898154
+skm_tea_medial_tibial (CL),0.0,0.7709340577324232
+skm_tea_femoral (CL),0.684150921801726,0.7821424628297488
+skm_tea_patellar (CL),0.0,0.6012548816700777
+skm_tea_medial_meniscus (CL),0.0,0.7785400872429212
+skm_tea_lateral_meniscus (CL),0.0,0.7729349906245867
+aeropath (Retention),0.9793932884931564,0.00013168413045150373

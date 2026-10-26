@@ -1,15 +1,17 @@
 {
   "version": 1,
   "strategy": "naive_sequential_finetuning",
-  "status": "in_progress",
+  "status": "completed",
   "current_task_index": 0,
   "current_task_name": "skm_tea_joint",
-  "current_checkpoint": "/home/vault/iwi5/iwi5326h/projects/VoxTell/experiments/continual/joint_fine_tuning/exp_20261022_171655_6a6e9cb5/tasks/task_01_skm_tea_joint/checkpoints/latest_recovery.pt",
-  "completed_tasks": [],
-  "updated_at": "2026-10-23T15:16:30.529758+00:00",
+  "current_checkpoint": null,
+  "completed_tasks": [
+    0
+  ],
+  "updated_at": "2026-10-26T09:22:34.719608+00:00",
   "resume_position": {
     "epoch": 9,
-    "batch_idx": 626,
+    "batch_idx": 647,
     "stage": "train_batch"
   }
 }

@@ -1,24 +1,26 @@
 {
   "version": 1,
   "strategy": "shared_lora",
-  "status": "in_progress",
+  "status": "completed",
   "current_task_index": 5,
   "current_task_name": "skm_tea_lateral_meniscus",
-  "current_checkpoint": "/home/vault/iwi5/iwi5326h/projects/VoxTell/experiments/continual/lora/shared/exp_20261023_014438_55e6abcf/tasks/task_06_skm_tea_lateral_meniscus/checkpoints/latest_recovery.pt",
+  "current_checkpoint": null,
   "completed_tasks": [
     0,
     1,
     2,
     3,
-    4
+    4,
+    5
   ],
-  "updated_at": "2026-10-23T23:44:04.427046+00:00",
+  "updated_at": "2026-10-24T19:15:06.052913+00:00",
   "replay_tasks_added": [
     0,
     1,
     2,
     3,
-    4
+    4,
+    5
   ],
   "replay_memory": [
     {
@@ -679,6 +681,138 @@
       ],
       "mask_labels": [
         5
+      ]
+    },
+    {
+      "image_path": "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/images/MTR_240.nii.gz",
+      "prompts": [
+        "lateral meniscus"
+      ],
+      "mask_paths": [
+        "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/annotations/MTR_240.nii.gz"
+      ],
+      "mask_labels": [
+        6
+      ]
+    },
+    {
+      "image_path": "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/images/MTR_167.nii.gz",
+      "prompts": [
+        "lateral meniscus"
+      ],
+      "mask_paths": [
+        "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/annotations/MTR_167.nii.gz"
+      ],
+      "mask_labels": [
+        6
+      ]
+    },
+    {
+      "image_path": "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/images/MTR_038.nii.gz",
+      "prompts": [
+        "lateral meniscus"
+      ],
+      "mask_paths": [
+        "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/annotations/MTR_038.nii.gz"
+      ],
+      "mask_labels": [
+        6
+      ]
+    },
+    {
+      "image_path": "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/images/MTR_053.nii.gz",
+      "prompts": [
+        "lateral meniscus"
+      ],
+      "mask_paths": [
+        "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/annotations/MTR_053.nii.gz"
+      ],
+      "mask_labels": [
+        6
+      ]
+    },
+    {
+      "image_path": "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/images/MTR_061.nii.gz",
+      "prompts": [
+        "lateral meniscus"
+      ],
+      "mask_paths": [
+        "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/annotations/MTR_061.nii.gz"
+      ],
+      "mask_labels": [
+        6
+      ]
+    },
+    {
+      "image_path": "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/images/MTR_142.nii.gz",
+      "prompts": [
+        "lateral meniscus"
+      ],
+      "mask_paths": [
+        "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/annotations/MTR_142.nii.gz"
+      ],
+      "mask_labels": [
+        6
+      ]
+    },
+    {
+      "image_path": "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/images/MTR_221.nii.gz",
+      "prompts": [
+        "lateral meniscus"
+      ],
+      "mask_paths": [
+        "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/annotations/MTR_221.nii.gz"
+      ],
+      "mask_labels": [
+        6
+      ]
+    },
+    {
+      "image_path": "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/images/MTR_179.nii.gz",
+      "prompts": [
+        "lateral meniscus"
+      ],
+      "mask_paths": [
+        "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/annotations/MTR_179.nii.gz"
+      ],
+      "mask_labels": [
+        6
+      ]
+    },
+    {
+      "image_path": "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/images/MTR_037.nii.gz",
+      "prompts": [
+        "lateral meniscus"
+      ],
+      "mask_paths": [
+        "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/annotations/MTR_037.nii.gz"
+      ],
+      "mask_labels": [
+        6
+      ]
+    },
+    {
+      "image_path": "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/images/MTR_149.nii.gz",
+      "prompts": [
+        "lateral meniscus"
+      ],
+      "mask_paths": [
+        "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/annotations/MTR_149.nii.gz"
+      ],
+      "mask_labels": [
+        6
+      ]
+    },
+    {
+      "image_path": "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/images/MTR_080.nii.gz",
+      "prompts": [
+        "lateral meniscus"
+      ],
+      "mask_paths": [
+        "/home/vault/iwi5/iwi5326h/projects/VoxTell/data/skm_tea/annotations/MTR_080.nii.gz"
+      ],
+      "mask_labels": [
+        6
       ]
     }
   ],

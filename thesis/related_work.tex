@@ -27,93 +27,86 @@ MedSAM is prompted with bounding boxes~\cite{Ma_2024}, and SAM-Med2D with boxes,
 SegVol, a 3D model for \gls{ct}, accepts both kinds of prompt~\cite{du2025segvoluniversalinteractivevolumetric}.
 Besides points and boxes, it takes category names, which it inserts into a fixed template and embeds with a frozen CLIP text encoder~\cite{radford2021learningtransferablevisualmodels,du2025segvoluniversalinteractivevolumetric}.
 It was first pretrained on about 96{,}000 \gls{ct} volumes without using labels and then fine-tuned on about 6{,}000 labelled volumes covering more than 200 categories~\cite{du2025segvoluniversalinteractivevolumetric}.
-On AMOS22, SegVol prompted with a box and text reached a \gls{dsc} of 0.8593, against 0.6668 for the runner-up SAM-Med2D, which was prompted with points~\cite{du2025segvoluniversalinteractivevolumetric}.
 
 % CLAUDE-DRAFT
 In other work, the target class is fixed and text serves as additional information that compensates for scarce labels.
-On the QaTa-COV19 chest X-rays, LViT fuses radiologist-verified descriptions of lung infections with the 2D image and reached a \gls{dsc} of 83.66\,\% with all labels and 80.95\,\% with a quarter of them~\cite{li2023lvitlanguagemeetsvision}.
-TextMatch adds the same descriptions to semi-supervised training and reached 83.56\,\% with 5\,\% of the labels~\cite{textmatch2024}.
-Both models need the text at inference as well~\cite{li2023lvitlanguagemeetsvision,textmatch2024}.
-R-Super, in contrast, uses radiology reports only as a training signal and needs no text at inference~\cite{bassi2025learningsegmentationradiologyreports}.
-A large language model extracts the number, location and size of the tumours from each report, and two additional losses turn this information into supervision for 3D \gls{ct} segmentation~\cite{bassi2025learningsegmentationradiologyreports}.
-With 344 tumour masks and about 2{,}200 reports, this raised the F1 score of pancreatic tumour detection by up to 16.0 percentage points over training on the masks alone~\cite{bassi2025learningsegmentationradiologyreports}.
+LViT fuses radiologist-verified descriptions of lung infections with 2D chest X-rays and needs the text at inference as well~\cite{li2023lvitlanguagemeetsvision}.
+R-Super, in contrast, uses radiology reports only during training, as losses on the number, location and size of tumours for 3D \gls{ct} segmentation~\cite{bassi2025learningsegmentationradiologyreports}.
 
 % CLAUDE-DRAFT
 Several text-promptable models select their target from a fixed vocabulary.
 The CLIP-Driven Universal Model feeds the CLIP embedding of a template such as ``A computerized tomography of a [CLS]'' to a controller that generates the output convolutions of each class~\cite{Liu_2023}.
-Trained on 3{,}410 \gls{ct} scans from 14 public datasets with 25 organs and 6 tumour types, it reached a \gls{dsc} of 86.13\,\% on BTCV, against 82.06\,\% for Swin UNETR~\cite{Liu_2023}.
+It was trained on 3{,}410 \gls{ct} scans from 14 public datasets with 25 organs and 6 tumour types~\cite{Liu_2023}.
 SAT extends text prompting to \gls{ct}, \gls{mri} and \gls{pet} volumes: a text encoder trained on medical knowledge embeds terms from a vocabulary of 497 classes, and a query decoder matches them with the features of a 3D U-Net~\cite{zhao2025sat}.
-SAT was developed on 22{,}186 scans from 72 datasets, with 80\,\% of each dataset used for training~\cite{zhao2025sat}.
-Its larger variant, SAT-Pro, reached an average \gls{dsc} of 78.81\,\% over all classes~\cite{zhao2025sat}.
-The authors report this result as comparable to the 80.54\,\% of 72 dataset-specific nnU-Nets, which together have about five times as many parameters~\cite{zhao2025sat}.
-Free-form input such as a radiology report has to be translated into SAT's vocabulary by a separate language model first~\cite{zhao2025sat}.
-Text3DSAM, a 3D model, draws its prompts from a fixed set of phrases per class~\cite{text3dsam}.
-On the open validation set of a challenge that extends the CVPR 2024 MedSAM on Laptop Challenge, it reached an average \gls{dsc} of 0.6091, against 0.5573 for SAT~\cite{text3dsam}.
+Free-form input such as a radiology report has to be translated into this vocabulary by a separate language model first~\cite{zhao2025sat}.
+On 72 datasets with 22{,}186 scans, SAT's larger variant, SAT-Pro, reached an average \gls{dsc} of 78.81\,\% over all classes, which the authors report as comparable to the 80.54\,\% of 72 dataset-specific nnU-Nets~\cite{zhao2025sat}.
 
 % CLAUDE-DRAFT
 BiomedParse and MedSAM-3 also take text prompts, but they segment 2D images.
-BiomedParse was developed on about 1.1~million images from 45 datasets and nine imaging modalities with 82 object types, and on its test set of 102{,}855 image--mask--label triples it outperformed MedSAM given oracle bounding boxes~\cite{zhao2025foundation-9de}.
+BiomedParse was developed on about 1.1~million images from nine imaging modalities and outperformed MedSAM given oracle bounding boxes on its test set~\cite{zhao2025foundation-9de}.
 Its authors note that cutting \gls{ct} and \gls{mri} volumes into slices leaves their 3D context unused~\cite{zhao2025foundation-9de}.
-In SAT's comparison on 3D data, SAT-Pro was better on 29 of 30 categories, and on 23 of 30 when BiomedParse was prompted only on slices that contain the target; the SAT authors attribute BiomedParse's false positives to its slice-wise design~\cite{zhao2025sat}.
+On 3D data, SAT-Pro was better than BiomedParse on 29 of 30 categories, and the SAT authors attribute BiomedParse's false positives to its slice-wise design~\cite{zhao2025sat}.
 MedSAM-3 fine-tunes SAM~3~\cite{carion2026sam3segmentconcepts} on medical images paired with phrases of at most three words~\cite{liu2026medsam3delvingsegmentmedical}.
-With text and a bounding box, it reached \gls{dsc} values between 0.7772 and 0.9058 on four 2D datasets, with text alone only between 0.0826 and 0.5687~\cite{liu2026medsam3delvingsegmentmedical}.
+On four 2D datasets, its \gls{dsc} with text alone was much lower than with text and a bounding box~\cite{liu2026medsam3delvingsegmentmedical}.
 
 % CLAUDE-DRAFT
-VoxTell, the model adapted in this thesis, segments a 3D volume according to a text prompt that may be a single anatomical term or a full clinical sentence~\cite{rokuss2025voxtellfreetextpromptableuniversal}.
-It was trained on more than 62{,}000 \gls{ct}, \gls{mri} and \gls{pet} volumes covering 1{,}087 concepts~\cite{rokuss2025voxtellfreetextpromptableuniversal}.
-It fuses the text embedding with the image features at every decoder resolution (\cref{subsec:bg-voxtell}).
-On eleven datasets that were not used for training, its mean zero-shot \gls{dsc} was 70.85\,\%, against 51.23\,\% for SAT~\cite{rokuss2025voxtellfreetextpromptableuniversal}.
-The same paper shows where this generalisation ends: on knee \gls{mri} from SKM-TEA~\cite{desai2021skmtea}, a body region rarely seen in training, the mean zero-shot \gls{dsc} was 10.72\,\%, and the authors propose adapting the model with a small number of labelled examples as future work~\cite{rokuss2025voxtellfreetextpromptableuniversal}.
+VoxTell, the model adapted in this thesis, accepts a text prompt that may be a single anatomical term or a full clinical sentence~\cite{rokuss2025voxtellfreetextpromptableuniversal}.
+It was trained on more than 62{,}000 \gls{ct}, \gls{mri} and \gls{pet} volumes from 158 public datasets with 1{,}087 anatomical and pathological concepts~\cite[p.~4]{rokuss2025voxtellfreetextpromptableuniversal}.
+Unlike SAT, it fuses the text with the image features at every decoder resolution~\cite[p.~4]{rokuss2025voxtellfreetextpromptableuniversal} (\cref{subsec:bg-voxtell}).
+On eleven datasets that were not used for training, its mean zero-shot \gls{dsc} was 70.85\,\%, against 51.23\,\% for SAT, but on the knee \gls{mri} of SKM-TEA~\cite{desai2021skmtea} it reached only 10.72\,\%~\cite{rokuss2025voxtellfreetextpromptableuniversal}.
 
 % CLAUDE-DRAFT
 The VoxTell authors report robustness to synonyms, rephrasings and typos~\cite{rokuss2025voxtellfreetextpromptableuniversal}.
 SEER measured how five text-promptable models, four of them 3D, respond to free-text requests that a language model generated in eight clinical styles~\cite{zhang2026seer}.
-Among these models, VoxTell kept the highest \gls{dsc} under free-text requests, on average and in the worst case, whereas SAT fell on the pelvic-bone dataset PENGWIN from 96.05\,\% with class-name prompts to a mean of 0.01\,\%~\cite{zhang2026seer}.
+Among these models, VoxTell kept the highest \gls{dsc} under free-text requests, on average and in the worst case, whereas SAT failed almost completely on the pelvic-bone dataset PENGWIN~\cite{zhang2026seer}.
 Even for VoxTell, the worst rephrasing lowered the \gls{dsc} on PENGWIN from 97.59\,\% with the class-name prompt to 79.34\,\%~\cite{zhang2026seer}.
-This thesis trains and evaluates each task with one fixed text prompt (\cref{sec:method-setting}).
-
 % ---------------------------------------------------------------------
 \section{Few-Shot Adaptation of Segmentation Models}
 \label{sec:sota-few-shot}
 
 % CLAUDE-DRAFT
-In the standard sense reviewed by Dissanayake et al., few-shot segmentation means segmenting classes that were not seen in training from a few labelled examples of each~\cite[Sec.~2.2.1]{theekshana26fewshot}.
-Such models are usually trained episodically on support and query sets, and adapting them to a new class does not have to update any weights~\cite[Sec.~2.2]{theekshana26fewshot}.
-UniverSeg updates no weights at all: it segments a 2D image of a new task from a set of labelled example images that it receives as an additional input~\cite{universeg}.
-Its authors collected 53 datasets with more than 22{,}000 scans and held out six of them from training; on these six, UniverSeg reached a mean \gls{dsc} of 71.8\,\%, against 84.4\,\% for task-specific nnU-Nets, which they report as an upper bound~\cite{universeg}.
-This thesis uses the term for fine-tuning a pretrained model on a small number of labelled examples of the target, without episodic training, and counts one labelled training volume of a task as one shot (\cref{sec:method-setting}).
+Each task in this thesis comes with only a few labelled training volumes, so this section reviews how pretrained models have been adapted to a single target with few labels.
+In the review by Dissanayake et al., a few-shot model has to segment a new class from one or a few labelled examples, and it can do so in two ways~\cite[Sec.~2.2]{theekshana26fewshot}.
+In the first, the model receives the labelled examples as input together with the image to segment, so a new class often needs no change to its weights~\cite[Sec.~2.2, 2.2.1]{theekshana26fewshot}.
+UniverSeg is an example of this approach for 2D medical images~\cite{universeg}.
+In the second, the weights of a trained model are updated on the labelled examples, for instance by fine-tuning~\cite[Sec.~2.2]{theekshana26fewshot}.
+This thesis follows the second approach: a pretrained model is fine-tuned on a few labelled volumes of each task, and one labelled training volume counts as one shot (\cref{sec:method-setting}).
 
 % CLAUDE-DRAFT
-Silva-Rodríguez et al.\ studied this setting for a Swin UNETR pretrained on 2{,}042 partially labelled \gls{ct} scans with 29 structures~\cite{silvarodriguez2023fseft}.
-On TotalSegmentator, they adapted it to one organ at a time with 1, 5 or 10 labelled volumes, and with 30 as a large-data setting, without validation data~\cite{silvarodriguez2023fseft}.
-With 10 shots, the mean \gls{dsc} on nine organs that were already among the pretraining classes rose from 72.41\,\% without adaptation to 76.93\,\% with full fine-tuning and 77.79\,\% with LoRA~\cite{hu2022lora} in the encoder~\cite{silvarodriguez2023fseft}.
-With one shot, full fine-tuning was ahead (75.90 against 74.34\,\%), and from 5 to 10 shots it did not improve (77.15 and 76.93\,\%)~\cite{silvarodriguez2023fseft}.
-On 16 structures that were new to the model, the parameter-efficient methods applied to the encoder alone reached between 34.28 and 40.46\,\% at 10 shots, against 52.38\,\% for full fine-tuning, whereas decoder fine-tuning combined with LoRA reached 57.39\,\%~\cite{silvarodriguez2023fseft}.
-SEA-PEFT uses the same pretrained model and organs, but selects the type, position and rank of the adapters automatically during training on a held-out validation set, which raised the mean \gls{dsc} on the nine organs to 80.29\,\% at 10 shots~\cite{ly2026seapeft}.
-Both papers adapt with 1 to 10 labelled volumes, a range that overlaps with the 5, 10 and 20 labelled volumes per task used in this thesis (\cref{subsec:exp-data}).
-Neither paper evaluates the adapted model on anything but the target, so they do not show what the adaptation costs on the abilities the model had before~\cite{silvarodriguez2023fseft,ly2026seapeft}.
+Silva-Rodríguez et al.\ fine-tuned a Swin UNETR, pretrained on partially labelled \gls{ct} scans, to one organ of TotalSegmentator at a time with 1, 5 or 10 labelled volumes~\cite{silvarodriguez2023fseft}.
+This range overlaps with the 5, 10 and 20 labelled volumes per task used in this thesis (\cref{subsec:exp-data}).
+On nine organs that were already among the pretraining classes, LoRA~\cite{hu2022lora} in the encoder and full fine-tuning differed by less than one point of mean \gls{dsc} at 5 and 10 shots, and only LoRA improved from 5 to 10 shots~\cite{silvarodriguez2023fseft}.
+On 16 structures that were new to the model, parameter-efficient methods in the encoder alone reached at most 40.46\,\% at 10 shots, far below full fine-tuning (52.38\,\%) and fine-tuning the decoder together with LoRA in the encoder (57.39\,\%)~\cite{silvarodriguez2023fseft}.
+SEA-PEFT uses the same pretrained model and organs and selects the type, position and rank of the adapters automatically during training~\cite{ly2026seapeft}.
 
 % CLAUDE-DRAFT
-For vision--language models, CLIP-LoRA adds rank-2 LoRA modules to the query, key and value projections of every layer of both CLIP encoders and trains them with the same hyperparameters on eleven 2D image classification datasets with 1 to 16 shots per class~\cite{zanella2024lowrankfewshotadaptationvisionlanguage}.
-Averaged over the datasets, its top-1 accuracy with a ViT-B/16 image encoder was 72.5\,\% at one shot, against 70.9\,\% for the best competing method, and 83.0\,\% against 82.1\,\% at 16 shots~\cite{zanella2024lowrankfewshotadaptationvisionlanguage}.
-In the authors' ablation, adapting the value or output projection alone did best among single matrices, and the authors note that choosing the adapted matrices and the rank is difficult~\cite{zanella2024lowrankfewshotadaptationvisionlanguage}.
+For vision--language models, CLIP-LoRA adds rank-2 LoRA modules to the query, key and value projections of every layer of both CLIP encoders~\cite{zanella2024lowrankfewshotadaptationvisionlanguage}.
+It uses one set of hyperparameters for eleven 2D image classification datasets with 1 to 16 shots per class~\cite{zanella2024lowrankfewshotadaptationvisionlanguage}.
+With a ViT-B/16 image encoder, its average top-1 accuracy was the best of the compared methods at every number of shots, for example 72.5\,\% against 70.9\,\% at one shot~\cite{zanella2024lowrankfewshotadaptationvisionlanguage}.
+In the authors' ablation, the value or output projection was the best single matrix to adapt, and adapting more matrices or using a higher rank could lower the accuracy~\cite{zanella2024lowrankfewshotadaptationvisionlanguage}.
+The authors note that choosing the adapted matrices and the rank is difficult~\cite{zanella2024lowrankfewshotadaptationvisionlanguage}, and we examine the rank in our setting in \cref{sec:exp-rank}.
+Our LoRA layers are adapted from the CLIP-LoRA code.
+Like CLIP-LoRA, we apply LoRA to attention projections, but only to the query and value projections of the cross-attention in the prompt decoder of VoxTell (\cref{subsec:method-lora}).
 
 % CLAUDE-DRAFT
-The fine-tuning works above adapt a model to a single task, each time starting from the same pretrained weights.
-Dissanayake et al.\ name the rapid adaptation of foundation models such as \gls{sam} as little explored and point to approaches that could keep the zero-shot ability of these models~\cite[Sec.~5.6]{theekshana26fewshot}.
-Among the works found in our search (\cref{sec:sota-summary}), only Chen et al.\ adapt a 3D model to a sequence of tasks with few labelled examples each~\cite{chen2026fewshotcontinuallearning3d} (\cref{subsec:cl-medseg-fm}).
+The works above adapt a model to one target at a time, each time starting from the same pretrained weights.
+The two 3D studies evaluate the adapted model only on that target, so they do not show how much of its earlier ability the model loses through the adaptation~\cite{silvarodriguez2023fseft,ly2026seapeft}.
+In this thesis, the same model is trained on the tasks one after another, so each adaptation can also affect the tasks trained before it.
+Among the works found in our search (\cref{sec:sota-summary}), only Chen et al.\ adapt a pretrained 3D medical model to a sequence of tasks with few labelled examples each, one of them a segmentation task~\cite{chen2026fewshotcontinuallearning3d} (\cref{subsec:cl-medseg-fm}).
 
 % ---------------------------------------------------------------------
 \section[Continual Learning for Pretrained Vision--Language Models]{Continual Learning for Pretrained\texorpdfstring{\newline}{ } Vision--Language Models}
 \label{sec:cl-vlm}
 
 % CLAUDE-DRAFT
-Continual-learning settings are commonly divided into three scenarios by what the model must do at inference~\cite{van_de_Ven_2025}.
-In task-incremental learning, the task of each input is known at inference.
-Forgetting can then be avoided altogether by giving each task its own parameters, so the open question in this scenario is how much the tasks can share~\cite{van_de_Ven_2025}.
-Domain-incremental learning keeps the set of possible outputs fixed but shifts the input data from task to task, without telling the model which domain an input comes from~\cite{van_de_Ven_2025}.
-In class-incremental learning, the model must distinguish a growing number of classes, including classes it never saw together in training, which in a sequence of tasks also means inferring the task~\cite{van_de_Ven_2025}.
-Our setting fits none of the three cleanly, because the text prompt names the target structure at inference (\cref{sec:bg-cl}).
+Continual-learning settings are commonly divided into three scenarios by what information the model receives at inference and what it must infer~\cite{van_de_Ven_2025}.
+In task-incremental learning, the task identity of each input is given at inference.
+A model can then give each task its own parameters and avoid forgetting altogether, so the open question in this scenario is how much the tasks can share~\cite{van_de_Ven_2025}.
+In domain-incremental learning, the set of possible outputs stays the same from task to task, while the input data changes~\cite{van_de_Ven_2025}.
+The model does not receive the domain identity of an input~\cite{van_de_Ven_2025}.
+In class-incremental learning, the model must distinguish all classes seen so far, including classes from different tasks that it never saw together in training~\cite{van_de_Ven_2025}.
+In a sequence of tasks, this also means inferring the task~\cite{van_de_Ven_2025}.
+Our setting is closest to task-incremental learning, because the text prompt specifies the target of every input at inference (\cref{sec:bg-cl}).
 
 % CLAUDE-DRAFT
 De Lange et al.\ sort continual-learning methods into three families by the way they keep information about earlier tasks~\cite[Sec.~3]{delange2022}.
@@ -121,18 +114,20 @@ Replay methods reuse stored or generated samples of earlier tasks while learning
 Regularisation methods add a loss term, either distillation from an earlier model or a penalty on changes to important parameters~\cite[Sec.~3.2]{delange2022}.
 Parameter-isolation methods assign different parameters to different tasks, which typically requires the task identity at prediction time~\cite[Sec.~3.3]{delange2022}.
 For vision--language models, Liu et al.\ refine these families into multimodal replay, cross-modal regularisation and parameter-efficient adaptation, and note that many methods combine them~\cite[Sec.~4]{liu2026continuallearningvlmssurvey}.
-The works reviewed below all adapt a pretrained vision--language model.
-We arrange them by these families and assign the works that the survey does not list to a family ourselves.
+The following subsections follow these three families, and we assign the works that the survey does not list to a family ourselves.
 
 % CLAUDE-DRAFT
 Three evaluation ideas from this literature are used in this thesis.
 Chaudhry et al.\ separate forgetting from intransigence~\cite{Chaudhry_2018}.
-Forgetting is the drop in accuracy on a task after it has been learned, and intransigence is the gap between the accuracy on a task right after training on it and that of a reference model trained on all data so far~\cite{Chaudhry_2018}.
+Forgetting is the drop in accuracy on a task after it has been learned~\cite{Chaudhry_2018}.
+Intransigence is the gap between the accuracy on a task right after training on it and that of a reference model trained on all data so far~\cite{Chaudhry_2018}.
 ZSCL showed that continual fine-tuning of CLIP~\cite{radford2021learningtransferablevisualmodels} also lowers its zero-shot accuracy on datasets that it has not yet been trained on~\cite{zheng2023preventingzeroshottransferdegradation}.
 Its benchmark trains eleven classification datasets as tasks, in two task orders called Order~I and Order~II~\cite{zheng2023preventingzeroshottransferdegradation}.
-It reports Transfer, the mean accuracy on each task before the task is trained, and Last accuracy, the mean accuracy on all tasks after the last one~\cite{zheng2023preventingzeroshottransferdegradation}.
-SPU measures the loss of pretrained knowledge on a control set, the ImageNet validation set, by comparing the zero-shot accuracy of the adapted model with that of the frozen pretrained model~\cite{Zhang_2024_CVPR}.
-The metrics derived from these ideas are defined in \cref{sec:bg-metrics}.
+On this benchmark, ZSCL reports two metrics~\cite{zheng2023preventingzeroshottransferdegradation}.
+Transfer is the mean accuracy on each task before the task is trained, and Last accuracy is the mean accuracy on all tasks after the last one~\cite{zheng2023preventingzeroshottransferdegradation}.
+SPU measures the loss of pretrained knowledge on a control set~\cite{Zhang_2024_CVPR}.
+It compares the zero-shot accuracy of the adapted model on the ImageNet validation set with that of the frozen pretrained model~\cite{Zhang_2024_CVPR}.
+\Cref{sec:bg-metrics} defines the metrics that this thesis derives from these ideas.
 
 \subsection{Multimodal Replay}
 
@@ -347,8 +342,8 @@ The setting matters in practice when a universal model has to learn structures t
 % CLAUDE-DRAFT
 This thesis does not propose a new method.
 It adapts existing continual-learning strategies to VoxTell and compares them on six target structures of the SKM-TEA knee \gls{mri} dataset, measuring adaptation, forgetting within the sequence and the loss of pretrained ability on a control task (\cref{sec:method-protocol}).
-All strategies are compared with the full training data, and sequential fine-tuning, task-specific LoRA and shared LoRA also with 5, 10 and 20 labelled volumes per task.\todo{Update the list of strategies with few-shot runs after the reruns (cutoff 2026-11-01); same for the ``This thesis'' row of \tablename~\ref{tab:positioning}.}
-The strategies are chosen to cover the three families of \cref{sec:cl-vlm}, and all except task-specific LoRA use one parameter set for all tasks (\cref{sec:method-strategies}).\todo{Revisit after the results analysis: align with the final contributions in Ch.~1.}
+All strategies are compared with the full training data, and sequential fine-tuning, task-specific LoRA and shared LoRA also with 5, 10 and 20 labelled volumes per task and with 5 volumes and the number of updates of the full data; joint fine-tuning on all tasks at once serves as the upper reference.
+The strategies are chosen to cover the three families of \cref{sec:cl-vlm}, and all except task-specific LoRA use one parameter set for all tasks (\cref{sec:method-strategies}).
 \tablename~\ref{tab:positioning} contrasts this setting with the closest works.
 
 \input{tables/ch2_sota}

@@ -27,11 +27,9 @@
 \midrule
 SegVol \mbox{}\cite{du2025segvoluniversalinteractivevolumetric} & 25 \gls{ct} datasets; 3D & Points, boxes, class names in a template; not continual & Median \gls{dsc}, AMOS22: 0.8593, box + text (SAM-Med2D 0.6668)\\
 LViT \mbox{}\cite{li2023lvitlanguagemeetsvision} & QaTa-COV19, MosMedData+; 2D & Text descriptions, also at inference; not continual & \gls{dsc}, QaTa-COV19: 83.66\,\%, all labels\\
-TextMatch \mbox{}\cite{textmatch2024} & QaTa-COV19, MosMedData+; 2D & LViT descriptions, semi-supervised, 5--25\,\% of the labels; not continual & \gls{dsc}, QaTa-COV19: 83.56\,\%, 5\,\% labels\\
 R-Super \mbox{}\cite{bassi2025learningsegmentationradiologyreports} & AbdomenAtlas, private \gls{ct} with reports; 3D & Reports as training losses only, 50 to 1.7K masks; not continual & F1, pancreatic tumour detection: +16.0 points, 344 masks\\
 CLIP-Driven Universal Model \mbox{}\cite{Liu_2023} & 14 \gls{ct} datasets; 3D & Fixed class names in a CLIP template; not continual & \gls{dsc}, BTCV: 86.13\,\% (Swin UNETR 82.06\,\%)\\
 SAT \mbox{}\cite{zhao2025sat} & 72 \gls{ct}, \gls{mri}, \gls{pet} datasets; 3D & Terms from a fixed vocabulary; not continual & Mean \gls{dsc}, all classes: 78.81\,\% (72 nnU-Nets 80.54\,\%)\\
-Text3DSAM \mbox{}\cite{text3dsam} & Challenge data, five modalities; 3D & Fixed phrases per class; not continual & Mean \gls{dsc}, challenge validation: 0.6091 (SAT 0.5573)\\
 BiomedParse \mbox{}\cite{zhao2025foundation-9de} & 45 datasets, 9 modalities; 2D & Templated object-type prompts; not continual & \gls{dsc} above MedSAM with oracle boxes\\
 MedSAM-3 \mbox{}\cite{liu2026medsam3delvingsegmentmedical} & BUSI, RIM-ONE, ISIC 2018, Kvasir-SEG; 2D & Phrases of up to three words, optionally with a box; not continual & \gls{dsc}: 0.7772--0.9058 text + box; 0.0826--0.5687 text only\\
 VoxTell \mbox{}\cite{rokuss2025voxtellfreetextpromptableuniversal} & $>$62{,}000 \gls{ct}, \gls{mri}, \gls{pet} volumes; 3D & Free text; not continual & Mean zero-shot \gls{dsc}, 11 unseen datasets: 70.85\,\% (SAT 51.23\,\%); SKM-TEA 10.72\,\%\\

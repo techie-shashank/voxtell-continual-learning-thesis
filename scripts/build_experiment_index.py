@@ -2,8 +2,9 @@
 
 The experiment folders are the single source of truth. This script only reads
 them. All columns except `label`, `role` and `notes` are derived from each
-experiment's config.yaml, continual_state.json and the SLURM logs in
-results/hpc/logs, so rerunning the script never changes them by hand.
+experiment's config.yaml, continual_state.json, run_info.json (reruns from
+October 2026 on) and the SLURM logs in results/hpc/logs, so rerunning the
+script never changes them by hand.
 `label`, `role` and `notes` are maintained by the author; their values are kept
 when the script is rerun (matched by experiment_id).
 
@@ -26,6 +27,8 @@ COLUMNS = [
     "task_order", "n_tasks", "tasks", "control_tasks",
     "train_max_cases", "replay_fraction", "replay_max_size",
     "epochs", "lr", "train_seed", "split_seed", "strategy_params",
+    "eval_tasks", "eval_checkpoint", "extra_evaluations", "validation_interval",
+    "replay_control_volumes", "code_commits",
     "slurm_logs",
 ] + MANUAL_COLUMNS
 
@@ -41,7 +44,9 @@ def slurm_logs_by_experiment() -> dict[str, list[str]]:
     return found
 
 
-def task_order(tasks: list[str]) -> str:
+def task_order(tasks: list[str], joint: bool = False) -> str:
+    if joint:
+        return "joint"
     if tasks == ORIGINAL_ORDER:
         return "original"
     if tasks == ORIGINAL_ORDER[::-1]:
@@ -57,8 +62,26 @@ def row_for(exp_dir, logs) -> dict:
     data = cfg.get("dataset") or {}
     train = cfg["training"]
     tasks = [t["name"] for t in cont["tasks"]]
+    # Joint training (reruns 2026-10): one training task whose dataset concatenates several task
+    # datasets (dataset.joint_names); it is evaluated on the structures in continual.evaluation.tasks.
+    joint = any((t.get("dataset") or {}).get("joint_names") for t in cont["tasks"])
+    evaluation = cont.get("evaluation") or {}
+    eval_tasks = [t["name"] for t in evaluation.get("tasks") or []] or tasks
     # Same default as code/src/continual/task_manager.py
     strategy = cont.get("strategy", cont.get("baseline", "naive_sequential_finetuning"))
+    if joint:
+        strategy = "joint_fine_tuning"
+    # Evaluated parameters of the main evaluation. LoRA strategies always load the adapter saved
+    # after the last epoch (lora/*/strategy.py, build_evaluation_spec); the others load
+    # continual.evaluation.checkpoint, which defaulted to best_model.pt before the reruns.
+    if strategy in ("lora", "shared_lora"):
+        eval_checkpoint = "lora_adapter.pt"
+    else:
+        eval_checkpoint = evaluation.get("checkpoint") or "best_model.pt"
+    extra = ";".join(f"{e['tag']}:{e['checkpoint']}" for e in evaluation.get("extra") or [])
+    run_info = exp_dir / "run_info.json"
+    commits = list(dict.fromkeys(f"{x['git_commit'][:7]}{'-dirty' if x['git_dirty'] else ''}"
+                                 for x in read_json(run_info))) if run_info.exists() else []
     params = {k: cont[k] for k in ("zscl", "cpe_clip") if k in cont}
     state_file = exp_dir / "continual_state.json"
     return {
@@ -70,7 +93,7 @@ def row_for(exp_dir, logs) -> dict:
         "lora_rank": lora.get("rank", ""),
         "lora_alpha": lora.get("alpha", ""),
         "lora_dropout": lora.get("dropout", ""),
-        "task_order": task_order(tasks),
+        "task_order": task_order(tasks, joint),
         "n_tasks": len(tasks),
         "tasks": ";".join(tasks),
         "control_tasks": ";".join(t["name"] for t in cont.get("retention_tasks") or []),
@@ -83,6 +106,14 @@ def row_for(exp_dir, logs) -> dict:
         "train_seed": train.get("seed", ""),
         "split_seed": data.get("seed", ""),
         "strategy_params": json.dumps(params, sort_keys=True) if params else "",
+        "eval_tasks": ";".join(eval_tasks),
+        "eval_checkpoint": eval_checkpoint,
+        "extra_evaluations": extra,
+        "validation_interval": train.get("validation_interval", 1),
+        # Default of replay_memory.include_retention_tasks in code/src/continual/strategies/base.py: true.
+        "replay_control_volumes": ("yes" if replay.get("include_retention_tasks", True) else "no")
+                                  if replay.get("enabled") else "",
+        "code_commits": ";".join(commits),
         "slurm_logs": ";".join(logs.get(exp_dir.name, [])),
     }
 

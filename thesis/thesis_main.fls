@@ -697,6 +697,7 @@ INPUT .\tables\ch5_strategies.tex
 INPUT .\tables\ch5_strategies.tex
 INPUT tables\ch5_strategies.tex
 INPUT C:\Users\shash\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmcsc10.tfm
+INPUT C:\Users\shash\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtt12.tfm
 INPUT .\tables\ch5_complexity.tex
 INPUT .\tables\ch5_complexity.tex
 INPUT .\tables\ch5_complexity.tex
@@ -747,6 +748,11 @@ INPUT .\figures\ch6_control_task_main.pdf
 INPUT .\figures\ch6_control_task_main.pdf
 INPUT .\figures\ch6_control_task_main.pdf
 INPUT .\figures\ch6_control_task_main.pdf
+INPUT .\tables\ch6_components.tex
+INPUT .\tables\ch6_components.tex
+INPUT .\tables\ch6_components.tex
+INPUT .\tables\ch6_components.tex
+INPUT tables\ch6_components.tex
 INPUT .\tables\ch6_rank.tex
 INPUT .\tables\ch6_rank.tex
 INPUT .\tables\ch6_rank.tex
@@ -824,7 +830,6 @@ INPUT .\tables\appA_matrices.tex
 INPUT .\tables\appA_matrices.tex
 INPUT .\tables\appA_matrices.tex
 INPUT tables\appA_matrices.tex
-INPUT C:\Users\shash\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtt12.tfm
 INPUT .\thesis_main.lof
 INPUT .\thesis_main.lof
 INPUT thesis_main.lof

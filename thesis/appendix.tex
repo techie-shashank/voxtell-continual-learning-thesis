@@ -37,5 +37,7 @@ For every reported run, the table gives the mean \gls{dsc} on the test volumes o
 The diagonal entries, right after a task is trained, are set in bold; the last row is the control task.
 Task abbreviations: LT lateral tibial cartilage, MT medial tibial cartilage, Fe femoral cartilage, Pa patellar cartilage, MM medial meniscus, LM lateral meniscus, Ctrl control task (lung in AeroPath).
 The runs are grouped by the experiment in which they first appear in \cref{tab:ch6_experiments}; a run that belongs to several experiments is listed once.
+Joint fine-tuning has a single stage, \emph{Joint}, after which all six structures are evaluated.
+All matrices are computed with the parameters after the last epoch, except that of the prompt-tuning run without gradient scaling, which was evaluated only at the checkpoint with the lowest validation loss (\cref{sec:exp-main}).
 
 \input{tables/appA_matrices}

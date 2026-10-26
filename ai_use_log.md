@@ -194,3 +194,43 @@ Format: `YYYY-MM-DD | chapter/section | what was done (outline / feedback / expl
 2026-10-25 | Ch. 2.1 para. 1 | readability rewrite of SegVol sentences (split list, plain pretraining wording, metric definition in own sentence) (draft)
 2026-10-25 | Ch. 2.1 para. 1 | removed sentence on SegVol's median-per-category metric (stated in Table 2.1) (draft)
 2026-10-25 | Ch. 2.1 para. 2 | R-Super sentences rewritten for flow (contrast with LViT/TextMatch first, split into three sentences) (draft)
+2026-10-25 | Ch. 2.1, Table 2.1 | cut A1 (LViT/TextMatch/R-Super to 3 sentences, numbers only in table) and A3 (Text3DSAM removed from text and table) (draft)
+2026-10-25 | Ch. 2.1, Table 2.1 | TextMatch removed from text and table (author decision) (draft)
+2026-10-25 | Ch. 2.1 para. 3 | SAT part shortened from 5 to 3 sentences (author's wording, formatting and referent fix) (LaTeX fix)
+2026-10-25 | Ch. 2.1 | B1 applied: comparisons kept in text only where the argument uses them (SegVol, CLIP-Driven, BiomedParse, MedSAM-3, SAT in SEER shortened; numbers remain in Table 2.1) (draft)
+2026-10-25 | Ch. 2.1, Ch. 3.1 | VoxTell paragraph in 2.1 shortened (repeats of Ch. 1 removed, SAT contrast kept, 10.72 % as one clause); training-data sentence moved from Ch. 3 (background.tex:75) to 2.1 (author decision) (draft)
+2026-10-25 | Ch. 2.1 | removed fixed-prompt pointer sentence after SEER (covered in Discussion 7.x, discussion.tex:142-144) (draft)
+2026-10-26 | reruns | status update (14 of 15 finished, joint_ft resume) in thesis_tracker.md
+2026-10-26 | Ch. 2.2 | answered author's five questions on placement, scope, review-paper opening, UniverSeg/zero-shot, level of detail; proposed a trimmed outline for 2.2 (feedback)
+2026-10-26 | Ch. 2.2 | revised outline for 2.2 with CLIP-LoRA as implementation reference; checked LoRA layer code origin (outline)
+2026-10-26 | Ch. 2.2 | redrafted 2.2 from the approved outline (purpose opening, UniverSeg not zero-shot, numbers cut to those the argument uses, CLIP-LoRA as code and placement source) (draft)
+2026-10-26 | Ch. 5.3, Ch. 2.2 | added code-source sentence for the LoRA layers (adapted from CLIP-LoRA loralib, URL footnote); 2.2 wording 'took' -> 'adapted' (draft)
+2026-10-26 | Ch. 2.2 | rewrote para. 1 for readability (two approaches to few-shot from review Sec. 2.2, UniverSeg as example of the first, thesis follows the second) (draft)
+2026-10-26 | Ch. 2.2 | rewrote last paragraph (review Sec. 5.6 sentence cut, sentence on the sequential setting added as bridge to Chen et al.) (draft)
+2026-10-26 | Ch. 2.2 | feedback on clarity and focus of paras 2-3 (Silva-Rodriguez/SEA-PEFT, CLIP-LoRA), proposed rewrites; defense point D50 added (feedback)
+2026-10-26 | Ch. 2.2 | applied approved rewrites of paras 2-3 (findings first, LoRA 5->10 shots added, 'therefore' removed, q/v named) (draft)
+2026-10-26 | Ch. 2.2 | para. 2 numbers reduced from ten to three (known-organ comparison in words) (draft)
+2026-10-26 | Ch. 2.2 | feedback: keep the shot-range sentence, proposed more precise wording (feedback)
+2026-10-26 | Ch. 2.2 | split CLIP-LoRA implementation sentence in two; shot-range sentence made precise; feedback on line 94 (Chen et al. not a pure segmentation sequence) (draft)
+2026-10-26 | Ch. 2.2 | Chen et al. sentence made precise (pretrained 3D medical model, one segmentation task); shot-range sentence reverted on author's request (draft)
+2026-10-26 | Ch. 2.3 | para. 1 scenario definitions rewritten for readability (last sentence kept pending author decision); explained the scenario positioning and its weak point, D31 reopened (draft / explanation)
+2026-10-26 | Ch. 2.3 | transition sentence on our setting vs scenarios: both reasons in one line (prompt names target, no task identity) (draft)
+2026-10-26 | Ch. 2.3 | checked which scenario the closest prior works (text-promptable / universal segmentation) assign to their setting; proposed positioning line (explanation)
+2026-10-26 | Ch. 2.3, Ch. 3.2 | scenario positioning changed to 'closest to task-incremental learning' (2.3 one line, 3.2 paragraph); CLAUDE.md terminology rule and thesis_notes decision log updated; D31 answered (draft)
+2026-10-26 | Ch. 2.3 | para. 2 lines 117-118 merged into one signpost sentence; feedback on the evaluation-ideas paragraph (draft / feedback)
+2026-10-26 | Ch. 2.3 | evaluation-ideas paragraph split for readability (one definition per sentence, ZSCL named, SPU insertion removed, \Cref at sentence start) (draft)
+2026-10-26 | Ch. 2.3, 6, 7, 8 | register fixes: 'told' replaced in the scenario definitions (Ch. 2.3), referent fixed; 'cannot tell' replaced by 'cannot determine' / 'does not show' (7 places in Ch. 6-8) (LaTeX fix / language)
+2026-10-26 | reruns | final check of all 15 reruns (completeness, configs, commits, logs, mechanisms, reproduction of old runs); reproducibility facts and limitations updated in thesis_notes.md; status in thesis_tracker.md
+2026-10-26 | scripts | analysis scripts extended for the reruns (index columns, tagged evaluations, joint runs, per-row bootstrap seed, counterpart and selected-epoch rules); full pipeline rebuilt
+2026-10-26 | results index / scripts | roles of the reruns assigned on the author's request (backup kept); make_setup_tables and make_results_tables adapted to the new roles; pipeline rebuilt; stale numbers in the text listed in thesis_tracker.md
+2026-10-26 | Ch. 6/7 (reruns) | results overview of the reruns (facts, outlines/rerun_results_overview.md) and interview questions for the interpretation
+2026-10-26 | Ch. 5.2 | draft (approved changes): joint fine-tuning reference, evaluated vs carried-forward parameters, evaluation cost
+2026-10-26 | Ch. 5 (5.1, 5.3-5.4), Ch. 4.4, Ch. 1, CLAUDE.md | draft: switched to the rerun decisions (last-epoch rule, additional evaluations, replay without control volumes, weight ensemble, active gradient scaling); Table 5.1 column removed
+2026-10-26 | Ch. 6, App. A, scripts | draft: Ch. 6 switched to the reruns (6.1, 6.2 rewritten incl. joint reference and additional evaluations, 6.5 equal updates, 6.6, 6.7); tables ch6_main/ch6_few_shot extended, new ch6_components; paired differences for tagged evaluations; appendix with all 38 runs
+2026-10-26 | Ch. 7, Ch. 6.1.3 | draft: Ch. 7 switched to the reruns following decisions Q1-Q9 (objectives 1-4, budget hypothesis, limitations, extensions); author-confirm todos for new readings; 6.1.3 reproducibility of resumed runs
+2026-10-26 | Ch. 8, Ch. 1, Ch. 2, Ch. 3, CLAUDE.md | draft: Ch. 8 and the rerun spots of Ch. 1/2 switched to the reruns; Ch. 3 intransigence reference corrected; chapter status table updated; contributions left provisional
+2026-10-26 | Ch. 1.5, Ch. 8 (contributions) | outline: proposal for the final contributions (options A/B), no edits
+2026-10-26 | Ch. 1.5, Ch. 8, Ch. 2.5, Ch. 7, CLAUDE.md | draft: final contributions (option A, author's decision) applied; Ch. 8 own work threefold; provisional todos removed; CLAUDE.md objectives aligned with Ch. 1.3
+2026-10-26 | Ch. 6 figures | script: ch6_main_metrics with joint reference line, ch6_few_shot with equal-updates markers and joint curve (palette slot 6 validated with the dataviz validator); captions updated
+2026-10-26 | front matter, all chapters | LaTeX fix: declaration 'fur' -> 'f"ur' (copied text otherwise identical to the chair's); outline: length cut proposal (outlines/length_cut_proposal.md), nothing applied
+2026-10-26 | all chapters | outline: list of repeated and low-value passages as first cut candidates (outlines/length_cut_proposal.md), nothing applied

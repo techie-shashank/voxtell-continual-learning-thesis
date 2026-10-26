@@ -112,7 +112,7 @@ This thesis addresses the following research question:
 By \emph{adaptation performance} we mean how well the model segments a new structure right after it has been trained on it.
 We use \emph{forgetting} for the loss on earlier tasks of the sequence as well as for the loss of pretrained ability.
 Few-shot conditions are $k = 5$, 10 and 20 labelled volumes per task, which we compare with the full training split of 108 volumes per task.
-With the training schedule of our experiments, a task with five volumes is trained with 50 updates, against 1{,}080 with the full training split (\cref{subsec:exp-data}).
+With the training schedule of our experiments, a task with five volumes is trained with 50 updates, against 1{,}080 with the full training split, and further runs with five volumes and 1{,}080 updates separate the two (\cref{subsec:exp-data}).
 \Cref{sec:intro-approach} states which strategies were run with few volumes.
 
 % CLAUDE-DRAFT
@@ -120,8 +120,8 @@ We pursue four objectives:
 \begin{enumerate}
   \item Develop a few-shot continual-learning evaluation protocol for free-text promptable universal 3D medical image segmentation (\cref{sec:method-protocol}).
   \item Compare continual-learning strategies under this protocol in terms of their adaptation and forgetting (\cref{sec:exp-main}).
-  \item Investigate how the amount of labelled training data influences the evaluated strategies, separating the effect of fewer volumes from that of fewer updates (\cref{sec:exp-few-shot}).\todo{rerun: objective 3 relies on the equal-updates runs ($k = 5$, 1{,}080 updates per task); reword if they are not available by the cutoff}
-  \item Analyse how the task order, the LoRA rank (\cref{sec:intro-approach}) and the components of the strategies influence adaptation and forgetting (\cref{sec:exp-main,sec:exp-rank,sec:exp-task-order}).\todo{rerun: components = replay; add weight ensemble and gradient scaling if their reruns are used}
+  \item Investigate how the amount of labelled training data influences the evaluated strategies, separating the effect of fewer volumes from that of fewer updates (\cref{sec:exp-few-shot}).
+  \item Analyse how the task order, the LoRA rank (\cref{sec:intro-approach}) and the components of the strategies, replay, the weight ensemble and gradient scaling, influence adaptation and forgetting (\cref{sec:exp-main,sec:exp-rank,sec:exp-task-order}).
 \end{enumerate}
 
 % ---------------------------------------------------------------------
@@ -133,7 +133,6 @@ We study the research question with VoxTell~\cite{rokuss2025voxtellfreetextpromp
 The tasks are trained in two task orders, an original order chosen at random and its reverse, to see whether the results depend on the order.
 The lung in the chest \gls{ct} volumes of AeroPath~\cite{støverud2023aeropathairwaysegmentationbenchmark} serves as a control task.
 It is not trained on and is used only to measure how much of the pretrained ability is kept.
-The one exception is the replay memory of one strategy, which contains control-task training volumes.\todo{rerun: remove the exception if the replay rerun without control-task volumes replaces the existing run}
 After each task, the model is tested on all six tasks and on the control task (\cref{sec:method-protocol}).
 
 % CLAUDE-DRAFT
@@ -149,7 +148,7 @@ All strategies except task-specific LoRA use one parameter set for all tasks (\c
 
 % CLAUDE-DRAFT
 All strategies are trained with the full training split.
-Sequential fine-tuning, task-specific LoRA and shared LoRA are also trained with $k = 5$, 10 and 20 volumes per task, with one draw of volumes for each~$k$ (\cref{subsec:exp-data}).\todo{rerun: update the list of strategies with few-shot runs and add the equal-updates runs after the reruns (cutoff 2026-11-01); same sentence as in \cref{sec:sota-summary}}\todo{defense: the research question names few-shot conditions, but the distillation-based and prompt-tuning strategies are run only with the full training split (D46)}
+Sequential fine-tuning, task-specific LoRA and shared LoRA are also trained with $k = 5$, 10 and 20 volumes per task, with one draw of volumes for each~$k$, and with $k = 5$ and the 1{,}080 updates per task of the full split (\cref{subsec:exp-data}).\todo{defense: the research question names few-shot conditions, but the distillation-based and prompt-tuning strategies are run only with the full training split (D46)}
 
 % CLAUDE-DRAFT
 From the test results, we compute three primary metrics (\cref{sec:bg-metrics}).
@@ -164,25 +163,25 @@ The pretrained model is evaluated in the same way and serves as a reference.
 % CLAUDE-DRAFT
 The study uses one model, one dataset for the tasks, one control task, one fixed text prompt per structure and one draw of training volumes per~$k$.
 Each configuration was trained once, so we estimate only the variability over the test volumes, using a bootstrap (\cref{subsec:exp-metrics}).
-No joint-training reference, in which one model is trained on all tasks at once, was trained (\cref{sec:method-protocol}).\todo{rerun: joint fine-tuning runs (full, $k = 5$, 10, 20); replace this sentence if they are used}
+As an upper reference, joint fine-tuning trains one model on all six tasks at once, with the full training split and with each~$k$ (\cref{sec:method-protocol}).
 The conclusions are therefore limited to this setting (\cref{sec:disc-limitations}).
 Clinical deployment and studies with clinical users are outside the scope of this thesis, but we report the training cost of the strategies (\cref{sec:exp-compute}).
 
 % ---------------------------------------------------------------------
 \section{Contributions}
 \label{sec:intro-contributions}
-\todo{provisional: finalise the contributions after the results analysis}
+% Contributions decided by the author on 2026-10-26 (option A, thesis_notes.md §1).
 
 % CLAUDE-DRAFT
 The contributions of this thesis are:
 \begin{enumerate}
-  \item An evaluation protocol for few-shot continual adaptation of a free-text promptable 3D segmentation model, which measures adaptation, forgetting within the task sequence and the loss of pretrained ability on a control task outside the sequence, and a systematic evaluation of continual-learning strategies under this protocol.
-  \item A comparative analysis of the adaptation, forgetting, transfer and retention of these strategies with the full training split and with few labelled volumes per task.
-  \item An analysis of factors that affect continual adaptation in this setting: the amount of labelled data, the task order and the configuration of the strategies, that is, the LoRA rank and the components of the strategies.
+  \item An evaluation protocol for few-shot continual adaptation of a free-text promptable 3D segmentation model, which measures adaptation, forgetting within the task sequence and the loss of pretrained ability on a held-out control task, with the pretrained model and joint training as reference points (\cref{sec:method-setting,sec:method-protocol}).
+  \item A systematic comparison of sequential fine-tuning and five strategies from the three families of continual learning for vision--language models, adapted to VoxTell (LoRA on the cross-attention of the prompt decoder, voxel-wise feature distillation, learned prompt tokens with a meta-net), under one shared training configuration, with the full training split and, for three of them, with 5, 10 and 20 labelled volumes per task (\cref{sec:method-strategies,sec:exp-main,sec:exp-few-shot}).
+  \item An analysis of the factors that affect continual adaptation in this setting: the amount of labelled data separated from the number of updates, the task order, the LoRA rank and the components of the strategies (replay, weight ensemble, gradient scaling), together with a diagnosis of why task-specific LoRA failed on patellar cartilage (\cref{sec:exp-main,sec:exp-rank,sec:exp-patellar,sec:exp-few-shot,sec:exp-task-order}).
 \end{enumerate}
 
 % CLAUDE-DRAFT
-Sequential fine-tuning, LoRA, ZSCL and CPE-CLIP are existing methods.
+Sequential fine-tuning, LoRA, replay, ZSCL and CPE-CLIP are existing methods.
 The work of this thesis is their application to VoxTell with the changes described in \cref{sec:method-strategies}, the evaluation protocol and all experiments.
 
 % ---------------------------------------------------------------------

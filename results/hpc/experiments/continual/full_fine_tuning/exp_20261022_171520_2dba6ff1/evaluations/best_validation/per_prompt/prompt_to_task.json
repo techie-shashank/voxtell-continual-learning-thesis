@@ -1,0 +1,9 @@
+{
+  "lateral meniscus": 0,
+  "medial meniscus": 1,
+  "patellar cartilage": 2,
+  "femoral cartilage": 3,
+  "medial tibial cartilage": 4,
+  "lateral tibial cartilage": 5,
+  "lung": 6
+}

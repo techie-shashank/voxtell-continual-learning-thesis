@@ -20,9 +20,14 @@ standard deviation), diff_ci_low/_ci_high (2.5 and 97.5 percentiles) and
 share_a_greater (fraction of draws with A > B).
 
 Pairs. All pairs of experiments that have a role in the index and the same
-number of tasks, plus the 'Pretrained model' reference row of each task order.
-Pairs are formed between task orders too: the metrics are defined per run, and
-all runs share the same test volumes.
+evaluated tasks, plus the 'Pretrained model' reference row of each task order.
+Tagged evaluations (best_validation, weight_ensemble) enter as entries of their own, with id
+"<experiment_id>:<tag>", so that, e.g., the best-validation checkpoints of two runs or the
+weight ensemble and the student of one run can be compared on the same draws. Pairs are formed between task orders
+too: the metrics are defined per run, and all runs share the same test volumes.
+Joint fine-tuning (one training stage, evaluated on the six structures) is paired
+with the sequential runs on the metrics both have: Final Performance and the
+control-task drop.
 
 Interpretation. The interval reflects the choice of test volumes only, not
 training randomness (one seed per configuration) or the choice of support set.
@@ -41,7 +46,7 @@ from itertools import combinations
 
 import numpy as np
 
-from _common import INDEX_FILE, REPO
+from _common import INDEX_FILE, REPO, evaluations
 from compute_cl_metrics import (BOOTSTRAP_SEED, METRICS, N_BOOTSTRAP, all_metrics,
                                 load_volumes, split_matrix, volume_tensor)
 
@@ -52,13 +57,14 @@ def cases_of(cells, row_task: str) -> list[str]:
     return sorted(cells[(row_task, 0)])
 
 
-def metric_samples(tv: np.ndarray, cv: np.ndarray, idx_t: np.ndarray, idx_c: np.ndarray) -> dict:
+def metric_samples(tv: np.ndarray, cv: np.ndarray, idx_t: np.ndarray, idx_c: np.ndarray,
+                   joint: bool = False) -> dict:
     """metric -> array [B] of the metric on each bootstrap draw (NaN where undefined)."""
     out = {k: np.full(len(idx_t), np.nan) for k in METRICS}
     for b in range(len(idx_t)):
         a = tv[:, :, idx_t[b]].mean(axis=2)
         c = cv[:, :, idx_c[b]].mean(axis=2)
-        for k, v in all_metrics(a, c).items():
+        for k, v in all_metrics(a, c, joint).items():
             if v != "":
                 out[k][b] = v
     return out
@@ -74,28 +80,35 @@ def main():
     task_cases = control_cases = None
     for r in index:
         tasks = r["tasks"].split(";")
+        eval_tasks = (r["eval_tasks"] or r["tasks"]).split(";")
+        joint = r["strategy"] == "joint_fine_tuning"
         controls = [t for t in r["control_tasks"].split(";") if t]
-        cells = volumes[r["experiment_id"]]
-        a, c = split_matrix(REPO / r["path"], tasks, controls)
-        tv = volume_tensor(cells, tasks, len(tasks) + 1, a)
-        cv = volume_tensor(cells, controls, len(tasks) + 1, c)
-        # Paired resampling needs the same test volumes in every experiment.
-        tc, cc = cases_of(cells, tasks[0]), cases_of(cells, controls[0])
-        if task_cases is None:
-            task_cases, control_cases = tc, cc
-        if tc != task_cases or cc != control_cases:
-            raise ValueError(f"{r['experiment_id']}: test volumes differ from the other experiments")
-        entries.append({"id": r["experiment_id"], "label": r["label"], "order": r["task_order"],
-                        "n_tasks": len(tasks), "point": all_metrics(a, c), "tv": tv, "cv": cv})
+        for name, eval_dir, _ in evaluations(REPO / r["path"]):
+            cells = volumes[(r["experiment_id"], name)]
+            a, c = split_matrix(eval_dir, tasks, controls, eval_tasks)
+            tv = volume_tensor(cells, eval_tasks, len(tasks) + 1, a)
+            cv = volume_tensor(cells, controls, len(tasks) + 1, c)
+            # Paired resampling needs the same test volumes in every experiment.
+            tc, cc = cases_of(cells, eval_tasks[0]), cases_of(cells, controls[0])
+            if task_cases is None:
+                task_cases, control_cases = tc, cc
+            if tc != task_cases or cc != control_cases:
+                raise ValueError(f"{r['experiment_id']}: test volumes differ from the other experiments")
+            main = name == "main"
+            entries.append({"id": r["experiment_id"] if main else f"{r['experiment_id']}:{name}",
+                            "label": r["label"] if main else f"{r['label']} [{name}]", "order": r["task_order"],
+                            "n_tasks": len(tasks), "rows": frozenset(eval_tasks), "joint": joint, "main": main,
+                            "point": all_metrics(a, c, joint), "tv": tv, "cv": cv})
 
     # Pretrained-model reference per task order: every checkpoint equals the pretrained column.
-    for order in sorted({e["order"] for e in entries if e["n_tasks"] > 1}):
-        first = next(e for e in entries if e["order"] == order and e["n_tasks"] > 1)
+    for order in sorted({e["order"] for e in entries if e["n_tasks"] > 1 and not e["joint"]}):
+        first = next(e for e in entries if e["order"] == order and e["n_tasks"] > 1 and e["main"])
+        rows_ref = first["rows"]
         T = first["n_tasks"]
         tv = np.repeat(first["tv"][:, :1], T + 1, axis=1)
         cv = np.repeat(first["cv"][:, :1], T + 1, axis=1)
         entries.append({"id": f"pretrained_{order}", "label": f"Pretrained model (Task Order={order.capitalize()})",
-                        "order": order, "n_tasks": T,
+                        "order": order, "n_tasks": T, "rows": rows_ref, "joint": False, "main": True,
                         "point": all_metrics(tv.mean(axis=2), cv.mean(axis=2)), "tv": tv, "cv": cv})
 
     rng = np.random.default_rng(BOOTSTRAP_SEED)
@@ -103,11 +116,11 @@ def main():
     idx_t = rng.integers(0, n, (N_BOOTSTRAP, n))
     idx_c = rng.integers(0, m, (N_BOOTSTRAP, m))
     for e in entries:
-        e["samples"] = metric_samples(e["tv"], e["cv"], idx_t, idx_c)
+        e["samples"] = metric_samples(e["tv"], e["cv"], idx_t, idx_c, e["joint"])
 
     rows = []
     for ea, eb in combinations(entries, 2):
-        if ea["n_tasks"] != eb["n_tasks"]:
+        if ea["rows"] != eb["rows"]:
             continue
         for k in METRICS:
             pa, pb = ea["point"][k], eb["point"][k]

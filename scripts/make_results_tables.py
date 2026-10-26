@@ -7,6 +7,12 @@ Output: thesis/tables/ch6_<group>.tex, each a bare `tabular` (booktabs). Caption
 
 Values are point estimates (mean Dice over the test volumes), 3 decimals. The
 bootstrap variability is in cl_metrics.csv and in the figures (error bars).
+Metrics that are not defined for a run (Adaptation, Final Forgetting and Transfer of
+joint fine-tuning, which has no task sequence) are shown as "--".
+
+Tables use the main evaluation of each run (parameters after the last epoch for all reruns
+of October 2026), except ch6_components, which also shows the tagged evaluations
+(best_validation, weight_ensemble) of the same runs.
 
 Usage (from the repository root):
     python scripts/make_results_tables.py
@@ -64,6 +70,19 @@ def table(key_header: str | None, body: list[tuple[str, str, dict]], reference: 
     return "\n".join(lines)
 
 
+def updates_per_task(run) -> int:
+    return int(run["epochs"]) * train_volumes(run)
+
+
+def eval_name(run, evaluation: str) -> str:
+    """Name of the evaluated parameters of one evaluation of a run."""
+    if evaluation == "weight_ensemble":
+        return "weight ensemble"
+    if evaluation == "best_validation" or run["eval_checkpoint"] == "best_model.pt":
+        return "best validation"
+    return "last epoch"
+
+
 def by_strategy(run):
     return (STRATEGY_ORDER.index(run["strategy"]), int(run["lora_rank"] or 0))
 
@@ -110,11 +129,16 @@ def main():
     tables = {}
 
     main_runs = sorted([r for r in runs if "Main" in roles(r)], key=by_strategy)
-    # Shared LoRA + replay as its own group: its memory holds control-task volumes (thesis_notes.md §1, 2026-10-24).
+    # Shared LoRA + replay as its own group. The asterisk (explained in the caption) marks a run whose
+    # memory holds control-task volumes (index column replay_control_volumes = yes, the run before the
+    # reruns); the rerun of October 2026 keeps the control task out of the memory (thesis_notes.md §1).
     replay_runs = [r for r in runs if "Replay Ablation" in roles(r)]
+    star = lambda r: r"$^{*}$" if r["replay_control_volumes"] != "no" else ""
     tables["main"] = table(None, [(strategy_name(r), "", r) for r in main_runs], [ref_orig],
-                           extra=[(strategy_name(r).replace("Shared LoRA", "Shared LoRA + replay") + r"$^{*}$", "", r)
-                                  for r in replay_runs])
+                           extra=[(strategy_name(r).replace("Shared LoRA", "Shared LoRA + replay") + star(r), "", r)
+                                  for r in replay_runs]
+                           + [("Joint fine-tuning (upper reference)", "", r) for r in runs
+                              if "Joint Reference" in roles(r) and not r["train_max_cases"]])
 
     # Rank ablation: shared LoRA r = 4 ... 2048 and task-specific LoRA r = 4, 8, grouped by strategy.
     rank_runs = sorted([r for r in runs if "Rank Ablation" in roles(r)],
@@ -130,15 +154,36 @@ def main():
                                  [("Pretrained model", "Original", refs["original"]),
                                   ("Pretrained model", "Reverse", refs["reverse"])])
 
-    few = [r for r in runs if "Few-shot" in roles(r)]
+    # Few-shot runs, the equal-updates runs (k = 5 with the update count of the full split) and the
+    # full-split counterpart of each strategy; key column: training volumes and updates per task.
+    few = [r for r in runs if "Few-shot" in roles(r) or "Equal Updates" in roles(r)]
     few_body = []
     for strategy_runs in sorted({(r["strategy"], r["lora_rank"]) for r in few},
                                 key=lambda k: STRATEGY_ORDER.index(k[0])):
         group = [r for r in few if (r["strategy"], r["lora_rank"]) == strategy_runs]
         group.append(counterpart(group[0], runs))
-        for r in sorted(group, key=train_volumes):
-            few_body.append((strategy_name(r), str(train_volumes(r)), r))
-    tables["few_shot"] = table("Volumes", few_body, [ref_orig])
+        for r in sorted(group, key=lambda r: (train_volumes(r), updates_per_task(r))):
+            key = f"{train_volumes(r)} ({updates_per_task(r):,})".replace(",", "{,}")
+            few_body.append((strategy_name(r), key, r))
+    # Joint fine-tuning: one stage on all six structures, so no updates per task.
+    joint = sorted([r for r in runs if "Joint Reference" in roles(r)], key=train_volumes)
+    tables["few_shot"] = table(r"Vol.\ (updates)", few_body, [ref_orig],
+                               extra=[("Joint fine-tuning", f"{train_volumes(r)} (--)", r) for r in joint])
+
+    # Additional evaluations and component ablations of the strategies with a full-model or
+    # prompt-tuning update: checkpoint (last epoch vs best validation), weight ensemble, gradient scaling.
+    tagged = {ev: {r["experiment_id"]: r for r in load(ev)[0]} for ev in ("best_validation", "weight_ensemble")}
+    comp_body = []
+    for r in [r for r in main_runs if r["strategy"] in ("naive_sequential_finetuning", "zscl", "cpe_clip")]:
+        name = strategy_name(r)
+        comp_body.append((name, eval_name(r, "main"), r))
+        for ev in ("best_validation", "weight_ensemble"):
+            if r["experiment_id"] in tagged[ev]:
+                comp_body.append((name, eval_name(r, ev), tagged[ev][r["experiment_id"]]))
+        if r["strategy"] == "cpe_clip":
+            for a in [a for a in runs if "Scaling Ablation" in roles(a)]:
+                comp_body.append((name + " (no scaling)", eval_name(a, "main"), a))
+    tables["components"] = table("Evaluation", comp_body, [ref_orig])
 
     replay_body = []
     for r in [r for r in runs if "Replay Ablation" in roles(r)]:

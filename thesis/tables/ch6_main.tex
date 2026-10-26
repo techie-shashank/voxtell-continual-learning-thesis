@@ -4,13 +4,14 @@
 \toprule
 Strategy & Adapt.\,$\uparrow$ & Forg.\,$\downarrow$ & Ctrl.\ drop\,$\downarrow$ & Final\,$\uparrow$ & Transf.\,$\uparrow$ \\
 \midrule
-Seq. fine-tuning & 0.717 & 0.704 & 0.979 & 0.130 & 0.001 \\
+Seq. fine-tuning & 0.781 & 0.782 & 0.979 & 0.130 & 0.001 \\
 Task-specific LoRA ($r=4$) & 0.485 & 0.000 & 0.000 & 0.485 & 0.129 \\
 Shared LoRA ($r=1024$) & 0.471 & 0.289 & 0.237 & 0.233 & 0.174 \\
-Prompt tuning & 0.608 & 0.568 & 0.979 & 0.135 & 0.043 \\
-Distillation-based & 0.744 & 0.732 & 0.979 & 0.134 & 0.002 \\
+Prompt tuning & 0.580 & 0.510 & 0.865 & 0.155 & 0.043 \\
+Distillation-based & 0.747 & 0.734 & 0.979 & 0.135 & 0.002 \\
 \midrule
-Shared LoRA + replay ($r=1024$)$^{*}$ & 0.429 & 0.039 & 0.007 & 0.446 & 0.148 \\
+Shared LoRA + replay ($r=1024$) & 0.472 & 0.046 & 0.138 & 0.450 & 0.175 \\
+Joint fine-tuning (upper reference) & -- & -- & 0.979 & 0.852 & -- \\
 \midrule
 Pretrained model & 0.114 & 0.000 & 0.000 & 0.114 & 0.137 \\
 \bottomrule

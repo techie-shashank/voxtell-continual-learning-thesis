@@ -5,72 +5,72 @@
 \contentsline {section}{\numberline {1.3}Research Question and Objectives}{4}{section.1.3}%
 \contentsline {section}{\numberline {1.4}Approach and Scope}{5}{section.1.4}%
 \contentsline {section}{\numberline {1.5}Contributions}{6}{section.1.5}%
-\contentsline {section}{\numberline {1.6}Thesis Outline}{6}{section.1.6}%
+\contentsline {section}{\numberline {1.6}Thesis Outline}{7}{section.1.6}%
 \contentsline {chapter}{\numberline {2}State of the Art}{9}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Text-Promptable Medical Image Segmentation}{9}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Few-Shot Adaptation of Segmentation Models}{11}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Continual Learning for Pretrained Vision--Language Models}{13}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Multimodal Replay}{14}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Cross-Modal Regularisation}{14}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Parameter-Efficient Adaptation}{15}{subsection.2.3.3}%
-\contentsline {section}{\numberline {2.4}Continual Learning for Medical Image Segmentation}{17}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Networks Trained for the Tasks}{17}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Pretrained Segmentation Foundation Models}{19}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Continual Learning of Text-Promptable Segmentation Models}{20}{subsection.2.4.3}%
-\contentsline {section}{\numberline {2.5}Summary and Research Gap}{21}{section.2.5}%
-\contentsline {chapter}{\numberline {3}Theoretical Background}{29}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Free-Text Promptable Volumetric Segmentation}{29}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Encoder--Decoder Networks for Volumetric Segmentation}{29}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Attention}{30}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}VoxTell}{31}{subsection.3.1.3}%
-\contentsline {section}{\numberline {3.2}Continual Learning}{32}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Methods Adapted by the Strategies}{34}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Low-Rank Adaptation}{34}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Replay}{35}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Knowledge Distillation and ZSCL}{35}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Prompt Learning and CPE-CLIP}{36}{subsection.3.3.4}%
-\contentsline {section}{\numberline {3.4}Evaluation Metrics}{37}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Data Description}{41}{chapter.4}%
-\contentsline {section}{\numberline {4.1}SKM-TEA}{41}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Acquisition and Annotation}{41}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Continual-Learning Tasks}{43}{subsection.4.1.2}%
-\contentsline {section}{\numberline {4.2}AeroPath}{44}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Data Splits and Few-Shot Subsets}{45}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Preprocessing}{47}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Data Quality and Limitations}{48}{section.4.5}%
-\contentsline {chapter}{\numberline {5}Method}{49}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Continual-Learning Setting}{49}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Evaluation Protocol}{50}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Adapting VoxTell to One Task}{52}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Continual-Learning Strategies}{55}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Sequential Fine-Tuning}{56}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Task-Specific and Shared LoRA}{57}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.4.3}Replay}{58}{subsection.5.4.3}%
-\contentsline {subsection}{\numberline {5.4.4}Distillation-Based Strategy}{59}{subsection.5.4.4}%
-\contentsline {subsection}{\numberline {5.4.5}Prompt-Tuning Strategy}{60}{subsection.5.4.5}%
-\contentsline {section}{\numberline {5.5}Computational Complexity}{61}{section.5.5}%
-\contentsline {chapter}{\numberline {6}Experiments and Results}{65}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Experimental Setup}{65}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Overview of the Experiments}{65}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}Data, Task Orders and Few-Shot Settings}{66}{subsection.6.1.2}%
-\contentsline {subsection}{\numberline {6.1.3}Training and Evaluation Configuration}{67}{subsection.6.1.3}%
-\contentsline {subsection}{\numberline {6.1.4}Metrics and Statistical Analysis}{67}{subsection.6.1.4}%
-\contentsline {section}{\numberline {6.2}Comparison of the Strategies}{70}{section.6.2}%
-\contentsline {section}{\numberline {6.3}LoRA Rank}{75}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Diagnosis of the Patellar Failure}{77}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Amount of Labelled Data}{79}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Task Order}{81}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Computational Cost}{84}{section.6.7}%
-\contentsline {chapter}{\numberline {7}Discussion}{87}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Answer to the Research Question}{87}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Training Budget as a Common Factor}{90}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Limitations and Threats to Validity}{92}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Generalisation and Extensions}{94}{section.7.4}%
-\contentsline {chapter}{\numberline {8}Summary}{97}{chapter.8}%
-\contentsline {chapter}{\numberline {A}Additional Experimental Details and Results}{101}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Training and Test Volumes}{101}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Evaluation Matrices of All Runs}{101}{section.A.2}%
-\contentsline {chapter}{List of Abbreviations}{113}{section*.91}%
-\contentsline {chapter}{List of Figures}{115}{appendix*.92}%
-\contentsline {chapter}{List of Tables}{117}{appendix*.93}%
-\contentsline {chapter}{Bibliography}{119}{appendix*.94}%
+\contentsline {section}{\numberline {2.3}Continual Learning for Pretrained Vision--Language Models}{12}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Multimodal Replay}{13}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Cross-Modal Regularisation}{13}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Parameter-Efficient Adaptation}{14}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Continual Learning for Medical Image Segmentation}{16}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Networks Trained for the Tasks}{16}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Pretrained Segmentation Foundation Models}{18}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Continual Learning of Text-Promptable Segmentation Models}{19}{subsection.2.4.3}%
+\contentsline {section}{\numberline {2.5}Summary and Research Gap}{20}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Theoretical Background}{27}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Free-Text Promptable Volumetric Segmentation}{27}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Encoder--Decoder Networks for Volumetric Segmentation}{27}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Attention}{28}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}VoxTell}{29}{subsection.3.1.3}%
+\contentsline {section}{\numberline {3.2}Continual Learning}{30}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Methods Adapted by the Strategies}{32}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Low-Rank Adaptation}{32}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Replay}{33}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Knowledge Distillation and ZSCL}{33}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Prompt Learning and CPE-CLIP}{34}{subsection.3.3.4}%
+\contentsline {section}{\numberline {3.4}Evaluation Metrics}{35}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Data Description}{39}{chapter.4}%
+\contentsline {section}{\numberline {4.1}SKM-TEA}{39}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Acquisition and Annotation}{39}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Continual-Learning Tasks}{41}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}AeroPath}{42}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Data Splits and Few-Shot Subsets}{43}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Preprocessing}{45}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Data Quality and Limitations}{46}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Method}{47}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Continual-Learning Setting}{47}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Evaluation Protocol}{48}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Adapting VoxTell to One Task}{50}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Continual-Learning Strategies}{53}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Sequential Fine-Tuning}{54}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Task-Specific and Shared LoRA}{55}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Replay}{56}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Distillation-Based Strategy}{57}{subsection.5.4.4}%
+\contentsline {subsection}{\numberline {5.4.5}Prompt-Tuning Strategy}{58}{subsection.5.4.5}%
+\contentsline {section}{\numberline {5.5}Computational Complexity}{59}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Experiments and Results}{63}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Experimental Setup}{63}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Overview of the Experiments}{63}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Data, Task Orders and Few-Shot Settings}{64}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Training and Evaluation Configuration}{64}{subsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.1.4}Metrics and Statistical Analysis}{65}{subsection.6.1.4}%
+\contentsline {section}{\numberline {6.2}Comparison of the Strategies}{67}{section.6.2}%
+\contentsline {section}{\numberline {6.3}LoRA Rank}{73}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Diagnosis of the Patellar Failure}{74}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Amount of Labelled Data}{76}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Task Order}{78}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Computational Cost}{80}{section.6.7}%
+\contentsline {chapter}{\numberline {7}Discussion}{89}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Answer to the Research Question}{89}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Training Budget as a Common Factor}{92}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Limitations and Threats to Validity}{94}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Generalisation and Extensions}{97}{section.7.4}%
+\contentsline {chapter}{\numberline {8}Summary}{99}{chapter.8}%
+\contentsline {chapter}{\numberline {A}Additional Experimental Details and Results}{103}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Training and Test Volumes}{103}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Evaluation Matrices of All Runs}{103}{section.A.2}%
+\contentsline {chapter}{List of Abbreviations}{119}{section*.75}%
+\contentsline {chapter}{List of Figures}{121}{appendix*.76}%
+\contentsline {chapter}{List of Tables}{123}{appendix*.77}%
+\contentsline {chapter}{Bibliography}{125}{appendix*.78}%

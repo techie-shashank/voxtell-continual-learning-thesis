@@ -46,6 +46,9 @@ STRATEGY = {
     "shared_lora": ("Shared LoRA", "#1baf7a", "^"),
     "cpe_clip": ("Prompt tuning", "#eda100", "D"),
     "zscl": ("Distillation-based", "#e87ba4", "v"),
+    # Upper reference (reruns 2026-10), not a continual-learning strategy: categorical slot 6 (green) of the
+    # validated palette; the six slots pass scripts/validate_palette.js of the dataviz skill (light mode).
+    "joint_fine_tuning": ("Joint fine-tuning", "#008300", "P"),
 }
 STRATEGY_ORDER = list(STRATEGY)
 REFERENCE_COLOUR = "#52514e"
@@ -58,19 +61,26 @@ TASK_SHORT = {
     "skm_tea_medial_meniscus": "MM",
     "skm_tea_lateral_meniscus": "LM",
     "aeropath": "Ctrl",
+    "skm_tea_joint": "Joint",     # the single training stage of joint fine-tuning
 }
 
 TEXT_WIDTH_IN = 460.93457 / 72.27   # \textwidth from thesis_main.log
 
 
-def load():
-    """Return (index rows with metrics merged in, reference rows by task order)."""
+def load(evaluation: str = "main"):
+    """Return (index rows with metrics merged in, reference rows by task order).
+
+    Uses one evaluation per run: 'main' (the evaluation in the experiment root) by default,
+    or a tag of the reruns (e.g. 'best_validation'), for runs that have it.
+    """
     with open(INDEX_FILE, newline="", encoding="utf-8") as f:
         index = {r["experiment_id"]: r for r in csv.DictReader(f)}
     with open(METRICS_FILE, newline="", encoding="utf-8") as f:
         metrics = list(csv.DictReader(f))
     runs, refs = [], {}
     for m in metrics:
+        if m["evaluation"] != evaluation and m["role"] != "Reference":
+            continue
         if m["role"] == "Reference":
             refs[m["task_order"]] = {**m, "strategy": "", "lora_rank": ""}
         else:
@@ -93,9 +103,15 @@ def is_default(run) -> bool:
 
 
 def counterpart(run, runs):
-    """The default-configuration run with the same strategy and LoRA rank."""
+    """The default-configuration run with the same strategy and LoRA rank.
+
+    If several runs have that configuration (an original run and its rerun of October 2026),
+    the one with a role in the index is taken: the role marks the run reported in the thesis.
+    """
     hits = [r for r in runs if is_default(r) and r["strategy"] == run["strategy"]
             and r["lora_rank"] == run["lora_rank"]]
+    if len(hits) > 1:
+        hits = [r for r in hits if roles(r)]
     if len(hits) != 1:
         raise ValueError(f"expected one counterpart for {run['label']}, found {len(hits)}")
     return hits[0]

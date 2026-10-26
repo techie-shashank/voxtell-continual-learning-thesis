@@ -33,10 +33,14 @@ GROUPS = [
     ("Few-shot", "Amount of labelled data", "3", "sec:exp-few-shot"),
     ("Task Order Ablation", "Task order", "4", "sec:exp-task-order"),
     ("Replay Ablation", "Replay", "4", "sec:exp-main"),
+    # Reruns of October 2026. Section labels provisional until the rerun parts of Ch. 6 are written.
+    ("Scaling Ablation", "Gradient scaling of the prompt-tuning strategy", "4", "sec:exp-main"),
+    ("Equal Updates", "Amount of labelled data with the update count of the full data", "3", "sec:exp-few-shot"),
+    ("Joint Reference", "Upper reference: joint training", "2, 3", "sec:exp-main"),
 ]
 # The single-task diagnosis (role "Convergence Diagnosis") is reported in Ch. 6 (decision 2026-10-22,
 # revising the earlier plan to put it in the Discussion). Order of the strategies as in Ch. 5.4.
-TABLE_ORDER = ["naive_sequential_finetuning", "lora", "shared_lora", "zscl", "cpe_clip"]
+TABLE_ORDER = ["naive_sequential_finetuning", "lora", "shared_lora", "zscl", "cpe_clip", "joint_fine_tuning"]
 
 # Code defaults that are not in the run configs: (description, file, pattern that must match).
 CODE_DEFAULTS = {
@@ -126,11 +130,15 @@ def experiments_table(runs):
                 desc += ", patellar cartilage only; rank, learning rate, seed or number of epochs changed"
                 configs.append(desc)
                 continue
-            orders = sorted({r["task_order"] for r in g} - {"original"})
+            orders = sorted({r["task_order"] for r in g} - {"original", "joint"})   # joint: no task order
             if orders:
                 desc += " in " + joined(["original"] + orders) + " order"
             if any(r["replay_fraction"] for r in g):
                 desc += " with and without replay"
+            if role == "Scaling Ablation":
+                desc += " without per-task gradient scaling"
+            if role == "Equal Updates":
+                desc += ", " + joined(sorted({r["epochs"] for r in g})) + " epochs per task"
             configs.append(desc)
         volumes = sorted({int(r["train_max_cases"]) if r["train_max_cases"] else FULL_TRAIN_VOLUMES
                           for r in group} | ({FULL_TRAIN_VOLUMES} if role == "Few-shot" else set()))
@@ -143,6 +151,18 @@ def experiments_table(runs):
 def hparams_table(runs):
     # The single-task diagnosis run uses its own training length; it is described with that run.
     runs = [r for r in runs if "Convergence Diagnosis" not in roles(r)]
+    # The equal-updates runs differ only in the number of epochs and the validation interval
+    # (checked here); all other settings are checked together with the other runs.
+    equal = [r for r in runs if "Equal Updates" in roles(r)]
+    others = [r for r in runs if "Equal Updates" not in roles(r)]
+    epochs = uniform(others, "training", "epochs")
+    if any(get(r["config"], "training").get("validation_interval", 1) != 1 for r in others):
+        raise SystemExit("validation_interval differs from 1 in a run outside the equal-updates experiment")
+    epochs_text = f"{epochs}"
+    if equal:
+        e_eq = uniform(equal, "training", "epochs")
+        v_eq = uniform(equal, "training", "validation_interval")
+        epochs_text += f"; {e_eq} in the equal-updates runs (validation every {v_eq} epochs)"
     t = lambda *k: uniform(runs, "training", *k)
     patch = uniform(runs, "dataset", "patch_size")
     if uniform(runs, "model", "deep_supervision") is not False:
@@ -155,7 +175,7 @@ def hparams_table(runs):
         ("Weight decay", r"$\omega$", f"${num(t('optimizer', 'weight_decay'))}$"),
         ("Learning-rate schedule", "", f"polynomial, exponent {num(t('optimizer', 'poly_power'))}, per iteration, "
                                        "restarted for every task"),
-        ("Epochs per task", "$E$", f"{t('epochs')}"),
+        ("Epochs per task", "$E$", epochs_text),
         ("Batch size", "", f"{uniform(runs, 'dataset', 'batch_size')}"),
         ("Patch size (voxels)", "", f"${patch[0]} \\times {patch[1]} \\times {patch[2]}$"),
         ("Foreground-centred patches", r"$\pi_{\mathrm{fg}}$", "0.85"),

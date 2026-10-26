@@ -28,7 +28,9 @@ DATA_RE = re.compile(r"\[DATA\] img=\['[^']*/(MTR_\d+)\.nii\.gz'\]")
 GROUPS = [("Main", "Comparison of the strategies"), ("Rank Ablation", "LoRA rank"),
           ("Convergence Diagnosis", "Diagnosis of the patellar failure"),
           ("Few-shot", "Amount of labelled data"), ("Task Order Ablation", "Task order"),
-          ("Replay Ablation", "Replay")]
+          ("Replay Ablation", "Replay"), ("Scaling Ablation", "Gradient scaling of the prompt-tuning strategy"),
+          ("Equal Updates", "Amount of labelled data with the update count of the full split"),
+          ("Joint Reference", "Upper reference: joint fine-tuning")]
 CHANGED = {"lora_rank": "rank", "lr": "learning rate", "train_seed": "seed", "epochs": "epochs"}
 
 
@@ -104,9 +106,16 @@ def run_name(r) -> str:
             parts.append("settings of the sequence")
     else:
         parts.append(f"{r['train_max_cases']} volumes per task" if r["train_max_cases"] else "full training split")
-        parts.append(f"{r['task_order']} task order")
+        if r["task_order"] != "joint":                     # joint fine-tuning has no task order
+            parts.append(f"{r['task_order']} task order")
+        if r["epochs"] != "10":
+            parts.append(f"{r['epochs']} epochs per task")
         if r["replay_fraction"]:
             parts.append(rf"replay $\rho = {float(r['replay_fraction']):g}$")
+        if "Scaling Ablation" in roles(r):
+            parts.append("gradient scaling inactive")
+        if r["eval_checkpoint"] == "best_model.pt":
+            parts.append("best validation checkpoint")
     return name + " (" + ", ".join(p for p in parts if p) + ")"
 
 

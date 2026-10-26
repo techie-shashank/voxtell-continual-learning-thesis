@@ -1,0 +1,10 @@
+{
+    "lateral tibial cartilage": {
+        "mean_dice": 0.0013826422371797282,
+        "count": 24,
+        "min": 0.0,
+        "max": 0.005381563678383827
+    },
+    "Average Loss": 1.0430626819531124,
+    "Average Dice": 0.0013826422371797282
+}

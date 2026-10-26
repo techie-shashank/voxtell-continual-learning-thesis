@@ -44,12 +44,11 @@ Within a run, $k$ is the same for all tasks, and the validation and test sets do
 The task orders and values of $k$ that we used, and the reasons for them, are given with the experiments in \cref{subsec:exp-data}.
 
 % CLAUDE-DRAFT
-In addition to the six tasks, we evaluate a control task that is not part of the task sequence: segmentation of the lung in the AeroPath test volumes $\mathcal{D}_c^{\mathrm{te}}$ with the text prompt $p_c = $ ``lung''.
+In addition to the six tasks, we evaluate a control task that is not part of the task sequence and is never trained on: segmentation of the lung in the AeroPath test volumes $\mathcal{D}_c^{\mathrm{te}}$ with the text prompt $p_c = $ ``lung''.
 It measures how much of VoxTell's pretrained ability on structures outside the task sequence is lost during adaptation, following the control set of SPU~\cite{Zhang_2024_CVPR}.
 We chose this task for two reasons.
 Lung is a concept that VoxTell knows well from its training data, while AeroPath itself was not used for training (\cref{sec:data-aeropath}), and the pretrained model segments it with a mean \gls{dsc} of 0.979 on our four test volumes (\cref{fig:ch6_control_task_main}), so a loss of ability is clearly visible.
 In addition, AeroPath is publicly available.
-The control task is never trained on, with one exception: the replay memory of \cref{subsec:method-replay} contains control-task training volumes, so for that strategy the control task is not held out.
 
 % ---------------------------------------------------------------------
 \section{Evaluation Protocol}
@@ -82,9 +81,11 @@ This pretrained-model reference shows whether a strategy moved away from the pre
 Because the order of the columns matters for some metrics, we compute it once for each task order.
 
 % CLAUDE-DRAFT
-The protocol does not include joint training, in which one model is trained on all tasks at once.
-Joint training is the usual upper reference for continual learning and is needed for the intransigence measure of Chaudhry et al.~\cite{Chaudhry_2018}.
-We did not train it, because we spent our compute budget on the configurations of \cref{chap:experiments}, so the results show how strategies compare with each other and with the pretrained model, but not how far each strategy is from the performance a model could reach on all tasks together.\todo{defense: no joint-training reference}
+As an upper reference, we train joint fine-tuning, which trains one model on the training sets of all six tasks at once, in a single stage.
+Each training sample keeps the text prompt of its own structure, and all other settings are those of sequential fine-tuning (\cref{sec:method-adaptation}), so the joint model receives the same number of updates as sequential fine-tuning over the whole sequence.
+It is evaluated on the test set of every task and on the control task after its single stage.
+Without a task sequence, Adaptation, Final Forgetting and Transfer are not defined for it, so we compare it with the strategies on Final Performance, per structure and on the control-task drop.
+We do not compute the intransigence measure of Chaudhry et al.~\cite{Chaudhry_2018}, because its reference for task~$k$ is a model trained jointly on tasks $1, \dots, k$, and our joint model, trained on all six tasks, provides this reference only for $k = T$.
 
 \begin{algorithm}[tb]
 \caption{Continual adaptation and evaluation protocol. \textsc{Adapt} adapts the model to one task (\cref{alg:adapt}); \textsc{Select} returns the parameters a strategy evaluates on a given task (the parameters of the stage for all strategies except task-specific LoRA, see text); \textsc{Evaluate} returns the mean \gls{dsc} over a test set.}
@@ -106,11 +107,12 @@ We did not train it, because we spent our compute budget on the configurations o
 \end{algorithm}
 
 % CLAUDE-DRAFT
-\Cref{alg:protocol} distinguishes the parameters $\theta_j$ that are carried forward to the next task from the parameters $\tilde{\theta}_j$ that are evaluated, because the strategies differ in which checkpoint they evaluate (\cref{sec:method-adaptation}).
+\Cref{alg:protocol} distinguishes the parameters $\theta_j$ that are carried forward to the next task from the parameters $\tilde{\theta}_j$ that are evaluated.
+In the main evaluation, both are the parameters after the last epoch of task~$j$; the distinction matters for the two additional evaluations of \cref{sec:method-adaptation}, which evaluate the checkpoint with the lowest validation loss and, for the distillation-based strategy, the weight ensemble.
 
 % CLAUDE-DRAFT
 The cost of the protocol consists of $T$ calls of \textsc{Adapt}, whose cost is given in \cref{sec:method-adaptation}, and of the evaluations.
-With $T+1$ stages, each evaluated on $T$ task test sets and the control test set, the protocol runs sliding-window inference on $(T+1)\,(T\,|\mathcal{D}^{\mathrm{te}}| + |\mathcal{D}_c^{\mathrm{te}}|)$ volumes, where $|\mathcal{D}^{\mathrm{te}}|$ is the size of a task test set; for our sets this is $7 \cdot (6 \cdot 24 + 4) = 1036$ volume inferences per run.
+With $T+1$ stages, each evaluated on $T$ task test sets and the control test set, the protocol runs sliding-window inference on $(T+1)\,(T\,|\mathcal{D}^{\mathrm{te}}| + |\mathcal{D}_c^{\mathrm{te}}|)$ volumes, where $|\mathcal{D}^{\mathrm{te}}|$ is the size of a task test set; for our sets this is $7 \cdot (6 \cdot 24 + 4) = 1036$ volume inferences per run, and the same number again for each additional evaluation.
 The evaluation time thus grows quadratically with the number of tasks, while the training time grows linearly.
 Evaluation needs memory for one parameter set and the prediction of one volume at a time; the stored results are the $(T+1)^2$ means plus the per-volume values.
 The measured evaluation time per volume and per run is reported in \cref{sec:exp-compute}.
@@ -121,7 +123,7 @@ The measured evaluation time per volume and per run is reported in \cref{sec:exp
 
 % CLAUDE-DRAFT
 All strategies adapt VoxTell to a task with the same procedure, \textsc{Adapt} in \cref{alg:adapt}.
-A strategy changes this procedure at four defined points, which we describe in \cref{sec:method-strategies}; this section describes the procedure itself.
+A strategy changes this procedure at three defined points, which we describe in \cref{sec:method-strategies}; this section describes the procedure itself.
 
 % CLAUDE-DRAFT
 We start every run from the released VoxTell checkpoint (version~1.1)~\cite{rokuss2025voxtellfreetextpromptableuniversal}, whose architecture is introduced in \cref{subsec:bg-voxtell}.
@@ -149,7 +151,7 @@ The coloured marks are explained in \cref{sec:method-strategies}. Sequential fin
 % CLAUDE-DRAFT
 Training uses patches of $192^3$ voxels, the patch size of VoxTell.
 In every epoch, each training volume contributes one patch: with probability $\pi_{\mathrm{fg}}$ the patch is centred on a voxel drawn at random from the target structure, otherwise it is placed uniformly at random in the volume, and volumes smaller than the patch are padded with zeros.
-Each patch is trained with the text prompt of its task only, and the batch size is one, so that a training step fits into the memory of one GPU and a full-data run fits into the 24-hour job limit of the cluster; the same time limit bounds the number of epochs~$E$ per task (\cref{tab:ch6_hparams,tab:ch6_compute}).
+Each patch is trained with the text prompt of its task only, and the batch size is one, so that a training step fits into the memory of one GPU and a full-data run fits into the 24-hour job limit of the cluster; the same time limit bounds the number of epochs~$E$ per task (\cref{tab:ch6_hparams,tab:ch6_compute}).\todo{author: check the reason; full-data training took 19 to 37 hours, so several runs needed a second 24-hour job}
 Unlike the pretraining of VoxTell (\cref{subsec:bg-voxtell}), we add neither prompts of absent structures nor data augmentation, to keep the experiments simple, and we compute the loss on the full-resolution output only, without deep supervision.\todo{defense: no augmentation, no negative prompts, no deep supervision; same for all strategies, but may lower absolute performance, most in the few-shot settings}
 
 % CLAUDE-DRAFT
@@ -174,13 +176,12 @@ All strategies are trained with these same settings, and neither the learning ra
 
 % CLAUDE-DRAFT
 After every epoch, we compute the loss $\mathcal{L}_{\mathrm{seg}}$ on the validation set, with one patch per validation volume drawn in the same way as the training patches.
-The patches are drawn anew in every epoch, so the validation loss of two epochs is computed on different patches.
-Which checkpoint is evaluated differs between the strategies.
-The LoRA strategies are evaluated with the parameters after the last epoch, while sequential fine-tuning, the distillation-based and the prompt-tuning strategy are evaluated with the checkpoint of the epoch with the lowest validation loss.
-In every strategy, the next task starts from the parameters after the last epoch.
-This difference was not a deliberate design choice.
-Evaluating the last epoch is the consistent rule for continual learning, because the evaluated model is then the model that is carried forward to the next task; the three strategies evaluated at the best validation epoch deviate from it.
-\Cref{alg:adapt} therefore returns both parameter sets, and \cref{subsec:exp-config} reports how often the two differ.\todo{defense: checkpoint rule differs between strategies; validation loss on one random patch per volume}
+The patches are drawn anew for every validation, so the validation loss of two epochs is computed on different patches.
+In the equal-updates runs of \cref{sec:exp-few-shot}, which have many short epochs per task, only every 24th epoch is validated, the last epoch included.
+All strategies are evaluated with the parameters after the last epoch, which are also the parameters that the next task starts from, so the evaluated model is the model that continues through the sequence.
+An additional evaluation uses the checkpoint of the epoch with the lowest validation loss, for all strategies except the LoRA strategies, for which only the adapter after the last epoch is stored.
+\Cref{alg:adapt} therefore returns both parameter sets, and \cref{subsec:exp-config} compares the two evaluations.
+Because the validation loss of an epoch is computed on one random patch per volume, it is a noisy criterion for selecting a checkpoint.\todo{defense: best-validation checkpoint selected with a noisy validation loss (one random patch per volume); reported only as an additional evaluation}
 
 % CLAUDE-DRAFT
 For evaluation, each test volume is cropped and normalised as described in \cref{sec:data-preprocessing} and segmented with sliding-window inference: patches of $192^3$ voxels are placed with a step of half the patch size, their logits are weighted with a Gaussian of standard deviation one eighth of the patch size and averaged, as in nnU-Net~\cite{isensee2018nnunetselfadaptingframeworkunetbased}.
@@ -206,7 +207,7 @@ No test-time augmentation is used.
     \STATE $\ell^{*} \gets \ell$; \quad $\theta^{\mathrm{best}} \gets \theta$
   \ENDIF
 \ENDFOR
-\STATE $\theta_t \gets \theta$; \quad $\tilde{\theta}_t \gets \textsc{Checkpoint}_{\mathcal{S}}(\theta^{\mathrm{best}}, \theta_t)$
+\STATE $\theta_t \gets \theta$; \quad $\tilde{\theta}_t \gets \theta_t$ \COMMENT{additional evaluation: $\tilde{\theta}_t \gets \theta^{\mathrm{best}}$}
 \RETURN $(\theta_t, \tilde{\theta}_t)$
 \end{algorithmic}
 \end{algorithm}
@@ -232,13 +233,13 @@ Within each family, we started with the method that best fitted a pretrained vis
 Other methods, such as adapter-based or mixture-of-experts adaptation, constraints to orthogonal subspaces~\cite[Sec.~4]{liu2026continuallearningvlmssurvey} or elastic weight consolidation~\cite{Kirkpatrick_2017}, were not evaluated.\todo{defense: alternatives within each family not evaluated}
 
 % CLAUDE-DRAFT
-Every strategy is a version of \cref{alg:adapt}, defined by the parameters it trains, by how it starts each task, by data or loss terms it adds and by the checkpoint it evaluates.
+Every strategy is a version of \cref{alg:adapt}, defined by the parameters it trains, by how it starts each task and by data or loss terms it adds.
 \Cref{tab:method-strategies} summarises these choices, and \cref{fig:ch5_voxtell} shows where in the model each strategy acts.
 
 \begin{table}[tb]
 \centering
 % CLAUDE-DRAFT
-\caption[Overview of the continual-learning strategies]{Overview of the continual-learning strategies as instances of \cref{alg:adapt}. ``Best validation'': checkpoint of the epoch with the lowest validation loss; ``last epoch'': parameters after the last epoch (\cref{sec:method-adaptation}). In every strategy, the next task starts from the parameters after the last epoch.}
+\caption[Overview of the continual-learning strategies]{Overview of the continual-learning strategies as instances of \cref{alg:adapt}. All strategies are evaluated with the parameters after the last epoch, from which the next task also starts (\cref{sec:method-adaptation}).}
 \label{tab:method-strategies}
 \input{tables/ch5_strategies}
 \end{table}
@@ -265,6 +266,7 @@ Dropout is applied to the input of the low-rank path only.
 % CLAUDE-DRAFT
 We apply LoRA to the query and value projections $\mat{W}_q$ and $\mat{W}_v$ of the cross-attention in all $L_{\mathrm{dec}}$ prompt-decoder layers (\cref{fig:ch5_voxtell}).
 The cross-attention is where the text query attends to the image features, the step through which the text prompt steers the segmentation in VoxTell, and LoRA has been applied to attention projections of vision--language models before, for instance in CLIP-LoRA~\cite{zanella2024lowrankfewshotadaptationvisionlanguage}.
+Our LoRA layers are adapted from the \texttt{loralib} module of the public CLIP-LoRA code\footnote{\url{https://github.com/MaxZanella/CLIP-LoRA/tree/main/loralib}}, including the split of the joint input projection of the attention into separate query, key and value projections, to which the low-rank updates are added.
 The restriction to the query and value projections follows the finding of Hu et al.\ for the self-attention of GPT-3~\cite[Sec.~7.1, Table~5]{hu2022lora} (\cref{subsec:bg-lora}); whether it also holds for the cross-attention of VoxTell was not tested here.
 The image encoder, the convolutional decoder, the guidance projections and the self-attention, key and output projections stay unchanged.
 With two adapted projections per layer and $2dr$ parameters each, a LoRA adapter has $4 L_{\mathrm{dec}}\, d\, r = 49{,}152\, r$ trainable parameters for $d = 2048$ and $L_{\mathrm{dec}} = 6$.
@@ -291,17 +293,11 @@ We combine it with shared LoRA, so that the two can be compared directly.
 Because the six tasks share the same volumes, a memory entry is not just a volume but a triple of volume, text prompt and mask of the task it was drawn from.
 
 % CLAUDE-DRAFT
-Before the first task, the memory is filled with $\operatorname{round}(\rho \, |\mathcal{D}_c^{\mathrm{tr}}|)$ volumes drawn at random from the training split of the control task, where $\rho$ is the replay fraction.
-After each task~$t$, $\max(1, \operatorname{round}(\rho \, |\mathcal{D}_t^{\mathrm{tr}}|))$ samples drawn at random from its training set are added, up to a capacity of $M_{\max}$ entries.
+The memory starts empty and contains only samples of earlier tasks, so the control task stays held out and nothing from the pretraining of VoxTell is replayed.
+After each task~$t$, $\max(1, \operatorname{round}(\rho \, |\mathcal{D}_t^{\mathrm{tr}}|))$ samples drawn at random from its training set are added, where $\rho$ is the replay fraction, up to a capacity of $M_{\max}$ entries.
 During task~$t$, the memory $\mathcal{M}_{t-1}$ is appended to the training set (\textsc{ExtraData} in \cref{alg:adapt}), and its entries are sampled and trained like the task's own volumes, each with its own text prompt, so an epoch has $N_t = |\mathcal{D}_t^{\mathrm{tr}}| + |\mathcal{M}_{t-1}|$ iterations.
+The memory is stored with the state of the run, so a run that is interrupted and resumed continues with the same memory.
 The value of $\rho$ was set once and not tuned; it and $M_{\max}$ are listed in \cref{tab:ch6_strategy_params}.
-
-% CLAUDE-DRAFT
-The control-task volumes in the memory stand in for the pretraining data of VoxTell, which is not available to us, the same problem that ZSCL describes for the pretraining data of CLIP~\cite{zheng2023preventingzeroshottransferdegradation}.
-The memory thus holds one part for the knowledge from before the first task and one part for the SKM-TEA tasks.
-The price is that the control task is no longer held out for this strategy: its training volumes are trained on, although its test volumes are not, so its control-task drop is not comparable with that of the other strategies and is reported separately.\todo{defense: control task trained on in the replay run}
-In the implementation used for this run, the memory was not stored with the state of the run.
-When the job was resumed during task~6, the memory was rebuilt with the control-task volumes only, so the rest of task~6 was trained without the replayed samples of tasks 1 to 5 (\cref{sec:exp-main}).\todo{defense: replay memory lost at the resume in task 6}
 
 % CLAUDE-DRAFT
 Replay changes only the data, so the cost of an iteration is that of shared LoRA, and the number of iterations per epoch grows by $|\mathcal{M}_{t-1}|$.
@@ -340,9 +336,10 @@ Fifth, it has no weight-consolidation loss.
 Sixth, its task loss is the segmentation loss of \cref{eq:method-seg-loss}, optimised with SGD instead of AdamW.
 
 % CLAUDE-DRAFT
-The implementation also maintains ZSCL's weight ensemble: every $I_{\mathrm{we}}$ iterations, a running mean of the parameters is updated as in Eq.~7 of ZSCL~\cite{zheng2023preventingzeroshottransferdegradation}, starting from $\theta_0$ and continued across tasks.
-The ensemble does not enter the evaluated models, however: training continues from the student, and each task is evaluated with the student's checkpoint of the epoch with the lowest validation loss.
-The evaluated strategy therefore consists of fine-tuning with feature distillation only, and we name it after this mechanism.\todo{defense: weight ensemble implemented but not evaluated}
+The strategy also maintains ZSCL's weight ensemble, Eq.~7 of ZSCL~\cite{zheng2023preventingzeroshottransferdegradation}: after every $I_{\mathrm{we}}$-th iteration of an epoch, the current parameters are added to a running mean that starts from $\theta_0$ and is continued across tasks, so the ensemble is the equally weighted mean of $\theta_0$ and all parameter snapshots taken so far.
+Iterations at the end of an epoch that do not complete an interval of $I_{\mathrm{we}}$ are not included, and $I_{\mathrm{we}} = 10$ is smaller than the interval of 100 used by ZSCL (\cref{tab:ch6_strategy_params}).
+Training continues from the student, so the ensemble is not carried forward to the next task.
+We evaluate it after every task as an additional evaluation, next to the student, and the strategy in the main comparison is fine-tuning with feature distillation, after which we name it.
 
 % CLAUDE-DRAFT
 Each iteration adds one forward pass of the teacher without a backward pass.
@@ -371,12 +368,13 @@ The values of $m$ and $L_p$ were set once and not tuned (\cref{tab:ch6_strategy_
 % CLAUDE-DRAFT
 One set of tokens and one meta-net are trained through all tasks and used for every task at inference, so the strategy needs no task identity.
 Because the tokens and the meta-net change the keys, values and query for every text prompt, freezing the backbone does not keep the outputs for other text prompts unchanged.
-The implementation contains a per-task gradient scale $\beta_t = \max(0.25, 1/t)$ for the tokens, which for one new structure per task and no base session equals the scaling of CPE-CLIP apart from the lower bound of 0.25.
-In the evaluated runs, however, this scale was not activated and stayed at $\beta_t = 1$ for all tasks, and it would not have applied to the meta-net.
-The evaluated strategy therefore lacks the component whose removal hurt CPE-CLIP most in its ablation (\cref{sec:cl-vlm}), which is why we call it a prompt-tuning strategy rather than a CPE-CLIP variant.\todo{defense: gradient scaling implemented but inactive}
+The gradients of the tokens and of the meta-net in task~$t$ are multiplied by $\beta_t = \max(0.25, 1/t)$, which for one new structure per task and no base session equals the scaling of CPE-CLIP apart from the lower bound of 0.25.
+CPE-CLIP applies its scale to the language prompts and to the projection that derives the vision prompts from them~\cite[p.~5, Eqs.~12--13]{D_Alessandro_2023}; we correspondingly apply it to the tokens and to the meta-net, which holds almost all of our trainable parameters.
+In CPE-CLIP's ablation, removing this scaling degraded performance more than removing any other component (\cref{sec:cl-vlm}).
+An earlier run in which the scale was not activated, so that $\beta_t = 1$ for all tasks, serves as an ablation; it was evaluated only with the checkpoint of the lowest validation loss, so the two runs are compared with that checkpoint (\cref{sec:exp-main}).
 
 % CLAUDE-DRAFT
-Further differences to CPE-CLIP are that the tokens act on the cross-attention of the prompt decoder instead of on the inputs of a language and a vision encoder, that there is no projection between two sets of prompts, that the meta-net is added, and that the task loss is the segmentation loss of \cref{eq:method-seg-loss} without a base session.
+The strategy differs from CPE-CLIP in that the tokens act on the cross-attention of the prompt decoder instead of on the inputs of a language and a vision encoder, that there is no projection between two sets of prompts, that the meta-net is added, and that the task loss is the segmentation loss of \cref{eq:method-seg-loss} without a base session; we therefore name it after its mechanism, prompt tuning, rather than after CPE-CLIP.
 An iteration needs a forward pass through the whole model and a backward pass through the convolutional decoder, the guidance projections and the prompt decoder down to its first layer, but not through the encoders; the momentum buffers cover only the 12.6\,M trainable parameters, and the $m$ additional keys and values per prompted layer cost little compared with the $12^3$ image positions.
 
 % ---------------------------------------------------------------------

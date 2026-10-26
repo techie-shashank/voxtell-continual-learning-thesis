@@ -119,7 +119,9 @@ def experiment_dirs() -> list[Path]:
 def load_eval_matrix(exp_dir: Path):
     """Return (row labels, column labels, values) of an experiment's eval_matrix.csv.
 
-    Rows: the trained tasks in task order, then the control task(s).
+    `exp_dir` is an experiment folder or one of its evaluations/<tag>/ folders.
+    Rows: the evaluated tasks (the trained tasks in task order; for joint training the six
+    structures), then the control task(s).
     Columns: 'Pretrained', then one checkpoint after each training task.
     Entry [i, s]: mean Dice on row i, evaluated with checkpoint s.
     """
@@ -130,6 +132,20 @@ def load_eval_matrix(exp_dir: Path):
     values = np.array([[float(v) if v != "" else np.nan for v in r[1:]]
                        for r in rows[1:]], dtype=float)
     return labels, cols, values
+
+
+def evaluations(exp_dir: Path) -> list[tuple[str, Path, str]]:
+    """Every evaluation of an experiment as (name, folder with eval_matrix.csv, per-cell test folder).
+
+    'main' is the evaluation in the experiment root (cells in tasks/*/*/test/). Runs of the
+    October 2026 reruns also hold tagged evaluations in evaluations/<tag>/ (cells in test_<tag>/),
+    e.g. best_validation and weight_ensemble.
+    """
+    out = [("main", exp_dir, "test")] if (exp_dir / "eval_matrix.csv").exists() else []
+    for d in sorted((exp_dir / "evaluations").glob("*")):
+        if (d / "eval_matrix.csv").exists():
+            out.append((d.name, d, f"test_{d.name}"))
+    return out
 
 
 def read_json(path: Path):

@@ -1,9 +1,10 @@
 """Which epoch was evaluated for each task of each run (checkpoint selection, F3/F4).
 
-Sequential fine-tuning, distillation-based and prompt-tuning runs are evaluated with
-checkpoints/best_model.pt (lowest validation loss), but every strategy continues
-to the next task from the state after the last epoch. LoRA runs are evaluated
-with the adapter of the last epoch (code/src/continual/strategies/lora/*).
+The main evaluation of a run uses the checkpoint in the index column eval_checkpoint:
+best_model.pt (lowest validation loss; sequential fine-tuning, distillation-based and
+prompt-tuning runs before the reruns), last_model.pt (all reruns of October 2026) or
+lora_adapter.pt (LoRA runs, adapter after the last epoch). Every strategy continues to
+the next task from the state after the last epoch.
 This script reads each task's run.log and reports the selected epoch, so the
 thesis can state in how many tasks the evaluated model is the one carried
 forward (selected epoch = last epoch).
@@ -22,13 +23,17 @@ ROOT = Path(__file__).resolve().parent.parent
 INDEX = ROOT / "results" / "experiment_index.csv"
 OUT = ROOT / "thesis" / "tables" / "selected_epochs.csv"
 
-BEST_VAL_STRATEGIES = {"naive_sequential_finetuning", "zscl", "cpe_clip"}
 EPOCH_RE = re.compile(r"Epoch (\d+)/(\d+) completed .*Validation Loss=([0-9.]+)")
 BEST_RE = re.compile(r"New best model saved \(val_loss=([0-9.]+)\) at epoch=(\d+)")
 
 
-def parse_run_log(path: Path) -> dict:
-    """Last epoch, its validation loss, and the epoch of the last 'best' save (1-based)."""
+def parse_run_log(path: Path, epochs: int) -> dict:
+    """Last epoch, its validation loss, and the epoch of the last 'best' save (1-based).
+
+    The last epoch is the configured number of epochs (no early stopping in any run). It is
+    not read from the log: with validation_interval > 1, and after a resume directly after the
+    last batch of an epoch, not every epoch has a 'Validation Loss' line (e.g. joint_ft epoch 10).
+    """
     val_loss = {}
     best_epoch = best_loss = None
     for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
@@ -39,7 +44,7 @@ def parse_run_log(path: Path) -> dict:
         m = BEST_RE.search(line)
         if m:
             best_loss, best_epoch = float(m.group(1)), int(m.group(2)) + 1
-    last_epoch = max(val_loss) if val_loss else None
+    last_epoch = epochs
     return {
         "epochs_completed": last_epoch,
         "selected_epoch": best_epoch,
@@ -59,8 +64,8 @@ def main():
             log = task_dir / "logs" / "run.log"
             if not log.exists():
                 raise FileNotFoundError(log)
-            info = parse_run_log(log)
-            selection = "best_validation" if strategy in BEST_VAL_STRATEGIES else "last_epoch"
+            info = parse_run_log(log, int(run["epochs"]))
+            selection = "best_validation" if run["eval_checkpoint"] == "best_model.pt" else "last_epoch"
             evaluated = info["selected_epoch"] if selection == "best_validation" else info["epochs_completed"]
             rows.append({
                 "experiment_id": run["experiment_id"],

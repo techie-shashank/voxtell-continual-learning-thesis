@@ -1,0 +1,10 @@
+{
+    "patellar cartilage": {
+        "mean_dice": 4.404743170501509e-06,
+        "count": 24,
+        "min": 0.0,
+        "max": 0.00010571383609203622
+    },
+    "Average Loss": 1.032736897468567,
+    "Average Dice": 4.404743170501509e-06
+}
