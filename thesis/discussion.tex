@@ -21,7 +21,7 @@ This chapter interprets the results of \cref{chap:experiments} across the experi
 
 % CLAUDE-DRAFT
 The research question asks how continual-learning strategies trade adaptation against catastrophic forgetting when a free-text promptable 3D segmentation model is adapted under few-shot conditions.
-In our runs, the strategies that update all parameters adapted well and forgot almost everything, the LoRA strategies retained much and adapted less, and the prompt-tuning strategy lay between them; replay brought shared LoRA closest to combining both without the task identity, and joint training showed that the loss of pretrained ability does not need a task sequence.
+In our runs, the strategies that update all parameters adapted well and forgot almost everything, the LoRA strategies retained much and adapted less, and the prompt-tuning strategy lay between them; replay brought shared LoRA closest to combining both without the task identity, and joint fine-tuning showed that the loss of pretrained ability does not need a task sequence.
 With few labelled volumes and ten epochs per task, only sequential fine-tuning learned, but with the update count of the full split, the LoRA strategies learned from 5 volumes as well.\todo{author: confirm this overall answer; it condenses the conclusions of \cref{sec:exp-main,sec:exp-few-shot}}
 We answer the objectives in the order of the experiments and end with the protocol.
 
@@ -36,7 +36,7 @@ The LoRA strategies retained more at an Adaptation about 0.30 lower, a gap that 
 Distillation from the pretrained model reduced forgetting only slightly in the configuration we evaluated, by 0.048 in Final Forgetting, with an untuned weight $\lambda = 0.01$, so this result concerns that configuration, not distillation in general.
 Replay was the only addition that moved shared LoRA towards both goals at once: with a memory of earlier tasks only, its Final Forgetting was 0.046 instead of 0.289, its Final Performance 0.450 instead of 0.233, and its control-task drop 0.138 instead of 0.237, at the same Adaptation (\cref{sec:exp-main}).
 In MedPEFT-CL, a framework for continual learning of a 2D text-prompted segmentation model with LoRA, replay likewise gave the largest gain of the components added one at a time~\cite[Table~8]{gao2026medpeftcl}.\todo{check: MedPEFT-CL Table 8 numbers read from arXiv v1; bib cites the WACV 2026 version}
-In answer to the second objective, no strategy combined high adaptation with retention: the strategies with the highest Adaptation forgot almost everything, task-specific LoRA gave the highest Final Performance but needs the task identity at inference, and shared LoRA with replay came within 0.034 of it without that requirement; all strategies stayed far below the Final Performance of joint training.
+In answer to the second objective, no strategy combined high adaptation with retention: the two strategies with the highest Adaptation, sequential fine-tuning and the distillation-based strategy, had a Final Forgetting of 0.782 and 0.734, task-specific LoRA gave the highest Final Performance but needs the task identity at inference, and shared LoRA with replay came within 0.034 of it without that requirement; all strategies stayed at least 0.36 below the Final Performance of joint fine-tuning (0.852).
 
 % CLAUDE-DRAFT
 The third objective concerns the amount of labelled data.
@@ -44,7 +44,7 @@ With 5 and 10 volumes per task, neither LoRA strategy learned any task, and with
 With fewer volumes, sequential fine-tuning adapted less and forgot less: with 5 volumes, it kept the control task and reached a Final Performance of 0.227, against 0.130 with the full split.
 Because the number of epochs was fixed, fewer volumes also meant fewer updates, 50 instead of 1{,}080 per task.
 The equal-updates runs separate the two at $k = 5$: with 1{,}080 updates on 5 volumes, both LoRA strategies learned the tasks, and reducing the data from 108 to 5 volumes at the same number of updates lowered the Adaptation by only 0.032 to 0.069 for the three strategies, while sequential fine-tuning forgot again as much as with the full split (\cref{sec:exp-few-shot}).
-The control-task drop of joint training, which rose from 0.733 to 0.979 with the number of updates, points the same way.
+The control-task drop of joint fine-tuning, which rose from 0.733 to 0.979 with the number of updates, points the same way.
 That LoRA can learn from 10 labelled volumes of a 3D model when the training budget is larger has also been shown by Silva-Rodríguez et al.\ (\cref{sec:disc-budget}).
 In answer to the third objective, at $k = 5$ the amount of labelled data had a small effect on Adaptation once the number of updates was held fixed, and the number of updates decided whether the parameter-efficient strategies learned and how much sequential fine-tuning forgot; this rests on one draw of volumes and one run per configuration, and for $k = 10$ and $k = 20$ data and updates remain confounded.
 
@@ -97,7 +97,7 @@ This suggests that later tasks benefit from the adapter having moved rather than
 The equal-updates runs test one part of the hypothesis.
 With the update count of the full split on 5 volumes, both LoRA strategies learned the tasks and came within 0.06 of their Adaptation with the full split (\cref{sec:exp-few-shot}), so their failure with 50 updates per task came from the number of updates, as the hypothesis predicts.
 They do not test the role of the zero initialisation, because sequential fine-tuning, which starts every task from trained weights, also adapted more with more updates, and task-specific LoRA still did not learn patellar cartilage with 1{,}080 updates, in line with the 50 epochs it needed in the diagnosis (\cref{sec:exp-patellar}).\todo{author: confirm this reading of the equal-updates runs for the hypothesis}
-No run tests the initialisation mechanism directly, so we present it as consistent with the observations, not as a finding.\todo{defense: adapter-from-zero hypothesis: update count supported by the equal-updates runs; initialisation not tested; tests listed as future work in \cref{sec:disc-generalisation}}
+No run tests the zero initialisation directly, so we present it as consistent with the observations, not as a finding.\todo{defense: adapter-from-zero hypothesis: update count supported by the equal-updates runs; initialisation not tested; tests listed as future work in \cref{sec:disc-generalisation}}
 
 % CLAUDE-DRAFT
 Two observations do not follow from the hypothesis.
@@ -136,7 +136,7 @@ The few-shot settings reduce the number of updates together with the number of v
 In these experiments, a difference cannot be attributed to the studied factor alone; the equal-updates runs separate volumes and updates only for $k = 5$ and three strategies.
 
 % CLAUDE-DRAFT
-Second, each configuration was trained once, and each few-shot setting uses one draw of training volumes (\cref{subsec:exp-data}).
+Second, each configuration was trained once, on one random split of each dataset (\cref{sec:data-splits}), and each few-shot setting uses one draw of training volumes (\cref{subsec:exp-data}).
 Our bootstrap intervals cover only the choice of test volumes, not the variation between training runs or between draws of training volumes (\cref{subsec:exp-metrics}).
 The two task-specific LoRA runs show how large the variation between runs can be: they differ only in the initialisation of the adapters and in non-deterministic GPU operations, yet they reached 0.40 and 0.34 on lateral meniscus, and the paired interval of their difference in Adaptation excludes zero (\cref{sec:exp-task-order}).
 A second example are the earlier run of sequential fine-tuning and its rerun with the same configuration: the rerun was continued inside the last task and therefore drew its training samples in a different order from that point on (\cref{subsec:exp-config}), and at the same checkpoint, the two evaluation matrices agree up to the fifth task but differ by up to 0.037 in single entries after the sixth.\todo{author: confirm using this pair as an example of training variation}
@@ -147,14 +147,15 @@ The intervals are also not adjusted for the 152 comparisons we read (\cref{subse
 
 % CLAUDE-DRAFT
 Third, the scope is narrow.
-We adapted one model, VoxTell, to six structures of one knee \gls{mri} dataset, in two task orders, with one fixed text prompt per structure that was used for both training and evaluation (\cref{subsec:data-skmtea-tasks}).
-The distillation-based and the prompt-tuning strategies were run only with the full training split and in the original order, and the replay strategy only with the full split (\cref{subsec:exp-overview}), so the few-shot part of the research question is answered for sequential fine-tuning and the two LoRA strategies only, with joint training as their reference.
+We adapted one model, VoxTell, to six structures of one knee \gls{mri} dataset, in two task orders, with one fixed text prompt per structure that was used for both training and evaluation (\cref{sec:data-skmtea}).
+The distillation-based and the prompt-tuning strategies were run only with the full training split and in the original order, and the replay strategy only with the full split (\cref{subsec:exp-overview}), so the few-shot part of the research question is answered for sequential fine-tuning and the two LoRA strategies only, with joint fine-tuning as their reference.
 Whether the results depend on the wording of the text prompt was not tested.
 In SEER, VoxTell kept the highest \gls{dsc} of five promptable models under rephrased requests, but its worst rephrasing still lowered the \gls{dsc} on a pelvic-bone dataset from 97.59\,\% with the class-name prompt to 79.34\,\%~\cite[Table~1]{zhang2026seer} (\cref{sec:text-promptable-seg}).
 Our evaluation uses only the wording seen in training, so it cannot show whether the adapted models still respond to other wordings of the same structure.
 
 % CLAUDE-DRAFT
 The control task measures the loss of pretrained ability with a single structure: the lung in four \gls{ct} test volumes of AeroPath, which the pretrained model segments with a \gls{dsc} of 0.979 (\cref{sec:data-aeropath}).
+With four test volumes, its \gls{dsc} is less certain than that of the SKM-TEA tasks with 24, and the origin of its reference labels is not documented (\cref{sec:data-aeropath}).
 One large, high-contrast structure in another modality cannot show how the strategies affect the many other structures and modalities that VoxTell was trained on, and unlike the control set of SPU, the control task is not sampled from the pretraining distribution (\cref{sec:bg-metrics}).
 That replay lowered the control-task drop although its memory holds no control-task samples arose in the last task of one task order, so it may depend on the order, and its cause was not tested (\cref{sec:exp-main}).
 
@@ -174,7 +175,12 @@ For task-specific LoRA, Final Forgetting and the control-task drop are zero by c
 
 % CLAUDE-DRAFT
 Finally, the external validity is limited by the data and by the strategies that were not evaluated.
-We used our own random split of SKM-TEA instead of the official one, so our numbers are not comparable with SKM-TEA benchmarks, and the SKM-TEA files store no orientation, so the volumes reach the model in their stored axis order (\cref{sec:data-limitations}); whether this contributes to the low \gls{dsc} of the pretrained model on SKM-TEA is unknown.
+We used our own random split of SKM-TEA instead of the official one, so our numbers are not comparable with SKM-TEA benchmarks.
+The SKM-TEA files store no orientation, so the volumes reach the model in their stored axis order, which may differ from the orientation of the knee volumes in VoxTell's training data, and 18 of the 155 scans are stored with the left--right axis reversed (\cref{sec:data-preprocessing}).
+On our test volumes, the pretrained model segmented femoral cartilage with a \gls{dsc} of 0.684 but none of the other five structures (\cref{sec:exp-main}), whereas the VoxTell authors report 46.45\,\% for femoral cartilage and at most 14.78\,\% for the others~\cite[Suppl.~Table~9]{rokuss2025voxtellfreetextpromptableuniversal}.
+The test volumes, the orientation and possibly the checkpoint version differ between the two evaluations, and we did not test which of these causes the difference.\todo{defense: pretrained DSC differs from VoxTell Suppl. Table 9; orientation (identity affine), test volumes and checkpoint version are candidate causes, none tested}
+% source: Pretrained column of eval_matrix.csv (e.g. exp_20260926_095539_90e8b4e6); paper_notes/voxtell.md (Table 9)
+The model also sees only the first \gls{qdess} echo, although the annotators used both echoes to separate neighbouring cartilage and meniscus voxels~\cite[App.~A.4]{desai2021skmtea}.
 Other strategies, such as elastic weight consolidation, mixture-of-experts adapters or the selection of adapters by the similarity of text-prompt embeddings as in MedCRP-CL~\cite{gao2026medcrpcl}, were not evaluated (\cref{sec:method-strategies}).
 
 % ---------------------------------------------------------------------
@@ -183,13 +189,13 @@ Other strategies, such as elastic weight consolidation, mixture-of-experts adapt
 
 % CLAUDE-DRAFT
 The numbers of \cref{chap:experiments} belong to VoxTell, to six knee structures and to the training configuration we used, and we do not expect them to carry over to other models or data.
-What may carry over is the mechanism proposed in \cref{sec:disc-budget}.
+What may carry over is the explanation proposed in \cref{sec:disc-budget}.
 It rests only on the standard initialisation of LoRA, in which the update starts at zero~\cite[Sec.~4.1]{hu2022lora}, so other promptable segmentation models adapted with LoRA start from the same point; whether they also need more updates than a short schedule provides is a hypothesis that our runs do not test.
 For other anatomical regions and for \gls{ct} tasks, we have no evidence either way.
 
 % CLAUDE-DRAFT
 The results also say nothing about structures that the model has never seen.
-The three cartilages other than femoral cartilage are in VoxTell's training vocabulary, whereas the menisci are not (\cref{subsec:data-skmtea-tasks}), but in our evaluation the pretrained model segmented only femoral cartilage, with a \gls{dsc} of 0.684, and none of the other five structures (\cref{sec:exp-rank}).
+The three cartilages other than femoral cartilage are in VoxTell's training vocabulary, whereas the menisci are not (\cref{sec:data-skmtea}), but in our evaluation the pretrained model segmented only femoral cartilage, with a \gls{dsc} of 0.684, and none of the other five structures (\cref{sec:exp-rank}).
 % source: Pretrained column of the eval_matrix.csv files (e.g. exp_20260926_095539_90e8b4e6): femoral 0.684, all other SKM-TEA structures 0.000
 Our tasks are therefore structures that the model rarely saw or does not segment in this data, not structures of a kind that is absent from its training data, such as a new modality.
 

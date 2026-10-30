@@ -52,3 +52,6 @@ Found with `scratchpad/repetition_scan.py` (sentences sharing much of their word
 | | **Total** | | | **≈ 5.9** |
 
 Repetition alone saves about 6 pages; the rest of the target needs the float moves in Ch. 6 (about 5-6 pp., no content lost) and content selection in Ch. 2 (Table 2.1, 2.3).
+
+## Check of the candidates for pure duplication (2026-10-26, author: remove only pure duplicates)
+Only `experiment_results.tex:53` (split sizes, identical to Ch. 4.3) was a pure duplicate and was removed. R1-R14 and V1-V3 all carry a local function (new detail, premise of an argument, required by the chair in that place, or signposting) and stay; shortening them is a rewrite decision for the author.

@@ -33,16 +33,16 @@ $t$; $j$ & task index; stage index ($j = 0$: pretrained model, $j = t$: after tr
 $k$ & number of labelled training volumes per task in a few-shot setting & \ref{sec:intro-problem} \\
 $\mathcal{D}_t^{\mathrm{tr}}, \mathcal{D}_t^{\mathrm{val}}, \mathcal{D}_t^{\mathrm{te}}$ & training, validation and test set of task~$t$ & \ref{sec:method-setting} \\
 $\mathcal{D}_c^{\mathrm{tr}}, \mathcal{D}_c^{\mathrm{te}}$ & training and test set of the control task & \ref{sec:method-setting} \\
-$p$; $p_t$; $p_c$ & text prompt; text prompt of task~$t$; text prompt of the control task & \ref{subsec:bg-unet} \\
-$\mat{X}$ & image volume or patch & \ref{subsec:bg-unet} \\
-$\mat{Y}$; $\hat{\mat{Y}}$ & binary label mask; binary prediction & \ref{subsec:bg-unet} \\
-$\Omega$; $v$ & voxel set of a volume or patch; voxel & \ref{subsec:bg-unet} \\
-$y_v$; $z_v$; $\hat{y}_v$ & label, logit and predicted foreground probability of voxel~$v$ & \ref{subsec:bg-unet} \\
+$p$; $p_t$; $p_c$ & text prompt; text prompt of task~$t$; text prompt of the control task & \ref{sec:bg-segmentation} \\
+$\mat{X}$ & image volume or patch & \ref{sec:bg-segmentation} \\
+$\mat{Y}$; $\hat{\mat{Y}}$ & binary label mask; binary prediction & \ref{sec:bg-segmentation} \\
+$\Omega$; $v$ & voxel set of a volume or patch; voxel & \ref{sec:bg-segmentation} \\
+$y_v$; $z_v$; $\hat{y}_v$ & label, logit and predicted foreground probability of voxel~$v$ & \ref{sec:bg-segmentation} \\
 \addlinespace
 \multicolumn{3}{@{}l}{\textit{Model}} \\
-$f_\theta$; $\theta$ & segmentation model with parameters~$\theta$ & \ref{subsec:bg-unet} \\
-$\mat{Z}$ & output logits of the model for a volume or patch & \ref{subsec:bg-unet} \\
-$\sigma$ & logistic function & \ref{subsec:bg-unet} \\
+$f_\theta$; $\theta$ & segmentation model; its parameters (for VoxTell all except those of the frozen text encoder) & \ref{sec:bg-segmentation}, \ref{subsec:bg-voxtell} \\
+$\mat{Z}$ & output logits of the model for a volume or patch & \ref{sec:bg-segmentation} \\
+$\sigma$ & logistic function & \ref{sec:bg-segmentation} \\
 $\theta_0$ & pretrained parameters & \ref{sec:bg-cl} \\
 $\theta_t$ & parameters after stage~$t$, carried forward to the next task & \ref{sec:bg-cl} \\
 $\tilde{\theta}_t$ & parameters evaluated after stage~$t$ & \ref{sec:method-protocol} \\
@@ -62,8 +62,8 @@ $\mat{H}_s$; $\mat{H}'_s$ & decoder features of stage~$s$ after and before the f
 \multicolumn{3}{@{}l}{\textit{Training}} \\
 $\mathcal{S}$ & continual-learning strategy & \ref{sec:method-protocol} \\
 $\phi$ & parameters trained by a strategy & \ref{sec:method-adaptation} \\
-$\mathcal{L}_{\mathrm{seg}}$ & segmentation loss & \ref{subsec:bg-unet} \\
-$\epsilon$ & smoothing constant of the soft Dice loss & \ref{sec:method-adaptation} \\
+$\mathcal{L}_{\mathrm{seg}}$ & segmentation loss & \ref{sec:bg-segmentation} \\
+$\epsilon$ & smoothing constant of the Dice loss & \ref{sec:method-adaptation} \\
 $E$; $N_t$; $U$ & epochs per task; training samples per epoch of task~$t$; iterations per task, $U = E \cdot N_t$ & \ref{sec:method-adaptation} \\
 $\eta_0$; $\mu$; $\omega$ & initial learning rate; momentum; weight decay & \ref{sec:method-adaptation} \\
 $\pi_{\mathrm{fg}}$ & probability that a training patch is centred on a voxel of the target structure & \ref{sec:method-adaptation} \\
@@ -88,7 +88,7 @@ $\bar{\vec{f}}$ & mean of the projected stage-4 image features, input of the met
 \addlinespace
 \multicolumn{3}{@{}l}{\textit{Evaluation}} \\
 $\operatorname{DSC}(\hat{\mat{Y}}, \mat{Y})$ & Dice similarity coefficient & \ref{sec:bg-metrics} \\
-$a_{i,j}$ & entry of the evaluation matrix: mean \glsxtrshort{dsc} on task~$i$ after stage~$j$ & \ref{sec:bg-cl} \\
+$a_{i,j}$ & entry of the evaluation matrix: mean \glsxtrshort{dsc} on task~$i$ after stage~$j$ & \ref{sec:bg-metrics} \\
 $c_j$ & mean \glsxtrshort{dsc} on the control task after stage~$j$ & \ref{sec:bg-metrics} \\
 $N_{\mathrm{boot}}$ & number of bootstrap draws & \ref{subsec:exp-metrics} \\
 \end{longtable}

@@ -64,3 +64,20 @@ papers/**/*.pdf
 papers/text/
 voxtell_paper/*.pdf
 !voxtell_paper/voxtell.pdf
+
+# Local backups made before edits (git history covers this)
+backups/
+
+# LaTeX build output (thesis_main.pdf stays tracked)
+thesis/**/*.aux
+thesis/**/*.bbl
+thesis/**/*.bcf
+thesis/**/*.blg
+thesis/**/*.fls
+thesis/**/*.fdb_latexmk
+thesis/**/*.toc
+thesis/**/*.lof
+thesis/**/*.lot
+thesis/**/*.run.xml
+thesis/**/*.synctex.gz
+thesis/**/*.xdv

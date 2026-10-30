@@ -234,3 +234,187 @@ Format: `YYYY-MM-DD | chapter/section | what was done (outline / feedback / expl
 2026-10-26 | Ch. 6 figures | script: ch6_main_metrics with joint reference line, ch6_few_shot with equal-updates markers and joint curve (palette slot 6 validated with the dataviz validator); captions updated
 2026-10-26 | front matter, all chapters | LaTeX fix: declaration 'fur' -> 'f"ur' (copied text otherwise identical to the chair's); outline: length cut proposal (outlines/length_cut_proposal.md), nothing applied
 2026-10-26 | all chapters | outline: list of repeated and low-value passages as first cut candidates (outlines/length_cut_proposal.md), nothing applied
+2026-10-26 | Ch. 6.1.2 | LaTeX edit: removed one sentence that duplicated Ch. 4.3 word for word in content (split sizes); other candidates checked and kept (not pure duplicates)
+2026-10-26 | Ch. 2 | feedback: counted reviewed/cited works and advised on scope (no edits)
+2026-10-26 | Ch. 2 | outline: keep/mention/drop list for the works in Table 2.1 (outlines/ch2_scope_list.md), nothing applied
+2026-10-26 | Ch. 2 | explanation: where CoCoOp is cited; corrected stale note in thesis_notes.md
+2026-10-26 | Ch. 2 | outline: added CoCoOp as a mention in 2.2 to the scope list
+2026-10-26 | Ch. 2 | feedback: rechecked mention list against paper notes; LViT to mention, SAM-Med3D-MoE and CA-SAM to keep, totals corrected (outlines/ch2_scope_list.md)
+2026-10-26 | Ch. 2 | feedback: checked scope list against approved tiers (papers/index.csv); MSLoRA-CR to keep; assessed effect on quality
+2026-10-26 | Ch. 2 | outline: borderline cases moved to keep (author's decision); proposed changes for 2.1, nothing applied
+2026-10-26 | Ch. 2 | draft/LaTeX edit: applied scope list (Table 2.1 45 to 25 rows; mentions condensed; drops removed; new sentences on CoOp/CoCoOp, CA-SAM, SAM-Med3D-MoE, 2.5 precedent)
+2026-10-26 | Ch. 2.5 | LaTeX fix: table placement (positioning table first, at its reference; summary longtable on a new page; reference sentence moved)
+2026-10-26 | Ch. 2.4.1, Tables 2.1/2.2 | feedback: subsection title, positioning-table columns and both captions reviewed; nothing applied
+2026-10-26 | Ch. 2.4.1, Table 2.1 | explanation/feedback: purpose of positioning-table columns, not-stated cells, title alternatives; nothing applied
+2026-10-26 | Ch. 2.4, Table 2.1 | LaTeX edit/draft: 2.4.1 renamed with definition sentence; positioning table reduced to 7 columns, caption rewritten
+2026-10-26 | Ch. 2 | feedback: short paragraphs after the cut listed with merge/keep recommendation; nothing applied
+2026-10-26 | Ch. 2 | LaTeX edit: merged short paragraphs (5 places), two bridge clauses reworded
+2026-10-26 | Ch. 2, Table 2.1 | feedback: proposal to replace Aim/Pretrained-ability columns (MedSeqFT transfer test found); nothing applied
+2026-10-27 | Ch. 2.5, Table 2.1 | LaTeX edit/draft: Aim column dropped (point moved to 2.5 text), columns renamed Pretrained model / Control task, caption definitions
+2026-10-27 | Ch. 2, Sec. 2.x (CL for VLMs), opening sentence | LaTeX fix: rewrote the scenario-criterion sentence to match van de Ven et al. (task identity given / not needed / inferred)
+2026-10-27 | Ch. 2.3 | LaTeX edit: reworded the van de Ven scenario sentence (l. 94) for clarity
+2026-10-27 | Ch. 2 | LaTeX edit: formal-language pass over the chapter (21 wording changes, no content changes except SAT PENGWIN numbers replacing 'failed almost completely')
+2026-10-27 | general | explanation: register of academic language per chapter, from the chair guidelines
+2026-10-27 | Ch. 2.4.1 | feedback + LaTeX edit: rechecked the 21 formal-language replacements; corrected one overstatement (Beyond Forgetting model growth)
+2026-10-27 | Ch. 3-8 | feedback: scan for informal language (about 10 clear cases), recommendation on timing; nothing applied
+2026-10-27 | Ch. 5-8 | LaTeX edit: 10 informal phrasings replaced (numbers from cl_metrics.csv where vague)
+2026-10-27 | Ch. 2 | feedback: academic-writing review of the chapter text (issue list, no edits)
+2026-10-27 | Ch. 2 (+ Ch. 1 l. 140, abbreviations.tex) | LaTeX edit: fixed the academic-writing issues from the review (abbreviations LoRA/EWC/MLP, percentage points, split long sentences, terminology, search footnote, PA-EWC table locator, % units, cites)
+2026-10-27 | Ch. 1 | feedback: academic-writing review of the chapter (issue list, no edits)
+2026-10-27 | Ch. 2.3, opening paragraph (scenarios) | LaTeX edit: condensed the van de Ven scenario descriptions from six sentences to three
+2026-10-27 | Ch. 2.3, scenario paragraph | LaTeX edit: removed the clause on separate parameters in task-incremental learning (covered by the De Lange sentence and Ch. 7)
+2026-10-27 | Ch. 1 (+ Ch. 7/8 term, CLAUDE.md) | LaTeX edit: fixed the academic-writing issues from the review (repetition in 1.1, retraining claim, stability-plasticity claim, terms introduced in 1.4, joint fine-tuning reference moved and term unified, metric and replay citations, long sentences)
+2026-10-27 | Ch. 1.4 | LaTeX edit: removed the Chaudhry/intransigence sentence after Adaptation (attribution stays in Ch. 3.4)
+2026-10-27 | Ch. 1.1 | LaTeX edit: merged the retraining sentences, dropped the 158-public-datasets clause
+2026-10-27 | Ch. 2.3, evaluation paragraph | LaTeX edit: condensed the paragraph on Chaudhry/ZSCL/SPU (11 to 6 sentences, forgetting definition made precise) and moved the ZSCL benchmark sentence to GIFT
+2026-10-27 | Ch. 2.3, opening | LaTeX edit: added a two-sentence section opening and moved the evaluation paragraph before the families paragraph
+2026-10-27 | Ch. 2.3, opening | LaTeX edit: replaced the two-sentence section opening by one transition sentence
+2026-10-27 | Ch. 2.3, scope and outline | feedback: assessed level of detail of the VLM continual-learning review and proposed a revised outline (no edits)
+2026-10-27 | Ch. 2.3 / Ch. 3.2 | feedback: assessed whether scenarios, metrics and families belong in Ch. 2 or Ch. 3 (no edits)
+2026-10-27 | Ch. 2.3 | LaTeX edit/draft: restructured 2.3 (subsections removed, metrics paragraph removed, numbers cut to those used later, ZSCL/PRIMED teacher contrast, new opening and closing paragraph from author's Q1 answer and Claude-selected Q2 points)
+2026-10-27 | Ch. 2.3 / Ch. 3.2 | feedback: whether to remove or move the scenario definitions (no edits)
+2026-10-27 | Ch. 2.3 / Ch. 3.2 / Table 2.1 | LaTeX edit: moved scenario definitions from Ch. 2.3 to Ch. 3.2 (one-sentence pointer kept in Ch. 2, positioning only in 3.2), caption reference added
+2026-10-27 | Ch. 2.3, replay paragraph | feedback: why only generative replay works are reviewed (no edits)
+2026-10-27 | Ch. 2.3, replay paragraph | feedback: whether the replay paragraph can be removed (no edits)
+2026-10-27 | Ch. 2.3, replay paragraph | feedback: whether to add, keep or drop replay works (no edits)
+2026-10-27 | Ch. 2.3, replay paragraph | LaTeX edit: dropped CGIL, added pointer to real-sample replay in 2.4.1
+2026-10-27 | Ch. 2.3, ZSCL/PRIMED paragraphs | feedback: merging the two ZSCL paragraphs, need for PRIMED (no edits)
+2026-10-27 | Ch. 2.3, ZSCL paragraph | LaTeX edit: merged the two ZSCL paragraphs into one, SPU sentence made precise (outside the task sequence)
+2026-10-27 | Ch. 1, strategies paragraph | LaTeX edit: split the LoRA sentence into three for readability
+2026-10-27 | Ch. 2.3, MoE-Adapters / MSLoRA-CR | feedback: whether to demote both to mentions and drop their table rows (no edits)
+2026-10-27 | Ch. 2.3 / Table 2.1 | LaTeX edit: MoE-Adapters reduced to a two-sentence mention in the LoRA paragraph, table row removed
+2026-10-27 | Ch. 2.3 closing paragraph / Ch. 5 prompt tuning | LaTeX edit: closing paragraph cut to limitations of prior work with pointer to Ch. 5; token-placement reason added to Ch. 5
+2026-10-27 | Ch. 2.3 closing paragraph | LaTeX edit: scoped the opening claim to VoxTell, removed the external-data clause
+2026-10-27 | Ch. 2.4 | LaTeX edit: renamed the three subsections (starting point and prompt type) and rewrote the roadmap sentence
+2026-10-27 | Ch. 2.4 title | LaTeX fix: manual line break in the section title to avoid hyphenation
+2026-10-27 | Ch. 2.4 opening paragraph | feedback (opening, length, flow, focus, clarity); no edits
+2026-10-27 | Ch. 2.4 opening + 2.4.1 | draft: shortened section opening to bridge + roadmap; moved background-conflict point into 2.4.1 (3 sentences); removed uncited expectation and Liu example
+2026-10-27 | Ch. 2.4 opening + 2.4.1 | draft: moved background-shift definition and Liu example back into the section opening; 2.4.1 keeps only the consequence
+2026-10-27 | Ch. 2.4 opening | LaTeX edit: removed the roadmap sentence (repeated the subsection titles)
+2026-10-28 | Ch. 2, Sec. 2.4.1 | feedback: placement of the ILT/MiB sentence (2.3 vs 2.4), no edits
+2026-10-28 | Ch. 2, Sec. 2.4.1 | draft: split regularisation/background-shift paragraph in two, shortened background-shift reasoning, cited ILT baseline use
+2026-10-28 | Ch. 2, Sec. 2.4.1 | LaTeX edit: topic sentence reworded to author's wording (regularisation and distillation)
+2026-10-28 | Ch. 2, Sec. 2.4.1 | feedback: checked MiB paper for priority claim and term, proposed opening
+2026-10-28 | Ch. 2, Sec. 2.4.1 | draft: background-shift paragraph rewritten (MiB first in natural images, P./X. Liu distinguished, no-conflict reasoning)
+2026-10-28 | Ch. 2, Sec. 2.4.1 | draft: no-conflict sentence reworded (each mask is the target for one text prompt)
+2026-10-28 | Ch. 2, Sec. 2.4.1 | draft: MiB sentences merged, added MiB baseline sentence (Like ILT), 'In medical image segmentation' opening
+2026-10-28 | Ch. 2, Sec. 2.4.1 | LaTeX fix: reworded MiB sentence to remove overfull hbox (lines 178-183)
+2026-10-28 | Ch. 2, Sec. 2.4.1 (parameter-isolation paragraph, Zhang et al.) | feedback + draft (restructured paragraph)
+2026-10-28 | Ch. 2, Sec. 2.4.1 | LaTeX fix: reworded MiB sentence again, overfull hbox gone in XeLaTeX build
+2026-10-28 | Ch. 2, Sec. 2.4.1 (Zhang et al. mechanism sentence) | feedback + draft (precision fix: controller, pooled features, class template)
+2026-10-28 | Ch. 2, Sec. 2.4.1 (Zhang et al. paragraph) | draft (condensed to 5 sentences, Liu et al. folded into citation)
+2026-10-28 | Ch. 2, Sec. 2.4.1 (Zhang et al. results sentence) | feedback + draft (comparison changed from PLOP to pseudo-labelling baseline)
+2026-10-28 | Ch. 2, Sec. 2.4.1 (Ranem et al. sentence) | feedback + LaTeX wording fix (elliptical clause made explicit)
+2026-10-28 | Ch. 2, Sec. 2.4 (subsection titles, overview sentence) | feedback + draft (parallel titles, split sentence)
+2026-10-28 | Ch. 2, Sec. 2.4 overview and 2.4.2 opening | feedback + draft (foundation-model definition with todo cite, opening sentence)
+2026-10-28 | Ch. 2, Sec. 2.4.2 (SAM-based methods, RegCL, synthesis) + Table 2.2 row | feedback + draft (trimmed to 8 sentences, control-task link, RegCL removed)
+2026-10-28 | Ch. 2, Sec. 2.4.2 synthesis paragraph, Sec. 2.5 | feedback + draft (synthesis paragraph deleted, observation folded into 2.5 as one sentence)
+2026-10-28 | Ch. 2, Sec. 2.4.3 (Gao critique paragraph) | feedback + draft (outside-sequence sentence deleted as duplicate of 2.5; test-time sentence completed and merged)
+2026-10-28 | Ch. 2, Sec. 2.5 (Summary and Research Gap) | feedback + draft (removed repetitions of Ch. 1: VoxTell number, protocol, k values, references, families; positioning sentence now names the comparison studies)
+2026-10-28 | Ch. 2, Sec. 2.5 para 1 | draft (varied the repeated 'X does A, but B' pattern)
+2026-10-28 | Ch. 2, Table 2.1 (positioning) | LaTeX fix (column widths rebalanced, caption shortened, short LoT caption, two cells shortened)
+2026-10-28 | Ch. 2, Table 2.1 caption | LaTeX fix (caption shortened, control task refers to Sec. 1.4, few-shot footnote; repaired a broken \textsuperscript from an interrupted command)
+2026-10-28 | Ch. 2, Sec. 2.5 positioning sentence | draft (adapted methods vs compared strategies; defense todo on meta-net/gradient scaling)
+2026-10-28 | Ch. 1 (gap paragraph), Ch. 2 (2.4.1, 2.5), Table 2.2 | draft + terminology fix (precedents for measuring pretrained ability in Ch. 1 and 2.5; 'strategies' -> 'methods' for other authors' work)
+2026-10-29 | all chapters, chapter/section openings | feedback (whether outline, chapter and section openings are needed; flagged outline mismatch and stacked headings)
+2026-10-29 | all chapters + appendix | feedback (scan of stacked headings: Ch. 1, 3.1, 4.1, 6.1 without lead-in)
+2026-10-29 | Ch. 3.1, 4.1, 6.1 | feedback (recommendation for fixing stacked headings)
+2026-10-29 | Ch. 3, Sec. 3.1 | feedback + outline (diagnosis of structure and paragraph focus, revised outline proposed)
+2026-10-29 | Ch. 3, Sec. 3.1 lead-in + 3.1.1 | draft/restructure (problem setup moved to section level, new 2-sentence lead-in, VoxTell content moved from 3.1.1 to 3.1.3, notation refs retargeted)
+2026-10-29 | Ch. 3, Sec. 3.1 lead-in | feedback (generality of the problem-setup paragraph; theta vs frozen text encoder)
+2026-10-29 | Ch. 3, Sec. 3.1 lead-in + 3.1.3, notation | draft (problem setup tied to the one-structure setting; theta defined as all VoxTell parameters except the frozen text encoder)
+2026-10-29 | Ch. 3, Sec. 3.1 lead-in | language (grammar and clarity: split long sentences, removed subject-verb insertion, linked Z to z_v)
+2026-10-29 | Ch. 3, Sec. 3.1 lead-in; Fig. 3.1/5.1 | LaTeX fix (removed pointer sentence to the loss equation) + feedback (loss arrow in VoxTell figure)
+2026-10-29 | Fig. 3.1/5.1, Ch. 3 caption | LaTeX fix (removed loss node from shared VoxTell TikZ body, caption adjusted, figures rebuilt)
+2026-10-29 | Ch. 3, Sec. 3.1.2 | draft/restructure (VoxTell and implementation remark removed, paragraph split, long sentence split)
+2026-10-29 | Ch. 3, Sec. 3.1.3 | draft/restructure (paragraphs reordered to data flow, implementation remarks replaced by one pointer to Ch. 5, link to 3.1.2, fusion/late-fusion and training paragraphs split)
+2026-10-29 | Ch. 3, Sec. 3.1 | LaTeX fix (build check after restructuring: no errors, no undefined references)
+2026-10-29 | Ch. 3, Sec. 3.1.2 | language (grammar and clarity: inputs of each projection explicit, notation remark moved before the equation, long sentences split)
+2026-10-29 | Ch. 3, Sec. 3.1 lead-in | language (removed repeated 'This thesis adapts VoxTell' framing)
+2026-10-29 | Ch. 3, Sec. 3.1 lead-in + 3.1.1 | language (repetition removed, U-Net description before the attributed claim, patch/sliding-window sentence split into own paragraph)
+2026-10-29 | Ch. 3, Sec. 3.1.3 + Fig. 3.1 caption | language (insertions removed, long sentences and semicolons split, bottleneck defined, ambiguous referents fixed)
+2026-10-29 | Ch. 3, Sec. 3.1.3 | feedback + LaTeX fix (verified facts against paper_notes/voxtell.md and code/src/model; corrected the s=0 output sentence and the foreground-sampling wording)
+2026-10-29 | Ch. 3, Sec. 3.1.3 | LaTeX fix (deleted late-fusion paragraph on author's decision; tracker note for Ch. 2)
+2026-10-29 | Ch. 3.1.3, Ch. 5.3, notation, Table 6.x (script) | terminology fix ('soft Dice' -> 'Dice loss' everywhere; one sentence in Ch. 5 that the Dice term uses probabilities; hparams table regenerated)
+2026-10-29 | Ch. 3.1.3, Ch. 5.3 | LaTeX fix (removed Dice-rationale sentence, merged pretraining paragraphs; Ch. 5 states patch size and foreground fraction follow VoxTell pretraining, author-confirmed)
+2026-10-29 | Ch. 5.3 (method.tex:175) | feedback (verified 'follow the pretraining of VoxTell' against paper notes, code and run configs; schedule exponent and SGD settings not stated in the paper)
+2026-10-29 | Ch. 5.3 (method.tex:175) | feedback (checked nnU-Net v2 and VoxTell repository code for optimiser and schedule defaults; defense point added)
+2026-10-29 | Ch. 5.3 (method.tex:175) | draft (optimiser/schedule sentence split: what follows VoxTell, what follows nnU-Net defaults, exponent 1 stated as a choice; todo cite nnU-Net code)
+2026-10-29 | Ch. 3.1.3 Fig. 3.1 (background.tex) | feedback + LaTeX/TikZ fix (caption length; figure switched to the paper's version with bottleneck keys/values; caption shortened; pointer sentence rephrased)
+2026-10-29 | Ch. 3.1.3 Fig. 3.1 caption (background.tex:134) | LaTeX fix (caption revised for style rules: subject-verb insertion, unclear 'Its', vague verb, \gls{mri}; one statement per sentence)
+2026-10-29 | Ch. 3.1.3 Fig. 3.1 (background.tex) | LaTeX fix (float moved and \cref moved to the first sentence of 3.1.3 so the figure is on the page of its reference; compiled and checked p. 25)
+2026-10-29 | Ch. 3.1.3 Fig. 3.1 (background.tex) | LaTeX fix (float placement reverted to after the first-reference paragraph, \cref back in "four parts" sentence; figure now top of p. 26; compiled and checked)
+2026-10-29 | Ch. 3.2 CL setting paragraphs (background.tex:150-175) | LaTeX fix (language revision: semicolons split, dangling modifier, subject-verb insertion, stage definition, ambiguous appositive/which; control-task sentence made accurate)
+2026-10-29 | Ch. 3 structure (background.tex, method.tex 5.1/5.2, notation.tex) | outline + LaTeX restructure (3.2 and 3.3 merged, evaluation matrix moved to 3.3, task-aware inference moved to Ch. 5; compiled and checked)
+2026-10-30 | Ch. 3.2 opening (background.tex) | language fix + terminology check (mechanisms -> methods)
+2026-10-30 | Ch. 1-3 terminology (introduction.tex, related_work.tex, ch2_sota.tex) + Ch. 3.3 (background.tex) | LaTeX fix ('mechanism' -> method/strategy wording) + draft (joint-training reference, 2 sentences)
+2026-10-30 | Ch. 5 title vs. method/strategy terminology | feedback (no edits)
+2026-10-30 | Ch. 5.4 (method.tex l. 237) | language fix ('two of its mechanisms' removed)
+2026-10-30 | all chapters (background, method, discussion, summary) | terminology pass method/strategy ('mechanism' removed, our work never 'method')
+2026-10-30 | terminology ('mechanism') | feedback (no edits)
+2026-10-30 | Ch. 5.4.1 (method.tex l. 259) | language fix ('what they add' -> 'their components')
+2026-10-30 | Ch. 2.3 (related_work.tex l. 98, 147) | LaTeX/text edit: scenario definition reduced to pointer to Ch. 3.2.1 (avoid duplicate definition)
+2026-10-30 | Ch. 3.2.1 (background.tex l. 172-176) | language/clarity edit: scenario positioning paragraph reordered (claim -> reason -> CIL/DIL contrasts)
+2026-10-30 | Ch. 3.2.1 -> Ch. 5.1 | restructure: scenario positioning moved to Method setting section, Ch. 3 overview updated
+2026-10-30 | Ch. 2.3 (related_work.tex l. 103) | language fix: 'refine these families into' -> 'group methods into' (parameter-efficient adaptation is not a refinement of parameter isolation)
+2026-10-30 | Ch. 3.2 (background.tex overview, 3.2.4, 3.2.5) | flow fixes: overview names the four methods and the shared order with Ch. 5.4; CoCoOp sentence linked to prompt-tuning meta-net; ZSCL penalty moved before weight ensemble
+2026-10-30 | Ch. 3.2.3-3.2.4, Ch. 5.4.3 | content trim: replay subsection reduced to rehearsal + overfitting + privacy (iCaRL alternative moved to Method replay with defense todo); ZSCL opening shortened (overlap with Ch. 2); 'weight-consolidation loss' named in Ch. 3 to match Ch. 5
+2026-10-30 | Ch. 3.2.3 -> Ch. 5.4.3 | restructure: replay subsection removed from Background, overfitting/privacy sentences moved to Method replay; overview list updated
+2026-10-30 | Ch. 3.2.3 (background.tex, distillation/ZSCL) | language/clarity edit: temperature attachment, colon split, long ZSCL loss sentence split (Eq. citations per sentence)
+2026-10-30 | Ch. 2.3 (l. 114-115, 147), Ch. 3.2 overview/3.2.4 | repetition trim: ZSCL weight-constraint sentence and CPE-CLIP session description in Ch. 2 reduced to pointers; duplicate CoCoOp meta-net sentence removed from Ch. 3, CoCoOp named in overview
+2026-10-30 | Ch. 5.4.4 (method.tex l. 352) | LaTeX/text fix: weight ensemble now references eq:bg-we instead of re-describing ZSCL Eq. 7
+2026-10-30 | Ch. 3.2.4 (background.tex, prompt learning / CPE-CLIP) | language/clarity edit: semicolons split, bare 'prompt' -> context vectors / prompt tokens, redundant 'CLIP stays fixed' removed, Eq. locators split (2-4 / 6-8)
+2026-10-30 | Ch. 5.4.5 (method.tex l. 385, 388) | notation fix: own gradient scale written as max(0.25, beta_t) with cref to eq:bg-cpe-scaling; beta_t keeps its single Ch. 3 definition
+2026-10-30 | Ch. 3.3 (background.tex, Evaluation Metrics) | structure/clarity: scope sentence added; Chaudhry accuracy->DSC sentence moved into matrix paragraph; control task and c_j defined in own sentences before Fig. 3.2
+2026-10-30 | Ch. 3.3 (background.tex, Evaluation Metrics) | restructure: \paragraph heading per metric with its own equation; joint-training sentences moved into Adaptation paragraph; built and checked pages 31-33
+2026-10-30 | Ch. 3.3 (background.tex, Evaluation Metrics) | language/clarity edit: long sentences and semicolons split, subject-verb insertion in Final Forgetting removed, k->i index in Adaptation, caption colon/semicolons split, Transfer definition made precise
+2026-10-30 | Ch. 3.3 (background.tex, metric paragraphs) | language edit: 'Higher values are better' removed for the three DSC-mean metrics; direction for Final Forgetting folded into the backward-transfer sentence
+2026-10-30 | Ch. 3.3 (background.tex, Adaptation / Final Performance) | structure edit: joint-training definition and De Lange soft upper bound moved from Adaptation to Final Performance; 'Adaptation omits the joint-training reference' removed
+2026-10-30 | Ch. 3.3 (background.tex l. 298) | language edit: 'summand' -> 'diagonal entry'
+2026-10-30 | Ch. 3.3 (background.tex, Final Forgetting) | content trim: index-convention note and pre-training-stages remark removed, max rationale kept in one sentence; defense point D53 added
+2026-10-30 | Ch. 3.3 (background.tex, Final Performance) | language edit: vague 'describes the model that a run delivers' sentence removed; referent made explicit
+2026-10-30 | Ch. 3.3 (background.tex, Transfer) | explanation (with seq. FT eval matrix example) + clarity rewrite of last sentence; pointer to pretrained-model reference row
+2026-10-30 | Ch. 4 (data_description.tex, all sections) | language edit: grammar and clarity pass (sentence splits, insertions removed, referents made explicit, two caption clarifications); no content added
+2026-10-30 | Ch. 4.1 (data_description.tex, section opening) | LaTeX/structure fix: stacked heading resolved, dataset sentence moved into a lead-in plus one draft pointer sentence
+2026-10-30 | Ch. 4.1.1 (data_description.tex) | content trim on author's approval: acquisition parameters and pathology breakdown removed, annotator sentences merged
+2026-10-30 | scripts/plot_data.py, Table 4.1 | script: hospital name capitalised, Ch. 4 tables/figures regenerated
+2026-10-30 | Ch. 4.2 + Ch. 3.3/5.1 refs, scripts/plot_data.py | structure/LaTeX fix on author's approval: Table 4.2 and Fig. 4.1 removed, text prompts listed in prose, script prints medians instead
+2026-10-30 | Ch. 4.1 Fig. 4.1, scripts/plot_data.py | script + caption edit: example figure at 600 dpi, opaque labels, cropped knee panels, lung outline, legend fixed; caption extended
+2026-10-30 | Ch. 4.1 Fig. 4.1 | script + caption edit: lung as opaque fill; explanation of coronal blur from SKM-TEA App. A.1-A.2 (ZIP2 zero-padding)
+2026-10-30 | Ch. 4.1.1 + Fig. 4.1 caption | draft sentence (acquired slices, ZIP2 zero-padding, Desai App. A.1-A.2) and caption clause on coarse slice direction; only source numbers
+2026-10-30 | Fig. 4.1 + Ch. 1 setting figure | script: lung colour changed to #b5179e (validated with dataviz palette checker), figures regenerated
+2026-10-30 | Fig. 4.1 + Ch. 1 setting figure | script: meniscus colours reassigned (validated pairwise for touching structures), figures regenerated
+2026-10-30 | Fig. 4.1 + Ch. 1 setting figure | script: lung and lateral-meniscus colours swapped, figures regenerated
+2026-10-30 | Ch. 4.1.1 (data_description.tex) | draft: annotation files defined, voxel-size sentence simplified, slice breakdown and zero-padding sentence removed
+2026-10-30 | Ch. 4.1.1, 4.2 (data_description.tex) | edit: duplicate size/spacing numbers removed from text (kept in Table 4.1), redundant reason sentence removed
+2026-10-30 | Ch. 4.1.1, 4.2 + literature.bib | bibliography: two entries added via bib-entry-adder (DATASET.md, AeroPath Zenodo record), URL footnotes replaced by \cite
+2026-10-30 | thesis_main.tex preamble + literature.bib | LaTeX fix: British bibliography dates (biblatex language=british, backref strings kept), version and month fields fixed
+2026-10-30 | thesis_main.tex preamble | LaTeX fix reverted: British bibliography dates removed on author's request
+2026-10-30 | Ch. 4.1 Fig. 4.1 caption | language edit: caption shortened (structure lists removed, orientation and resolution notes kept)
+2026-10-30 | Ch. 4.1 (+ refs in Ch. 3, 5, 7) | structure edit: subsections merged, dataset-choice paragraph moved to section start and shortened, size paragraph reduced to one sentence
+2026-10-30 | Ch. 4.1 (dataset choice) | language/content edit: interpretation and VoxTell-conflict sentences removed, one position from Suppl. Table 10
+2026-10-30 | Ch. 4.1 (VoxTell training labels) | fact check against VoxTell PDF Table 10; inferred 'two knee MRI datasets' clause removed, citation narrowed
+2026-10-30 | Ch. 4.1 | edit: VoxTell training-label sentence moved from the dataset-choice paragraph to the tasks paragraph, reworded with the tasks as subject
+2026-10-30 | Ch. 4.1 | edit: acquisition and distribution paragraphs merged (no rewording)
+2026-10-30 | Ch. 4.1 | edit: licence sentences moved into the opening paragraph (after the dataset choice), mirroring Sec. 4.2
+2026-10-30 | Ch. 4.3 + scripts/plot_data.py | structure edit: splits table removed, cross-tab printed by the script, sentence keeps the 7/24 figure
+2026-10-30 | Ch. 4.2 (AeroPath) | content trim on author's approval; VoxTell Table 7/10 locators verified in the PDF, ranking claim replaced by label counts
+2026-10-30 | Ch. 4.2 (AeroPath) | edit: VoxTell lung count stated as training cases for the label 'lung' only (Table 10 caption: training case frequency)
+2026-10-30 | Table 4.1 + scripts/plot_data.py | script: row 'Volumes used' renamed 'Volumes'; verification from results/ that only the 4 AeroPath test volumes were used in the reported runs
+2026-10-30 | Ch. 4.2, 4.6 | edit: undocumented lung-label origin stated once (4.6), with the sources checked; duplicate sentence in 4.2 removed
+2026-10-30 | Ch. 4.2 (AeroPath) | edit: two paragraphs merged (no rewording); section kept
+2026-10-30 | Ch. 4.3 (data splits) | language edit + stale-fact fix (checkpoint selection per Method), AeroPath usage sentence moved into the split paragraph
+2026-10-30 | Ch. 4.3 (official split) | draft: paragraph rewritten from the author's stated reason (no invented motivation); AeroPath paper checked for an official split; D3 updated
+2026-10-30 | Ch. 4.3 (split procedure) | language edit: three sentences merged into two, fractions stated once
+2026-10-30 | Ch. 4.3 (few-shot subsets) | language edit: active voice, colon construction removed, two sentences made specific
+2026-10-30 | Ch. 4.4 (preprocessing) | language edit: label-map description stated once (checked against code/scripts/h5_to_nifti.py), unclear 'Its' fixed, ITK-SNAP clause removed
+2026-10-30 | Ch. 4.4 (last sentence) | language edit: subject first, sentence opens with \Cref
+2026-10-30 | Ch. 4 (Sec. 4.5 dissolved) + discussion.tex ref | structure edit: data-quality facts moved to 4.1/4.2/4.4, Sec. 4.5 removed, setup limitations pending for 7.3
+2026-10-30 | Ch. 7.3 (discussion.tex) | draft: setup/model limitations and pretrained-DSC comparison moved from former Sec. 4.5 into existing paragraphs (author-approved text), two items dropped
+2026-10-30 | Ch. 4.4 (plans.json footnote) | edit: redundant data identifier removed from footnote
+2026-10-30 | Ch. 5 (all sections) | language edit: grammar and clarity (long sentences split, insertions removed, referents clarified, intransigence index k -> i), no content change
+2026-10-30 | Ch. 5 (opening sentence) | language edit: vague 'what we built ... and why' replaced
+2026-10-30 | Ch. 5 (opening paragraph) | language edit: section overview split, one verb per item, 'built on this procedure' clarified, pointer sentence split
+2026-10-30 | Ch. 5 (opening sentence) | language edit: 'each design choice' weakened to 'the main design choices' (not every choice has a recorded reason)
+2026-10-30 | Ch. 5.1 (first two paragraphs) | edit: sentences repeating Ch. 1/3/4 removed; not-domain-incremental point moved to the scenario paragraph, definition not repeated
+2026-10-30 | repo | added backups/ and LaTeX build files to .gitignore, untracked them from the index (files kept on disk) (script)

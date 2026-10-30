@@ -13,7 +13,7 @@ Epochs per task & $E$ & 10; 216 in the equal-updates runs (validation every 24 e
 Batch size &  & 1 \\
 Patch size (voxels) &  & $192 \times 192 \times 192$ \\
 Foreground-centred patches & $\pi_{\mathrm{fg}}$ & 0.85 \\
-Loss & $\mathcal{L}_{\mathrm{seg}}$ & binary cross-entropy + soft Dice, weights 1:1 \\
+Loss & $\mathcal{L}_{\mathrm{seg}}$ & binary cross-entropy + Dice, weights 1:1 \\
 Deep supervision &  & off \\
 Data augmentation &  & none \\
 Random seed (training, split) &  & 42, 42 \\

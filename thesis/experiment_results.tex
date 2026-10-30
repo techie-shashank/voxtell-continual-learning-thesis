@@ -50,9 +50,6 @@ How these choices limit the conclusions is discussed in \cref{sec:disc-limitatio
 \label{subsec:exp-data}
 
 % CLAUDE-DRAFT
-All runs use the splits of \cref{sec:data-splits}: for each of the six tasks, 108 training, 23 validation and 24 test volumes of SKM-TEA, and for the control task the 4 AeroPath test volumes.
-
-% CLAUDE-DRAFT
 In the original task order, the structures are trained in the sequence lateral tibial cartilage, medial tibial cartilage, femoral cartilage, patellar cartilage, medial meniscus and lateral meniscus; this order was chosen at random.
 The reverse order serves as a second task order, to check whether the results depend on the order in which the structures are learned.
 Sequential fine-tuning, task-specific LoRA and shared LoRA were trained in both orders (\cref{tab:ch6_experiments}).
@@ -288,7 +285,7 @@ Scaling the steps down in later tasks thus traded a little adaptation for retent
 % CLAUDE-DRAFT
 No strategy combined the Adaptation of sequential fine-tuning with the retention of the LoRA strategies.
 The strategies that update all parameters reached the highest Adaptation and left a model that segments little beyond the last task and has lost the control task and femoral cartilage, abilities of the pretrained model.
-Joint fine-tuning shows that the loss of the control task does not require a task sequence: with the same number of updates on all six tasks at once, the model lost it as well, while it reached a Final Performance far above every strategy.
+Joint fine-tuning shows that the loss of the control task does not require a task sequence: with the same number of updates on all six tasks at once, its \gls{dsc} on the control task also fell to 0.000, while its Final Performance of 0.852 was higher than that of every strategy.
 The prompt-tuning strategy lies between the two groups, and gradient scaling moved it towards retention; freezing the backbone alone did not preserve the control task.
 Retention came with the LoRA strategies, at an Adaptation about 0.30 lower than that of sequential fine-tuning.
 Part of this gap comes from the training configuration rather than from the strategies, because the LoRA strategies were limited by the ten epochs per task (\cref{sec:exp-patellar}), so the trade-off is probably less steep than these runs show.
@@ -490,7 +487,7 @@ Unlike shared LoRA, sequential fine-tuning learned the first task well in both o
 
 % CLAUDE-DRAFT
 For task-specific LoRA, the task order changes nothing in the training of a task: every task starts from the pretrained model with a new adapter, trained on the same data with the same settings, and the random seed is reset at the start of every task (\cref{subsec:method-lora}).
-What does change is the state of the random-number generator when the adapter is created, because the adapter is initialised before the seed is reset, so each task gets a different random initialisation in the two orders; in addition, the training allows non-deterministic GPU operations.
+What does change is the state of the random-number generator when the adapter is created, because the adapter is initialised before the seed is reset, so the adapter of each task receives a different random initialisation in the two orders; in addition, the training allows non-deterministic GPU operations.
 % source: code/src/continual/strategies/base.py (configure_engine before trainer.fit), training/utils.py (seed_everything, use_deterministic_algorithms with warn_only=True)
 The two runs therefore show how much a single run varies with its initialisation.
 Five of the six tasks reached the same \gls{dsc} within 0.01, while lateral meniscus reached 0.40 in the original and 0.34 in the reverse order, so that Adaptation differs by 0.006 (0.485 against 0.478).
@@ -499,7 +496,7 @@ This illustrates the limit stated in \cref{subsec:exp-metrics}: the intervals re
 % source: thesis/tables/cl_differences.csv (adaptation, TIL-LoRA r = 4 original - reverse)
 
 % CLAUDE-DRAFT
-For shared LoRA, the reverse order led to clearly better retention.
+For shared LoRA, the reverse order led to better retention.
 Final Forgetting was 0.124 instead of 0.289 and the control-task drop 0.067 instead of 0.237, and Final Performance rose from 0.233 to 0.345, while Adaptation was 0.032 lower (0.439 against 0.471); the paired intervals of these four differences are about $\pm 0.01$ to $\pm 0.02$ wide.
 % source: cl_differences.csv, CIL-LoRA r = 1024 original - reverse: adaptation +0.032 [0.022, 0.042], final_forgetting +0.165 [0.145, 0.183], control_drop +0.170 [0.162, 0.178], final_performance -0.112 [-0.124, -0.101]
 In both orders, the first task was learned poorly: lateral tibial cartilage reached 0.29 right after training in the original order and lateral meniscus 0.01 in the reverse order, whereas the same structures reached 0.51 and 0.40 when trained later in the other order.
@@ -524,7 +521,7 @@ With $r = 4$, by contrast, the loss of the first task falls to 0.74 within three
 % CLAUDE-DRAFT
 For sequential fine-tuning, the task order changed no metric beyond the bootstrap interval except Transfer, by 0.013, and it forgot almost everything in both orders.
 For task-specific LoRA, the task order has no effect beyond the variation between two runs, as its design implies.
-For shared LoRA, the task order has a strong effect: in the reverse order, the adapter kept clearly more of the earlier tasks and of the control task, at a slightly lower Adaptation.
+For shared LoRA, the task order has a strong effect: in the reverse order, the adapter retained more of its performance on the earlier tasks and on the control task (Final Forgetting 0.124 against 0.289, control-task drop 0.067 against 0.237), at an Adaptation lower by 0.032.
 With two orders, we cannot determine which property of the order causes this difference in retention, and among the strategies tested, a strong effect of the order appeared only for shared LoRA.
 In both orders, the first task was learned poorly, and the training loss shows that its adapter had not left its initial state after ten epochs; a possible explanation, which connects this observation with the results of \cref{sec:exp-rank,sec:exp-patellar,sec:exp-few-shot}, is discussed in \cref{sec:disc-budget}.
 

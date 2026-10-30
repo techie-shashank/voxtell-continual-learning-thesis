@@ -179,7 +179,7 @@ def hparams_table(runs):
         ("Batch size", "", f"{uniform(runs, 'dataset', 'batch_size')}"),
         ("Patch size (voxels)", "", f"${patch[0]} \\times {patch[1]} \\times {patch[2]}$"),
         ("Foreground-centred patches", r"$\pi_{\mathrm{fg}}$", "0.85"),
-        ("Loss", r"$\mathcal{L}_{\mathrm{seg}}$", "binary cross-entropy + soft Dice, weights 1:1"),
+        ("Loss", r"$\mathcal{L}_{\mathrm{seg}}$", "binary cross-entropy + Dice, weights 1:1"),
         ("Deep supervision", "", "off"),
         ("Data augmentation", "", "none"),
         ("Random seed (training, split)", "", f"{t('seed')}, {uniform(runs, 'dataset', 'seed')}"),

@@ -48,3 +48,9 @@ Q2 Bootstrap: explain the paired bootstrap in 3.4 as a concept, or only in Ch. 6
 Q3 LoRA equation: Ch. 5 (Eq. method-lora) already has W_0 + γ_r BA. Option (a): the general equation moves to Ch. 3 and Ch. 5 refers to it (Ch. 5 needs a small edit); option (b): Ch. 3 describes LoRA in words only. Same question for the soft Dice loss (proposal: it stays in Ch. 5).
 Q4 Sources: which of the missing ones should be added to `literature.bib` (Vaswani, Hinton, CoOp, Qwen3 Embedding, nnU-Net revisited, a Dice reference)? Each needs a PDF or publisher page. For `van_de_Ven_2025`, `delange2022`, `PARISI201954`, `icarl2017` there are no paper notes; I may only attribute claims to them once you provide the paper or confirm what they say.
 Q5 Fig. 3.2 (metrics schematic): yes or no?
+
+## Restructure (approved by the author 2026-10-29, option a)
+- 3.1 Free-Text Promptable Volumetric Segmentation (unchanged).
+- 3.2 Continual Learning (`sec:bg-cl`): opening (problem + scenarios, then published methods; adaptation in Ch. 5); 3.2.1 Problem Setting and Scenarios (`subsec:bg-cl-setting`: sequence and stages, the three scenarios, our setting closest to task-incremental learning); 3.2.2 LoRA, 3.2.3 Replay, 3.2.4 Knowledge Distillation and ZSCL, 3.2.5 Prompt Learning and CPE-CLIP (former 3.3; `sec:bg-methods` removed).
+- 3.3 Evaluation Metrics (`sec:bg-metrics`): DSC, evaluation matrix (moved from 3.2, defined once), Fig. 3.2, metrics.
+- Task-aware inference defined only in Ch. 5 (`method.tex`, Sec. 5.1); Ch. 5 protocol refers to 3.2.1 for the stages and to 3.3 for the matrix.

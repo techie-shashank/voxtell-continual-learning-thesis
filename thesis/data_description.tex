@@ -19,7 +19,7 @@ The chapter then describes how the volumes are split, how the few-shot training 
 
 \begin{table}[tb]
 \centering
-\caption[Datasets used in this thesis]{Datasets used in this thesis. Values computed from the data and the official SKM-TEA annotation files (version 1.0.0), except imaging, source and access, which are taken from the dataset publications~\cite{desai2021skmtea, støverud2023aeropathairwaysegmentationbenchmark}.}
+\caption[Datasets used in this thesis]{Datasets used in this thesis. Values computed from the data and the official SKM-TEA annotation files (version 1.0.0), except the rows on imaging, source and access, which are taken from the dataset publications~\cite{desai2021skmtea, støverud2023aeropathairwaysegmentationbenchmark}.}
 \label{tab:ch4_datasets}
 \input{tables/ch4_datasets}
 \end{table}
@@ -28,132 +28,85 @@ The chapter then describes how the volumes are split, how the few-shot training 
 \section{SKM-TEA}
 \label{sec:data-skmtea}
 
-\subsection{Acquisition and Annotation}
-\label{subsec:data-skmtea-acquisition}
-
 % CLAUDE-DRAFT
 The Stanford Knee MRI with Multi-Task Evaluation (SKM-TEA) dataset contains knee \gls{mri} scans of 155 patients acquired at Stanford Healthcare~\cite{desai2021skmtea}.
-All scans were acquired with the 3D \gls{qdess} sequence on one of two 3\,T GE MR750 scanners, with patient consent and approval of the Stanford University Institutional Review Board~\cite{desai2021skmtea}.
-\gls{qdess} acquires two inherently registered 3D echoes with different contrasts~\cite{desai2021skmtea}.
-The shared acquisition parameters are a matrix of $416 \times 512$ (readout $\times$ phase encoding), an in-plane resolution of $0.38 \times 0.31$\,mm$^2$, echo times of 5.7\,ms and 30.1\,ms, a repetition time of 17.9\,ms, a flip angle of 20$^\circ$ and 80 to 88 slices depending on knee size~\cite[Table~5, App.~A.1]{desai2021skmtea}.
+We chose SKM-TEA because VoxTell performs poorly on it (\cref{sec:intro-motivation}).
+SKM-TEA is distributed under the terms of the Stanford University School of Medicine and of the Lower Extremity Radiographs dataset~\cite[App.~A.5]{desai2021skmtea}.
+We signed the Stanford AIMI research-use agreement before downloading the data.
 
 % CLAUDE-DRAFT
+All scans were acquired with the 3D \gls{qdess} sequence on one of two 3\,T GE MR750 scanners, with patient consent and approval of the Stanford University Institutional Review Board~\cite{desai2021skmtea}.
+\gls{qdess} acquires two inherently registered 3D echoes with different contrasts~\cite{desai2021skmtea}.
 SKM-TEA is distributed in two benchmark tracks, one based on raw k-space data and one based on the scanner-generated \gls{dicom} images~\cite{desai2021skmtea}.
-We use the \gls{dicom} track, which stores the images and segmentations of each scan in one \gls{hdf5} file\footnote{\url{https://github.com/StanfordMIMI/skm-tea/blob/main/DATASET.md}, accessed 19 October 2026.}.
-Of the two echoes, we use only the first, as the dataset authors do in the segmentation part of their tutorial~\cite{skmtea_tutorial}.
-According to the official annotation files, all 155 volumes have a voxel size of $0.3125 \times 0.3125 \times 0.8$\,mm and a matrix of $512 \times 512$ voxels with 160 slices, except four volumes with 144, 152, 156 and 168 slices.
+We use the \gls{dicom} track, which stores the images and segmentations of each scan in one \gls{hdf5} file~\cite{skmtea_dataset_doc}.
+We use only the first of the two echoes, as the dataset authors do in the segmentation part of their tutorial~\cite{skmtea_tutorial}.
+The dataset also provides versioned annotation files that list the scans of each split defined by the dataset authors, with metadata such as the voxel size~\cite{skmtea_dataset_doc}.
+All 155 volumes have a voxel size of $0.3125 \times 0.3125 \times 0.8$\,mm (\cref{tab:ch4_datasets}).
 
 % CLAUDE-DRAFT
 Six tissues were segmented manually on all \gls{dicom} images: patellar cartilage, femoral cartilage, medial and lateral tibial cartilage, and medial and lateral meniscus~\cite{desai2021skmtea}.
-The segmentations were drawn slice by slice in the sagittal plane by two researchers with three to four years of experience in knee \gls{mri} interpretation, supervised by two board-certified musculoskeletal radiologists, and corrected for volumetric consistency in the axial and coronal planes~\cite[App.~A.4]{desai2021skmtea}.
-Each scan was labelled by a single annotator~\cite[App.~A.4]{desai2021skmtea}.
-The dataset also provides bounding boxes for sixteen pathology categories~\cite{desai2021skmtea}.
-According to the annotation files, 130 of the 155 scans contain at least one pathology: 99 a cartilage lesion, 88 an effusion, 68 a meniscal tear and 36 a ligament tear.
-These bounding boxes are not used for training or evaluation in this thesis.
+The segmentations were drawn slice by slice in the sagittal plane and then corrected for volumetric consistency in the axial and coronal planes~\cite[App.~A.4]{desai2021skmtea}.
+Each scan was labelled by one of two researchers with three to four years of experience in knee \gls{mri} interpretation, supervised by two board-certified musculoskeletal radiologists~\cite[App.~A.4]{desai2021skmtea}.
+The dataset therefore contains no information on the agreement between annotators.
+The dataset also provides bounding boxes for sixteen pathology categories, which we do not use~\cite{desai2021skmtea}.
+According to the annotation files, 130 of the 155 scans contain at least one of these pathologies.
 
 % CLAUDE-DRAFT
-SKM-TEA is distributed under the terms of the Stanford University School of Medicine and of the Lower Extremity Radiographs dataset~\cite[App.~A.5]{desai2021skmtea}, and we signed the Stanford AIMI research-use agreement before downloading the data.
-
-\subsection{Continual-Learning Tasks}
-\label{subsec:data-skmtea-tasks}
-
-% CLAUDE-DRAFT
-Each of the six segmented structures defines one task, with a fixed text prompt that names the structure (\cref{tab:ch4_structures}).
+Each of the six segmented structures defines one task.
+The text prompt of a task is the name of its structure in lower case: ``patellar cartilage'', ``femoral cartilage'', ``medial tibial cartilage'', ``lateral tibial cartilage'', ``medial meniscus'' and ``lateral meniscus''.
+% source: prompt column of results/data_stats/skm_tea_volumes.csv
 The same text prompt is used for training and evaluation, and its wording is not varied.
+Of the six structures, the four cartilages are among VoxTell's training labels, whereas the two menisci are not~\cite[Suppl.~Table~10]{rokuss2025voxtellfreetextpromptableuniversal}.
 Since all six structures are labelled in every volume, the six tasks share the same 155 volumes and differ only in the target structure.
+The structures are small, with median volumes from 1.90\,cm$^3$ (lateral meniscus) to 10.99\,cm$^3$ (femoral cartilage), and lie next to each other in the knee joint (\cref{fig:ch4_examples}).
+% source: stdout of scripts/plot_data.py (structure voxel counts x voxel size of the official annotation files, all 155 volumes)
 The order in which the tasks are trained is part of the experimental setup and is given in \cref{subsec:exp-data}.
 
-\begin{table}[tb]
-\centering
-\caption[Structures, text prompts and label values of the tasks and the control task]{Structures of the six continual-learning tasks and of the control task, with the text prompt, the label value in the converted label maps (\cref{sec:data-preprocessing}) and the structure volume over all volumes of the dataset. SKM-TEA volumes are computed from the voxel counts and the voxel size of the official annotation files; AeroPath volumes from the voxel size stored in each file.}
-\label{tab:ch4_structures}
-\input{tables/ch4_structures}
-\end{table}
-
-% CLAUDE-DRAFT
-The structures differ in size (\cref{fig:ch4_structure_sizes}).
-Femoral cartilage is the largest structure, with a median volume of 10.99\,cm$^3$, while the medians of the other five structures lie between 1.90\,cm$^3$ (lateral meniscus) and 3.14\,cm$^3$ (patellar cartilage).
-The six structures lie next to each other in the knee joint, as the example in \cref{fig:ch4_examples} shows.
-
 \begin{figure}[tb]
 \centering
-\includegraphics[width=\linewidth]{figures/ch4_structure_sizes.pdf}
-\caption[Volume of each SKM-TEA structure]{Volume of each SKM-TEA structure over all 155 volumes (logarithmic axis). Boxes show the median and the interquartile range, whiskers extend to 1.5 times the interquartile range, and each point is one volume.}
-\label{fig:ch4_structure_sizes}
-\end{figure}
-
-\begin{figure}[tb]
-\centering
-\includegraphics[width=\linewidth]{figures/ch4_examples.pdf}
-\caption[Example volumes with their labels]{Example volumes with their labels. (a)~Sagittal slice of SKM-TEA volume MTR\_005 through the lateral compartment, showing patellar, femoral and lateral tibial cartilage and the lateral meniscus. (b)~Coronal slice of the same volume through the tibial plateau, showing femoral cartilage, both tibial cartilages and both menisci. (c)~Coronal slice of AeroPath volume~1 with the lung label of the control task. Both example volumes belong to the test split.}
+\includegraphics{figures/ch4_examples.pdf}
+\caption[Example volumes with their labels]{Example volumes with their labels. (a)~Sagittal and (b)~coronal slice of SKM-TEA volume MTR\_005, cropped to the knee joint; each slice shows only the structures it intersects. In (a), anterior is on the left. In (b), the lateral side is on the left, and the image is coarser along the left--right axis, the slice direction. (c)~Coronal slice of AeroPath volume~1 with the lung label of the control task. Both example volumes belong to the test split.}
 \label{fig:ch4_examples}
 \end{figure}
-
-% CLAUDE-DRAFT
-We chose SKM-TEA because VoxTell performs poorly on it (\cref{sec:intro-motivation}).
-In the zero-shot evaluation of its authors, VoxTell reaches a mean \gls{dsc} of 10.72\,\% over the six SKM-TEA structures, with 46.45\,\% for femoral cartilage and at most 14.78\,\% for the other structures~\cite[Suppl.~Table~9]{rokuss2025voxtellfreetextpromptableuniversal}.
-The knee is not entirely absent from VoxTell's training data: its label vocabulary contains femoral, patellar, and medial and lateral tibial cartilage from two knee \gls{mri} datasets, but no meniscus~\cite[Suppl.~Tables~4, 5 and~10]{rokuss2025voxtellfreetextpromptableuniversal}.
-According to this vocabulary, SKM-TEA therefore combines structures that VoxTell has rarely seen with structures it has never seen, although the authors describe the knee structures as absent from training~\cite[Sec.~6]{rokuss2025voxtellfreetextpromptableuniversal}.
 
 % ---------------------------------------------------------------------
 \section{AeroPath}
 \label{sec:data-aeropath}
 
 % CLAUDE-DRAFT
-AeroPath contains 27 contrast-enhanced chest \gls{ct} scans (\gls{cta}), acquired with a thorax lung protocol at St.\ Olavs hospital in Trondheim, Norway~\cite{støverud2023aeropathairwaysegmentationbenchmark}.
-The 27 patients, nine of them women, were aged 52 to 84 years (median 70) and were all undergoing diagnostic tests for lung cancer, with pathologies including malignant tumours, sarcoidosis and emphysema~\cite{støverud2023aeropathairwaysegmentationbenchmark}.
-Data collection was approved by the Norwegian regional ethics committee (REK Sør-Øst~A, reference 2010/3385a), and written informed consent was obtained from the patients~\cite{støverud2023aeropathairwaysegmentationbenchmark}.
-The dataset is distributed under the Creative Commons Attribution 4.0 licence\footnote{Zenodo record \url{https://zenodo.org/records/10069289}, DOI 10.5281/zenodo.10069289, accessed 19 October 2026.}.
-
-% CLAUDE-DRAFT
-In the files used here, the volumes have 487 to 512 by 407 to 512 voxels in-plane and 241 to 843 slices, with an in-plane voxel size of 0.56 to 0.82\,mm and a slice spacing of 0.50 to 1.25\,mm.
-These ranges are wider than those stated in the dataset publication~\cite{støverud2023aeropathairwaysegmentationbenchmark}; we report the values of the files.
-Each volume comes with an airway label and a lung label.
-The publication describes how the airway labels were created, by region growing or grow-cut, an airway segmentation network and manual refinement verified by a pulmonologist~\cite{støverud2023aeropathairwaysegmentationbenchmark}.
-How the lung labels were created is documented neither in the publication nor in the dataset repository or the Zenodo record.
-We use only the lung label, with the text prompt ``lung''.
-
-% CLAUDE-DRAFT
-AeroPath provides the control task, whose role and selection are described in \cref{sec:method-setting}.
-AeroPath is not part of VoxTell's training data: its authors use it as a held-out test set for a known concept, on which VoxTell reaches a lung \gls{dsc} of 96.99\,\%~\cite[Suppl.~Table~7]{rokuss2025voxtellfreetextpromptableuniversal}.
-The concept itself is well represented in VoxTell's training data, where ``lung'' is among the most frequent labels~\cite[Suppl.~Table~10]{rokuss2025voxtellfreetextpromptableuniversal}.
+AeroPath contains 27 contrast-enhanced chest \gls{ct} scans (\gls{cta}) of patients undergoing diagnostic tests for lung cancer, acquired with a thorax lung protocol at St.\ Olavs Hospital in Trondheim, Norway~\cite{støverud2023aeropathairwaysegmentationbenchmark}.
+Data collection was approved by the regional ethics committee, and the patients gave written informed consent~\cite{støverud2023aeropathairwaysegmentationbenchmark}.
+The dataset is distributed under the Creative Commons Attribution 4.0 licence~\cite{aeropath_zenodo}.
+AeroPath provides the control task (\cref{sec:method-setting}), for which we use only the lung label of each volume, with the text prompt ``lung''.
+Neither the publication nor the dataset repository or the Zenodo record documents how the lung labels were created, so it is unknown whether they are manual or automatic references.
+AeroPath is not part of VoxTell's training data~\cite[Suppl.~Table~7]{rokuss2025voxtellfreetextpromptableuniversal}, whereas ``lung'' is a VoxTell training label in 3{,}427 training cases~\cite[Suppl.~Table~10]{rokuss2025voxtellfreetextpromptableuniversal}.
 
 % ---------------------------------------------------------------------
 \section{Data Splits and Few-Shot Subsets}
 \label{sec:data-splits}
 
 % CLAUDE-DRAFT
-We split each dataset once, at random, into 70\,\% training, 15\,\% validation and 15\,\% test volumes.
-The volumes are shuffled with a fixed random seed (42), the first 70\,\% of the shuffled list form the training split and the next 15\,\% the validation split, and the remaining volumes form the test split.
+We split each dataset once, at random.
+After shuffling the volumes with a fixed random seed (42), we assign the first 70\,\% of the shuffled list to the training split, the next 15\,\% to the validation split and the remaining volumes to the test split.
 This gives 108 training, 23 validation and 24 test volumes for SKM-TEA and 19, 4 and 4 volumes for AeroPath.
-Because the six tasks share the same volumes, every task uses the same split, and every experiment in this thesis uses the same split.
+Of the AeroPath volumes, we use only the 4 test volumes, to evaluate the control task.
+Because the six tasks share the same volumes, all tasks and all experiments in this thesis use the same split.
 Each SKM-TEA patient contributes exactly one scan, so no patient appears in more than one split.
-The validation volumes are used to monitor training and, for three of the strategies, to select the checkpoint that is evaluated (\cref{sec:method-adaptation}); all reported results are computed on the test volumes.
+The validation volumes are used to monitor training and, in an additional evaluation, to select the checkpoint with the lowest validation loss (\cref{sec:method-adaptation}).
+All reported results are computed on the test volumes.
 
 % CLAUDE-DRAFT
-SKM-TEA also defines an official split of 86 training, 33 validation and 36 test scans, in which the test scans are those of the 36 patients who received additional arthroscopic surgery~\cite{desai2021skmtea}.
-We do not use this split, for two reasons.
-First, the aim of this thesis is to compare continual-learning strategies with each other, not to compare results with published SKM-TEA benchmarks, which is the purpose of the official split; the comparison only requires that all strategies use the same split.
-Second, the official test set consists of a selected group of patients, so a model trained on the official training split is tested under a shift between training and test data.
-A random split keeps training and test volumes from the same distribution, so that differences in adaptation and forgetting are not mixed with the effect of such a shift.
-\Cref{tab:ch4_splits} shows how the official splits are distributed over our splits: 7 of our 24 test volumes belong to the official test set.
-The results of this thesis are therefore not comparable with results reported on the official SKM-TEA test set.
-
-\begin{table}[tb]
-\centering
-\caption{Number of SKM-TEA volumes in each split of this thesis (rows) and of the official SKM-TEA split~\cite{desai2021skmtea} (columns).}
-\label{tab:ch4_splits}
-\input{tables/ch4_splits}
-\end{table}
+SKM-TEA also defines an official split of 86 training, 33 validation and 36 test scans, whose test set consists of the 36 patients who received additional arthroscopic surgery~\cite{desai2021skmtea}.
+We use our own random split instead, which, unlike the official split, does not allow a comparison with published SKM-TEA results.
+For comparing continual-learning strategies with each other, it is sufficient that all strategies use the same split.
 
 % CLAUDE-DRAFT
-For the few-shot experiments, the training split of each task is reduced to its first $k$ volumes, with $k \in \{5, 10, 20\}$ labelled training volumes per task, in the order of the shuffled list.
-The subsets are therefore nested, the 5 volumes being part of the 10 and the 10 part of the 20, and the same volumes are used for all six tasks.
-For each $k$, one subset is drawn, so the results do not show how they vary with the choice of training volumes.
-The full-data setting uses all 108 training volumes, and the validation and test volumes are the same in all settings.
-
-% CLAUDE-DRAFT
-Of AeroPath, only the 4 test volumes are used, for evaluation; its 19 training and 4 validation volumes are not used.
+For the few-shot experiments, we reduce the training split to its first $k$ volumes in the order of the shuffled list, where $k \in \{5, 10, 20\}$ is the number of labelled training volumes per task.
+The subsets are therefore nested, with the 5 volumes contained in the 10 and the 10 contained in the 20.
+For each $k$, all six tasks use the same $k$ volumes.
+Only one subset is drawn for each $k$, so we cannot measure how much the results depend on which volumes are chosen.
+Runs with the full training split use all 108 training volumes.
+The validation and test volumes are the same for every $k$ and for the full training split.
 
 % ---------------------------------------------------------------------
 \section{Preprocessing}
@@ -161,39 +114,21 @@ Of AeroPath, only the 4 test volumes are used, for evaluation; its 19 training a
 
 % CLAUDE-DRAFT
 We convert each SKM-TEA \gls{hdf5} file into two \gls{nifti} files, one for the first echo and one for the labels.
-The segmentation is stored as six binary channels, one per tissue; we convert it into a single label map in which each labelled voxel takes the index of its channel plus one and unlabelled voxels take the value zero.
-Following the channel order of the official documentation, the label values are 1 for patellar cartilage, 2 for femoral cartilage, 3 for medial tibial cartilage, 4 for lateral tibial cartilage, 5 for medial meniscus and 6 for lateral meniscus.
-For each task, the binary target mask consists of the voxels with the task's label value.
+In the \gls{hdf5} file, the segmentation is stored as six binary channels, one per tissue.
+We merge them into a single label map, in which unlabelled voxels take the value 0 and labelled voxels the number of their channel in the order of the dataset documentation~\cite{skmtea_dataset_doc}: 1 for patellar cartilage, 2 for femoral cartilage, 3 for medial tibial cartilage, 4 for lateral tibial cartilage, 5 for medial meniscus and 6 for lateral meniscus.
+The binary target mask of a task consists of the voxels with that task's label value.
 The \gls{nifti} files are written with an identity affine, so they store neither the voxel size nor the orientation of the scan.
-Images and labels come from the same voxel grid and therefore stay aligned, which we checked visually in ITK-SNAP~\cite{yushkevich2006itksnap}.
+Images and labels come from the same voxel grid, so they stay aligned.
 The AeroPath volumes and labels are used in their original \gls{nifti} format.
 
 % CLAUDE-DRAFT
-When a volume is loaded, it is reoriented according to its affine, which leaves the SKM-TEA volumes unchanged, and cropped to the bounding box of its non-zero voxels.
-Its intensities are then normalised to zero mean and unit standard deviation over the cropped volume, using the z-score normalisation of nnU-Net~\cite{isensee2018nnunetselfadaptingframeworkunetbased}.
+When a volume is loaded, it is reoriented according to its affine and cropped to the bounding box of its non-zero voxels.
+The reorientation leaves the SKM-TEA volumes unchanged because their affine is the identity.
+According to the annotation files, 18 of the 155 SKM-TEA scans store the left--right axis in the opposite direction to the other 137.
+% source: field 'orientation' of results/data_stats/skm_tea_annotations/v1.0.0/*.json: (SI, AP, LR) 137, (SI, AP, RL) 18
+The intensities of each volume are then normalised to zero mean and unit standard deviation over the cropped volume, with the z-score normalisation of nnU-Net~\cite{isensee2018nnunetselfadaptingframeworkunetbased}.
 The same normalisation is applied to the \gls{mri} and the \gls{ct} volumes.
-The volumes are not resampled, so the network operates on the voxel grid of each volume and the voxel size stored in the affine does not change its input.
-This preprocessing follows the configuration distributed with the VoxTell checkpoint, which uses the z-score normalisation for all inputs, including \gls{ct}, and a preprocessing plan without resampling.\footnote{File \texttt{plans.json} of the checkpoint \texttt{voxtell\_v1.1} in the Hugging Face repository \texttt{mrokuss/VoxTell}: normalisation scheme \texttt{ZScoreNormalization}, data identifier \texttt{nnUNetResEncUNetLPlans\_noResampling\_3d\_fullres}, no target spacing, image reader \texttt{NibabelIOWithReorient}.}
+The volumes are not resampled, so the network receives each volume on its stored voxel grid, and the voxel size in the affine has no effect on the input.
+This preprocessing follows the configuration distributed with the VoxTell checkpoint, which uses z-score normalisation for all inputs, including \gls{ct}, and a preprocessing plan without resampling.\footnote{File \texttt{plans.json} of the checkpoint \texttt{voxtell\_v1.1} in the Hugging Face repository \texttt{mrokuss/VoxTell}: normalisation scheme \texttt{ZScoreNormalization}, no target spacing, image reader \texttt{NibabelIOWithReorient}.}
 % source: code/models/voxtell_v1.1/plans.json (downloaded by code/scripts/download_checkpoint.py from mrokuss/VoxTell); code/src/data/preprocess.py
-How patches are sampled during training and how predictions are assembled during evaluation is described in \cref{sec:method-adaptation}.
-
-% ---------------------------------------------------------------------
-\section{Data Quality and Limitations}
-\label{sec:data-limitations}
-
-% CLAUDE-DRAFT
-Several properties of the data limit the conclusions of this thesis.
-Because neither VoxTell nor our pipeline resamples the volumes (\cref{sec:data-preprocessing}), the identity affine of the SKM-TEA files does not change the scale at which they reach the model: a voxel of $0.3125 \times 0.3125 \times 0.8$\,mm is one voxel of the input with or without its true voxel size.
-Whether VoxTell saw knee \gls{mri} at this resolution during pretraining cannot be checked from its publication~\cite{rokuss2025voxtellfreetextpromptableuniversal}.
-The identity affine does remove the orientation, which the reader of VoxTell uses to reorient every volume: the SKM-TEA volumes reach the model in their stored axis order, which may differ from the orientation of the knee volumes in its training data, and 18 of the 155 SKM-TEA scans are stored with the left--right axis reversed relative to the other 137.
-On our test volumes, the pretrained model segmented femoral cartilage with a \gls{dsc} of 0.684 and none of the other five structures (\cref{sec:exp-main}), whereas its authors report 46.45\,\% for femoral cartilage and up to 14.78\,\% for the other structures~\cite[Suppl.~Table~9]{rokuss2025voxtellfreetextpromptableuniversal}.
-The test volumes, the orientation and possibly the checkpoint version differ between the two evaluations, and we did not test which of these causes the difference.\todo{defense: pretrained DSC differs from VoxTell Suppl. Table 9; orientation (identity affine), test volumes and checkpoint version are candidate causes, none tested}
-% source: Pretrained column of eval_matrix.csv (e.g. exp_20260926_095539_90e8b4e6); paper_notes/voxtell.md (Table 9)
-
-% CLAUDE-DRAFT
-The model sees only the first \gls{qdess} echo, although the annotators used both echoes to separate neighbouring cartilage and meniscus voxels~\cite[App.~A.4]{desai2021skmtea}.
-Each SKM-TEA scan was labelled by one annotator, so the data contain no information on the agreement between annotators.
-For AeroPath, the origin of the lung labels is not documented, so it is unknown whether they are manual or automatic references.
-The control task is evaluated on only four test volumes, which makes its results less certain than those of the SKM-TEA tasks with 24 test volumes.
-The \gls{ct} volumes are normalised per volume like the \gls{mri} volumes, as in the configuration distributed with VoxTell (\cref{sec:data-preprocessing}); its publication does not describe the normalisation itself.
-Finally, every result depends on one random split of each dataset and on one subset per number of training volumes.
+\Cref{sec:method-adaptation} describes how patches are sampled during training and how predictions are assembled during evaluation.

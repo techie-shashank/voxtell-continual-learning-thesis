@@ -1,15 +1,21 @@
-% VoxTell architecture as used in this thesis (schematic), adapted from Rokuss et al.,
-% VoxTell, Fig. 2; layout after the author's sketch. Facts: code/src/model/voxtell_model.py,
-% transformer.py (pre-norm decoder layer: cross-attention, feed-forward;
-% keys = encoder stage 4 + positional encoding, values = stage 4; text encoder frozen; five fusion stages).
-% Switches (preamble.tex): \ifvoxannotate marks the strategies; \ifvoxpanel adds the
-% prompt-decoder layer panel (a fact of the code as used, so Ch. 5 only).
-% Ch. 3: annotate false, panel false. Ch. 5 (Fig. 5.1): annotate true, panel true.
+% VoxTell architecture (schematic), adapted from Rokuss et al., VoxTell, Fig. 2; layout after
+% the author's sketch. Two versions of the stage the prompt decoder attends to:
+%   paper (Ch. 3): keys/values = bottleneck F_5 (VoxTell Eq. 3; paper_notes/voxtell.md);
+%   as used (Ch. 5): keys = encoder stage 4 + positional encoding, values = stage 4
+%   (code/src/model/voxtell_model.py, transformer.py: pre-norm layer, cross-attention, feed-forward).
+% Both: text encoder frozen, five fusion stages. Deep supervision (paper) is a training detail
+% and not drawn; the figure shows the forward pass only.
+% Switches (preamble.tex): \ifvoximpl draws the version as used instead of the paper's;
+% \ifvoxannotate marks the strategies; \ifvoxpanel adds the prompt-decoder layer panel
+% (a fact of the code as used, so Ch. 5 only).
+% Ch. 3: impl, annotate, panel false. Ch. 5 (Fig. 5.1): all true.
 %
 % PLAN (rows, nodes, connections; all positions relative to X at the origin)
 % Row 1 (image path): X -> enc -> fcol(f0..f5) ; brace over f0..f5 (right side) --skips--> dec.west ;
-%   u1 -> u2 -> u3 -> u4 -> u5 (inside dec) ; u5.east -> Y.west ; Y.east -> L.west
-%   f4.west -> left 2.5 mm -> below the column -> k1 -> PD.north   [keys, values]
+%   u1 -> u2 -> u3 -> u4 -> u5 (inside dec) ; u5.east -> Y.west (no loss node: the loss is computed
+%   on the logits, not on the binary mask; removed 2026-10-29)
+%   f<kv>.west -> left 2.5 mm -> below the column -> k1 -> PD.north   [keys, values]
+%   (kv = 5, bottleneck, in the paper; kv = 4 as used)
 % Row 2 (text path): P.north -> TE.south ; TE.east -> PD.west [q] ;
 %   PD.east -> g1.west -> ... -> g5 (bus) ; g_i.north --dashed--> u_i.south (vertical)
 % Row 3 (panel, main line ym; forward_pre: no self-attention): qin -> [mplus] -> j1 -> LN_A -> wq ;
@@ -40,6 +46,7 @@
     res/.style={->, rounded corners=1.5pt},
   ]
 \def\gap{5mm}
+\ifvoximpl\def\kv{4}\else\def\kv{5}\fi   % encoder stage the prompt decoder attends to
 
 % ===================== row 1: image path =====================
 \node[img] (X) at (0,0) {\includegraphics[width=16mm]{knee_patch.png}};
@@ -51,7 +58,7 @@
 
 \node[hidden, minimum width=2.8mm, minimum height=16.8mm, right=\gap of enc] (fcol) {};
 \foreach \k in {0,...,5} { \node[feat] (f\k) at ([yshift=-1.4mm-2.8mm*\k]fcol.north) {}; }
-\node[feat, line width=1.2pt] at (f4) {};
+\node[feat, line width=1.2pt] at (f\kv) {};
 \draw[->] (enc.east) -- (fcol.west);
 
 \coordinate (k1) at ([xshift=20mm]fcol.east);
@@ -73,17 +80,15 @@
 \node[img, right=6mm of dec] (Y) {\includegraphics[width=16mm]{knee_patch_mask.png}};
 \node[lbl, below=1.5mm of Y] {$\hat{\mat{Y}}$\\mask};
 \draw[->] (u5.east) -- (Y.west);
-\node[right=\gap of Y] (L) {$\mathcal{L}_{\mathrm{seg}}$};
-\draw[->] (Y.east) -- (L.west);
 
 % ===================== row 2: text path =====================
 \coordinate (r2) at ([yshift=-30mm]X.center);
 \node[box, fill=voxgreen!20, minimum width=24mm, minimum height=10mm, anchor=east] (PD) at ([xshift=4mm]k1 |- r2) {};
 \foreach \k in {0,...,5} { \node[bar] (l\k) at ([xshift=-8mm+3.2mm*\k]PD.center) {}; }
 \node[lbl, below=1.5mm of PD] {Prompt decoder\\($L_{\mathrm{dec}}$ layers)};
-\coordinate (ka) at ([xshift=-2.5mm]f4.west);
-\draw[->] (f4.west) -- (ka) |- (k1 |- kb) -- node[lbl, right, inner sep=2pt] {keys,\\values} (k1 |- PD.north);
-\node[lbl, anchor=north west] at ([xshift=1mm, yshift=-1mm]ka |- kb) {stage 4\\($12^3$)};
+\coordinate (ka) at ([xshift=-2.5mm]f\kv.west);
+\draw[->] (f\kv.west) -- (ka) |- (k1 |- kb) -- node[lbl, right, inner sep=2pt] {keys,\\values} (k1 |- PD.north);
+\node[lbl, anchor=north west] at ([xshift=1mm, yshift=-1mm]ka |- kb) {\ifvoximpl stage 4\\($12^3$)\else bottleneck\\($6^3$)\fi};
 
 \node[box, fill=voxblue!20, minimum height=10mm, left=7mm of PD] (TE) {Text encoder\\{\footnotesize Qwen3-Embedding-4B}};
 \pic at ([xshift=-2.5mm, yshift=2.4mm]TE.north east) {lock};
@@ -182,7 +187,7 @@
 
 % panel frame with title
 \node[anchor=south west, inner sep=1pt] (ptitle) at ([yshift=2mm]qin.west |- mem.north) {Prompt-decoder layer $l = 1, \dots, L_{\mathrm{dec}}$};
-\coordinate (pright) at ([xshift=-2.5mm]L.east |- ym);   % panel ends flush with row 1
+\coordinate (pright) at ([xshift=-2.5mm]Y.east |- ym);   % panel ends flush with row 1
 \begin{pgfonlayer}{panel}
   \node[draw, rounded corners=3pt, fill=voxgreen!8, inner sep=2.5mm, fit=(ptitle)(qin)(qnext)(ca)(mem)(rl)(pright)] (panel) {};
 \end{pgfonlayer}

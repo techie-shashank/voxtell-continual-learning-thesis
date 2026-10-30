@@ -12,43 +12,53 @@
 \label{chap:background}
 
 % CLAUDE-DRAFT
-This chapter introduces the concepts on which the method of \cref{chap:method} builds.
+This chapter introduces the concepts on which \cref{chap:method} builds.
 \Cref{sec:bg-segmentation} describes volumetric segmentation networks, attention and the free-text promptable model VoxTell.
-\Cref{sec:bg-cl} states the continual-learning problem in the notation used throughout the thesis.
-\Cref{sec:bg-methods} describes the published methods from which our strategies are adapted, and \cref{sec:bg-metrics} the metrics with which we measure adaptation and forgetting.
+\Cref{sec:bg-cl} states the continual-learning problem in the notation used throughout the thesis and describes the published methods from which our strategies are adapted.
+\Cref{sec:bg-metrics} defines the evaluation matrix and the metrics with which we measure adaptation and forgetting.
 
 % ---------------------------------------------------------------------
 \section{Free-Text Promptable Volumetric Segmentation}
 \label{sec:bg-segmentation}
 
+% CLAUDE-DRAFT
+We consider the segmentation of one target structure in a 3D image volume.
+A single-channel volume $\mat{X}$ assigns an intensity to every voxel~$v$ of its voxel set~$\Omega$, and the label mask $\mat{Y}$ assigns $y_v = 1$ to the voxels of the structure and $y_v = 0$ to all others.
+For this structure, a segmentation network predicts one logit $z_v$ per voxel.
+The logistic function~$\sigma$ turns each logit into a foreground probability $\hat{y}_v = \sigma(z_v)$, and thresholding these probabilities gives the binary prediction~$\hat{\mat{Y}}$.
+In a free-text promptable model, a text prompt~$p$ names the target structure, so the structure is not tied to a fixed output channel of the network.
+One network with parameters~$\theta$ can then serve all target structures and computes the logit map $\mat{Z} = f_\theta(\mat{X}, p)$ with entries~$z_v$.
+We write $\mathcal{L}_{\mathrm{seg}}$ for the segmentation loss that compares $\mat{Z}$ with $\mat{Y}$.
+
+% CLAUDE-DRAFT
+VoxTell implements $f_\theta$ with a volumetric encoder--decoder network and attention between the text prompt and the image features.
+\Cref{subsec:bg-unet,subsec:bg-attention} describe these two building blocks, and \cref{subsec:bg-voxtell} describes VoxTell itself.
+
 \subsection{Encoder--Decoder Networks for Volumetric Segmentation}
 \label{subsec:bg-unet}
 
 % CLAUDE-DRAFT
-We consider the segmentation of one target structure in a 3D image volume.
-A volume $\mat{X}$ assigns an intensity to every voxel~$v$ of its voxel set~$\Omega$, and the label mask $\mat{Y}$ assigns $y_v = 1$ to the voxels of the structure and $y_v = 0$ to all others.
-A segmentation network predicts one logit $z_v$ per voxel, the logistic function~$\sigma$ turns it into a foreground probability $\hat{y}_v = \sigma(z_v)$, and a threshold gives the binary prediction~$\hat{\mat{Y}}$.
-In a free-text promptable model, the target is not fixed by the output channels of the network but named by a text prompt~$p$, so one network with parameters~$\theta$ computes the logits $\mat{Z} = f_\theta(\mat{X}, p)$ for any pair of volume and prompt.
-We write $\mathcal{L}_{\mathrm{seg}}$ for the segmentation loss that compares $\mat{Z}$ with $\mat{Y}$.
-VoxTell uses the sum of the binary cross-entropy and the soft Dice loss~\cite[Sec.~3]{rokuss2025voxtellfreetextpromptableuniversal}; the soft Dice term is computed over the whole patch and therefore does not let the many background voxels dominate the loss as a voxel-wise average does~\cite{milletari2016vnet}.
-The form used in this thesis is given in \cref{eq:method-seg-loss}.
-
-% CLAUDE-DRAFT
-VoxTell builds on the U-Net design in its 3D form~\cite{3d_unet}, which its authors regard as still the strongest architecture for 3D medical image segmentation~\cite[p.~4]{rokuss2025voxtellfreetextpromptableuniversal}.
-An encoder computes features at successively lower resolutions in a sequence of stages, and a decoder upsamples them back to the input resolution.
+The 3D U-Net~\cite{3d_unet} is an encoder--decoder network for volumetric segmentation.
+Its encoder computes features at successively lower resolutions in a sequence of stages, and its decoder upsamples them back to the input resolution.
 Skip connections pass the encoder features of every stage to the decoder stage of the same resolution, so the decoder can use spatial detail that was lost by downsampling.
 We write $\mat{F}_s$ for the encoder features of stage~$s$ and $C_s$ for their number of channels, with $s = 0$ at the full resolution and larger~$s$ at coarser resolutions.
-Because a whole volume and its intermediate features do not fit into the memory of a GPU, such networks are trained on patches cut from the volumes and applied at inference with a sliding window, whose overlapping patch predictions are combined into one prediction per volume.
-VoxTell is built on the nnU-Net framework~\cite[Suppl.~p.~1]{rokuss2025voxtellfreetextpromptableuniversal}, which configures these steps automatically for a given dataset~\cite{isensee2018nnunetselfadaptingframeworkunetbased}, and uses its residual-encoder configuration ResEnc~L~\cite[Sec.~3.1]{isensee2024nnunetrevisited}.
+The authors of VoxTell regard this design as still the strongest architecture for 3D medical image segmentation~\cite[p.~4]{rokuss2025voxtellfreetextpromptableuniversal}.
+
+% CLAUDE-DRAFT
+A whole volume and its intermediate features often do not fit into the memory of a GPU, so such networks are trained on patches cut from the volumes.
+At inference, a sliding window applies the network to overlapping patches, and their predictions are combined into one prediction per volume.
+The nnU-Net framework configures these steps automatically for a given dataset~\cite{isensee2018nnunetselfadaptingframeworkunetbased}.
 
 \subsection{Attention}
 \label{subsec:bg-attention}
 
 % CLAUDE-DRAFT
-Attention lets a set of query vectors collect information from a set of source vectors, weighted by how well each query matches each source~\cite{NIPS2017_3f5ee243}.
+Attention lets each of a set of query vectors collect information from a set of source vectors, weighting each source by how well it matches the query~\cite{NIPS2017_3f5ee243}.
 Let the rows of $\mat{U} \in \mathbb{R}^{n_q \times d}$ be $n_q$ query vectors and the rows of $\mat{S} \in \mathbb{R}^{n_s \times d}$ be $n_s$ source vectors of dimension~$d$.
-Multi-head attention projects them with learned matrices $\mat{W}_q, \mat{W}_k, \mat{W}_v \in \mathbb{R}^{d \times d}$ to queries, keys and values and splits each projection into $n_h$ heads of dimension $d_h = d / n_h$.
-With $\mat{W}_q^{(i)}, \mat{W}_k^{(i)}, \mat{W}_v^{(i)} \in \mathbb{R}^{d_h \times d}$ the rows of the projections that belong to head~$i$,
+Multi-head attention projects the query vectors to queries with a learned matrix $\mat{W}_q \in \mathbb{R}^{d \times d}$ and the source vectors to keys and values with $\mat{W}_k, \mat{W}_v \in \mathbb{R}^{d \times d}$, and it splits each projection into $n_h$ heads of dimension $d_h = d / n_h$.
+We write all projections as maps $\vec{x} \mapsto \mat{W}\vec{x}$ of column vectors, so they appear transposed when applied to the row-wise inputs $\mat{U}$ and~$\mat{S}$.
+Let $\mat{W}_q^{(i)}, \mat{W}_k^{(i)}, \mat{W}_v^{(i)} \in \mathbb{R}^{d_h \times d}$ denote the rows of the projection matrices that belong to head~$i$.
+Head~$i$ and the output of multi-head attention are then
 \begin{equation}
 \begin{aligned}
 \operatorname{head}_i &= \operatorname{softmax}\!\left( \frac{\mat{U}\mat{W}_q^{(i)\top} \big(\mat{S}\mat{W}_k^{(i)\top}\big)^{\!\top}}{\sqrt{d_h}} \right) \mat{S}\mat{W}_v^{(i)\top},\\
@@ -56,33 +66,59 @@ With $\mat{W}_q^{(i)}, \mat{W}_k^{(i)}, \mat{W}_v^{(i)} \in \mathbb{R}^{d_h \tim
 \end{aligned}
 \label{eq:bg-attention}
 \end{equation}
-where the softmax runs over the $n_s$ sources for each query, $[\cdot]$ concatenates the heads along the feature dimension and $\mat{W}_o \in \mathbb{R}^{d \times d}$ is the output projection.
-We write all projections as maps $\vec{x} \mapsto \mat{W}\vec{x}$ of column vectors, which for row-wise inputs gives the transposes in \cref{eq:bg-attention}.
-Each query thus receives a weighted mean of the values, with weights given by the similarity of its query to every key.
-Attention itself does not depend on the order or position of the sources, so a positional encoding is usually added to them~\cite{NIPS2017_3f5ee243}.
+where the softmax is taken over the $n_s$ sources for each query, $[\cdot]$ concatenates the heads along the feature dimension and $\mat{W}_o \in \mathbb{R}^{d \times d}$ is the output projection.
+Each query vector thus receives a weighted mean of the values, and the weights are given by the similarity of its query to every key.
+The result does not depend on the order of the sources, so a positional encoding is usually added to them~\cite{NIPS2017_3f5ee243}.
 
 % CLAUDE-DRAFT
-In self-attention, the queries and the sources are the same vectors ($\mat{S} = \mat{U}$); in cross-attention, they come from different inputs, for example a text embedding and image features.
-Keys and values are computed from each source vector separately, so further rows appended to~$\mat{S}$ give every query additional positions to attend to without any change to the projections, the mechanism that the prompt-tuning strategy of \cref{subsec:method-prompt} relies on.
-A transformer decoder layer combines attention blocks with a feed-forward network of two linear layers applied to every query separately, and wraps each block in a residual connection and a layer normalisation~\cite{NIPS2017_3f5ee243}.
-In the original design, each decoder layer applies self-attention to its queries and then cross-attention to the encoder output; VoxTell's prompt decoder uses the same building blocks, with the text embedding as query and image features as sources~\cite[Eq.~3]{rokuss2025voxtellfreetextpromptableuniversal}, of which the released implementation executes only the cross-attention (\cref{sec:method-adaptation}).
+In self-attention, the query vectors and the source vectors are the same ($\mat{S} = \mat{U}$).
+In cross-attention, they come from different inputs, for example a text embedding and image features.
+Keys and values are computed from each source vector separately, so further rows appended to~$\mat{S}$ give every query additional sources to attend to without any change to the projections.
+The prompt-tuning strategy (\cref{subsec:method-prompt}) relies on this property.
+
+% CLAUDE-DRAFT
+A transformer decoder layer combines attention blocks with a feed-forward network, two linear layers with a nonlinearity between them that are applied to every query separately~\cite{NIPS2017_3f5ee243}.
+Each block is wrapped in a residual connection and a layer normalisation.
+In the original transformer, each decoder layer applies self-attention to its queries and then cross-attention to the output of the transformer encoder~\cite{NIPS2017_3f5ee243}.
 
 \subsection{VoxTell}
 \label{subsec:bg-voxtell}
 
 % CLAUDE-DRAFT
-VoxTell is a vision--language model that maps a 3D volume and a free-text prompt, from a single word to a clinical sentence, to a segmentation mask of the described structure~\cite[p.~1]{rokuss2025voxtellfreetextpromptableuniversal}.
+VoxTell is a vision--language model that maps a 3D volume and a free-text prompt to a segmentation mask of the structure that the prompt describes.
+The prompt can range from a single word to a clinical sentence~\cite[p.~1]{rokuss2025voxtellfreetextpromptableuniversal}.
 The model has four parts (\cref{fig:ch3_voxtell}): a frozen text encoder, a convolutional image encoder, a transformer prompt decoder that relates the text to the image, and a convolutional decoder into which the text is fused at every resolution~\cite[Sec.~3]{rokuss2025voxtellfreetextpromptableuniversal}.
+\Cref{sec:method-adaptation} describes where the version used in this thesis differs from the paper.
+
+\begin{figure}[tb]
+\centering
+\includegraphics{figures/ch3_voxtell.pdf}
+% CLAUDE-DRAFT
+\caption[Architecture of VoxTell]{Architecture of VoxTell (adapted from~\cite[Fig.~2]{rokuss2025voxtellfreetextpromptableuniversal}).
+Each of the six stages of the image encoder passes its features to the decoder stage of the same resolution (skips).
+The text encoder embeds the text prompt into the query~$\vec{q}$ and is frozen (lock).
+In the prompt decoder, $\vec{q}$ attends to the bottleneck features.
+The output of the prompt decoder is mapped to a guidance matrix~$\mat{E}_s$ for each of the five decoder stages and fused into that stage (circles, \cref{eq:bg-voxtell-fusion}).
+The input is a knee \gls{mri} patch from SKM-TEA with the text prompt ``femoral cartilage''.
+For illustration, the output shows the reference mask, not a prediction.}
+\label{fig:ch3_voxtell}
+\end{figure}
 
 % CLAUDE-DRAFT
-The text encoder is the embedding model Qwen3-Embedding-4B~\cite{zhang2025qwen3embedding}, which maps the text prompt~$p$, preceded by a fixed instruction to retrieve the anatomical entity and location it describes, to an embedding $\vec{q} = f_{\mathrm{text}}(p)$~\cite[Eq.~2, Suppl.~p.~1]{rokuss2025voxtellfreetextpromptableuniversal}.
-The image encoder is the residual encoder of nnU-Net with six stages, $s = 0, \dots, 5$, of 32, 64, 128, 256, 320 and 320 channels~\cite[Suppl.~p.~1]{rokuss2025voxtellfreetextpromptableuniversal}; for a patch of $192^3$ voxels, the coarsest stage has $6^3$ voxels.
+VoxTell is built on the nnU-Net framework~\cite[Suppl.~p.~1]{rokuss2025voxtellfreetextpromptableuniversal}, and its image encoder is the residual encoder of the nnU-Net configuration ResEnc~L~\cite[Sec.~3.1]{isensee2024nnunetrevisited}.
+The encoder has six stages ($s = 0, \dots, 5$) with 32, 64, 128, 256, 320 and 320 channels~\cite[Suppl.~p.~1]{rokuss2025voxtellfreetextpromptableuniversal}.
+For a patch of $192^3$ voxels, the coarsest stage has $6^3$ voxels.
+The text encoder is the embedding model Qwen3-Embedding-4B~\cite{zhang2025qwen3embedding}, which maps the text prompt~$p$ to an embedding $\vec{q} = f_{\mathrm{text}}(p)$~\cite[Eq.~2]{rokuss2025voxtellfreetextpromptableuniversal}.
+Before encoding, a fixed instruction is placed in front of the prompt.
+The instruction asks the encoder to retrieve the anatomical entity and location that the prompt describes~\cite[Suppl.~p.~1]{rokuss2025voxtellfreetextpromptableuniversal}.
+The text encoder is frozen, so the parameters~$\theta$ of VoxTell comprise all parameters except those of~$f_{\mathrm{text}}$.
 
 % CLAUDE-DRAFT
-The prompt decoder consists of $L_{\mathrm{dec}} = 6$ transformer decoder layers with eight heads and dimension $d = 2048$~\cite[Sec.~3]{rokuss2025voxtellfreetextpromptableuniversal}.
-Its query is the text embedding~$\vec{q}$, and its keys and values are image features: according to the paper the features of the bottleneck~\cite[Eq.~3]{rokuss2025voxtellfreetextpromptableuniversal}, in the released implementation used in this thesis those of stage~4 (\cref{sec:method-adaptation}).
-One two-layer perceptron per decoder stage maps the output of the prompt decoder to a text-guidance matrix $\mat{E}_s \in \mathbb{R}^{G \times C_s}$, that is, $G = 32$ guidance vectors with the channel number of that stage~\cite[Sec.~3, Suppl.~p.~1]{rokuss2025voxtellfreetextpromptableuniversal}.
-Because the query has attended to the image before it is mapped to the guidance, the guidance depends on both the prompt and the image.
+The prompt decoder consists of $L_{\mathrm{dec}} = 6$ transformer decoder layers of the kind described in \cref{subsec:bg-attention}, with eight heads and dimension $d = 2048$~\cite[Sec.~3]{rokuss2025voxtellfreetextpromptableuniversal}.
+Its query is the text embedding~$\vec{q}$, and its keys and values are the features~$\mat{F}_5$ of the coarsest stage, the bottleneck~\cite[Eq.~3]{rokuss2025voxtellfreetextpromptableuniversal}.
+For each decoder stage~$s$, a two-layer perceptron maps the output of the prompt decoder to a text-guidance matrix $\mat{E}_s \in \mathbb{R}^{G \times C_s}$~\cite[Sec.~3, Suppl.~p.~1]{rokuss2025voxtellfreetextpromptableuniversal}.
+Its $G = 32$ rows are guidance vectors with the channel number~$C_s$ of that stage.
+The guidance depends on both the prompt and the image, because the query attends to the image features before it is mapped to the guidance.
 
 % CLAUDE-DRAFT
 The decoder upsamples the features stage by stage and fuses the guidance into every stage~\cite[Eqs.~4--6]{rokuss2025voxtellfreetextpromptableuniversal}.
@@ -94,62 +130,46 @@ Starting from $\mat{H}_5 = \mat{F}_5$, it computes for $s = 4, \dots, 1$
 \label{eq:bg-voxtell-fusion}
 \end{equation}
 where $\operatorname{Up}$ upsamples to the resolution of stage~$s$, $[\cdot\,;\cdot]$ concatenates along the channel dimension, and $\mat{E}_s \odot \mat{H}'_s$ denotes the $G$ maps of dot products between each guidance vector and the $C_s$-dimensional feature vector at every voxel.
-Each guidance vector thus marks the voxels whose features match it, and these $G$ maps are available as additional channels to all following convolutions.
-At the full resolution, $s = 0$, the implementation used in this thesis computes the output logits directly, as the dot product of the features with a single guidance vector (\cref{sec:method-adaptation}).
-The authors contrast this multi-stage fusion with the single late fusion of earlier text-promptable models such as SAT~\cite{zhao2025sat}, in which the text meets the image features only once, at the end of the decoder.
-They argue that late fusion forces the image features to be computed without knowledge of the prompt and that prompts naming a location need repeated interaction between text and image~\cite[p.~4]{rokuss2025voxtellfreetextpromptableuniversal}.
+Each map thus shows how well the features at every voxel match one guidance vector, and the $G$ maps enter all following convolutions as additional channels.
+At the full resolution, $s = 0$, the decoder features are combined with the guidance once more to give the output logits~$\mat{Z}$.
 
 % CLAUDE-DRAFT
-VoxTell was trained with this loss on the outputs of all five decoder stages, weighted from 1 at the full resolution down to $1/16$ as in nnU-Net (deep supervision)~\cite[Eq.~7, Suppl.~p.~1]{rokuss2025voxtellfreetextpromptableuniversal}.
-Training used patches of $192^3$ voxels, 85\,\% of them centred on foreground, the data augmentation of nnU-Net without left--right mirroring, and SGD with an initial learning rate of $10^{-4}$ and polynomial decay~\cite[Suppl.~p.~1]{rokuss2025voxtellfreetextpromptableuniversal}.
-Each training image was paired with three prompts, two naming structures present in the image and one naming an absent structure, so that the model also learns to return an empty mask; a prompt was the default name of its concept with probability 0.25 and a rephrased variant otherwise~\cite[Suppl.~p.~1]{rokuss2025voxtellfreetextpromptableuniversal}.
-\Cref{fig:ch3_voxtell} shows the model as it is used in this thesis; \cref{sec:method-adaptation} describes where the released implementation differs from the paper.
-
-\begin{figure}[tb]
-\centering
-\includegraphics{figures/ch3_voxtell.pdf}
-% CLAUDE-DRAFT
-\caption[Architecture of VoxTell]{Architecture of VoxTell (adapted from~\cite[Fig.~2]{rokuss2025voxtellfreetextpromptableuniversal}).
-The image encoder computes features at six stages and passes them to the decoder stage of the same resolution.
-The frozen text encoder (lock) embeds the text prompt into the query~$\vec{q}$, which the prompt decoder relates to the image features; its output is mapped to the guidance~$\mat{E}_s$, which is fused into each of the five decoder stages (circles, \cref{eq:bg-voxtell-fusion}).
-Drawn as used in this thesis: the prompt decoder attends to the stage-4 features and only the full-resolution output enters the loss, whereas the paper describes attention to the bottleneck and deep supervision.
-Input: a patch of SKM-TEA volume MTR\_005 (test split) with the text prompt ``femoral cartilage''; the output panel shows the reference mask for illustration.}
-\label{fig:ch3_voxtell}
-\end{figure}
+VoxTell was trained with the sum of the binary cross-entropy and the Dice loss~\cite[Sec.~3]{rokuss2025voxtellfreetextpromptableuniversal}.
+With deep supervision, the loss was applied to the outputs of all five decoder stages, with weights from 1 at the full resolution down to $1/16$ as in nnU-Net~\cite[Eq.~7, Suppl.~p.~1]{rokuss2025voxtellfreetextpromptableuniversal}.
+Training used patches of $192^3$ voxels, of which 85\,\% were sampled to contain foreground~\cite[Suppl.~p.~1]{rokuss2025voxtellfreetextpromptableuniversal}.
+It used the data augmentation of nnU-Net without left--right mirroring and SGD with an initial learning rate of $10^{-4}$ and polynomial decay.
+Each training image was paired with three prompts, two naming structures present in the image and one naming an absent structure, so that the model also learns to return an empty mask.
+Each prompt was the default name of its concept with probability 0.25 and a rephrased variant otherwise~\cite[Suppl.~p.~1]{rokuss2025voxtellfreetextpromptableuniversal}.
 
 % ---------------------------------------------------------------------
 \section{Continual Learning}
 \label{sec:bg-cl}
-% Scope (decided 2026-10-22): only the problem in symbols and the relation of our setting to the
-% scenarios. Informal concepts: Ch. 1; scenario definitions and method families: Ch. 2.
+% Scope (decided 2026-10-22, revised 2026-10-27; restructured 2026-10-29): the problem in symbols,
+% the scenario definitions (3.2.1), then the published methods
+% the strategies build on (3.2.2-3.2.4; replay only in Ch. 5.4.3, removed 2026-10-30). Evaluation matrix: Sec. 3.3. Classification of our setting
+% and task-aware inference: Ch. 5.1 (moved 2026-10-30).
+% Informal concepts: Ch. 1; method families: Ch. 2.
+
+% CLAUDE-DRAFT
+This section states the continual-learning problem in the notation of this thesis and defines three common continual-learning scenarios.
+It then describes the published methods on which our strategies are based, as they were originally proposed.
+These are low-rank adaptation, knowledge distillation with ZSCL and prompt learning with CoCoOp and CPE-CLIP.
+\Cref{sec:method-strategies} presents the corresponding strategies in the same order and explains how we adapted these methods to VoxTell and where our versions differ from the originals.
+
+\subsection{Problem Setting and Scenarios}
+\label{subsec:bg-cl-setting}
 
 % CLAUDE-DRAFT
 In continual learning, a model is trained on a sequence of tasks $t = 1, \dots, T$, one after the other.
-Training on task~$t$ starts from the parameters $\theta_{t-1}$ reached after the previous task and uses the training data $\mathcal{D}_t$ of task~$t$, which yields the parameters~$\theta_t$; the data of earlier tasks are not available again unless a strategy keeps part of them.
-In our setting, the sequence starts from the pretrained parameters~$\theta_0$, and each task comes with its own text prompt~$p_t$.
-We call the training on one task a stage, so stage $j = 0$ denotes the pretrained model and stage $j = t$ the model after training on task~$t$.
+Training on task~$t$ starts from the parameters $\theta_{t-1}$ reached after the previous task, uses only the training data $\mathcal{D}_t$ of task~$t$ and yields the parameters~$\theta_t$.
+In our setting, the sequence starts from the pretrained parameters~$\theta_0$, and each task has its own text prompt~$p_t$.
+We index the resulting models by the stage~$j$ of the sequence: stage $j = 0$ is the pretrained model, and stage $j = t$ is the model after training on task~$t$.
 
 % CLAUDE-DRAFT
-To see how training on later tasks affects earlier ones, the model is evaluated on every task after every stage~\cite[Fig.~4b]{zheng2023preventingzeroshottransferdegradation}.
-We write $a_{i,j}$ for the performance on task~$i$ after stage~$j$, here the mean \gls{dsc} on the test set of task~$i$, with $i = 1, \dots, T$ and $j = 0, \dots, T$; together, these values form the evaluation matrix.
-Its diagonal entries $a_{i,i}$ measure how well a task is learned when it is trained, the entries $a_{i,j}$ with $j > i$ how much of it is kept afterwards, and the entries with $j < i$ how the model performs on a task before training on it.
-In this matrix, catastrophic forgetting (\cref{sec:intro-problem}) appears as $a_{i,j} < a_{i,i}$ for $j > i$.
-The loss of abilities that the pretrained model had before the first task does not appear in the matrix, because its rows cover only the tasks of the sequence; \cref{sec:bg-metrics} measures it on a control task and defines the metrics that summarise the matrix.
-
-% CLAUDE-DRAFT
-Of the three continual-learning scenarios of \cref{sec:cl-vlm}, our setting is closest to task-incremental learning.
-All tasks share the same images, and each task adds a new target structure with its own masks.
-At inference, the text prompt names the structure to segment, so the model never has to infer which of the learned targets is wanted, the difficulty that defines class-incremental learning.
-Since each task has one fixed text prompt, the prompt also identifies the task.
-The strategies differ in whether they use the task identity to select task-specific parameters: task-specific LoRA does, which we call task-aware inference, whereas all other strategies use one parameter set for all tasks.
-
-% ---------------------------------------------------------------------
-\section{Methods Adapted by the Strategies}
-\label{sec:bg-methods}
-
-% CLAUDE-DRAFT
-This section describes the published mechanisms on which our strategies build, each in the form in which it was proposed.
-How we adapted them to VoxTell, and where our versions differ, is described in \cref{sec:method-strategies}.
+Van de Ven et al.\ distinguish three continual-learning scenarios by whether the task identity of an input is given at inference and, if it is not, whether the model has to determine it~\cite{van_de_Ven_2025}.
+In task-incremental learning, the task identity is given at inference.
+In domain-incremental learning, the possible outputs stay the same while the input data changes, and the model is not told the domain of an input.
+In class-incremental learning, the model has to distinguish all classes seen so far, including classes it never saw together in training, and thereby also has to infer the task~\cite{van_de_Ven_2025}.
 
 \subsection{Low-Rank Adaptation}
 \label{subsec:bg-lora}
@@ -176,60 +196,58 @@ The resulting rank-stabilised LoRA (rsLoRA) sets
 \end{equation}
 In fine-tuning experiments with a large language model and ranks up to 2048, rsLoRA improved with increasing rank while standard LoRA did not, and the gradient norms showed the same pattern with SGD as with AdamW~\cite[Sec.~4]{kalajdzievski2023rankstabilizationscalingfactor}.
 
-\subsection{Replay}
-\label{subsec:bg-replay}
-
-% CLAUDE-DRAFT
-Replay methods store samples of earlier tasks, or generate pseudo-samples, and train on them again while learning a new task~\cite[Sec.~3.1]{delange2022}.
-In the simplest form, rehearsal, a limited subset of stored training samples is added to the training data of each new task.
-Methods differ in which samples they keep and how they divide a fixed memory among the tasks; iCaRL, for example, keeps per class the exemplars that best approximate the class mean in feature space~\cite[Sec.~3.1]{delange2022}.
-Because rehearsal trains on a subset of the data of all tasks seen so far, its performance is bounded by joint training on all tasks, and it can overfit the few stored samples~\cite[Sec.~3.1]{delange2022}.
-Storing data also conflicts with storage limits and privacy constraints~\cite[Sec.~1]{delange2022}, which in medical imaging restrict what may be kept from earlier patients.
-
 \subsection{Knowledge Distillation and ZSCL}
 \label{subsec:bg-zscl}
 
 % CLAUDE-DRAFT
-In knowledge distillation, a student model is trained to reproduce the output distribution of a teacher model, softened by a temperature in the softmax~\cite[Sec.~2]{hinton2015distilling}.
-Continual learning uses distillation as a regulariser: Learning without Forgetting (LwF) trains on the data of the new task only and uses the outputs of the model from before this task as soft labels for the earlier tasks~\cite{li2017learningforgetting}~\cite[Sec.~3.2.1]{delange2022}.
+In knowledge distillation, a student model is trained to reproduce the output distribution of a teacher model, where a temperature in the softmax softens the distribution~\cite[Sec.~2]{hinton2015distilling}.
+In continual learning, distillation serves as a regulariser.
+Learning without Forgetting (LwF) trains on the data of the new task only and uses the outputs of the model before this task as soft labels for the earlier tasks~\cite{li2017learningforgetting}~\cite[Sec.~3.2.1]{delange2022}.
 The teacher is thus the previous model, and the distillation data are those of the current task.
 
 % CLAUDE-DRAFT
-ZSCL addresses the loss of CLIP's zero-shot transfer during continual learning (\cref{sec:intro-problem})~\cite[Sec.~1]{zheng2023preventingzeroshottransferdegradation} and changes two choices of LwF.
+ZSCL changes two choices of LwF to preserve CLIP's zero-shot transfer during continual learning~\cite[Sec.~1]{zheng2023preventingzeroshottransferdegradation}.
 The teacher is the initial pretrained model instead of the previous one, and the distillation data are a separate reference dataset of unlabelled public images and arbitrary texts instead of the current task's data~\cite[Sec.~3.2]{zheng2023preventingzeroshottransferdegradation}.
-For each image, CLIP's similarities to a set of texts are turned into a distribution by a softmax, and the loss compares these distributions of student and teacher by a cross-entropy; the same is done in the other direction, for each text over the images of a batch, and both terms are added to the task loss with a weight~$\lambda$~\cite[Sec.~3.2, Eqs.~2--4]{zheng2023preventingzeroshottransferdegradation}.
+For each image, a softmax turns CLIP's similarities to a set of texts into a distribution, and the loss compares the distributions of student and teacher by a cross-entropy~\cite[Sec.~3.2, Eqs.~2--3]{zheng2023preventingzeroshottransferdegradation}.
+A second term does the same for each text, with a distribution over the images of a batch, and both terms are added to the task loss with a weight~$\lambda$~\cite[Sec.~3.2, Eq.~4]{zheng2023preventingzeroshottransferdegradation}.
 In addition, ZSCL limits the change of the parameters themselves.
-Every $I_{\mathrm{we}}$ iterations it updates a weight ensemble, the running mean of the parameters along the training trajectory, starting from $\theta_0$,
+The full method adds a weight-consolidation loss, a penalty on the squared distance between the parameters and a reference set of parameters~\cite[Sec.~3.3, Eq.~5, Table~2]{zheng2023preventingzeroshottransferdegradation}.
+Every $I_{\mathrm{we}}$ iterations, it also updates a weight ensemble, the running mean of the parameters along the training trajectory, starting from $\theta_0$,
 \begin{equation}
 \hat{\theta}_\nu = \frac{1}{\nu+1}\,\theta + \frac{\nu}{\nu+1}\,\hat{\theta}_{\nu-1}, \qquad \hat{\theta}_0 = \theta_0,
 \label{eq:bg-we}
 \end{equation}
 where $\theta$ are the current parameters and $\nu$ counts the ensemble updates~\cite[Sec.~3.3, Eq.~7]{zheng2023preventingzeroshottransferdegradation}.
-The full method further adds a penalty on the squared distance between the parameters and a reference set of parameters~\cite[Sec.~3.3, Eq.~5, Table~2]{zheng2023preventingzeroshottransferdegradation}.
 
 \subsection{Prompt Learning and CPE-CLIP}
 \label{subsec:bg-prompt}
 
 % CLAUDE-DRAFT
 Prompt learning adapts a frozen vision--language model by training a few input vectors instead of its weights.
-CoOp replaces the hand-written context words of a text prompt, such as ``a photo of a'', by learnable context vectors in front of the class name, while all parameters of CLIP stay fixed~\cite{zhou2022coop}~\cite[Sec.~3.2]{zhou2022cocoop}.
-CoCoOp adds a small network, the meta-net, that computes a token from the image features and adds it to every context vector, so the prompt depends on the input image; its authors report that this generalises better to classes not seen in training~\cite[Sec.~3.3, 4.1]{zhou2022cocoop}.
+CoOp replaces the hand-written context words of a text prompt, such as ``a photo of a'', by learnable context vectors in front of the class name~\cite{zhou2022coop}~\cite[Sec.~3.2]{zhou2022cocoop}.
+CoCoOp adds a small network, the meta-net, which computes a token from the image features and adds it to every context vector, so that the context vectors depend on the input image~\cite[Sec.~3.3]{zhou2022cocoop}.
+Its authors report that these image-dependent context vectors generalise better to classes not seen in training~\cite[Sec.~4.1]{zhou2022cocoop}.
 
 % CLAUDE-DRAFT
-CPE-CLIP applies prompt learning to few-shot class-incremental learning, in which a base session with many classes and examples is followed by sessions that each add a few classes with few examples, and no task identity is given at evaluation~\cite[Sec.~1, 3]{D_Alessandro_2023}.
-It keeps CLIP frozen and learns prompt tokens in the layers of the language encoder up to a given depth, replacing the prompt tokens of each layer by new learned ones; the prompts of the vision encoder are derived from the language prompts by a learned linear projection~\cite[Sec.~4, Eqs.~2--8]{D_Alessandro_2023}.
-To limit forgetting, it scales the gradients of the prompts and of the projection in session~$t$ by
+CPE-CLIP applies prompt learning to few-shot class-incremental learning~\cite[Sec.~1, 3]{D_Alessandro_2023}.
+In this setting, a base session with many classes and examples is followed by sessions that each add a few classes with few examples, and the task identity is not given at evaluation~\cite[Sec.~1, 3]{D_Alessandro_2023}.
+CPE-CLIP keeps CLIP frozen and learns prompt tokens in the layers of the language encoder up to a given depth, where each layer replaces the prompt tokens it receives by its own learned ones~\cite[Sec.~4, Eqs.~2--4]{D_Alessandro_2023}.
+The prompt tokens of the vision encoder are derived from those of the language encoder by a learned linear projection~\cite[Sec.~4, Eqs.~6--8]{D_Alessandro_2023}.
+To limit forgetting, CPE-CLIP scales the gradients of the prompt tokens and of the projection in session~$t$ by
 \begin{equation}
 \beta_t = \frac{|\mathcal{C}_t|}{\sum_{\tau=0}^{t} |\mathcal{C}_\tau|},
 \label{eq:bg-cpe-scaling}
 \end{equation}
-where $\mathcal{C}_t$ is the set of classes of session~$t$, so that the prompts change less as more classes have been learned~\cite[Sec.~4, Eqs.~11--13]{D_Alessandro_2023}.
+where $\mathcal{C}_t$ is the set of classes of session~$t$, so that the prompt tokens change less as more classes have been learned~\cite[Sec.~4, Eqs.~11--13]{D_Alessandro_2023}.
 
 % ---------------------------------------------------------------------
 \section{Evaluation Metrics}
 \label{sec:bg-metrics}
 % Definitions as implemented in scripts/compute_cl_metrics.py (reference implementation).
 % Which metrics are reported and why: Ch. 6 setup (decision 2026-10-21).
+
+% CLAUDE-DRAFT
+This section defines the segmentation metric and the continual-learning metrics computed from it.
 
 % CLAUDE-DRAFT
 The overlap between a binary prediction $\hat{\mat{Y}}$ and the label mask $\mat{Y}$ is measured with the \gls{dsc}~\cite{dice1945measures},
@@ -239,57 +257,89 @@ The overlap between a binary prediction $\hat{\mat{Y}}$ and the label mask $\mat
 \end{equation}
 where $|\cdot|$ counts the foreground voxels of a mask and $\hat{\mat{Y}} \cap \mat{Y}$ denotes the voxels that are foreground in both.
 The \gls{dsc} is 0 for disjoint masks and 1 for identical ones.
-Because it is normalised by the sizes of the two masks and not by the size of the volume, the many background voxels do not inflate it, which matters for structures as small as the knee cartilages and menisci (\cref{tab:ch4_structures}).
-Each entry $a_{i,j}$ of the evaluation matrix (\cref{sec:bg-cl}) is the mean \gls{dsc} over the test volumes of task~$i$.
-The continual-learning metrics below were defined for classification accuracy, but Chaudhry et al.\ note that a task-specific measure such as the intersection over union of a segmentation can take the place of accuracy without changing the definitions~\cite[Sec.~3]{Chaudhry_2018}.
+The \gls{dsc} is normalised by the sizes of the two masks and not by the size of the volume, so the many background voxels do not inflate it.
+This matters for structures as small as the knee cartilages and menisci (\cref{sec:data-skmtea}).
+
+% CLAUDE-DRAFT
+Evaluating the model on every task after every stage (\cref{subsec:bg-cl-setting}) shows how training on later tasks affects earlier ones~\cite[Fig.~4b]{zheng2023preventingzeroshottransferdegradation}.
+We write $a_{i,j}$ for the mean \gls{dsc} on the test set of task~$i$ after stage~$j$, with $i = 1, \dots, T$ and $j = 0, \dots, T$.
+Together, the values $a_{i,j}$ form the evaluation matrix (\cref{fig:ch3_metrics}).
+The continual-learning metrics computed from this matrix were originally defined for classification accuracy, but Chaudhry et al.\ note that a task-specific measure such as the intersection over union of a segmentation can take the place of accuracy without changing the definitions~\cite[Sec.~3]{Chaudhry_2018}.
+The diagonal entries $a_{i,i}$ show how well task~$i$ is learned when it is trained.
+The entries with $j > i$ show how much of this performance is kept after later tasks, and the entries with $j < i$ show the performance on task~$i$ before it is trained.
+Entries $a_{i,j} < a_{i,i}$ with $j > i$ therefore indicate catastrophic forgetting of task~$i$ (\cref{sec:intro-problem}).
+The matrix does not show whether the model loses pretrained abilities outside the task sequence, because its rows cover only the tasks of the sequence.
+We therefore also evaluate the model on a control task, a held-out task that is never trained on and is used only to measure the loss of pretrained ability (\cref{sec:data-aeropath}).
+We write $c_j$ for its mean \gls{dsc} after stage~$j$.
 
 \begin{figure}[tb]
 \centering
 \includegraphics{figures/ch3_metrics.pdf}
 % CLAUDE-DRAFT
 \caption[Entries of the evaluation matrix used by each metric]{Entries of the evaluation matrix used by each metric (\cref{eq:bg-adaptation,eq:bg-forgetting,eq:bg-control-drop,eq:bg-final,eq:bg-transfer}).
-Rows are the tasks $i = 1, \dots, T$, columns the stages $j = 0, \dots, T$, with stage~0 the pretrained model; the separate row~$c$ is the control task.
-Dark cells enter the mean of a metric; light cells are the reference from which the dark cell of the same row is subtracted: the maximum over the light cells for Final Forgetting and the pretrained value $c_0$ for the control-task drop.}
+Rows are the tasks $i = 1, \dots, T$, and columns are the stages $j = 0, \dots, T$, with stage~0 the pretrained model.
+The separate row~$c$ is the control task.
+Dark cells enter the mean of a metric.
+Light cells are the reference from which the dark cell of the same row is subtracted, namely their maximum for Final Forgetting and the pretrained value $c_0$ for the control-task drop.}
 \label{fig:ch3_metrics}
 \end{figure}
 
 % CLAUDE-DRAFT
-We summarise the evaluation matrix with four metrics from the literature and add a fifth for the control task, a task that is not part of the sequence and whose mean \gls{dsc} after stage~$j$ we write as~$c_j$.
+We summarise the evaluation matrix with four metrics from the literature and the control task with a fifth.
 \Cref{fig:ch3_metrics} shows which entries each metric uses.
-{\allowdisplaybreaks % local: lets this block break across pages
-\begin{align}
-\text{Adaptation} &= \frac{1}{T} \sum_{i=1}^{T} a_{i,i},
-\label{eq:bg-adaptation}\\
-\text{Final Forgetting} &= \frac{1}{T-1} \sum_{i=1}^{T-1} \Big( \max_{j \in \{1, \dots, T-1\}} a_{i,j} - a_{i,T} \Big),
-\label{eq:bg-forgetting}\\
-\text{Control-task drop} &= c_0 - c_T,
-\label{eq:bg-control-drop}\\
-\text{Final Performance} &= \frac{1}{T} \sum_{i=1}^{T} a_{i,T},
-\label{eq:bg-final}\\
-\text{Transfer} &= \frac{1}{T-1} \sum_{i=2}^{T} \frac{1}{i-1} \sum_{j=1}^{i-1} a_{i,j}.
+
+\paragraph{Adaptation.}
+% CLAUDE-DRAFT
+Adaptation measures how well each task is learned when it is trained,
+\begin{equation}
+\text{Adaptation} = \frac{1}{T} \sum_{i=1}^{T} a_{i,i}.
+\label{eq:bg-adaptation}
+\end{equation}
+Each diagonal entry $a_{i,i}$ also appears in the intransigence measure of Chaudhry et al., which subtracts it from the performance on task~$i$ of a reference model trained on the data of tasks $1, \dots, i$ together~\cite[Sec.~3, Eq.~4]{Chaudhry_2018}.
+
+\paragraph{Final Forgetting.}
+% CLAUDE-DRAFT
+Final Forgetting is the average forgetting of Chaudhry et al.\ after the last task~\cite[Sec.~3, Eq.~3]{Chaudhry_2018}.
+For each task before the last, it subtracts the performance at the end from the best performance at any earlier stage,
+\begin{equation}
+\text{Final Forgetting} = \frac{1}{T-1} \sum_{i=1}^{T-1} \Big( \max_{j \in \{1, \dots, T-1\}} a_{i,j} - a_{i,T} \Big).
+\label{eq:bg-forgetting}
+\end{equation}
+Taking the best earlier performance instead of the value right after training also counts gains that a task made while later tasks were trained and lost again by the end~\cite[Sec.~3]{Chaudhry_2018}.
+Lower values are better, and a negative value means that training on later tasks improved earlier ones, which Chaudhry et al.\ call positive backward transfer~\cite[Sec.~3]{Chaudhry_2018}.
+
+\paragraph{Control-task drop.}
+% CLAUDE-DRAFT
+The control-task drop follows SPU, which uses a control set to measure how much of a pretrained model's general ability is lost during continual learning~\cite[Sec.~5.1, Eq.~6]{Zhang_2024_CVPR}.
+SPU computes this loss as the accuracy of the frozen pretrained model on the control set minus that of the continually trained model~\cite[Sec.~5.1, Eq.~6]{Zhang_2024_CVPR}.
+We compute the drop with the \gls{dsc}, between the pretrained model and the model after the last stage of a task sequence,
+\begin{equation}
+\text{Control-task drop} = c_0 - c_T,
+\label{eq:bg-control-drop}
+\end{equation}
+so a positive value is a loss and lower values are better.
+SPU samples its control set from the pretraining distribution~\cite[Sec.~3]{Zhang_2024_CVPR}.
+Our control task instead comes from a dataset that VoxTell was not trained on, and its target structure is well represented in VoxTell's training data (\cref{sec:data-aeropath}).
+
+\paragraph{Final Performance.}
+% CLAUDE-DRAFT
+Final Performance is the metric Last of ZSCL, the mean performance on all tasks after the last stage~\cite[Sec.~4, Fig.~4b]{zheng2023preventingzeroshottransferdegradation},
+\begin{equation}
+\text{Final Performance} = \frac{1}{T} \sum_{i=1}^{T} a_{i,T}.
+\label{eq:bg-final}
+\end{equation}
+A common reference for Final Performance is joint training, in which one model is trained on the data of all tasks at once.
+De Lange et al.\ describe joint training as a soft upper bound for continual learning~\cite[Sec.~5]{delange2022}.
+
+\paragraph{Transfer.}
+% CLAUDE-DRAFT
+Transfer is the metric of the same name in ZSCL~\cite[Sec.~4, Fig.~4b]{zheng2023preventingzeroshottransferdegradation}.
+For each task~$i$, it averages the performance at the stages $1, \dots, i-1$ before the task is trained, and it then averages these values over the tasks,
+\begin{equation}
+\text{Transfer} = \frac{1}{T-1} \sum_{i=2}^{T} \frac{1}{i-1} \sum_{j=1}^{i-1} a_{i,j}.
 \label{eq:bg-transfer}
-\end{align}}
-Lower values are better for Final Forgetting and the control-task drop, higher values for the other three metrics.
-
-% CLAUDE-DRAFT
-Adaptation measures how well each task is learned when it is trained.
-It is the term $a_{k,k}$ of the intransigence measure of Chaudhry et al., which subtracts it from the performance on task~$k$ of a reference model trained on the data of tasks $1, \dots, k$ together~\cite[Sec.~3, Eq.~4]{Chaudhry_2018}; Adaptation reports this term without the reference.
-
-% CLAUDE-DRAFT
-Final Forgetting is the average forgetting of Chaudhry et al.\ after the last task: for each earlier task, the best performance at any previous stage minus the performance at the end~\cite[Sec.~3, Eq.~3]{Chaudhry_2018}.
-Chaudhry et al.\ index the matrix by stage first; \cref{eq:bg-forgetting} is written in our convention.
-Taking the maximum over all previous stages, instead of the value right after training, also counts a loss of gains that a task made while later tasks were trained~\cite[Sec.~3]{Chaudhry_2018}.
-As in their definition, the maximum runs over all stages $1, \dots, T-1$; in our matrix this includes stages before task~$i$ was trained, because every task is evaluated at every stage.
-A negative value means that training on later tasks improved earlier ones, which Chaudhry et al.\ call positive backward transfer~\cite[Sec.~3]{Chaudhry_2018}.
-
-% CLAUDE-DRAFT
-The control-task drop follows the control set of SPU, which measures how much of a pretrained model's general ability is lost during continual learning as the accuracy of the frozen pretrained model on the control set minus that of the continually trained model~\cite[Sec.~5.1, Eq.~6]{Zhang_2024_CVPR}.
-We compute it with the \gls{dsc} for one task sequence, between the pretrained model and the model after the last stage, so a positive value is a loss.
-SPU samples its control set from the pretraining distribution~\cite[Sec.~3]{Zhang_2024_CVPR}; our control task instead comes from a dataset that VoxTell was not trained on, with a concept that is well represented in its training data (\cref{sec:data-aeropath}).
-
-% CLAUDE-DRAFT
-Final Performance is the metric Last of ZSCL, the mean performance on all tasks after the last stage~\cite[Sec.~4, Fig.~4b]{zheng2023preventingzeroshottransferdegradation}; it describes the model that a continual-learning run delivers.
-Transfer is the metric of the same name in ZSCL: the mean performance on each task at the stages after the first and before the task is trained, averaged first per task~\cite[Sec.~4, Fig.~4b]{zheng2023preventingzeroshottransferdegradation}.
-As in ZSCL, whose evaluation matrix has no row for the model before the first training step, stage $j = 0$ is not included, so the first task does not enter Transfer.
-For a pretrained model, it combines the ability that the model brings to a structure before seeing its labels with the effect that training on other structures has on it.
+\end{equation}
+As in ZSCL, whose evaluation matrix has no entries for the model before the first training step, stage $j = 0$ is not included, so the first task does not enter Transfer.
+When the task sequence starts from a pretrained model, as here, an entry $a_{i,j}$ with $j < i$ reflects both the ability of the pretrained model on structure~$i$ and the effect of training on tasks $1, \dots, j$, and Transfer does not separate the two.
+The pretrained-model reference row (\cref{sec:method-protocol}) shows the first part alone.
 
