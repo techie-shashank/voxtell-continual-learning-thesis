@@ -36,7 +36,7 @@ GROUPS = [
     # Reruns of October 2026. Section labels provisional until the rerun parts of Ch. 6 are written.
     ("Scaling Ablation", "Gradient scaling of the prompt-tuning strategy", "4", "sec:exp-main"),
     ("Equal Updates", "Amount of labelled data with the update count of the full data", "3", "sec:exp-few-shot"),
-    ("Joint Reference", "Upper reference: joint training", "2, 3", "sec:exp-main"),
+    ("Joint Reference", "Upper reference: joint fine-tuning", "2, 3", "sec:exp-main"),
 ]
 # The single-task diagnosis (role "Convergence Diagnosis") is reported in Ch. 6 (decision 2026-10-22,
 # revising the earlier plan to put it in the Discussion). Order of the strategies as in Ch. 5.4.

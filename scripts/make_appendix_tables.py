@@ -105,7 +105,8 @@ def run_name(r) -> str:
         else:
             parts.append("settings of the sequence")
     else:
-        parts.append(f"{r['train_max_cases']} volumes per task" if r["train_max_cases"] else "full training split")
+        unit = "structure" if r["task_order"] == "joint" else "task"   # joint fine-tuning has one stage, no tasks
+        parts.append(f"{r['train_max_cases']} volumes per {unit}" if r["train_max_cases"] else "full training split")
         if r["task_order"] != "joint":                     # joint fine-tuning has no task order
             parts.append(f"{r['task_order']} task order")
         if r["epochs"] != "10":

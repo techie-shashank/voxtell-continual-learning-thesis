@@ -50,7 +50,7 @@ Bera et al. \mbox{}\cite{memory_replay_cropping} & Prostate, spleen, hippocampus
 C$^2$GR \mbox{}\cite{li2026c2gr} & 20 tasks, 8 modalities; 2D & Diffusion replay, fixed task template, trained from scratch; TIL & Mean \gls{dsc}, final: 83.62\,\% (joint 86.06\,\%)\\
 Zhang et al., Liu et al. \mbox{}\cite{zhang2023continuallearningabdominalmultiorgan,liu2024universalextensible} & Private \gls{ct}, BTCV, LiTS; 3D & Fixed CLIP class names, head per class, pseudo-labels; class-incremental & \gls{dsc}, BTCV organs / LiTS tumour: 0.817 / 0.466 (PLOP 0.799 / 0.362)\\
 Lifelong nnU-Net \mbox{}\cite{gonzalez2023lifelong} & Hippocampus, prostate, cardiac \gls{mri}; 3D & Five methods compared; DIL & Rehearsal forgets least (\gls{dsc})\\
-Beyond Forgetting \mbox{}\cite{wang2026beyondforgetting} & Prostate \gls{mri}, MMWHS, four organs; 2D & 16 methods; Domain-, Class-, Organ-CL & Mean final \gls{dsc}, Domain-CL: 0.789, PNN (joint 0.830)\\
+Beyond Forgetting \mbox{}\cite{wang2026beyondforgetting} & Prostate \gls{mri}, MMWHS, four organs; 2D & 15 methods; Domain-, Class-, Organ-CL & Mean final \gls{dsc}, Domain-CL: 0.789, PNN (joint 0.830)\\
 SAM-Med3D-MoE \mbox{}\cite{wang2024sammed3dmoe} & SPPIN2023, poorly segmented classes; 3D & Points or boxes; decoder experts with a gate; not sequential & \gls{dsc}, box prompts: poorly segmented 0.564 (0.532); without expert 0.400 (0.541)\\
 CA-SAM \mbox{}\cite{wang2025casam} & Nine datasets; 2D & Boxes; alignment layer per task, autoencoder router & Final IoU: 76.12\,\% (joint 78.43\,\%)\\
 MedSeqFT \mbox{}\cite{ye2025medseqft} & Five \gls{ct}, five \gls{mri} tasks; 3D & Seq.\ FT with distillation and LoRA refinement & Mean \gls{dsc}, \gls{ct} tasks: 68.3\,\% (parallel FT 65.3\,\%)\\

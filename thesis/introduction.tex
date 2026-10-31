@@ -24,7 +24,7 @@ Automatic segmentation with deep learning has commonly meant training one model 
 Universal segmentation models replace these per-dataset models with one network that segments many structures.
 For example, the developers of the universal model SAT compared it with 72 nnU-Nets, one trained on each of their datasets~\cite{zhao2025sat}.
 The structure to segment is specified by an additional input, the prompt~\cite{zhao2025sat,rokuss2025voxtellfreetextpromptableuniversal}.
-The prompt can be spatial, such as a point or a box marked in the image~\cite{Ma_2024,cheng2023sammed2d}, or text that names the target (\cref{sec:text-promptable-seg}).
+The prompt can be spatial, such as a point or a box marked in the image~\cite{Ma_2024,cheng2023sammed2d}, or text that names the target.
 
 % CLAUDE-DRAFT
 Text-promptable models differ in the text they accept.
@@ -32,26 +32,26 @@ SAT is prompted with terms from a fixed vocabulary~\cite{zhao2025sat}.
 In contrast, VoxTell accepts both a single anatomical term and a full clinical sentence~\cite{rokuss2025voxtellfreetextpromptableuniversal}.
 We call models of this kind \emph{free-text promptable}.
 In both models, the structure to segment is not tied to an output channel of the network.
-The same weights serve every structure, and the text prompt alone selects the target~\cites[Sec.~4.5]{zhao2025sat}[Sec.~3]{rokuss2025voxtellfreetextpromptableuniversal} (\cref{subsec:bg-voxtell}).
+The same weights serve every structure, and the text prompt alone selects the target~\cite{zhao2025sat,rokuss2025voxtellfreetextpromptableuniversal}.
 
 % CLAUDE-DRAFT
-This thesis adapts VoxTell, which was trained on more than 62{,}000 \gls{ct}, \gls{mri} and \gls{pet} volumes.
-On datasets it was not trained on, it reached a mean \gls{dsc} of 70.85\,\%~\cite[Table~1]{rokuss2025voxtellfreetextpromptableuniversal}, where the \gls{dsc} measures the overlap between the predicted and the reference mask.
+This thesis adapts VoxTell, which was trained on more than 62{,}000 \gls{ct}, \gls{mri} and \gls{pet} volumes~\cite{rokuss2025voxtellfreetextpromptableuniversal}.
+On datasets it was not trained on, it reached a mean \gls{dsc} of 70.85\,\%, where the \gls{dsc} measures the overlap between the predicted and the reference mask.
 On knee \gls{mri} from the SKM-TEA dataset~\cite{desai2021skmtea}, its mean \gls{dsc} was 10.72\,\%, averaged over four cartilages and two menisci~\cite[Suppl.~Table~9]{rokuss2025voxtellfreetextpromptableuniversal}.
 The VoxTell authors attribute this low value to the small share of knee images in the training data and to structures missing from it~\cite[Sec.~6]{rokuss2025voxtellfreetextpromptableuniversal}.
-As future work, they suggest adapting the model with a few labelled examples~\cite[Sec.~6]{rokuss2025voxtellfreetextpromptableuniversal}.
+As future work, they suggest adapting the model with a few labelled examples.
 
 % CLAUDE-DRAFT
 Automatic segmentation of the knee cartilages and menisci is useful because quantitative biomarkers for osteoarthritis are measured within these structures~\cite{desai2021skmtea}.
-One example is the T2 relaxation time, which reflects the degeneration of collagen-rich tissue~\cite{desai2021skmtea}.
+One example is the T2 relaxation time, which reflects the degeneration of collagen-rich tissue.
 These values can only be read out once the structures are outlined.
-The SKM-TEA authors name manual outlining as one obstacle to the use of quantitative \gls{mri}~\cite{desai2021skmtea}.
+The SKM-TEA authors name manual outlining as one obstacle to the use of quantitative \gls{mri}.
 
 % CLAUDE-DRAFT
 With few manual outlines available, VoxTell would have to learn the knee structures from a few labelled volumes.
 New structures may also become relevant over time, and the model would then have to adapt to each of them in turn.
 Retraining VoxTell from scratch on its training data together with each new structure would be expected to preserve most of what it could segment before.
-However, training the published model took about six days on 64 NVIDIA A100 GPUs~\cite[p.~5]{rokuss2025voxtellfreetextpromptableuniversal}.
+However, training the published model took about six days on 64 NVIDIA A100 GPUs~\cite{rokuss2025voxtellfreetextpromptableuniversal}.
 
 % ---------------------------------------------------------------------
 \section{Problem Statement}
@@ -94,7 +94,7 @@ Here, \emph{few-shot} means training the model on $k$ labelled volumes per task,
 % CLAUDE-DRAFT
 Existing continual-learning results do not show how few labelled volumes shift the balance between stability and plasticity, because they were obtained in other settings.
 The methods for pretrained vision--language models reviewed in \cref{sec:cl-vlm} were developed and evaluated on classification or on tasks with text output.
-In medical image segmentation, continual-learning methods have mostly given each new task or class components of its own, such as a decoder or an output head~\cite{ji2023continualsegmentsingleunified,guo2025continuallearningdrivenmodelaccurate,zhang2023continuallearningabdominalmultiorgan,ye2025medseqft}.
+In medical image segmentation, many continual-learning methods give each new task or class components of its own, such as a decoder or an output head~\cite{ji2023continualsegmentsingleunified,guo2025continuallearningdrivenmodelaccurate,zhang2023continuallearningabdominalmultiorgan,ye2025medseqft}.
 VoxTell needs no such components, because a new structure is named by a new text prompt and segmented with the same weights.
 
 % CLAUDE-DRAFT
@@ -114,15 +114,14 @@ This thesis addresses the following research question:
 By \emph{adaptation performance} we mean how well the model segments a new structure right after it has been trained on it.
 In the research question, \emph{forgetting} covers the loss on earlier tasks of the sequence as well as the loss of pretrained ability.
 Few-shot conditions are $k = 5$, 10 and 20 labelled volumes per task, which we compare with the full training split of 108 volumes per task.
-\Cref{sec:intro-approach} states which strategies were run with few volumes.
 
 % CLAUDE-DRAFT
 We pursue four objectives:
 \begin{enumerate}
-  \item Develop a few-shot continual-learning evaluation protocol for free-text promptable universal 3D medical image segmentation (\cref{sec:method-protocol}).
-  \item Compare continual-learning strategies under this protocol in terms of their adaptation and forgetting (\cref{sec:exp-main}).
-  \item Investigate how the amount of labelled training data influences the evaluated strategies, separating the effect of fewer volumes from that of fewer updates (\cref{sec:exp-few-shot}).
-  \item Analyse how the task order, the \gls{lora} rank and the components of the strategies (replay, weight ensemble and gradient scaling, \cref{sec:intro-approach}) influence adaptation and forgetting (\cref{sec:exp-main,sec:exp-rank,sec:exp-task-order}).
+  \item Develop a few-shot continual-learning evaluation protocol for free-text promptable universal 3D medical image segmentation.
+  \item Compare continual-learning strategies under this protocol in terms of their adaptation and forgetting.
+  \item Investigate how the amount of labelled training data influences the evaluated strategies, separating the effect of fewer volumes from that of fewer updates.
+  \item Analyse how the task order, the \gls{lora} rank and the components of the strategies (replay, weight ensemble and gradient scaling, \cref{sec:intro-approach}) influence adaptation and forgetting.
 \end{enumerate}
 
 % ---------------------------------------------------------------------
@@ -149,9 +148,9 @@ Like ZSCL, it also keeps a weight ensemble, the running mean of the pretrained p
 The prompt-tuning strategy (adapted from CPE-CLIP~\cite{D_Alessandro_2023}) freezes the pretrained weights and trains learned prompt tokens.
 It also trains a meta-net, a small network that shifts the encoded text prompt.
 The meta-net is our addition, inspired by CoCoOp~\cite{zhou2022cocoop}.
-As in CPE-CLIP, the gradients of the tokens and the meta-net are multiplied by a factor that decreases with the task index, which we call gradient scaling~\cite[p.~5, Eqs.~12--13]{D_Alessandro_2023}.
+Following CPE-CLIP, the gradients of the tokens and the meta-net are multiplied by a factor that decreases with the task index, which we call gradient scaling.
 Together, the strategies cover replay, regularisation and parameter-efficient adaptation, the three families of continual-learning methods for vision--language models~\cite[Sec.~4]{liu2026continuallearningvlmssurvey}.
-All strategies except task-specific LoRA use one parameter set for all tasks (\cref{sec:method-strategies}).
+All strategies except task-specific LoRA use one parameter set for all tasks.
 
 % CLAUDE-DRAFT
 All strategies are trained with the full training split.
@@ -162,14 +161,14 @@ Further runs with $k = 5$ and 1{,}080 updates per task separate the effect of fe
 % CLAUDE-DRAFT
 From the test results, we compute three primary metrics (\cref{sec:bg-metrics}).
 Adaptation is the \gls{dsc} on each task right after training on it, averaged over the six tasks.
-Final Forgetting is the mean drop of the \gls{dsc} on the earlier tasks from its best earlier value to its value after the last task~\cite[Sec.~3, Eq.~3]{Chaudhry_2018}.
+Final Forgetting is the mean drop of the \gls{dsc} on the earlier tasks from its best earlier value to its value after the last task~\cite{Chaudhry_2018}.
 The control-task drop is the decrease of the \gls{dsc} on the control task from the pretrained model to the model after the last task.
 Together, Final Forgetting and the control-task drop measure retention, the performance kept on earlier tasks and on the control task.
 We also report two secondary metrics.
-Final Performance is the mean \gls{dsc} on all tasks after the last task, and Transfer is the mean \gls{dsc} on each task before it is trained~\cite[Sec.~4]{zheng2023preventingzeroshottransferdegradation}.
+Final Performance is the mean \gls{dsc} on all tasks after the last task, and Transfer is the mean \gls{dsc} on each task before it is trained~\cite{zheng2023preventingzeroshottransferdegradation}.
 The pretrained model is evaluated in the same way and serves as a reference.
 As an upper reference, joint fine-tuning trains the model on all six tasks at once.
-It was run with the full training split and with each~$k$ (\cref{sec:method-protocol}).
+It was run with the full training split and with each~$k$.
 
 % CLAUDE-DRAFT
 The study uses one model, one dataset for the tasks, one control task, one fixed text prompt per structure and one draw of training volumes per~$k$.
@@ -187,7 +186,7 @@ The contributions of this thesis are:
 \begin{enumerate}
   \item An evaluation protocol for few-shot continual adaptation of a free-text promptable 3D segmentation model, which measures adaptation, forgetting within the task sequence and the loss of pretrained ability on a held-out control task, with the pretrained model and joint fine-tuning as reference points (\cref{sec:method-setting,sec:method-protocol}).
   \item A systematic comparison of sequential fine-tuning and five strategies from the three families of continual learning for vision--language models, adapted to VoxTell, under one shared training configuration, with the full training split and, for three of them, with 5, 10 and 20 labelled volumes per task (\cref{sec:method-strategies,sec:exp-main,sec:exp-few-shot}).
-  \item An analysis of the factors that affect continual adaptation in this setting: the amount of labelled data separated from the number of updates, the task order, the LoRA rank and the components of the strategies (replay, weight ensemble, gradient scaling), together with a diagnosis of why task-specific LoRA did not learn patellar cartilage (\cref{sec:exp-main,sec:exp-rank,sec:exp-patellar,sec:exp-few-shot,sec:exp-task-order}).
+  \item An analysis of the factors that affect continual adaptation in this setting: the amount of labelled data separated from the number of updates, the task order, the LoRA rank and the components of the strategies (replay, weight ensemble, gradient scaling), together with a diagnosis of why task-specific LoRA did not learn patellar cartilage (\cref{chap:experiments}).
 \end{enumerate}
 
 % CLAUDE-DRAFT
