@@ -59,6 +59,25 @@ Ctrl & 0.979 & 0.980 & 0.975 & 0.976 & 0.974 & 0.955 & 0.742 \\
 \end{minipage}
 \par\bigskip
 \noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Shared LoRA ($r = 1024$, full training split, original task order, replay $\rho = 0.1$); run \texttt{exp\_20261023\_014438\_55e6abcf}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
+\midrule
+LT & 0.000 & \textbf{0.287} & 0.386 & 0.383 & 0.305 & 0.347 & 0.385 \\
+MT & 0.000 & 0.183 & \textbf{0.473} & 0.405 & 0.261 & 0.421 & 0.379 \\
+Fe & 0.684 & 0.647 & 0.539 & \textbf{0.713} & 0.628 & 0.678 & 0.699 \\
+Pa & 0.000 & 0.023 & 0.004 & 0.006 & \textbf{0.435} & 0.425 & 0.412 \\
+MM & 0.000 & 0.041 & 0.062 & 0.031 & 0.078 & \textbf{0.497} & 0.400 \\
+LM & 0.000 & 0.020 & 0.030 & 0.020 & 0.021 & 0.075 & \textbf{0.427} \\
+\midrule
+Ctrl & 0.979 & 0.980 & 0.970 & 0.975 & 0.968 & 0.931 & 0.842 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
 \captionof{table}{Evaluation matrix: Prompt-tuning strategy (full training split, original task order); run \texttt{exp\_20261022\_180923\_7bcbb6cc}.}
 \setlength{\tabcolsep}{5pt}
 \begin{tabular}{lrrrrrrr}
@@ -92,6 +111,383 @@ MM & 0.000 & 0.000 & 0.011 & 0.001 & 0.000 & \textbf{0.713} & 0.000 \\
 LM & 0.000 & 0.006 & 0.000 & 0.001 & 0.000 & 0.000 & \textbf{0.801} \\
 \midrule
 Ctrl & 0.979 & 0.001 & 0.000 & 0.003 & 0.002 & 0.000 & 0.000 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\subsection*{Upper reference: joint fine-tuning}
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Joint fine-tuning (5 volumes per structure); run \texttt{exp\_20261024\_002524\_abc243ff}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrr}
+\toprule
+Task & Pre. & Joint \\
+\midrule
+LT & 0.000 & 0.631 \\
+MT & 0.000 & 0.546 \\
+Fe & 0.684 & 0.698 \\
+Pa & 0.000 & 0.461 \\
+MM & 0.000 & 0.600 \\
+LM & 0.000 & 0.661 \\
+\midrule
+Ctrl & 0.979 & 0.246 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Joint fine-tuning (10 volumes per structure); run \texttt{exp\_20261024\_014447\_afb34098}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrr}
+\toprule
+Task & Pre. & Joint \\
+\midrule
+LT & 0.000 & 0.550 \\
+MT & 0.000 & 0.470 \\
+Fe & 0.684 & 0.775 \\
+Pa & 0.000 & 0.498 \\
+MM & 0.000 & 0.582 \\
+LM & 0.000 & 0.637 \\
+\midrule
+Ctrl & 0.979 & 0.086 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Joint fine-tuning (20 volumes per structure); run \texttt{exp\_20261024\_051245\_f9067927}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrr}
+\toprule
+Task & Pre. & Joint \\
+\midrule
+LT & 0.000 & 0.810 \\
+MT & 0.000 & 0.771 \\
+Fe & 0.684 & 0.782 \\
+Pa & 0.000 & 0.601 \\
+MM & 0.000 & 0.779 \\
+LM & 0.000 & 0.773 \\
+\midrule
+Ctrl & 0.979 & 0.000 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Joint fine-tuning (full training split); run \texttt{exp\_20261022\_171655\_6a6e9cb5}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrr}
+\toprule
+Task & Pre. & Joint \\
+\midrule
+LT & 0.000 & 0.872 \\
+MT & 0.000 & 0.847 \\
+Fe & 0.684 & 0.873 \\
+Pa & 0.000 & 0.834 \\
+MM & 0.000 & 0.842 \\
+LM & 0.000 & 0.845 \\
+\midrule
+Ctrl & 0.979 & 0.000 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\subsection*{Diagnosis of the patellar failure}
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Task-specific LoRA ($r = 4$, patellar cartilage only, settings of the sequence); run \texttt{exp\_20260824\_040750\_012f67c8}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrr}
+\toprule
+Task & Pre. & Pa \\
+\midrule
+Pa & 0.000 & \textbf{0.000} \\
+\midrule
+Ctrl & 0.979 & 0.979 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Task-specific LoRA ($r = 16$, patellar cartilage only); run \texttt{exp\_20260828\_041835\_89e6de63}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrr}
+\toprule
+Task & Pre. & Pa \\
+\midrule
+Pa & 0.000 & \textbf{0.000} \\
+\midrule
+Ctrl & 0.979 & 0.979 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Task-specific LoRA ($r = 4$, patellar cartilage only, learning rate $3 \cdot 10^{-4}$); run \texttt{exp\_20260828\_045913\_2e306fe6}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrr}
+\toprule
+Task & Pre. & Pa \\
+\midrule
+Pa & 0.000 & \textbf{0.000} \\
+\midrule
+Ctrl & 0.979 & 0.979 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Task-specific LoRA ($r = 4$, patellar cartilage only, seed 1337); run \texttt{exp\_20260901\_110801\_d8b133c2}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrr}
+\toprule
+Task & Pre. & Pa \\
+\midrule
+Pa & 0.000 & \textbf{0.000} \\
+\midrule
+Ctrl & 0.979 & 0.979 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Task-specific LoRA ($r = 4$, patellar cartilage only, 50 epochs); run \texttt{exp\_20260905\_220334\_6697f1c2}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrr}
+\toprule
+Task & Pre. & Pa \\
+\midrule
+Pa & 0.000 & \textbf{0.839} \\
+\midrule
+Ctrl & 0.979 & 0.979 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\subsection*{Amount of labelled data}
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Sequential fine-tuning (5 volumes per task, original task order, 216 epochs per task); run \texttt{exp\_20261023\_195739\_6044ad8d}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
+\midrule
+LT & 0.000 & \textbf{0.761} & 0.014 & 0.001 & 0.000 & 0.000 & 0.004 \\
+MT & 0.000 & 0.083 & \textbf{0.673} & 0.001 & 0.000 & 0.007 & 0.000 \\
+Fe & 0.684 & 0.000 & 0.006 & \textbf{0.797} & 0.079 & 0.002 & 0.002 \\
+Pa & 0.000 & 0.000 & 0.000 & 0.002 & \textbf{0.756} & 0.000 & 0.000 \\
+MM & 0.000 & 0.000 & 0.007 & 0.002 & 0.000 & \textbf{0.676} & 0.086 \\
+LM & 0.000 & 0.003 & 0.000 & 0.001 & 0.000 & 0.122 & \textbf{0.610} \\
+\midrule
+Ctrl & 0.979 & 0.005 & 0.001 & 0.003 & 0.000 & 0.013 & 0.000 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Sequential fine-tuning (5 volumes per task, original task order); run \texttt{exp\_20261023\_212327\_a67fb8c9}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
+\midrule
+LT & 0.000 & \textbf{0.620} & 0.513 & 0.197 & 0.371 & 0.129 & 0.013 \\
+MT & 0.000 & 0.000 & \textbf{0.487} & 0.163 & 0.127 & 0.185 & 0.007 \\
+Fe & 0.684 & 0.465 & 0.292 & \textbf{0.713} & 0.366 & 0.472 & 0.421 \\
+Pa & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.338} & 0.023 & 0.036 \\
+MM & 0.000 & 0.000 & 0.013 & 0.022 & 0.003 & \textbf{0.593} & 0.362 \\
+LM & 0.000 & 0.075 & 0.015 & 0.133 & 0.005 & 0.118 & \textbf{0.521} \\
+\midrule
+Ctrl & 0.979 & 0.964 & 0.961 & 0.967 & 0.974 & 0.970 & 0.969 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Sequential fine-tuning (10 volumes per task, original task order); run \texttt{exp\_20261023\_234659\_f041f82f}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
+\midrule
+LT & 0.000 & \textbf{0.777} & 0.405 & 0.004 & 0.066 & 0.036 & 0.033 \\
+MT & 0.000 & 0.002 & \textbf{0.534} & 0.010 & 0.013 & 0.017 & 0.003 \\
+Fe & 0.684 & 0.111 & 0.091 & \textbf{0.743} & 0.241 & 0.014 & 0.009 \\
+Pa & 0.000 & 0.000 & 0.000 & 0.008 & \textbf{0.361} & 0.012 & 0.003 \\
+MM & 0.000 & 0.004 & 0.025 & 0.014 & 0.001 & \textbf{0.596} & 0.351 \\
+LM & 0.000 & 0.018 & 0.001 & 0.022 & 0.001 & 0.243 & \textbf{0.683} \\
+\midrule
+Ctrl & 0.979 & 0.908 & 0.772 & 0.691 & 0.655 & 0.435 & 0.674 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Sequential fine-tuning (20 volumes per task, original task order); run \texttt{exp\_20261024\_001927\_861cfa24}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
+\midrule
+LT & 0.000 & \textbf{0.675} & 0.190 & 0.002 & 0.025 & 0.002 & 0.008 \\
+MT & 0.000 & 0.006 & \textbf{0.689} & 0.003 & 0.001 & 0.003 & 0.000 \\
+Fe & 0.684 & 0.032 & 0.011 & \textbf{0.793} & 0.233 & 0.005 & 0.004 \\
+Pa & 0.000 & 0.000 & 0.000 & 0.007 & \textbf{0.410} & 0.001 & 0.006 \\
+MM & 0.000 & 0.000 & 0.017 & 0.001 & 0.000 & \textbf{0.496} & 0.180 \\
+LM & 0.000 & 0.002 & 0.001 & 0.001 & 0.000 & 0.367 & \textbf{0.632} \\
+\midrule
+Ctrl & 0.979 & 0.587 & 0.005 & 0.033 & 0.000 & 0.000 & 0.000 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Task-specific LoRA ($r = 4$, 5 volumes per task, original task order); run \texttt{exp\_20260926\_120018\_3ab58c90}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
+\midrule
+LT & 0.000 & \textbf{0.000} & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+MT & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 & 0.000 & 0.000 \\
+Fe & 0.684 & 0.685 & 0.685 & \textbf{0.685} & 0.685 & 0.685 & 0.685 \\
+Pa & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 \\
+MM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.000 \\
+LM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} \\
+\midrule
+Ctrl & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Task-specific LoRA ($r = 4$, 5 volumes per task, original task order, 216 epochs per task); run \texttt{exp\_20261023\_195940\_ea9221f2}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
+\midrule
+LT & 0.000 & \textbf{0.601} & 0.601 & 0.601 & 0.601 & 0.601 & 0.601 \\
+MT & 0.000 & 0.121 & \textbf{0.528} & 0.528 & 0.528 & 0.528 & 0.528 \\
+Fe & 0.684 & 0.089 & 0.230 & \textbf{0.751} & 0.751 & 0.751 & 0.751 \\
+Pa & 0.000 & 0.002 & 0.002 & 0.000 & \textbf{0.000} & 0.000 & 0.000 \\
+MM & 0.000 & 0.011 & 0.033 & 0.001 & 0.000 & \textbf{0.466} & 0.466 \\
+LM & 0.000 & 0.001 & 0.000 & 0.000 & 0.000 & 0.017 & \textbf{0.229} \\
+\midrule
+Ctrl & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Task-specific LoRA ($r = 4$, 10 volumes per task, original task order); run \texttt{exp\_20260926\_184314\_43a15eeb}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
+\midrule
+LT & 0.000 & \textbf{0.000} & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+MT & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 & 0.000 & 0.000 \\
+Fe & 0.684 & 0.686 & 0.685 & \textbf{0.688} & 0.688 & 0.688 & 0.688 \\
+Pa & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 \\
+MM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.000 \\
+LM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} \\
+\midrule
+Ctrl & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Task-specific LoRA ($r = 4$, 20 volumes per task, original task order); run \texttt{exp\_20260926\_105629\_ba181db6}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
+\midrule
+LT & 0.000 & \textbf{0.000} & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+MT & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 & 0.000 & 0.000 \\
+Fe & 0.684 & 0.689 & 0.688 & \textbf{0.693} & 0.693 & 0.693 & 0.693 \\
+Pa & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 \\
+MM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.000 \\
+LM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} \\
+\midrule
+Ctrl & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Shared LoRA ($r = 1024$, 5 volumes per task, original task order); run \texttt{exp\_20260930\_164451\_55aada20}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
+\midrule
+LT & 0.000 & \textbf{0.000} & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+MT & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 & 0.000 & 0.000 \\
+Fe & 0.684 & 0.686 & 0.688 & \textbf{0.690} & 0.690 & 0.691 & 0.692 \\
+Pa & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 \\
+MM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.000 \\
+LM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} \\
+\midrule
+Ctrl & 0.979 & 0.980 & 0.980 & 0.980 & 0.980 & 0.980 & 0.980 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Shared LoRA ($r = 1024$, 5 volumes per task, original task order, 216 epochs per task); run \texttt{exp\_20261023\_200332\_9840ab20}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
+\midrule
+LT & 0.000 & \textbf{0.245} & 0.172 & 0.060 & 0.130 & 0.036 & 0.010 \\
+MT & 0.000 & 0.171 & \textbf{0.428} & 0.260 & 0.151 & 0.089 & 0.008 \\
+Fe & 0.684 & 0.653 & 0.595 & \textbf{0.721} & 0.635 & 0.656 & 0.384 \\
+Pa & 0.000 & 0.038 & 0.007 & 0.006 & \textbf{0.453} & 0.310 & 0.031 \\
+MM & 0.000 & 0.035 & 0.055 & 0.020 & 0.087 & \textbf{0.438} & 0.374 \\
+LM & 0.000 & 0.016 & 0.018 & 0.002 & 0.011 & 0.035 & \textbf{0.346} \\
+\midrule
+Ctrl & 0.979 & 0.979 & 0.971 & 0.977 & 0.978 & 0.951 & 0.645 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Shared LoRA ($r = 1024$, 10 volumes per task, original task order); run \texttt{exp\_20260930\_165220\_b0c6c426}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
+\midrule
+LT & 0.000 & \textbf{0.000} & 0.001 & 0.001 & 0.001 & 0.001 & 0.002 \\
+MT & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 & 0.001 & 0.002 \\
+Fe & 0.684 & 0.690 & 0.692 & \textbf{0.698} & 0.698 & 0.699 & 0.699 \\
+Pa & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 \\
+MM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.001 \\
+LM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} \\
+\midrule
+Ctrl & 0.979 & 0.980 & 0.980 & 0.980 & 0.980 & 0.981 & 0.981 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\par\bigskip
+\noindent\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Evaluation matrix: Shared LoRA ($r = 1024$, 20 volumes per task, original task order); run \texttt{exp\_20260930\_163605\_91573278}.}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
+\midrule
+LT & 0.000 & \textbf{0.002} & 0.005 & 0.005 & 0.012 & 0.020 & 0.028 \\
+MT & 0.000 & 0.000 & \textbf{0.016} & 0.016 & 0.039 & 0.092 & 0.117 \\
+Fe & 0.684 & 0.695 & 0.699 & \textbf{0.705} & 0.701 & 0.692 & 0.683 \\
+Pa & 0.000 & 0.000 & 0.002 & 0.002 & \textbf{0.067} & 0.081 & 0.087 \\
+MM & 0.000 & 0.000 & 0.001 & 0.001 & 0.003 & \textbf{0.047} & 0.073 \\
+LM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.001 & \textbf{0.003} \\
+\midrule
+Ctrl & 0.979 & 0.980 & 0.980 & 0.981 & 0.980 & 0.978 & 0.976 \\
 \bottomrule
 \end{tabular}
 \end{minipage}
@@ -230,249 +626,6 @@ Ctrl & 0.979 & 0.980 & 0.977 & 0.978 & 0.978 & 0.968 & 0.889 \\
 \end{tabular}
 \end{minipage}
 \par\bigskip
-\subsection*{Diagnosis of the patellar failure}
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Task-specific LoRA ($r = 4$, patellar cartilage only, settings of the sequence); run \texttt{exp\_20260824\_040750\_012f67c8}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrr}
-\toprule
-Task & Pre. & Pa \\
-\midrule
-Pa & 0.000 & \textbf{0.000} \\
-\midrule
-Ctrl & 0.979 & 0.979 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Task-specific LoRA ($r = 16$, patellar cartilage only); run \texttt{exp\_20260828\_041835\_89e6de63}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrr}
-\toprule
-Task & Pre. & Pa \\
-\midrule
-Pa & 0.000 & \textbf{0.000} \\
-\midrule
-Ctrl & 0.979 & 0.979 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Task-specific LoRA ($r = 4$, patellar cartilage only, learning rate $3 \cdot 10^{-4}$); run \texttt{exp\_20260828\_045913\_2e306fe6}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrr}
-\toprule
-Task & Pre. & Pa \\
-\midrule
-Pa & 0.000 & \textbf{0.000} \\
-\midrule
-Ctrl & 0.979 & 0.979 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Task-specific LoRA ($r = 4$, patellar cartilage only, seed 1337); run \texttt{exp\_20260901\_110801\_d8b133c2}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrr}
-\toprule
-Task & Pre. & Pa \\
-\midrule
-Pa & 0.000 & \textbf{0.000} \\
-\midrule
-Ctrl & 0.979 & 0.979 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Task-specific LoRA ($r = 4$, patellar cartilage only, 50 epochs); run \texttt{exp\_20260905\_220334\_6697f1c2}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrr}
-\toprule
-Task & Pre. & Pa \\
-\midrule
-Pa & 0.000 & \textbf{0.839} \\
-\midrule
-Ctrl & 0.979 & 0.979 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\subsection*{Amount of labelled data}
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Sequential fine-tuning (5 volumes per task, original task order); run \texttt{exp\_20261023\_212327\_a67fb8c9}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrrrrrrr}
-\toprule
-Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
-\midrule
-LT & 0.000 & \textbf{0.620} & 0.513 & 0.197 & 0.371 & 0.129 & 0.013 \\
-MT & 0.000 & 0.000 & \textbf{0.487} & 0.163 & 0.127 & 0.185 & 0.007 \\
-Fe & 0.684 & 0.465 & 0.292 & \textbf{0.713} & 0.366 & 0.472 & 0.421 \\
-Pa & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.338} & 0.023 & 0.036 \\
-MM & 0.000 & 0.000 & 0.013 & 0.022 & 0.003 & \textbf{0.593} & 0.362 \\
-LM & 0.000 & 0.075 & 0.015 & 0.133 & 0.005 & 0.118 & \textbf{0.521} \\
-\midrule
-Ctrl & 0.979 & 0.964 & 0.961 & 0.967 & 0.974 & 0.970 & 0.969 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Sequential fine-tuning (10 volumes per task, original task order); run \texttt{exp\_20261023\_234659\_f041f82f}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrrrrrrr}
-\toprule
-Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
-\midrule
-LT & 0.000 & \textbf{0.777} & 0.405 & 0.004 & 0.066 & 0.036 & 0.033 \\
-MT & 0.000 & 0.002 & \textbf{0.534} & 0.010 & 0.013 & 0.017 & 0.003 \\
-Fe & 0.684 & 0.111 & 0.091 & \textbf{0.743} & 0.241 & 0.014 & 0.009 \\
-Pa & 0.000 & 0.000 & 0.000 & 0.008 & \textbf{0.361} & 0.012 & 0.003 \\
-MM & 0.000 & 0.004 & 0.025 & 0.014 & 0.001 & \textbf{0.596} & 0.351 \\
-LM & 0.000 & 0.018 & 0.001 & 0.022 & 0.001 & 0.243 & \textbf{0.683} \\
-\midrule
-Ctrl & 0.979 & 0.908 & 0.772 & 0.691 & 0.655 & 0.435 & 0.674 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Sequential fine-tuning (20 volumes per task, original task order); run \texttt{exp\_20261024\_001927\_861cfa24}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrrrrrrr}
-\toprule
-Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
-\midrule
-LT & 0.000 & \textbf{0.675} & 0.190 & 0.002 & 0.025 & 0.002 & 0.008 \\
-MT & 0.000 & 0.006 & \textbf{0.689} & 0.003 & 0.001 & 0.003 & 0.000 \\
-Fe & 0.684 & 0.032 & 0.011 & \textbf{0.793} & 0.233 & 0.005 & 0.004 \\
-Pa & 0.000 & 0.000 & 0.000 & 0.007 & \textbf{0.410} & 0.001 & 0.006 \\
-MM & 0.000 & 0.000 & 0.017 & 0.001 & 0.000 & \textbf{0.496} & 0.180 \\
-LM & 0.000 & 0.002 & 0.001 & 0.001 & 0.000 & 0.367 & \textbf{0.632} \\
-\midrule
-Ctrl & 0.979 & 0.587 & 0.005 & 0.033 & 0.000 & 0.000 & 0.000 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Task-specific LoRA ($r = 4$, 5 volumes per task, original task order); run \texttt{exp\_20260926\_120018\_3ab58c90}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrrrrrrr}
-\toprule
-Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
-\midrule
-LT & 0.000 & \textbf{0.000} & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
-MT & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 & 0.000 & 0.000 \\
-Fe & 0.684 & 0.685 & 0.685 & \textbf{0.685} & 0.685 & 0.685 & 0.685 \\
-Pa & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 \\
-MM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.000 \\
-LM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} \\
-\midrule
-Ctrl & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Task-specific LoRA ($r = 4$, 10 volumes per task, original task order); run \texttt{exp\_20260926\_184314\_43a15eeb}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrrrrrrr}
-\toprule
-Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
-\midrule
-LT & 0.000 & \textbf{0.000} & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
-MT & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 & 0.000 & 0.000 \\
-Fe & 0.684 & 0.686 & 0.685 & \textbf{0.688} & 0.688 & 0.688 & 0.688 \\
-Pa & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 \\
-MM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.000 \\
-LM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} \\
-\midrule
-Ctrl & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Task-specific LoRA ($r = 4$, 20 volumes per task, original task order); run \texttt{exp\_20260926\_105629\_ba181db6}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrrrrrrr}
-\toprule
-Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
-\midrule
-LT & 0.000 & \textbf{0.000} & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
-MT & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 & 0.000 & 0.000 \\
-Fe & 0.684 & 0.689 & 0.688 & \textbf{0.693} & 0.693 & 0.693 & 0.693 \\
-Pa & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 \\
-MM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.000 \\
-LM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} \\
-\midrule
-Ctrl & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Shared LoRA ($r = 1024$, 5 volumes per task, original task order); run \texttt{exp\_20260930\_164451\_55aada20}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrrrrrrr}
-\toprule
-Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
-\midrule
-LT & 0.000 & \textbf{0.000} & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
-MT & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 & 0.000 & 0.000 \\
-Fe & 0.684 & 0.686 & 0.688 & \textbf{0.690} & 0.690 & 0.691 & 0.692 \\
-Pa & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 \\
-MM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.000 \\
-LM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} \\
-\midrule
-Ctrl & 0.979 & 0.980 & 0.980 & 0.980 & 0.980 & 0.980 & 0.980 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Shared LoRA ($r = 1024$, 10 volumes per task, original task order); run \texttt{exp\_20260930\_165220\_b0c6c426}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrrrrrrr}
-\toprule
-Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
-\midrule
-LT & 0.000 & \textbf{0.000} & 0.001 & 0.001 & 0.001 & 0.001 & 0.002 \\
-MT & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 & 0.001 & 0.002 \\
-Fe & 0.684 & 0.690 & 0.692 & \textbf{0.698} & 0.698 & 0.699 & 0.699 \\
-Pa & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.000 & 0.000 \\
-MM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} & 0.001 \\
-LM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & \textbf{0.000} \\
-\midrule
-Ctrl & 0.979 & 0.980 & 0.980 & 0.980 & 0.980 & 0.981 & 0.981 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Shared LoRA ($r = 1024$, 20 volumes per task, original task order); run \texttt{exp\_20260930\_163605\_91573278}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrrrrrrr}
-\toprule
-Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
-\midrule
-LT & 0.000 & \textbf{0.002} & 0.005 & 0.005 & 0.012 & 0.020 & 0.028 \\
-MT & 0.000 & 0.000 & \textbf{0.016} & 0.016 & 0.039 & 0.092 & 0.117 \\
-Fe & 0.684 & 0.695 & 0.699 & \textbf{0.705} & 0.701 & 0.692 & 0.683 \\
-Pa & 0.000 & 0.000 & 0.002 & 0.002 & \textbf{0.067} & 0.081 & 0.087 \\
-MM & 0.000 & 0.000 & 0.001 & 0.001 & 0.003 & \textbf{0.047} & 0.073 \\
-LM & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.001 & \textbf{0.003} \\
-\midrule
-Ctrl & 0.979 & 0.980 & 0.980 & 0.981 & 0.980 & 0.978 & 0.976 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
 \subsection*{Task order}
 \noindent\begin{minipage}{\linewidth}\centering\small
 \captionof{table}{Evaluation matrix: Sequential fine-tuning (full training split, reverse task order); run \texttt{exp\_20261022\_171520\_2dba6ff1}.}
@@ -531,26 +684,6 @@ Ctrl & 0.979 & 0.972 & 0.978 & 0.975 & 0.977 & 0.967 & 0.912 \\
 \end{tabular}
 \end{minipage}
 \par\bigskip
-\subsection*{Replay}
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Shared LoRA ($r = 1024$, full training split, original task order, replay $\rho = 0.1$); run \texttt{exp\_20261023\_014438\_55e6abcf}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrrrrrrr}
-\toprule
-Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
-\midrule
-LT & 0.000 & \textbf{0.287} & 0.386 & 0.383 & 0.305 & 0.347 & 0.385 \\
-MT & 0.000 & 0.183 & \textbf{0.473} & 0.405 & 0.261 & 0.421 & 0.379 \\
-Fe & 0.684 & 0.647 & 0.539 & \textbf{0.713} & 0.628 & 0.678 & 0.699 \\
-Pa & 0.000 & 0.023 & 0.004 & 0.006 & \textbf{0.435} & 0.425 & 0.412 \\
-MM & 0.000 & 0.041 & 0.062 & 0.031 & 0.078 & \textbf{0.497} & 0.400 \\
-LM & 0.000 & 0.020 & 0.030 & 0.020 & 0.021 & 0.075 & \textbf{0.427} \\
-\midrule
-Ctrl & 0.979 & 0.980 & 0.970 & 0.975 & 0.968 & 0.931 & 0.842 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
 \subsection*{Gradient scaling of the prompt-tuning strategy}
 \noindent\begin{minipage}{\linewidth}\centering\small
 \captionof{table}{Evaluation matrix: Prompt-tuning strategy (full training split, original task order, gradient scaling inactive, best validation checkpoint); run \texttt{exp\_20260816\_161201\_b39ea60e}.}
@@ -567,141 +700,6 @@ MM & 0.000 & 0.008 & 0.019 & 0.012 & 0.007 & \textbf{0.555} & 0.162 \\
 LM & 0.000 & 0.009 & 0.002 & 0.005 & 0.001 & 0.166 & \textbf{0.629} \\
 \midrule
 Ctrl & 0.979 & 0.108 & 0.019 & 0.060 & 0.001 & 0.002 & 0.000 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\subsection*{Amount of labelled data with the update count of the full split}
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Sequential fine-tuning (5 volumes per task, original task order, 216 epochs per task); run \texttt{exp\_20261023\_195739\_6044ad8d}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrrrrrrr}
-\toprule
-Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
-\midrule
-LT & 0.000 & \textbf{0.761} & 0.014 & 0.001 & 0.000 & 0.000 & 0.004 \\
-MT & 0.000 & 0.083 & \textbf{0.673} & 0.001 & 0.000 & 0.007 & 0.000 \\
-Fe & 0.684 & 0.000 & 0.006 & \textbf{0.797} & 0.079 & 0.002 & 0.002 \\
-Pa & 0.000 & 0.000 & 0.000 & 0.002 & \textbf{0.756} & 0.000 & 0.000 \\
-MM & 0.000 & 0.000 & 0.007 & 0.002 & 0.000 & \textbf{0.676} & 0.086 \\
-LM & 0.000 & 0.003 & 0.000 & 0.001 & 0.000 & 0.122 & \textbf{0.610} \\
-\midrule
-Ctrl & 0.979 & 0.005 & 0.001 & 0.003 & 0.000 & 0.013 & 0.000 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Task-specific LoRA ($r = 4$, 5 volumes per task, original task order, 216 epochs per task); run \texttt{exp\_20261023\_195940\_ea9221f2}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrrrrrrr}
-\toprule
-Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
-\midrule
-LT & 0.000 & \textbf{0.601} & 0.601 & 0.601 & 0.601 & 0.601 & 0.601 \\
-MT & 0.000 & 0.121 & \textbf{0.528} & 0.528 & 0.528 & 0.528 & 0.528 \\
-Fe & 0.684 & 0.089 & 0.230 & \textbf{0.751} & 0.751 & 0.751 & 0.751 \\
-Pa & 0.000 & 0.002 & 0.002 & 0.000 & \textbf{0.000} & 0.000 & 0.000 \\
-MM & 0.000 & 0.011 & 0.033 & 0.001 & 0.000 & \textbf{0.466} & 0.466 \\
-LM & 0.000 & 0.001 & 0.000 & 0.000 & 0.000 & 0.017 & \textbf{0.229} \\
-\midrule
-Ctrl & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 & 0.979 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Shared LoRA ($r = 1024$, 5 volumes per task, original task order, 216 epochs per task); run \texttt{exp\_20261023\_200332\_9840ab20}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrrrrrrr}
-\toprule
-Task & Pre. & LT & MT & Fe & Pa & MM & LM \\
-\midrule
-LT & 0.000 & \textbf{0.245} & 0.172 & 0.060 & 0.130 & 0.036 & 0.010 \\
-MT & 0.000 & 0.171 & \textbf{0.428} & 0.260 & 0.151 & 0.089 & 0.008 \\
-Fe & 0.684 & 0.653 & 0.595 & \textbf{0.721} & 0.635 & 0.656 & 0.384 \\
-Pa & 0.000 & 0.038 & 0.007 & 0.006 & \textbf{0.453} & 0.310 & 0.031 \\
-MM & 0.000 & 0.035 & 0.055 & 0.020 & 0.087 & \textbf{0.438} & 0.374 \\
-LM & 0.000 & 0.016 & 0.018 & 0.002 & 0.011 & 0.035 & \textbf{0.346} \\
-\midrule
-Ctrl & 0.979 & 0.979 & 0.971 & 0.977 & 0.978 & 0.951 & 0.645 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\subsection*{Upper reference: joint fine-tuning}
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Joint fine-tuning (5 volumes per structure); run \texttt{exp\_20261024\_002524\_abc243ff}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrr}
-\toprule
-Task & Pre. & Joint \\
-\midrule
-LT & 0.000 & 0.631 \\
-MT & 0.000 & 0.546 \\
-Fe & 0.684 & 0.698 \\
-Pa & 0.000 & 0.461 \\
-MM & 0.000 & 0.600 \\
-LM & 0.000 & 0.661 \\
-\midrule
-Ctrl & 0.979 & 0.246 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Joint fine-tuning (10 volumes per structure); run \texttt{exp\_20261024\_014447\_afb34098}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrr}
-\toprule
-Task & Pre. & Joint \\
-\midrule
-LT & 0.000 & 0.550 \\
-MT & 0.000 & 0.470 \\
-Fe & 0.684 & 0.775 \\
-Pa & 0.000 & 0.498 \\
-MM & 0.000 & 0.582 \\
-LM & 0.000 & 0.637 \\
-\midrule
-Ctrl & 0.979 & 0.086 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Joint fine-tuning (20 volumes per structure); run \texttt{exp\_20261024\_051245\_f9067927}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrr}
-\toprule
-Task & Pre. & Joint \\
-\midrule
-LT & 0.000 & 0.810 \\
-MT & 0.000 & 0.771 \\
-Fe & 0.684 & 0.782 \\
-Pa & 0.000 & 0.601 \\
-MM & 0.000 & 0.779 \\
-LM & 0.000 & 0.773 \\
-\midrule
-Ctrl & 0.979 & 0.000 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\par\bigskip
-\noindent\begin{minipage}{\linewidth}\centering\small
-\captionof{table}{Evaluation matrix: Joint fine-tuning (full training split); run \texttt{exp\_20261022\_171655\_6a6e9cb5}.}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lrr}
-\toprule
-Task & Pre. & Joint \\
-\midrule
-LT & 0.000 & 0.872 \\
-MT & 0.000 & 0.847 \\
-Fe & 0.684 & 0.873 \\
-Pa & 0.000 & 0.834 \\
-MM & 0.000 & 0.842 \\
-LM & 0.000 & 0.845 \\
-\midrule
-Ctrl & 0.979 & 0.000 \\
 \bottomrule
 \end{tabular}
 \end{minipage}

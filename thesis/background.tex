@@ -146,7 +146,7 @@ Each prompt was the default name of its concept with probability 0.25 and a reph
 % Scope (decided 2026-10-22, revised 2026-10-27; restructured 2026-10-29): the problem in symbols,
 % the scenario definitions (3.2.1), then the published methods
 % the strategies build on (3.2.2-3.2.4; replay only in Ch. 5.4.3, removed 2026-10-30). Evaluation matrix: Sec. 3.3. Classification of our setting
-% and task-aware inference: Ch. 5.1 (moved 2026-10-30).
+% Ch. 5.1 (moved 2026-10-30); use of the task identity by task-specific LoRA: Ch. 5.4.2 (2026-10-31).
 % Informal concepts: Ch. 1; method families: Ch. 2.
 
 % CLAUDE-DRAFT
@@ -160,7 +160,7 @@ These are low-rank adaptation, knowledge distillation with ZSCL and prompt learn
 
 % CLAUDE-DRAFT
 In continual learning, a model is trained on a sequence of tasks $t = 1, \dots, T$, one after the other.
-Training on task~$t$ starts from the parameters $\theta_{t-1}$ reached after the previous task, uses only the training data $\mathcal{D}_t$ of task~$t$ and yields the parameters~$\theta_t$.
+Training on task~$t$ starts from the parameters $\theta_{t-1}$ reached after the previous task, uses only the training data $\mathcal{D}_t^{\mathrm{tr}}$ of task~$t$ and yields the parameters~$\theta_t$.
 In our setting, the sequence starts from the pretrained parameters~$\theta_0$, and each task has its own text prompt~$p_t$.
 We index the resulting models by the stage~$j$ of the sequence: stage $j = 0$ is the pretrained model, and stage $j = t$ is the model after training on task~$t$.
 
@@ -268,7 +268,7 @@ The diagonal entries $a_{i,i}$ show how well task~$i$ is learned when it is trai
 The entries with $j > i$ show how much of this performance is kept after later tasks, and the entries with $j < i$ show the performance on task~$i$ before it is trained.
 Entries $a_{i,j} < a_{i,i}$ with $j > i$ therefore indicate catastrophic forgetting of task~$i$.
 The matrix does not show whether the model loses pretrained abilities outside the task sequence, because its rows cover only the tasks of the sequence.
-We therefore also evaluate the model on a control task, a held-out task that is never trained on and is used only to measure the loss of pretrained ability.
+A control task, a held-out task that is never trained on, measures this loss of pretrained ability.
 We write $c_j$ for its mean \gls{dsc} after stage~$j$.
 
 \begin{figure}[tb]
@@ -317,8 +317,6 @@ We compute the drop with the \gls{dsc}, between the pretrained model and the mod
 \label{eq:bg-control-drop}
 \end{equation}
 so a positive value is a loss and lower values are better.
-SPU samples its control set from the pretraining distribution~\cite[Sec.~3]{Zhang_2024_CVPR}.
-Our control task instead comes from a dataset that VoxTell was not trained on, and its target structure is well represented in VoxTell's training data (\cref{sec:data-aeropath}).
 
 \paragraph{Final Performance.}
 % CLAUDE-DRAFT
@@ -340,5 +338,5 @@ For each task~$i$, it averages the performance at the stages $1, \dots, i-1$ bef
 \end{equation}
 As in ZSCL, whose evaluation matrix has no entries for the model before the first training step, stage $j = 0$ is not included, so the first task does not enter Transfer.
 When the task sequence starts from a pretrained model, as here, an entry $a_{i,j}$ with $j < i$ reflects both the ability of the pretrained model on structure~$i$ and the effect of training on tasks $1, \dots, j$, and Transfer does not separate the two.
-The pretrained-model reference row (\cref{sec:method-protocol}) shows the first part alone.
+The pretrained-model reference row (\cref{sec:method-setting-protocol}) shows the first part alone.
 

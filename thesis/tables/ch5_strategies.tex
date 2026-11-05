@@ -1,16 +1,19 @@
-% Table 5.1: overview of the strategies (descriptive, written by hand; facts from
-% thesis_notes.md §2 "Method fact sheet"). Bare tabular, caption in method.tex.
+% Table 5.1: how the strategies differ in the steps of Alg. 5.2 (descriptive, written by hand;
+% facts from thesis_notes.md §2 "Method fact sheet" and code/). Redesigned 2026-11-01 (author approved):
+% one column per strategy-specific step; cost column removed (cost: Sec. 5.4 prose, measured: Table 6.x compute);
+% symbol P dropped; Select column dropped (evaluated parameters: Sec. 5.1, 5.3.2, 5.3.5). "--" = nothing added.
+% Bare tabular, caption in method.tex.
 % CLAUDE-DRAFT
-\small\renewcommand{\arraystretch}{1.2}
-\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.8cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}p{2.6cm}@{}}
+\small\renewcommand{\arraystretch}{1.2}\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{3.2cm}>{\raggedright\arraybackslash}p{3.3cm}@{}}
 \toprule
-Strategy & Trained parameters $\phi$ & Start of task $t$ (\textsc{Init}) & Added data / loss \\
+Strategy & Trained parameters $\phi$ & Start of task~$t$ ($\textsc{Init}_{\mathcal{S}}$) & Added in training \\
 \midrule
-Sequential fine-tuning & all parameters except the text encoder & parameters of task $t-1$ & -- \\
-Task-specific LoRA & low-rank factors $\mat{B}, \mat{A}$ in $\mat{W}_q, \mat{W}_v$ of the cross-attention of all layers & pretrained model with a new adapter & -- \\
-Shared LoRA & as task-specific LoRA & adapter of task $t-1$ & -- \\
-Shared LoRA + replay & as task-specific LoRA & adapter of task $t-1$ & replay memory $\mathcal{M}_{t-1}$ \\
-Distillation-based & all parameters except the text encoder & parameters of task $t-1$ & $\lambda\,\mathcal{L}_{\mathrm{KD}}$ \\
-Prompt tuning & tokens $\mat{V}_l$ and meta-net $h_\psi$ in layers $l \le L_p$ & tokens and meta-net of task $t-1$ & -- \\
+Sequential fine-tuning & all parameters except the text encoder & parameters of task~$t-1$ & -- \\
+Task-specific LoRA & $\mat{B}, \mat{A}$ for $\mat{W}_q, \mat{W}_v$ of the cross-attention in all prompt-decoder layers ($4 L_{\mathrm{dec}}\, d\, r$) & pretrained model with a new adapter & -- \\
+Shared LoRA & as task-specific LoRA & adapter of task~$t-1$ & -- \\
+Shared LoRA + replay & as task-specific LoRA & adapter of task~$t-1$ & memory $\mathcal{M}_{t-1}$ \\
+Prompt tuning & tokens $\mat{V}_l$ and meta-net $h_\psi$ in layers $l \le L_p$ ($L_p\, m\, d + |\psi|$) & tokens and meta-net of task~$t-1$ & gradient factor $\xi_{\mathcal{S},t} = \max(0.25, \beta_t)$ \\
+Distillation-based & all parameters except the text encoder & parameters of task~$t-1$ & $\lambda\,\mathcal{L}_{\mathrm{KD}}$ \\
 \bottomrule
 \end{tabularx}

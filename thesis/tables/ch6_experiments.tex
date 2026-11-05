@@ -4,14 +4,11 @@
 \toprule
 Experiment & Strategies and configurations & Training volumes per task & Objective & Section \\
 \midrule
-Comparison of the strategies & Seq. fine-tuning; Task-specific LoRA ($r = 4$); Shared LoRA ($r = 1024$); Distillation-based; Prompt tuning & 108 & 2 & \ref{sec:exp-main} \\
-LoRA rank & Task-specific LoRA ($r = 4, 8$); Shared LoRA ($r = 4, 32, 128, 256, 512, 1024, 2048$) & 108 & 4 & \ref{sec:exp-rank} \\
-Diagnosis of the patellar failure & Task-specific LoRA ($r = 4, 16$), patellar cartilage only; rank, learning rate, seed or number of epochs changed & 108 & 4 & \ref{sec:exp-patellar} \\
-Amount of labelled data & Seq. fine-tuning; Task-specific LoRA ($r = 4$); Shared LoRA ($r = 1024$) & 5, 10, 20, 108 & 3 & \ref{sec:exp-few-shot} \\
-Task order & Seq. fine-tuning in original and reverse order; Task-specific LoRA ($r = 4$) in original and reverse order; Shared LoRA ($r = 1024$) in original and reverse order & 108 & 4 & \ref{sec:exp-task-order} \\
-Replay & Shared LoRA ($r = 1024$) with and without replay & 108 & 4 & \ref{sec:exp-main} \\
-Gradient scaling of the prompt-tuning strategy & Prompt tuning without per-task gradient scaling & 108 & 4 & \ref{sec:exp-main} \\
-Amount of labelled data with the update count of the full data & Seq. fine-tuning, 216 epochs per task; Task-specific LoRA ($r = 4$), 216 epochs per task; Shared LoRA ($r = 1024$), 216 epochs per task & 5 & 3 & \ref{sec:exp-few-shot} \\
+Comparison of the strategies & Seq. fine-tuning; Task-specific LoRA ($r = 4$); Shared LoRA ($r = 1024$) with and without replay; Prompt tuning; Distillation-based & 108 & 2 & \ref{sec:exp-main} \\
 Upper reference: joint fine-tuning & Joint fine-tuning & 5, 10, 20, 108 & 2, 3 & \ref{sec:exp-main} \\
+Diagnosis of the patellar failure & Task-specific LoRA ($r = 4, 16$) on patellar cartilage only; rank, learning rate, seed or epochs varied & 108 & 2 & \ref{sec:exp-patellar} \\
+Amount of labelled data & Seq. fine-tuning; Task-specific LoRA ($r = 4$); Shared LoRA ($r = 1024$); each also with $k = 5$ and 216 epochs per task & 5, 10, 20, 108 & 3 & \ref{sec:exp-few-shot} \\
+LoRA rank & Task-specific LoRA ($r = 4, 8$); Shared LoRA ($r = 4, 32, 128, 256, 512, 1024, 2048$) & 108 & 4 & \ref{sec:exp-rank} \\
+Task order & Seq. fine-tuning; Task-specific LoRA ($r = 4$); Shared LoRA ($r = 1024$); each in original and reverse order & 108 & 4 & \ref{sec:exp-task-order} \\
 \bottomrule
 \end{tabularx}

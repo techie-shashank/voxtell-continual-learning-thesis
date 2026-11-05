@@ -9,7 +9,8 @@
 
 % CLAUDE-DRAFT
 This appendix complements \cref{chap:experiments}.
-\Cref{sec:app-volumes} lists the volumes of the few-shot training sets and of the test sets, and \cref{sec:app-matrices} gives the evaluation matrix of every run reported in \cref{chap:experiments}, from which all metrics and all per-task values quoted there are computed.
+\Cref{sec:app-volumes} lists the volumes of the few-shot training sets and of the test sets, \cref{sec:app-params} the settings and parameters of all runs, \cref{sec:app-additional} the additional evaluations, and \cref{sec:app-matrices} gives the evaluation matrix of every run reported in \cref{chap:experiments}, from which all metrics and all per-task values quoted there are computed.
+\Cref{sec:app-shared-loss} shows the training loss of the first two tasks of shared LoRA.
 
 \section{Training and Test Volumes}
 \label{sec:app-volumes}
@@ -28,6 +29,61 @@ The test volumes are the same in every run.
 \input{tables/appA_volumes}
 \end{table}
 
+\section{Training and Strategy Parameters}
+\label{sec:app-params}
+
+% CLAUDE-DRAFT
+This section belongs to \cref{subsec:exp-config}.
+\Cref{tab:app-hparams} lists the training and evaluation settings that all runs share, and \cref{tab:app-strategy-params} the parameters of each strategy.
+Both tables are generated from the configuration files of the runs; the few values that are defaults of the code are checked against the code by the same script.
+
+% CLAUDE-DRAFT
+The software environment comprises PyTorch 2.8.0 with CUDA 12.6 and cuDNN 9.10.2, MONAI 1.5.2, nnU-Net 2.7.0, Transformers 4.57.6, NumPy 2.4.3 and NiBabel 5.4.2.
+% source: author's pip list / torch.version on the HPC environment "voxtell", 2026-10-22
+
+% CLAUDE-DRAFT
+Runs that reached the 24-hour limit of a job were continued from their last checkpoint.
+Continuing at a task boundary did not change the results: the reruns of sequential fine-tuning with 5, 10 and 20 volumes and in the reverse order reproduce every entry of the evaluation matrices of the earlier runs with the same configuration.
+Five runs of the comparison of the strategies and of the few-shot experiment were continued inside a task; from that point on, they draw training samples and patches in a different order, so they cannot be reproduced exactly from their configuration.
+% source: thesis_notes.md §2 Reproducibility (2026-10-26): best_validation matrices of the reruns vs the earlier runs (max |diff| 0); resumes inside a task in SLURM logs 1848498, 1848499, 1848503, 1849216, 1850677
+% source: code/src/training/utils.py (use_deterministic_algorithms with warn_only=True)
+
+\begin{table}[tb]
+\centering
+% CLAUDE-DRAFT
+\caption[Training and evaluation settings shared by all runs]{Training and evaluation settings shared by all runs (\cref{sec:method-setting-protocol,sec:method-adaptation}).}
+\label{tab:app-hparams}
+\input{tables/ch6_hparams}
+\end{table}
+
+\begin{table}[tbp]
+\centering
+% CLAUDE-DRAFT
+\caption[Parameters of the strategies]{Parameters of the strategies (\cref{sec:method-strategies}). Sequential fine-tuning has no parameters of its own. Bold: rank used in the comparison of the strategies; scaling factor $\gamma_r = \alpha/\sqrt{r}$ listed per rank. The weight ensemble of the distillation-based strategy is reported as an additional evaluation; the run of the prompt-tuning strategy without gradient scaling has the same parameters with the scale inactive.}
+\label{tab:app-strategy-params}
+\input{tables/ch6_strategy_params}
+\end{table}
+
+\section{Additional Evaluations}
+\label{sec:app-additional}
+
+% CLAUDE-DRAFT
+This section belongs to \cref{sec:exp-main,sec:exp-components}.
+\Cref{tab:ch6_components} gives the metrics of the additional evaluations; the parameters after the last epoch of the same runs are in \cref{tab:ch6_main}.
+
+\begin{table}[tb]
+\centering
+% CLAUDE-DRAFT
+\caption[Additional evaluations]{Additional evaluations (full training split, original task order, one run each). Best validation: parameters with the lowest validation loss; weight ensemble: the weight ensemble of the distillation-based strategy (\cref{sec:method-adaptation,subsec:method-distillation}). No scaling: the earlier run of the prompt-tuning strategy with the per-task gradient scale inactive, evaluated only at the checkpoint with the lowest validation loss (\cref{subsec:method-prompt}). Mean \gls{dsc}; $\uparrow$/$\downarrow$: higher/lower is better.}
+\label{tab:ch6_components}
+\input{tables/ch6_components}
+\end{table}
+
+% CLAUDE-DRAFT
+\Cref{tab:app-we-matrix} gives the evaluation matrix of the weight ensemble, from which its metrics in \cref{tab:ch6_components} are computed.
+
+{\captionsetup{list=no}\input{tables/appA_we_matrix}}
+
 \section{Evaluation Matrices of All Runs}
 \label{sec:app-matrices}
 
@@ -38,6 +94,22 @@ The diagonal entries, right after a task is trained, are set in bold; the last r
 Task abbreviations: LT lateral tibial cartilage, MT medial tibial cartilage, Fe femoral cartilage, Pa patellar cartilage, MM medial meniscus, LM lateral meniscus, Ctrl control task (lung in AeroPath).
 The runs are grouped by the experiment in which they first appear in \cref{tab:ch6_experiments}; a run that belongs to several experiments is listed once.
 Joint fine-tuning has a single stage, \emph{Joint}, after which all six structures are evaluated.
-All matrices are computed with the parameters after the last epoch, except that of the prompt-tuning run without gradient scaling, which was evaluated only at the checkpoint with the lowest validation loss (\cref{sec:exp-main}).
+All matrices are computed with the parameters after the last epoch, except that of the prompt-tuning run without gradient scaling, which was evaluated only at the checkpoint with the lowest validation loss (\cref{sec:exp-components}).
 
 \input{tables/appA_matrices}
+
+\section{Training Loss of Shared LoRA}
+\label{sec:app-shared-loss}
+
+% CLAUDE-DRAFT
+This section belongs to \cref{sec:exp-task-order}.
+\Cref{fig:app-shared-loss} shows the training loss per epoch of the first two tasks of shared LoRA, from which the values in the text are taken.
+
+\begin{figure}[tb]
+\centering
+\includegraphics{figures/appA_shared_lora_loss.pdf}
+% CLAUDE-DRAFT
+\caption[Training loss of the first two tasks of shared LoRA]{Mean training loss per epoch of the first two tasks of shared LoRA (full training split, one run each). First task: lateral tibial cartilage in the original order, lateral meniscus in the reverse order; second task: medial tibial cartilage and medial meniscus. Dashed line: start of the second task.}
+\label{fig:app-shared-loss}
+\end{figure}
+% source: scripts/plot_results.py (shared_lora_first_tasks_loss), run.log of tasks 1 and 2 of exp_20260926_095539_90e8b4e6 (r = 1024, original), exp_20260930_101141_5d80eb69 (r = 1024, reverse), exp_20260924_202757_88afb75d (r = 4, original)

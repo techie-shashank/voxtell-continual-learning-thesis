@@ -118,10 +118,10 @@ Few-shot conditions are $k = 5$, 10 and 20 labelled volumes per task, which we c
 % CLAUDE-DRAFT
 We pursue four objectives:
 \begin{enumerate}
-  \item Develop a few-shot continual-learning evaluation protocol for free-text promptable universal 3D medical image segmentation.
-  \item Compare continual-learning strategies under this protocol in terms of their adaptation and forgetting.
-  \item Investigate how the amount of labelled training data influences the evaluated strategies, separating the effect of fewer volumes from that of fewer updates.
-  \item Analyse how the task order, the \gls{lora} rank and the components of the strategies (replay, weight ensemble and gradient scaling, \cref{sec:intro-approach}) influence adaptation and forgetting.
+  \item Develop an evaluation protocol for adapting a free-text promptable universal 3D segmentation model to a sequence of tasks with few labelled volumes, which measures both the forgetting of earlier tasks and the loss of pretrained ability.
+  \item Compare continual-learning strategies with each other and with fine-tuning on each task in turn, in terms of adaptation and forgetting.
+  \item Investigate how the number of labelled volumes per task influences adaptation and forgetting, separating the effect of fewer volumes from that of fewer updates.
+  \item Analyse how the order of the tasks and the design choices within the strategies influence adaptation and forgetting.
 \end{enumerate}
 
 % ---------------------------------------------------------------------
@@ -134,7 +134,7 @@ These are the patellar, femoral, medial tibial and lateral tibial cartilage and 
 The tasks are trained in two task orders, an original order chosen at random and its reverse, to see whether the results depend on the order.
 The lung in the chest \gls{ct} volumes of AeroPath~\cite{støverud2023aeropathairwaysegmentationbenchmark} serves as a control task.
 It is not trained on and is used only to measure how much of the pretrained ability is kept.
-After each task, the model is tested on all six tasks and on the control task (\cref{sec:method-protocol}).
+After each task, the model is tested on all six tasks and on the control task (\cref{sec:method-setting-protocol}).
 
 % CLAUDE-DRAFT
 The baseline is sequential fine-tuning, which trains all parameters on each task and adds nothing to reduce forgetting.
@@ -143,20 +143,20 @@ Three strategies are based on \gls{lora}~\cite{hu2022lora}.
 The number of parameters of the adapter grows with its rank~$r$.
 Task-specific LoRA trains one adapter of rank $r = 4$ per task and selects it by the task identity at inference.
 Shared LoRA trains one adapter of rank $r = 1024$ for all tasks, and shared LoRA with replay adds a memory of training samples from earlier tasks.
-The distillation-based strategy (adapted from ZSCL~\cite{zheng2023preventingzeroshottransferdegradation}) trains all parameters and distils the features of the frozen pretrained model into the adapted one.
-Like ZSCL, it also keeps a weight ensemble, the running mean of the pretrained parameters and of parameter snapshots taken during training, which we evaluate separately.
 The prompt-tuning strategy (adapted from CPE-CLIP~\cite{D_Alessandro_2023}) freezes the pretrained weights and trains learned prompt tokens.
 It also trains a meta-net, a small network that shifts the encoded text prompt.
 The meta-net is our addition, inspired by CoCoOp~\cite{zhou2022cocoop}.
 Following CPE-CLIP, the gradients of the tokens and the meta-net are multiplied by a factor that decreases with the task index, which we call gradient scaling.
+The distillation-based strategy (adapted from ZSCL~\cite{zheng2023preventingzeroshottransferdegradation}) trains all parameters and distils the features of the frozen pretrained model into the adapted one.
+Like ZSCL, it also keeps a weight ensemble, the running mean of the pretrained parameters and of parameter snapshots taken during training, which we evaluate separately.
 Together, the strategies cover replay, regularisation and parameter-efficient adaptation, the three families of continual-learning methods for vision--language models~\cite[Sec.~4]{liu2026continuallearningvlmssurvey}.
 All strategies except task-specific LoRA use one parameter set for all tasks.
 
 % CLAUDE-DRAFT
 All strategies are trained with the full training split.
-Sequential fine-tuning, task-specific LoRA and shared LoRA are also trained with $k = 5$, 10 and 20 volumes per task, with one draw of volumes for each~$k$.
-With the training schedule of our experiments, a task with five volumes is trained with 50 updates, against 1{,}080 with the full training split.
-Further runs with $k = 5$ and 1{,}080 updates per task separate the effect of fewer volumes from that of fewer updates (\cref{subsec:exp-data}).\todo{defense: the research question names few-shot conditions, but the distillation-based and prompt-tuning strategies are run only with the full training split (D46)}
+Sequential fine-tuning, task-specific LoRA and shared LoRA are also trained with $k = 5$, 10 and 20 volumes per task.
+With a fixed number of epochs, fewer volumes also mean fewer updates.
+Further runs keep the number of updates of the full training split and so separate the two effects (\cref{subsec:exp-data}).\todo{defense: the research question names few-shot conditions, but the distillation-based and prompt-tuning strategies are run only with the full training split (D46)}
 
 % CLAUDE-DRAFT
 From the test results, we compute three primary metrics (\cref{sec:bg-metrics}).
@@ -172,21 +172,22 @@ It was run with the full training split and with each~$k$.
 
 % CLAUDE-DRAFT
 The study uses one model, one dataset for the tasks, one control task, one fixed text prompt per structure and one draw of training volumes per~$k$.
-Each configuration was trained once, so we estimate only the variability over the test volumes, using a bootstrap (\cref{subsec:exp-metrics}).
+Each configuration was trained once, so the only variability we can estimate is that over the test volumes (\cref{subsec:exp-metrics}).
 The conclusions are therefore limited to this setting (\cref{sec:disc-limitations}).
 Clinical deployment and studies with clinical users are outside the scope of this thesis, but we report the training cost of the strategies (\cref{sec:exp-compute}).
 
 % ---------------------------------------------------------------------
 \section{Contributions}
 \label{sec:intro-contributions}
-% Contributions decided by the author on 2026-10-26 (option A, thesis_notes.md §1).
+% Contributions decided by the author on 2026-10-26 (option A, thesis_notes.md §1); one per objective since 2026-11-01.
 
 % CLAUDE-DRAFT
 The contributions of this thesis are:
 \begin{enumerate}
-  \item An evaluation protocol for few-shot continual adaptation of a free-text promptable 3D segmentation model, which measures adaptation, forgetting within the task sequence and the loss of pretrained ability on a held-out control task, with the pretrained model and joint fine-tuning as reference points (\cref{sec:method-setting,sec:method-protocol}).
-  \item A systematic comparison of sequential fine-tuning and five strategies from the three families of continual learning for vision--language models, adapted to VoxTell, under one shared training configuration, with the full training split and, for three of them, with 5, 10 and 20 labelled volumes per task (\cref{sec:method-strategies,sec:exp-main,sec:exp-few-shot}).
-  \item An analysis of the factors that affect continual adaptation in this setting: the amount of labelled data separated from the number of updates, the task order, the LoRA rank and the components of the strategies (replay, weight ensemble, gradient scaling), together with a diagnosis of why task-specific LoRA did not learn patellar cartilage (\cref{chap:experiments}).
+  \item An evaluation protocol that tests the model on all tasks and on a held-out control task after each task, with the pretrained model and joint fine-tuning as reference points (\cref{sec:method-setting-protocol}).
+  \item A comparison of sequential fine-tuning and five continual-learning strategies adapted to VoxTell under one shared training configuration, together with a diagnosis of why task-specific LoRA did not learn patellar cartilage (\cref{sec:method-strategies,sec:exp-main,sec:exp-patellar}).
+  \item An analysis of the amount of labelled data with three of the strategies and joint fine-tuning, in which runs with five volumes and the number of updates of the full training split separate fewer volumes from fewer updates (\cref{sec:exp-few-shot}).
+  \item An analysis of two task orders, of the \gls{lora} rank, and of the weight ensemble and the gradient scaling adopted from ZSCL and CPE-CLIP (\cref{sec:exp-components,sec:exp-rank,sec:exp-task-order}).
 \end{enumerate}
 
 % CLAUDE-DRAFT
@@ -204,7 +205,7 @@ It ends with the gap that this thesis addresses.
 \Cref{chap:data} describes the SKM-TEA and AeroPath data, the tasks and the data splits.
 \Cref{chap:method} defines the evaluation protocol, the adaptation of VoxTell to one task and the strategies with their complexity.
 \Cref{chap:experiments} gives the experimental setup and the results.
-It compares the strategies and reports the experiments on the LoRA rank, the amount of labelled data, the task order and the strategy components, as well as the training cost.
+It compares the strategies and reports the experiments on the amount of labelled data, the LoRA rank, the task order, and the weight ensemble and gradient scaling, as well as the training cost.
 \Cref{chap:discussion} discusses the results across the experiments, answers the research question and states the limitations, and \cref{chap:summary} summarises the thesis.
 The appendix lists the training and test volumes (\cref{sec:app-volumes}) and gives the evaluation matrices of all runs (\cref{sec:app-matrices}).
 

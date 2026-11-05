@@ -4,16 +4,16 @@
 \toprule
 Strategy & Rank $r$ & Adapt.\,$\uparrow$ & Forg.\,$\downarrow$ & Ctrl.\ drop\,$\downarrow$ & Final\,$\uparrow$ & Transf.\,$\uparrow$ \\
 \midrule
-Task-specific LoRA & 4 & 0.485 & 0.000 & 0.000 & 0.485 & 0.129 \\
-Task-specific LoRA & 8 & 0.404 & 0.001 & 0.000 & 0.404 & 0.172 \\
+Task-specific LoRA & 4 & 0.485 & 0.000$^{\dagger}$ & 0.000$^{\dagger}$ & 0.485 & 0.129 \\
+Task-specific LoRA & 8 & 0.404 & 0.001$^{\dagger}$ & 0.000$^{\dagger}$ & 0.404 & 0.172 \\
 \addlinespace
-Shared LoRA & 4 & 0.607 & 0.546 & 0.978 & 0.152 & 0.045 \\
+Shared LoRA & 4 & \textbf{0.607} & 0.546 & 0.978 & 0.152 & 0.045 \\
 Shared LoRA & 32 & 0.570 & 0.499 & 0.978 & 0.154 & 0.114 \\
 Shared LoRA & 128 & 0.524 & 0.384 & 0.957 & 0.204 & 0.170 \\
 Shared LoRA & 256 & 0.503 & 0.337 & 0.832 & 0.222 & 0.173 \\
-Shared LoRA & 512 & 0.488 & 0.309 & 0.574 & 0.230 & 0.175 \\
-Shared LoRA & 1024 & 0.471 & 0.289 & 0.237 & 0.233 & 0.174 \\
-Shared LoRA & 2048 & 0.462 & 0.284 & 0.091 & 0.233 & 0.175 \\
+Shared LoRA & 512 & 0.488 & 0.309 & 0.574 & 0.230 & \textbf{0.175} \\
+Shared LoRA & 1024 & 0.471 & 0.289 & 0.237 & \textbf{0.233} & 0.174 \\
+Shared LoRA & 2048 & 0.462 & \textbf{0.284} & \textbf{0.091} & \textbf{0.233} & \textbf{0.175} \\
 \midrule
 Pretrained model &  & 0.114 & 0.000 & 0.000 & 0.114 & 0.137 \\
 \bottomrule

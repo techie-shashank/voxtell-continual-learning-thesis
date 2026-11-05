@@ -6,7 +6,7 @@
      compare_strategies.py      -> thesis/tables/cl_differences.csv (paired bootstrap of differences)
   4. make_results_tables.py     -> thesis/tables/ch6_*.tex
      make_setup_tables.py       -> thesis/tables/ch6_experiments.tex, ch6_hparams.tex, ch6_strategy_params.tex
-     make_appendix_tables.py    -> thesis/tables/appA_volumes.tex, appA_matrices.tex
+     make_appendix_tables.py    -> thesis/tables/appA_volumes.tex, appA_matrices.tex, appA_we_matrix.tex
   5. plot_results.py            -> thesis/figures/ch6_*.pdf
   6. make_compute_table.py      -> thesis/tables/compute.csv, ch6_compute.tex
   7. selected_epochs.py         -> thesis/tables/selected_epochs.csv
