@@ -37,7 +37,7 @@ GROUPS = [
     (["Task Order Ablation"], "Task order", "4", "sec:exp-task-order"),
     # Replay is reported with the comparison (Sec. 6.2) since 2026-11-04; the main row already reads
     # "Shared LoRA with and without replay".
-    (["Scaling Ablation"], "Weight ensemble and gradient scaling", "4", "sec:exp-components"),
+    # Weight ensemble and gradient scaling: reported in App. A since 2026-11-05 (author decision), no row here.
 ]
 # The single-task diagnosis (role "Convergence Diagnosis") is reported in Ch. 6 (decision 2026-10-22,
 # revising the earlier plan to put it in the Discussion). Order of the strategies as in Ch. 5.4.

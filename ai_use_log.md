@@ -643,3 +643,221 @@ Format: `YYYY-MM-DD | chapter/section | what was done (outline / feedback / expl
 2026-11-05 | Ch. 6.6 | text edit (author approved): order in the last-step claim matched to the evidence (control-task drop, then forgetting)
 2026-11-05 | Ch. 6.6 | text edit (author approved): training-loss paragraph states r = 1024, which second-task value belongs to which order, and the order of the r = 4 run
 2026-11-05 | Ch. 6.7 -> App. A, Ch. 1, 6.1, 6.2, 7, 8 | restructure (author decision): weight-ensemble and gradient-scaling section moved to App. A (markers kept), one-sentence pointer in 6.2, Table 6.1 row dropped (make_setup_tables.py), 6.1 factor list, App. A intro and matrices sentence, contribution 4 reworded (Ch. 1, Ch. 8, CLAUDE.md), Ch. 7 objective-4 question and answer, Ch. 8 component sentence cut
+2026-11-05 | Ch. 6.7 -> App. A.4, Ch. 1, 6.1, 6.2, 7, 8 | restructure (author decision): weight ensemble and gradient scaling moved to App. A.4 (text moved, opening adapted), one-sentence draft pointer in 6.2, contribution 4 and outline narrowed, Ch. 7/8 component results cut, Table 6.1 row dropped (make_setup_tables.py), App. A intro and matrix note updated; clean build
+2026-11-05 | whole thesis | check of the components move (all references, numbers, section numbers, contributions, abstract); references to App. A.4 added in Ch. 5 (l. 385) and Ch. 7 (l. 165)
+2026-11-05 | Ch. 5, Ch. 7 | text edit (author approved): main text keeps one pointer to App. A.4 (Sec. 6.2); orphaned scaling-ablation caveat removed from Ch. 7 l. 165, ensemble clause trimmed in l. 173, reference dropped in Ch. 5 l. 385
+2026-11-05 | Ch. 1 outline | text edit (author approved): patellar diagnosis added to the Ch. 6 sentence; appendix sentence lists all six appendix sections
+2026-11-05 | Ch. 1 | text edit (author approved): gradient-scaling and weight-ensemble sentences cut from the strategy paragraph (defined in Ch. 5, results in App. A.4); outline's appendix sentence names 'two components adopted from ZSCL and CPE-CLIP'
+2026-11-05 | Sec. 5.4, Sec. 6.7 | feedback: whether both sections are needed; overlap list, no edits
+2026-11-05 | Sec. 5.4, Sec. 6.7 | text edit (author approved): overlap removed; 5.4 drops measured claim and table description, 6.7 refers back to 5.4 for backward/forward pass, adapter-storage sentence cut
+2026-11-05 | Sec. 6.7 | feedback: section review (numbers checked against compute.csv, teacher CPU/GPU transfer against code) and proposed revision; no edits
+2026-11-05 | Sec. 6.7 | script (scratchpad, not in repo): measured validation time per epoch from SLURM logs 1844922-24; revised proposal uses existing strategy terms; no edits
+2026-11-05 | Sec. 6.7 (Computational Cost) | text edit (author approved): overlap/derived numbers cut, existing strategy terms; script: val_minutes column added to make_compute_table.py, compute.csv regenerated
+2026-11-05 | Ch. 7 l. 49, Ch. 8 l. 59 | text edit (author approved): undefined 'parameter-efficient strategies' replaced by 'task-specific and shared LoRA'
+2026-11-06 | Sec. 6.7 | text edit (author approved): 'taken from the logs of the runs' cut from the opening sentence
+2026-11-06 | Sec. 6.7 | text edit (author approved outline): table no longer read out in prose; topic sentence for the other-runs paragraph; conclusion relates measurements to Sec. 5.4
+2026-11-06 | Sec. 6.7 | text edit (author approved): repeated table reference cut from the comparison paragraph
+2026-11-06 | Sec. 6.7 | text edit (author approved): sentence on the superseded seq. FT run removed; defense point D58 added to tracker
+2026-11-06 | Sec. 6.7 | text edit (author approved): second-job/evaluations sentence removed
+2026-11-06 | Sec. 6.7, Table ch6_compute | script + text edit (author approved): Wall-clock column dropped (make_compute_table.py), caption and joint total hours trimmed; built
+2026-11-06 | Sec. 6.7 | text edit (author approved): sentence on distillation peak memory near the GPU limit removed
+2026-11-06 | Sec. 6.7, Table ch6_compute caption | text edit (author approved): caption tightened (parameter counts left to Sec. 5.2, 'wall-clock' and 'jobs' removed)
+2026-11-06 | Sec. 6.7, Table ch6_compute | script + text edit (author approved): replay row added to the compute table; few-shot, joint and replay sentences cut; checked dependants (Ch. 7 l. 165, Ch. 6 l. 68); built
+2026-11-06 | Sec. 6.1 l. 68 | text edit (author approved): job claim stated as 12 of 17 full-split runs in one job (compute.csv), reference to Sec. 6.7 removed
+2026-11-06 | Sec. 6.7 | text edit (author request): distillation and equal-updates sentences tightened, evaluation-spread sentences and repeated conclusion clause cut; defense point D59
+2026-11-06 | Sec. 6.7 | text edit: inference sentence moved from the conclusion to the evaluation paragraph (one-sentence paragraph avoided)
+2026-11-06 | Sec. 6.7 | text edit (author approved): evaluation paragraph removed, inference finding merged into the conclusion
+2026-11-06 | Sec. 6.7 | text edit (author approved): other-runs paragraph removed, opening adjusted; defense point D60
+2026-11-06 | Sec. 6.7 | text edit (author approved): conclusion paragraph removed; GPU-fit/inference sentence moved to the end of the comparison paragraph
+2026-11-06 | Sec. 6.7 | text edit (author request): grammar/flow pass; comparison point of 'cheaper' and causal link of the distillation sentence added
+2026-11-06 | Sec. 6.7 | text edit (author approved): opening sentence merged into the paragraph, table float moved after the heading; built
+2026-11-06 | Sec. 6.1, Sec. 6.7 | text edit (author request): GPU memory unit unified to GiB (logs report MiB, 40960 MiB = 40 GiB); source comment added
+2026-11-06 | Sec. 6.1, 6.7 | explanation: A100 memory unit checked against NVIDIA documents, nvidia-smi logs and JEDEC definition; defense point D61
+2026-11-06 | Ch. 7 | feedback: diagnosis review of the whole chapter against Ch. 1-6, results tables and paper notes (no edits)
+2026-11-06 | Ch. 7 (all sections) | text edits (author request 'fix all'): review issues fixed; Silva-Rodriguez Sec. 4.3.2 and SEER Table 1 checked in the PDFs; 4 new author todos; not built
+2026-11-06 | Ch. 7 (all sections) | language pass and cuts (author request): grammar, tier-1 insertions, repetitions removed, paragraphs reordered in 7.1 obj. 2 and split in 7.2; no content added; not built
+2026-11-06 | Ch. 7 opening | language fix (author request): semicolon, vague 'possible common cause', repeated 'discusses'; not built
+2026-11-06 | Ch. 7 opening | language fix (author question): redundant relative clause removed; not built
+2026-11-06 | Ch. 7 opening | explanation + language fix: undefined term 'training budget' in the chapter overview replaced by 'short training of ten epochs per task'; not built
+2026-11-06 | Sec. 7.1 opening | text edit (author approved): paragraph cut from 7 to 4 sentences, overall answer condensed to one sentence; not built
+2026-11-06 | Sec. 7.1 opening | text edit (author approved): reference to Sec. 1.3 and 'universal' added to the RQ restatement; not built
+2026-11-06 | Sec. 7.1 opening | language fix (author request): overall-answer sentence split in two, insertion removed, condition k = 5 stated; not built
+2026-11-06 | Sec. 7.1 opening | draft (author request): overall answer rewritten from the conclusions of Sec. 6.2, 6.4-6.6 (adaptation and forgetting rise and fall together; replay the exception); not built
+2026-11-06 | Sec. 7.1 opening | text edit (author request): overall answer condensed from 6 to 3 sentences; not built
+2026-11-06 | Ch. 7 | explanation/feedback (author question): role of Ch. 6 conclusions in the Discussion; restructuring of 7.1 suggested, no edits
+2026-11-06 | Sec. 7.1 | outline (author request): revision 3 proposed in outlines/ch7_discussion.md (objective answers without restating Ch. 6); no thesis edits
+2026-11-06 | Sec. 7.1 | draft (author approved outline rev. 3): objective answers rewritten in the order 1-4 without restating Ch. 6; ~1,600 -> ~950 words; not built
+2026-11-06 | Sec. 7.1 | text edit (author approved): flow fixes (joint reference no longer repeated, single answer in obj. 2, obj. 4 reordered with answer sentence, prior-work sentence moved); not built
+2026-11-06 | Sec. 7.1 | text edit (author approved): opening cut to two sentences (overall answer and scope sentence removed, covered by the objective answers, Sec. 7.3 and Ch. 8); obj. 3 sentence names its scope; not built
+2026-11-06 | Sec. 7.1 obj. 1 | text edit (author approved): paragraph tightened (objective wording from Ch. 1, pretrained-reference point restored, concrete answer, requirements sentence cut); not built
+2026-11-06 | Sec. 7.1 obj. 1 | text edit (author approved): result numbers replaced by qualitative statements with references to Ch. 6; not built
+2026-11-06 | Ch. 1, Sec. 1.3 and 1.5 | feedback (author question): review of objectives and contributions against Ch. 5-7; no edits
+2026-11-06 | Ch. 1 Sec. 1.3, 1.5; Ch. 7 obj. 1-2 | text edits (author approved): objectives 1-2 and contributions 3-4 reworded, Ch. 7 aligned, CLAUDE.md record updated; not built
+2026-11-06 | Ch. 1 Sec. 1.5 | text edit (author request): App. A components removed from contribution 4 again (decision 2026-11-05); feedback on keeping the patellar diagnosis; not built
+2026-11-06 | Ch. 1 Sec. 1.5 | language fix (author approved): contribution 1 reworded for readability; CLAUDE.md record updated; not built
+2026-11-06 | Ch. 1 Sec. 1.5 | text edits (author approved): contributions 1 and 4 reworded, novelty sentence added to the closing paragraph; objective 4 kept; CLAUDE.md record updated; not built
+2026-11-06 | Ch. 1 Sec. 1.5 | language fix (author approved): contribution 4 gives the rank range instead of 'seven ranks of shared LoRA'; not built
+2026-11-06 | Ch. 1 Sec. 1.3, 1.5 | language fix (author approved): objective 1 referent made explicit; contribution 3 purpose-first, parallel to contribution 4; CLAUDE.md record updated; not built
+2026-11-06 | Ch. 1 Sec. 1.5 | language fix (author approved): contribution 3 restructured (analysis as subject, 'by' clause); not built
+2026-11-06 | Sec. 7.1 obj. 1 | draft (author approved structure): what is established vs combined, two protocol limits, answer without 'where each arose'; not built
+2026-11-06 | Sec. 7.1 obj. 1 | language fix (author approved): vague 'parts' replaced by named measures and references; not built
+2026-11-06 | Ch. 7 | explanation (author question): answer to the research question summarised from Ch. 6/7; no edits
+2026-11-06 | Sec. 7.1 | draft (author approved outline): section restructured around questions (answer, why strategies differ, configuration and order, protocol); chapter opening and 7.2 reference adjusted; not built
+2026-11-06 | Sec. 7.1 | interview (D1-D6) and draft from the author's answers; section rewritten as discussion points; not built
+2026-11-06 | Ch. 7 Discussion | explanation: how to write the Discussion yourself (purpose, structure, guiding questions per objective, limitations mapping, pitfalls); no text drafted
+2026-11-06 | Sec. 7.1 | interview questions (20, grouped by objective) for a redraft of 7.1; no text drafted
+2026-11-06 | Sec. 7.1 | interview Q1-Q2: feedback on author's answer to the research question (checked against ch6_main.tex), suggested wording offered as option
+2026-11-06 | Sec. 7.1 | interview Q4: feedback on author's sharing/prompt-tuning answer (checked against ch6_main, ch6_rank, paper notes); explanation of a representation view
+2026-11-06 | Sec. 7.1 | interview Q6: feedback on author's joint-fine-tuning answer (checked against ch6_main, ch6_few_shot, Ch. 6 l. 291/405, paper notes SPU/ZSCL)
+2026-11-06 | Sec. 7.1 | interview Q6 settled (joint fine-tuning one sentence); recorded in thesis_notes
+2026-11-06 | Sec. 7.1 | interview Q8 settled (option c); recommendation on Q4a (representation view)
+2026-11-06 | Sec. 7.1 | interview Q4a settled (representation view); remaining questions 11/14/17/18 with data
+2026-11-06 | Sec. 7.1 | interview Q11/Q14 feedback, Q17 settled, Q18 comparison with MedPEFT-CL and Beyond Forgetting prepared from paper notes
+2026-11-06 | Sec. 7.1 | interview closed (Q11, Q14, Q18 settled); outline revision 4 proposed
+2026-11-06 | Sec. 7.1 | draft (outline rev. 4 approved, from author's interview answers Q1-Q18): section rewritten by theme; tracker D48 updated, D61-D62 added; not built
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: seven compaction edits approved by the author (repetition removed, universality merged into representation paragraph); backup backups/discussion_2026-11-06_before_7.1_compact.tex
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: representation paragraph shortened from 13 to 7 sentences (author approved proposed version)
+2026-11-06 | Sec. 7.1 (opening + representation paragraph) | language edit: grammar and flow (insertions between subject and verb removed, colon reveals split, referents checked)
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: CPE-CLIP content moved into the prompt-tuning paragraph, published-methods paragraph reduced to ZSCL (author approved)
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: prompt-tuning paragraph reordered, limit vs shared LoRA stated (author chose option b)
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: prompt-tuning paragraph restructured for clarity (author approved)
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: ZSCL comparison corrected to Transfer vs Transfer, Table 1b argument added (author approved)
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: prompt-tuning paragraph shortened, untested candidates removed (did not explain the difference to shared LoRA); author approved (a) only
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: few-shot paragraph removed, its methodological sentence moved into the opening (author approved)
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: placement half-sentence removed from prompt-tuning paragraph; task-order sentence restricted to the original order (author approved)
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: P2 reframed from representation view to what each strategy changes; prompt-tuning paragraph merged into P2 (author approved option A); notes and tracker D48, D61 updated
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: gap sentence repeating Ch. 1/2 replaced by one sentence with reference (author approved)
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: P2 dissolved: universality into opening, new paragraph on replay vs the two strategies that stay close to the pretrained model, ZSCL paragraph linked (author approved)
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: universality sentence removed from opening (moves to Summary); notes and tracker updated
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: opening, control-task sentences merged and reference point of 'further' made explicit (author approved)
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: replay-cost sentence removed (covered in 7.3/7.4), link sentence to the two stay-close strategies reworded as contrast with replay (author approved)
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: ZSCL paragraph shortened, repeated list and ablation replaced by references to Ch. 5.4.4 and Ch. 2 (numbers kept in parenthesis; author approved)
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: task-order paragraph shortened, joint-fine-tuning sentence removed from protocol paragraph (repetition of Ch. 6; author approved)
+2026-11-06 | Sec. 7.1 | draft/LaTeX edit: rank answer for Obj. 4 added, closing reading for replay/stay-close paragraph (Claude's suggestion, author instruction), linking openings for order and protocol paragraphs; notes, tracker D63
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: 'stay close' paragraph removed (Adaptation confound, repeats Ch. 6.2), MedPEFT-CL moved to opening, ZSCL opening adjusted; D63 deleted (author approved)
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: CPE-CLIP sentence added, linking opening for the published-methods paragraph, referent fixed in protocol paragraph (author approved)
+2026-11-06 | Sec. 7.1 opening | language/flow edit: comparison point of 'similar Adaptation' named, MedPEFT-CL claim made precise (Table 8 checked), links to control task and few-shot, condition added to the few-shot comparability claim
+2026-11-06 | Sec. 7.1 opening | language edit: the four strategies named instead of 'one parameter set'; control-task sentence as 'every strategy except task-specific LoRA' (author approved)
+2026-11-06 | Sec. 7.1 opening | language/flow rewrite on author request (no content removed): pattern -> exceptions with numbers -> prior work -> limit -> control task -> few-shot topic sentence -> consequence -> scope
+2026-11-06 | Sec. 7.1 opening | language edit: two repetitive few-shot sentences merged (author approved)
+2026-11-06 | Sec. 7.1 opening | language edit: comparability sentence reduced to the implication (confound already in Ch. 1, 5, 6; author approved)
+2026-11-06 | Sec. 7.1 | LaTeX/text edit: CPE-CLIP sentence deleted, ZSCL paragraph opening simplified (author decision); tracker D64 added
+2026-11-07 | Sec. 7.2 | feedback: whether Sec. 7.2 (training budget) is needed; overlap with 7.1, 7.3, Ch. 6; options keep / shrink / fold into 7.3
+2026-11-07 | Sec. 7.2/7.3, Ch. 6, Ch. 8 | LaTeX/text edit: Sec. 7.2 folded into first limitation of 7.3 (draft, author approved), references retargeted
+2026-11-07 | Sec. 7.1, 7.3 | feedback: cut candidates (repetitions with 7.1/7.3/Ch. 2/App. A, low-value threats)
+2026-11-07 | Sec. 7.1, 7.3, App. A.2 | LaTeX/text edit: cut list applied (repetitions removed, two logging caveats moved to App. A.2; author approved all)
+2026-11-07 | Sec. 7.3 | explanation: learning rate in the 50-epoch patellar run (eta_0 unchanged, decay stretched; checked config and optimizer.py)
+2026-11-07 | Sec. 7.3 | LaTeX/text edit: 50-epoch confound wording (author's choice); explanation/check of the task-specific LoRA run pair (configs, eval matrices, seed order in code)
+2026-11-07 | Sec. 7.3 | feedback: single-run paragraph needed; proposed tightening (signpost cut, caveat sentence shortened)
+2026-11-07 | Sec. 7.3 | feedback: suitability of the task-specific LoRA run pair as example of run-to-run variation (lower bound)
+2026-11-07 | Sec. 7.3, Sec. 6.6 | LaTeX/text edit: single-run paragraph rewritten (author approved); GPU non-determinism clause removed in Ch. 6
+2026-11-07 | Sec. 7.3 | feedback: verified best-validation sentence (cl_differences.csv, method.tex l. 211, Ch. 6 l. 203-204)
+2026-11-07 | Sec. 7.3, 7.4 | LaTeX fix: checkpoint sentence now gives values with direct table refs; adapter-size ref -> tab:ch6_compute; Ch. 7 number-vs-reference check
+2026-11-07 | Sec. 7.3 | draft: replay-cost sentence shortened, clause on extra updates added (author approved suggestion)
+2026-11-07 | Sec. 7.3, Sec. 6.2 | draft/LaTeX edit: internal-validity paragraph rewritten (checkpoint rule reverses distillation vs seq. FT forgetting order; author approved); Ch. 6 caveats added
+2026-11-07 | Sec. 7.3, 7.4 | LaTeX/text edit: replay-cost sentence removed from 7.3, epoch time added to 7.4 replay cost sentence (author approved)
+2026-11-07 | Sec. 7.3 | LaTeX/text edit: adaptations sentence shortened, refs to Sec. 5.3 subsections (author approved)
+2026-11-07 | Sec. 7.3 | LaTeX/text edit: task-specific LoRA by-construction sentence removed (author approved)
+2026-11-07 | Sec. 7.3 | LaTeX/text edit: paragraphs regrouped by subject (protocol, internal, strategies, data); three topic sentences new (author approved)
+2026-11-07 | Sec. 7.3 | LaTeX/text edit: strategies-paragraph topic sentence reworded (author approved)
+2026-11-07 | Sec. 7.3 (+Ch. 1, 2, 4, 5) | explanation/check: VoxTell checkpoint version (HF card, README, download script); consequences listed, no thesis edits
+2026-11-07 | Ch. 4/5/7 (control task, data) | check: VoxTell v1.1 training data via HF card and GitHub issues #6, #13, #15, #17 (web-fetch agent); facts recorded in thesis_notes, no thesis edits
+2026-11-07 | Ch. 4, 5, 7 + bib | LaTeX/text edit: v1.1 training-data corrections (minimal fix, author approved); bib: two @online entries added by bib-entry-adder (issue #15, HF model card)
+2026-11-07 | bib | LaTeX fix: issue #15 URL linked to the comment; build checked (no undefined refs/citations)
+2026-11-07 | bib | LaTeX fix: model card entry given label Hug26 and sorttitle (no author on the card); rebuilt, no undefined refs
+2026-11-07 | Sec. 7.3 | LaTeX/text edit: orientation sentence shortened, consequence added (author approved)
+2026-11-07 | Sec. 7.3 | LaTeX/text edit: data paragraph reordered, topic sentence and v1.1 link reworded (author approved)
+2026-11-07 | Sec. 7.2 | feedback + LaTeX/text edit: cross-chapter repetition check; R1-R5 applied (budget merge, SEER -> ref to Ch. 2, intransigence shortened, other strategies -> MedCRP-CL clause, single-run sentences merged), R6 kept (author: best call)
+2026-11-07 | Sec. 5.1 | LaTeX/text edit: duplicate trained-once sentence removed (author approved); Ch. 1 l. 173 noted for final revision
+2026-11-07 | Sec. 7.1 | feedback + LaTeX/text edit: repetition check both directions; ZSCL ablation numbers replaced by ref to Ch. 2 (author approved); Ch. 8 example alignment noted
+2026-11-07 | Sec. 7.2 | language edit: grammar/flow pass (tier-1 insertions removed, long sentences split, internal-validity paragraph reordered, alpha/dropout consequence added)
+2026-11-10 | Sec. 7.3 | language edit: grammar/clarity/flow pass (repeated pretrained DSC cut, long sentences split, ordinal list of extensions regrouped into two paragraphs, alpha/gamma_r wording)
+2026-11-10 | Sec. 7.3 | language edit: formal/academic register pass (informal phrases replaced, 'LoRA failures' and 'large loss' made precise, SPU reference to Sec. 2 instead of unverified paraphrase)
+2026-11-10 | Sec. 7.3 | language edit: opening sentence register ('The numbers of' -> 'The quantitative results reported in')
+2026-11-10 | Sec. 7.3 | feedback: structure check against outline rev. 2 and interview decisions (thesis_notes 2026-10-24 items 7-9); no edits
+2026-11-10 | Sec. 7.3 | LaTeX/text edit: two author-confirm todos removed after approval; outline file updated to current Ch. 7 structure
+2026-11-10 | Sec. 7.3 | fact check + LaTeX/text edit: six lines corrected against code, Ch. 5/6 and tables (hypothesis condition, replay samples not volumes, 'both' forgetting and drop, task-specific adapter init as test, few-shot runs of other strategies, shared-LoRA last-step sentence)
+2026-11-10 | Sec. 7.3 | feedback: repetition check of 7.3 against 7.1 and 7.2; cuts proposed, no edits
+2026-11-10 | Sec. 7.3 | LaTeX/text edit: repetition cuts approved by author (scope sentence merged, forgetting claim -> ref to 7.1, tuning remedy, hypothesis wording, last-step clause)
+2026-11-10 | Sec. 7.3 | LaTeX/text edit: flow repair after cuts (opening linked to end of 7.2, hypothesis restated once, replay transition, extension paragraphs split consistently, verb agreement)
+2026-11-10 | Sec. 7.3 | outline: new outline proposed after reading Ch. 1-6 (no edits)
+2026-11-10 | Ch. 7 | outline: diagnosis of current Ch. 7 and full redraft outline (revision 5) proposed after rereading Ch. 1-6 and App. A; written to outlines/ch7_discussion.md, no thesis edits
+2026-11-10 | Ch. 7 | outline: structure decisions recorded (revision 5b: three sections kept, ceiling reading, no figure, no table); paragraph-level change list for the redraft given, no thesis edits
+2026-11-10 | Ch. 7 | feedback: critique of own revision-5b outline vs current Ch. 7 prose (strengths, risks of the ceiling reading), no thesis edits
+2026-11-10 | Ch. 7 | feedback: cost-benefit of the 7.1 rewrite vs minimal fix, options given, no thesis edits
+2026-11-10 | Sec. 7.3 | feedback + outline: diagnosis of Sec. 7.3 and rewrite outline proposed; 7.1 rewrite put on hold by the author; no thesis edits
+2026-11-10 | Sec. 7.3 | outline approved by author; recommendations for Q1-Q4 and feedback on the author's future-work point (coverage, wording, citation of nested learning), no thesis edits
+2026-11-10 | Sec. 7.3, Ch. 8 | draft: Sec. 7.3 redrafted from the approved outline (CLAUDE-DRAFT); Ch. 8 practical paragraph moved into 7.3 and replaced by a pointer; bib entry behrouz2025nestedlearning added via bib-entry-adder; paper_notes/nested_learning.md written
+2026-11-10 | Sec. 7.3 | feedback: repetition check of the redrafted 7.3 against 7.1 and 7.2; cuts proposed, no edits
+2026-11-10 | Sec. 7.3 | LaTeX/text edit: repetition cuts approved by the author (12 items: scope, Chen merge, task-order and single-run sentences, hypothesis merged into tests, task-kind merge, replay clauses, updates point, extension opening, MedCRP-CL, replay reason, intervals clause)
+2026-11-10 | Sec. 7.3 | language edit: first paragraph (formal register, grammar, flow) on author request
+2026-11-10 | Sec. 7.3 | text edit: prior-work paragraph shortened on author approval (CA-SAM sentence removed, Chen et al. and replay sentences merged)
+2026-11-10 | Sec. 7.3 | text edit: task-kind paragraph removed (covered by 7.2 and the extension); same-images point merged into the evaluation extension, on author approval
+2026-11-10 | Sec. 7.3 | text edit: practical-use paragraph removed (facts in Ch. 5/6), closed-set point moved into the main-extension paragraph, planning paragraph opening adjusted, on author approval
+2026-11-10 | Sec. 7.3, Ch. 8 | text edit: planning paragraph removed (repetition of 7.1/7.2/Ch. 6/Ch. 8), update-budget recommendation added to the training extensions, Ch. 8 pointer restored, on author approval
+2026-11-10 | Sec. 7.3 | language edit: prior-work paragraph (formal register, grammar, flow; replay claims matched to Ch. 2) on author request
+2026-11-10 | Sec. 7.3 | text edit: main-extension opening corrected (condition 'in the comparison of the strategies', 'one parameter set for all tasks' instead of 'without the task identity'), on author approval
+2026-11-10 | Sec. 7.3 | text edit: task-specific LoRA sentence corrected to match the code (adapter selected by the task identity given by the protocol; derivation from the text prompt stated as a possibility), on author approval
+2026-11-10 | Sec. 7.3 | text edit: MoE-Adapters sentences merged, misassignment detail cut (in Ch. 2), on author approval
+2026-11-10 | Sec. 7.3 | language edit: nested-learning sentence split, 'a recent proposal' removed, on author approval
+2026-11-10 | Sec. 7.3 | language edit: replay sample-selection sentence clarified (random draw vs selection by training difficulty), on author approval
+2026-11-10 | Sec. 7.3 | text edit: MoE-Adapters sentence shortened (mechanism detail cut, in Ch. 2), on author approval
+2026-11-10 | Sec. 7.3 | language edit: main-extension paragraph (formal register, connectives, sentence splits) on author request
+2026-11-10 | build | LaTeX fix: full latexmk build run on author request; behrouz2025nestedlearning now resolves (stale .bbl from 2026-11-07 was the cause)
+2026-11-10 | Sec. 7.3 | text edit: training-extension sentences condensed (tuning vs rank selection separated and corrected; few-shot-runs sentence and update-budget recommendation removed as repetition of 7.2, Ch. 5, Ch. 8), on author approval
+2026-11-10 | Sec. 7.3 | text edit: evaluation-extension paragraph condensed (control-task sentences merged, other-models sentence removed as covered by the first paragraph), on author approval
+2026-11-10 | Sec. 6.6, 7.3, Ch. 8 | text edit: open task-order question reworded to "lateral meniscus itself or the tasks trained before it" (was structure vs position), consistently in three places, on author approval
+2026-11-10 | Sec. 7.3 | text edit: checkpoint-v1.0 extension removed (author: option 2); broader-control-task sentence kept
+2026-11-10 | Ch. 7 | feedback: full chapter read against Ch. 6 tables, Ch. 2, notes and guidelines; issue list and pass verdict (no edits to the thesis)
+2026-11-10 | Ch. 7 (7.1, 7.2, 7.3), Ch. 8 l. 54 | text edit: review fixes on author request ('fix all except 3'): metric coupling, few-shot answer, task-specific LoRA by construction, gamma_r, rsLoRA and CPE-CLIP comparison, second explanation next to zero-init, MedCRP-CL wording, Chen et al. caveat, nested-learning reason, universality hedge, equal-updates extension (draft, CLAUDE-DRAFT)
+2026-11-10 | Sec. 7.1 para 1 | text edit: flow and length (claim, metric caveat, Final Performance trade-off, two exceptions), on author approval
+2026-11-10 | Sec. 7.1 para 1 | text edit: metric-coupling caveat removed, trade-off stated in Final Performance only (concision), on author request
+2026-11-10 | Sec. 7.1 para 1 | text edit: replay definition clause removed (defined in Sec. 5.3), on author request
+2026-11-10 | Sec. 7.1 | text edit: numbers repeated from Ch. 6 removed (answer, task-order paragraphs), protocol paragraph keeps the two diverging pairs; flow and grammar pass, 'prompts' -> 'learned prompts' (terminology), on author request
+2026-11-10 | Sec. 7.1 para 1, task-order para | text edit: answer reframed on author approval (full-split trade-off; no run with one parameter set and current-task data above Final Performance 0.233 in the original order; joint k = 5 reference; two exceptions with their cost); reverse-order exception added
+2026-11-10 | Sec. 7.1 para 1 | text edit: split into trade-off and exceptions paragraphs, joint line states what it adds (one parameter set holds all six structures), readability, on author approval
+2026-11-10 | Sec. 7.1 para 1 | text edit: two opening sentences merged into one, on author request
+2026-11-10 | Sec. 7.1 paras 1-2 | text edit: language pass (formal register, no insertions between subject and verb, hedged inference 'suggests'), on author request
+2026-11-10 | Sec. 7.1 para 1 | text edit: joint fine-tuning sentences merged into one, on author request
+2026-11-10 | Sec. 7.1 para 1 | text edit: joint sentence now states the ruled-out explanations (model, number of volumes) instead of the obvious conclusion, on author question
+2026-11-10 | Sec. 7.1 para 1 | text edit: joint fine-tuning sentence removed (author: obvious; VoxTell is universal, seq. FT k = 5 already learns each structure)
+2026-11-10 | Sec. 7.1 paras 1-3, Sec. 7.3 para 2 | text edit: answer verified against eval matrices and rewritten (end-of-sequence content, explicit answer first in para 2, Beyond Forgetting agreement, new control-task paragraph scoped to the comparison); 7.3 replay sentence reduced to Lifelong nnU-Net (Beyond Forgetting now in 7.1), on author approval
+2026-11-10 | Sec. 7.1 paras 1-2 | text edit: numbers repeated from Ch. 6 removed (0.781, 0.450); only the synthesised 0.233 kept, on author request
+2026-11-10 | Sec. 7.1 para 2 | text edit: three sentences on the two exceptions folded into the opening sentence (5 -> 3 sentences), on author request
+2026-11-10 | Sec. 7.1 para 2 | text edit: repeated descriptions of replay and task-specific LoRA removed (one sentence per strategy: mechanism, effect, cost), on author request
+2026-11-10 | Sec. 7.1 few-shot para | text edit: equal-updates sentences merged, 'less trained model' reading left to Ch. 6.4, on author question
+2026-11-10 | Sec. 7.1 few-shot para | text edit: scope sentence removed (covered by Sec. 7.2), on author question
+2026-11-10 | Sec. 7.1 | text edit: paragraph order (ZSCL, CPE-CLIP after order and rank), order/rank paragraph split, protocol paragraph placed relative to SPU, CA-SAM, SAM-Med3D-MoE, 'because' -> 'as'; feedback: interpretations of the few-shot results listed for the author
+2026-11-10 | Sec. 7.1 few-shot para, Sec. 7.2 | text edit: interpretations B (LoRA strategies need more updates, Silva-Rodriguez et al. moved here from 7.2) and D (fewer updates move seq. FT along the trade-off, trained tasks only) added on author choice
+2026-11-10 | Sec. 7.1 few-shot para | text edit: trade-off contrast for seq. FT removed (covered by para 1), seq. FT fact stated before its explanation, Silva-Rodriguez comparison numbers dropped (7 -> 5 sentences), on author request
+2026-11-10 | Sec. 7.1 task-order para | text edit: reverse-order sentence shortened to the exception to the 0.233 statement, on author question
+2026-11-10 | Sec. 7.1 | text edit: CPE-CLIP paragraph removed (rested on appendix-only gradient-scaling results; decision 2026-11-05), on author question
+2026-11-10 | Sec. 7.1 protocol para | text edit: divergence shown with within-metric pairs (shared LoRA r = 1024 vs 2048; seq. FT k = 20 vs full split) instead of single-run cross-metric values; SPU/CA-SAM/SAM-Med3D-MoE sentence compressed, on author question
+2026-11-10 | Sec. 7.2 | text edit: limits of the 7.1 answer added (grouping after the results, Final Performance includes the last task, 0.233 from single runs), first limitation split (configuration and confounds / LoRA slow-start hypotheses), checkpoint passage shortened, semicolon split, on author approval
+2026-11-10 | Sec. 7.1 rank para, Sec. 7.2 slow-start para | text edit: repetitions between 7.1 and 7.2 removed (gamma_r confound as half-clause in 7.1; few-shot no-learning case only referenced in 7.2), on author approval
+2026-11-11 | Sec. 7.2 slow-start para | text edit: language made formal and precise (colon reveal split, 'is open'/'did not help'/'candidate' replaced, 'full fine-tuning' replaced by the shared configuration, rank stated, empty-prediction claim narrowed since shared LoRA's first task reached 0.29), on author request
+2026-11-11 | Sec. 7.2 slow-learning and 'Second' paras | text edit: paragraph focus (closing sentence on what the slow learning means for LoRA's Adaptation; gamma_r sentence tied to the r = 4 vs 1024 difference; vague 'different seeds' clause cut; last sentence split), on author approval
+2026-11-11 | Sec. 7.2 slow-learning para | text edit: shortened from 10 to 5 sentences for page budget (evidence for/against each hypothesis cut, observations remain in Ch. 6), on author approval
+2026-11-11 | Sec. 7.2 'Second' para | text edit: example and conclusion shortened (Ch. 6 numbers removed, point now that an interval excluding zero does not prove an effect), shared-LoRA caveat reworded as no repeated configuration, on author approval
+2026-11-11 | Sec. 7.2 | text edit: paragraph on the limits of the 7.1 answer removed (repeated 7.1 and the 'Second' para); post-hoc grouping moved as one sentence into the threats paragraph ('Four further threats'), on author approval
+2026-11-11 | Sec. 7.2 'Third' para | text edit: language made formal and precise (terms 'full training split'/'original task order', subject-first sentence, vague 'same holds' replaced, two wording sentences merged; 'pretrained VoxTell is sensitive to the wording' corrected to match Ch. 2: robust but not completely), on author request
+2026-11-11 | Sec. 7.2 | text edit: flow between paragraphs (slow-learning para linked to the shared configuration; protocol para marked as 'further'; text-prompt sentence moved after the scope sentence; multiple-comparisons sentence moved to the end of 'Second'), on author approval
+2026-11-11 | Sec. 7.2 'Third' para | text edit: text-prompt robustness sentence simplified (ambiguous relative clause removed), on author approval
+2026-11-11 | Sec. 7.2 protocol-limits para | text edit: control-task sentences merged (pretrained DSC 0.98 and repeated 'four test volumes' cut), on author approval
+2026-11-11 | Sec. 7.2 protocol-limits para | text edit: test-volume and label-origin points split into two sentences, on author approval
+2026-11-11 | Sec. 7.2 | text edit: 'strategies not evaluated' paragraph moved after 'Third' (scope); overview sentence on the remaining limitations added, on author approval
+2026-11-11 | Sec. 7.2 threats para | text edit: post-hoc grouping sentence removed ('Three further threats'); defense point kept in tracker; explanation of Ch. 5.3 alternatives sentence, on author request
+2026-11-11 | Sec. 7.3 prior-work para | text edit: language made formal and concise (Chen numbers cut, caveat shortened, formulaic closing replaced; replay claim scoped to strategies with one parameter set, as in 7.1), on author request
+2026-11-11 | Sec. 7.3 prior-work para | text edit: 'preprint' remark removed, 'two tasks' moved into the setting description, on author approval
+2026-11-11 | Sec. 7.1, 7.3 | text edit: Lifelong nnU-Net replay agreement moved from 7.3 into the 7.1 prior-work sentence (3D verified in paper notes); 7.3 paragraph now only on Chen et al., on author approval
+2026-11-11 | Sec. 7.3 main-extension para | text edit: topic sentence states the goal (no task identity, pretrained ability kept); replay sentences linked to it (closest among evaluated strategies) and merged, on author approval
+2026-11-11 | Sec. 7.3 main-extension para | text edit: repetitions removed (7.1 recap in one sentence, MedCRP-CL grouping referenced to 7.2, rephrased-prompt point once) and language made formal (fronted 'Judged by', vague 'serve', 'however' between subject and verb), on author approval
+2026-11-11 | Sec. 7.3 extension paras | text edit: language made formal and precise ('slow start' -> 'slow learning' as in 7.2; two long sentences split; purpose of per-strategy tuning stated; 'ranks' instead of 'configurations'; 'Further extensions' not repeated; 'wording' replaced; comparison with the lung made parallel), on author request
+2026-11-11 | Sec. 7.3 | text edit: replay extension moved out of the main-extension paragraph into its own paragraph ('came closest to this goal' framing dropped), on author instruction
+2026-11-11 | Sec. 7.3 training extensions para | text edit: shortened from 8 to 4 sentences (extensions that only invert a 7.2 limitation listed in one sentence; tests of the two LoRA explanations kept), on author approval
+2026-11-11 | Ch. 7 review | feedback: whole chapter reviewed; RQ one-line answer drafted, then withdrawn as repetition of 7.1 (belongs in Ch. 8); text edit: 7.3 scope 'In the comparison of the strategies', 7.2 'strategies' -> 'methods', on author approval
+2026-11-11 | Sec. 7.1 few-shot para | text edit: seq. FT k = 5 kept the control task added (D65, first part), the three observations explained by the equal-updates runs named explicitly, on author approval
+2026-11-11 | Ch. 8 Summary | outline (rev. 2) after reading Ch. 1-7, approved by the author; draft: whole chapter rewritten (8 paragraphs, ~1,060 words, all % CLAUDE-DRAFT), on author request
+2026-11-11 | Ch. 1 Sec. 1.4, Ch. 8 para 1 | text edit: control task 'not trained on during the adaptation' (AeroPath is in the training data of checkpoint v1.1), on author approval
+2026-11-11 | Ch. 8 paras 3-6 | text edit: sentences copied from Sec. 7.1 reworded (few-shot para led by the equal-updates result; rank and protocol sentences rephrased), content unchanged, on author approval
+2026-11-11 | Ch. 8 | text edit: review fixes (few-shot scope 'other two strategies run with few volumes'; referent of the 0.233 sentence; paragraph 3 opens with the answer to the research question; protocol topic sentence covers both examples; 'main reason'; VoxTell cited at first mention), on author approval

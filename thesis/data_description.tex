@@ -79,7 +79,8 @@ Data collection was approved by the regional ethics committee, and the patients 
 The dataset is distributed under the Creative Commons Attribution 4.0 licence~\cite{aeropath_zenodo}.
 AeroPath provides the control task, for which we use only the lung label of each volume, with the text prompt ``lung''.
 Neither the publication nor the dataset repository or the Zenodo record documents how the lung labels were created, so it is unknown whether they are manual or automatic references.
-AeroPath is not part of VoxTell's training data~\cite[Suppl.~Table~7]{rokuss2025voxtellfreetextpromptableuniversal}, whereas ``lung'' is a VoxTell training label in 3{,}427 training cases~\cite[Suppl.~Table~10]{rokuss2025voxtellfreetextpromptableuniversal}.
+% source: github.com/MIC-DKFZ/VoxTell/issues/15 (maintainer comment 2026-10-02: 'Datasets added in v1.1' lists AeroPath), checked 2026-11-07
+AeroPath was a held-out test set in the VoxTell paper~\cite[Suppl.~Table~7]{rokuss2025voxtellfreetextpromptableuniversal}, but it is among the sources added to the training data of checkpoint v1.1, which we use~\cite{rokuss2026voxtellissue15}; ``lung'' is a VoxTell training label in 3{,}427 training cases~\cite[Suppl.~Table~10]{rokuss2025voxtellfreetextpromptableuniversal}.
 
 % ---------------------------------------------------------------------
 \section{Data Splits and Few-Shot Subsets}

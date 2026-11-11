@@ -14,16 +14,16 @@ This is my master's thesis at the Pattern Recognition Lab (LME), FAU Erlangen-N�
 How do different continual-learning strategies trade off adaptation performance and catastrophic forgetting when adapting free-text promptable universal 3D medical image segmentation models under few-shot conditions?
 
 **Objectives** (as in Ch. 1, Sec. 1.3; reworded 2026-11-01: questions in terms known by Sec. 1.3, no terms that Sec. 1.4 introduces)
-1. Develop an evaluation protocol for adapting a free-text promptable universal 3D segmentation model to a sequence of tasks with few labelled volumes, which measures both the forgetting of earlier tasks and the loss of pretrained ability.
-2. Compare continual-learning strategies with each other and with fine-tuning on each task in turn, in terms of adaptation and forgetting.
+1. Develop an evaluation protocol for the setting of the research question that measures adaptation, the forgetting of earlier tasks and the loss of pretrained ability separately (reworded 2026-11-06: adaptation added, setting no longer repeated).
+2. Compare continual-learning strategies with each other and with fine-tuning on each task in turn, and determine how they trade adaptation against forgetting (reworded 2026-11-06: tied to the research question).
 3. Investigate how the number of labelled volumes per task influences adaptation and forgetting, separating the effect of fewer volumes from that of fewer updates.
 4. Analyse how the order of the tasks and the design choices within the strategies influence adaptation and forgetting.
 
 **Contributions — FINAL** (decided 2026-10-26, option A: descriptive, one per objective; reworded 2026-11-01: four items, each saying what was delivered and how, in the terms of Sec. 1.4; wording as in Ch. 1, Sec. 1.5). Findings belong in Ch. 6–8 with their caveats, not in the contributions.
-1. An evaluation protocol that tests the model on all tasks and on a held-out control task after each task, with the pretrained model and joint fine-tuning as reference points.
+1. An evaluation protocol that measures the loss of pretrained ability separately from the forgetting of earlier tasks, through a held-out control task, with the pretrained model and joint fine-tuning as reference points (reworded 2026-11-06: states what the protocol makes possible).
 2. A comparison of sequential fine-tuning and five continual-learning strategies adapted to VoxTell under one shared training configuration, together with a diagnosis of why task-specific LoRA did not learn patellar cartilage.
-3. An analysis of the amount of labelled data with three of the strategies and joint fine-tuning, in which runs with five volumes and the number of updates of the full training split separate fewer volumes from fewer updates.
-4. An analysis of two task orders and of the LoRA rank (reworded 2026-11-05: weight ensemble and gradient scaling moved to App. A, Sec. 6.2 points there; replay is reported with the comparison in Sec. 6.2 since 2026-11-04).
+3. An analysis of how the amount of labelled data affects adaptation and forgetting, with three of the strategies and joint fine-tuning, which separates fewer volumes from fewer updates by training on five volumes with as many updates as on the full training split (reworded 2026-11-06).
+4. An analysis of how the task order and the rank of the LoRA adapters affect adaptation and forgetting, with two task orders and ranks from r = 4 to r = 2048 (reworded 2026-11-06: purpose first, scope brief; objective 4 kept, 'number of trainable parameters' rejected because rank and gamma_r are confounded; App. A components not a contribution, as decided 2026-11-05, since appendix-only; replay is reported with the comparison in Sec. 6.2 since 2026-11-04).
 
 Every objective must be addressed in the Method or Experiment & Results chapters, and every final contribution must be supported by the results.
 
@@ -68,7 +68,7 @@ Chapters 1 and 2 (current text) are the author's notes, not drafts (decision 202
 | 5 | Method | `thesis/method.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`, 2026-10-21; restructured 2026-10-31, `outlines/ch5_method.md` v2: 5.1 Evaluation Protocol, 5.2 Adapting VoxTell to One Task, 5.3 strategies, 5.4 complexity) — author rewrite pending |
 | 6 | Experiment & Results | `thesis/experiment_results.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`; switched to the reruns 2026-10-26) — author rewrite pending. Appendix A drafted (38 runs) |
 | 7 | Discussion | `thesis/discussion.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`, 2026-10-24; switched to the reruns 2026-10-26) — author rewrite pending |
-| 8 | Summary | `thesis/summary.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`, 2026-10-24; switched to the reruns 2026-10-26) — author rewrite pending |
+| 8 | Summary | `thesis/summary.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`; rewritten 2026-11-11 from `outlines/ch8_summary.md` rev. 2) — author rewrite pending |
 
 Structure decisions (provisional, to confirm with the supervisor):
 - **Method** is a separate chapter, although the supervisor's outline doesn't list one: the chair requires a practical part with algorithms, pseudocode and complexity, and this needs its own place.
@@ -321,7 +321,7 @@ Provisional choices; change them here if I decide otherwise, then apply everywhe
 - **primary / secondary metrics** — primary: Adaptation, Final Forgetting, control-task drop; secondary: Final Performance, Transfer. ZSCL's Avg. is not reported and is named only by ZSCL's own term, not as "Average Performance" (decided 2026-10-22; name 2026-11-02)
 - **DSC** — Dice similarity coefficient (`\gls{dsc}`), not "Dice score". Own results as fractions with three decimals (0.979); values quoted from a paper keep that paper's % form (10.72 %)
 - **background shift** — in continual segmentation, a structure that is foreground in the masks of one task is labelled as background in the masks of another (term cited to MiB, Ch. 2.4; decided 2026-10-27). Does not arise in this thesis (one binary mask per text prompt). Not "background conflict"
-- **control task** — a held-out task that is never trained on and is used only to measure the loss of pretrained ability (AeroPath, prompt "lung", test split). Term follows SPU's "control set". Not "retention task" and not "zero-shot" (lung is a known concept for VoxTell; AeroPath itself was held out)
+- **control task** — a held-out task that is never trained on and is used only to measure the loss of pretrained ability (AeroPath, prompt "lung", test split). Term follows SPU's "control set". Not "retention task" and not "zero-shot" (lung is a known concept for VoxTell; AeroPath was held out in the paper (v1.0) but is among the training sources of the checkpoint we use, v1.1, GitHub issue #15; decided 2026-11-07). "Held-out" means never trained on in our adaptation
 - **control-task drop** — Dice on the control task of the pretrained model minus that of the final checkpoint; absolute, positive = loss. Not "retention drop"
 
 Strategies (decided 2026-10-18; names describe the mechanism, not a CL scenario):

@@ -1,3 +1,18 @@
+# Ch. 8 Summary — outline revision 2 (APPROVED 2026-11-11; drafted 2026-11-11)
+
+Author decisions 2026-11-11: framing of Sec. 7.1 (trade-off with one parameter set, exceptions with their costs); own work in the wording of the Ch. 1.5 contributions, no method details; one or two key numbers per result; no practical recommendation (removed 2026-11-10). Target about 3 pages (chair Sec. 1.7: 3-4 pages); drafted at about 1,060 words.
+
+1. Problem and setting (~120 words): universal model fails on rare structures; question; VoxTell, six SKM-TEA structures (pretrained 0.114), AeroPath lung as control task.
+2. Own work (~150): prior methods in one sentence; four contributions as in Ch. 1.5; 38 runs.
+3. Main result: trade-off (~220): one parameter set + current-task data: more Adaptation, more forgetting of earlier tasks and of pretrained ability; 0.233 in the original order; exceptions task-specific LoRA (task identity) and replay (stored data); joint fine-tuning 0.852.
+4. Few-shot (~140): seq. FT learned, LoRA hardly; seq. FT k = 5 forgot less and kept the control task; equal updates at k = 5 point to updates; k = 10, 20 confounded.
+5. Order and rank (~100): mainly shared LoRA; reverse order numbers; rank and gamma_r confounded.
+6. Protocol (~90): control task vs Final Forgetting (r = 1024 -> 2048); pretrained reference for few-shot LoRA.
+7. Limitations (~100): as Sec. 7.2.
+8. Future work (~150): main extension (no task identity); tests of the two LoRA explanations (corrected); repeated runs; broader evaluation.
+
+---
+
 # Ch. 8 Summary — outline revision 1 (APPROVED 2026-10-24 with Claude's recommendations for Q1-Q4; drafted 2026-10-24)
 
 Requirements: chair Sec. 1.7 (most important results, which results are the author's own work, 3–4 pages); supervisor outline (Summary as the last chapter); CLAUDE.md (answers each research objective, future work, no new results). One chapter without sections; one idea per paragraph. Every number already appears in Ch. 6 and is cited from there.

@@ -9,7 +9,7 @@
 
 % CLAUDE-DRAFT
 This appendix complements \cref{chap:experiments}.
-\Cref{sec:app-volumes} lists the volumes of the few-shot training sets and of the test sets, \cref{sec:app-params} the settings and parameters of all runs, \cref{sec:app-additional} the additional evaluations, and \cref{sec:app-matrices} gives the evaluation matrix of every run reported in \cref{chap:experiments}, from which all metrics and all per-task values quoted there are computed.
+\Cref{sec:app-volumes} lists the volumes of the few-shot training sets and of the test sets, \cref{sec:app-params} the settings and parameters of all runs, \cref{sec:app-additional} the additional evaluations, \cref{sec:exp-components} the weight ensemble and the gradient scaling, and \cref{sec:app-matrices} gives the evaluation matrix of every run reported in \cref{chap:experiments}, from which all metrics and all per-task values quoted there are computed.
 \Cref{sec:app-shared-loss} shows the training loss of the first two tasks of shared LoRA.
 
 \section{Training and Test Volumes}
@@ -40,6 +40,9 @@ Both tables are generated from the configuration files of the runs; the few valu
 % CLAUDE-DRAFT
 The software environment comprises PyTorch 2.8.0 with CUDA 12.6 and cuDNN 9.10.2, MONAI 1.5.2, nnU-Net 2.7.0, Transformers 4.57.6, NumPy 2.4.3 and NiBabel 5.4.2.
 % source: author's pip list / torch.version on the HPC environment "voxtell", 2026-10-22
+The software versions were not logged per run but read from the environment after training, and the code version was recorded only for the reruns.\todo{defense: software versions not logged per run; read from the environment on 2026-10-22 (moved from Sec. 6.1.2, then Sec. 7.3)}
+% source: thesis_notes.md §3 (code version per run not recorded; D32)
+The training logs of the distillation-based strategy record only its total loss, so the contribution of the distillation term cannot be determined.\todo{defense: distillation term not logged separately (moved from Sec. 6.2, then Sec. 7.3)}
 
 % CLAUDE-DRAFT
 Runs that reached the 24-hour limit of a job were continued from their last checkpoint.
@@ -68,7 +71,7 @@ Five runs of the comparison of the strategies and of the few-shot experiment wer
 \label{sec:app-additional}
 
 % CLAUDE-DRAFT
-This section belongs to \cref{sec:exp-main,sec:exp-components}.
+This section belongs to \cref{sec:exp-main}; \cref{sec:exp-components} uses its metrics.
 \Cref{tab:ch6_components} gives the metrics of the additional evaluations; the parameters after the last epoch of the same runs are in \cref{tab:ch6_main}.
 
 \begin{table}[tb]
@@ -79,10 +82,45 @@ This section belongs to \cref{sec:exp-main,sec:exp-components}.
 \input{tables/ch6_components}
 \end{table}
 
+\section{Weight Ensemble and Gradient Scaling}
+\label{sec:exp-components}
+% Split from Sec. 6.2 on 2026-11-02 (author decision; reverses the 2026-10-24 decision, thesis_notes.md section 1).
+% Narrowed 2026-11-04 (author decision): replay moved to Sec. 6.2; title changed from "Components of the Strategies"; label kept.
+% Moved from Ch. 6 (Sec. 6.7) to App. A on 2026-11-05 (author decision: weak evidence, appendix tables, page budget); Sec. 6.2 points here.
 % CLAUDE-DRAFT
-\Cref{tab:app-we-matrix} gives the evaluation matrix of the weight ensemble, from which its metrics in \cref{tab:ch6_components} are computed.
+This section belongs to \cref{sec:exp-main}.
+It reports how the weight ensemble of the distillation-based strategy and the per-task gradient scaling of the prompt-tuning strategy affect adaptation and forgetting.
+Both components are adopted from the published methods, ZSCL and CPE-CLIP, and each is compared with the same strategy without it.
+The weight ensemble is evaluated in the same run as the student, and gradient scaling is compared against an earlier run without it.
+\Cref{tab:ch6_components} in \cref{sec:app-additional} gives the metrics of these evaluations, \cref{tab:ch6_main} those after the last epoch, and \cref{tab:app-we-matrix} the evaluation matrix of the weight ensemble.
+
+% CLAUDE-DRAFT
+The weight ensemble of the distillation-based strategy halved the Adaptation of the student, from 0.747 to 0.376, lowered the Final Performance by 0.011 $[0.007, 0.017]$ and left the control-task drop unchanged.
+Its Final Forgetting of 0.354, against 0.734 for the student, is lower only because the ensemble learned less in the first place.
+On the diagonal of its evaluation matrix (\cref{tab:app-we-matrix}), the \gls{dsc} fell from 0.83 on the first task to 0.22 on the fourth and to 0.00 on the last two.
+A possible explanation follows from the definition of the ensemble as the equally weighted mean of $\theta_0$ and all snapshots, with 100 snapshots per task (\cref{subsec:method-distillation}).
+After task~$t$, the snapshots of that task make up only about $1/t$ of the ensemble, so it follows each later task less.
+The ensemble also could not protect the control task, because the student had already lost it after the first task (\gls{dsc} 0.00), and the ensemble averages such states.
+Our ensemble differs from that of ZSCL in its update interval, in not being restarted at each task and in the distillation without a reference dataset (\cref{subsec:method-distillation}), so these results hold for our configuration only.\todo{defense: weight ensemble not restarted per task and not carried forward (unlike ZSCL's code), interval of 10, no reference dataset; explanation of the low Adaptation (weights of late snapshots) not tested}
+% source: cl_differences.csv, exp_20261022_171452_65011743:weight_ensemble - exp_20261022_171452_65011743; diagonal of evaluations/weight_ensemble/eval_matrix.csv; 100 ensemble updates per task (10 per epoch, thesis_notes.md §2)
 
 {\captionsetup{list=no}\input{tables/appA_we_matrix}}
+
+% CLAUDE-DRAFT
+The per-task gradient scaling of the prompt-tuning strategy lowered its forgetting at a small cost in Adaptation.
+Both runs are compared at the checkpoint with the lowest validation loss, because the run without scaling was evaluated only there.
+With scaling, Final Forgetting was 0.063 lower, the control-task drop 0.117 lower and Final Performance 0.020 higher $[0.014, 0.025]$, at an Adaptation lower by 0.032 $[0.025, 0.040]$.
+Without scaling, the \gls{dsc} on the lung fell to 0.02 after the second task and to 0.00 at the end.
+With scaling, it stayed between 0.04 and 0.23 from the first task on.
+Scaling down the gradients in later tasks thus traded a little adaptation for retention, but it did not keep the control task.
+% source: cl_differences.csv, exp_20261022_180923_7bcbb6cc:best_validation - exp_20260816_161201_b39ea60e; control rows of both runs (best_validation/eval_matrix.csv: 0.042-0.226, checked 2026-11-04)
+
+% Conclusion suggested by Claude and accepted by the author (2026-11-04), replacing that of 2026-11-02 after replay moved to Sec. 6.2.
+% CLAUDE-DRAFT
+Of the two components, only the gradient scaling moved its strategy towards retention, at a small cost in Adaptation.
+Neither kept the control task.
+The student of the distillation-based strategy had already lost it after the first task, and the prompt-tuning strategy lost most of it with scaling as well.
+Both components differ from their published form (\cref{sec:method-strategies}), and each was tested in one run and in the original task order, so these results hold for our configuration only.\todo{defense: components tested once each, one strategy, one task order; scaling compared at best-validation checkpoints against an earlier run}
 
 \section{Evaluation Matrices of All Runs}
 \label{sec:app-matrices}
@@ -92,7 +130,7 @@ This section belongs to \cref{chap:experiments}.
 For every reported run, the table gives the mean \gls{dsc} on the test volumes of each task (rows, in training order) after each stage (columns): \emph{Pre.} is the pretrained model, and the following columns are the stages after training on the task named in the header.
 The diagonal entries, right after a task is trained, are set in bold; the last row is the control task.
 Task abbreviations: LT lateral tibial cartilage, MT medial tibial cartilage, Fe femoral cartilage, Pa patellar cartilage, MM medial meniscus, LM lateral meniscus, Ctrl control task (lung in AeroPath).
-The runs are grouped by the experiment in which they first appear in \cref{tab:ch6_experiments}; a run that belongs to several experiments is listed once.
+The runs are grouped by the experiment in which they first appear in \cref{tab:ch6_experiments}; a run that belongs to several experiments is listed once, and the prompt-tuning run without gradient scaling (\cref{sec:exp-components}), which is not in that table, is listed last.
 Joint fine-tuning has a single stage, \emph{Joint}, after which all six structures are evaluated.
 All matrices are computed with the parameters after the last epoch, except that of the prompt-tuning run without gradient scaling, which was evaluated only at the checkpoint with the lowest validation loss (\cref{sec:exp-components}).
 

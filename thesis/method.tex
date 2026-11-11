@@ -35,8 +35,8 @@ Of the three scenarios (\cref{subsec:bg-cl-setting}), it is closest to task-incr
 
 % CLAUDE-DRAFT
 The control task (\cref{sec:bg-metrics}) is the segmentation of the lung in the AeroPath test volumes $\mathcal{D}_c^{\mathrm{te}}$ with the text prompt $p_c = $ ``lung''.
-We chose it because lung is a concept in the training data of VoxTell, while AeroPath itself was not used for training (\cref{sec:data-aeropath}).
-This differs from SPU, whose control set is sampled from the pretraining distribution~\cite[Sec.~3]{Zhang_2024_CVPR}.
+We chose it because lung is a concept in the training data of VoxTell that the pretrained model segments well (\cref{sec:exp-main}).
+AeroPath itself is among the training sources of checkpoint v1.1 (\cref{sec:data-aeropath}), so the control task measures the loss of pretrained ability on data the model was trained on, as the control set of SPU is sampled from the pretraining distribution~\cite[Sec.~3]{Zhang_2024_CVPR}.
 On all 27 AeroPath volumes, VoxTell segmented the lung with a \gls{dsc} of 96.99\,\%~\cite[Suppl.~Table~7]{rokuss2025voxtellfreetextpromptableuniversal}, so a loss of this ability would be clearly visible.
 % source: paper_notes/voxtell.md (Table 7, AeroPath, lung 96.99)
 AeroPath is also openly available, which keeps the control task reproducible.
@@ -60,7 +60,6 @@ No test-time augmentation is used.
 All entries of all runs use the same test volumes: the 24 SKM-TEA test volumes for the tasks and the 4 AeroPath test volumes for the control task.
 Differences between entries, and between runs, therefore never come from different test data.
 We also keep the per-volume values, from which \cref{subsec:exp-metrics} estimates the variability of the metrics over test volumes.
-Each configuration was trained once, so this variability does not include the variation between training runs.
 
 % CLAUDE-DRAFT
 \Cref{alg:protocol} summarises the protocol.
@@ -402,8 +401,6 @@ The backward pass of sequential fine-tuning and of the distillation-based strate
 The distillation-based strategy adds one forward pass of the teacher per iteration, which is the only large addition.
 Replay leaves the cost of an iteration unchanged and adds $|\mathcal{M}_{t-1}|$ iterations per epoch through~$N_t$.
 The LoRA strategies form the low-rank update $\gamma_r\mat{B}\mat{A}$ and back-propagate through it in every training iteration, and the prompt-tuning strategy adds $m$ keys and values in every prompt-decoder layer.
-Both additions add little to the time of a training iteration (\cref{sec:exp-compute}).
-% source: compute.csv, epoch_minutes of the shared-LoRA rank runs (18.0 to 21.0 min for r = 4 ... 2048), checked 2026-10-31
 
 % CLAUDE-DRAFT
 Memory depends mainly on whether the backward pass reaches the image encoder, because only then are the activations of the image encoder stored.
@@ -412,4 +409,4 @@ The optimiser keeps one momentum buffer for each trained parameter that receives
 The distillation-based strategy also holds the weight ensemble, a further copy of all parameters on the GPU, and therefore needs the most memory.
 After $T$ tasks, task-specific LoRA stores one adapter per task, so its storage grows linearly with the number of tasks, whereas all other strategies store one parameter set.
 At inference, the LoRA update is merged into $\mat{W}_0$, so the sliding-window forward passes cost about the same for all strategies.
-\Cref{tab:ch6_compute} reports the measured number of trainable parameters, the training time per epoch, the peak GPU memory and the evaluation time per volume on the NVIDIA A100 used in this work.
+\Cref{sec:exp-compute} reports the measured cost of the strategies on the NVIDIA A100 used in this work.
