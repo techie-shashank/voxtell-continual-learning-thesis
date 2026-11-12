@@ -3,13 +3,12 @@
 % one column per strategy-specific step; cost column removed (cost: Sec. 5.4 prose, measured: Table 6.x compute);
 % symbol P dropped; Select column dropped (evaluated parameters: Sec. 5.1, 5.3.2, 5.3.5). "--" = nothing added.
 % Bare tabular, caption in method.tex.
-% CLAUDE-DRAFT
 \small\renewcommand{\arraystretch}{1.2}\setlength{\tabcolsep}{4pt}
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{3.2cm}>{\raggedright\arraybackslash}p{3.3cm}@{}}
 \toprule
 Strategy & Trained parameters $\phi$ & Start of task~$t$ ($\textsc{Init}_{\mathcal{S}}$) & Added in training \\
 \midrule
-Sequential fine-tuning & all parameters except the text encoder & parameters of task~$t-1$ & -- \\
+Seq. fine-tuning & all parameters except the text encoder & parameters of task~$t-1$ & -- \\
 Task-specific LoRA & $\mat{B}, \mat{A}$ for $\mat{W}_q, \mat{W}_v$ of the cross-attention in all prompt-decoder layers ($4 L_{\mathrm{dec}}\, d\, r$) & pretrained model with a new adapter & -- \\
 Shared LoRA & as task-specific LoRA & adapter of task~$t-1$ & -- \\
 Shared LoRA + replay & as task-specific LoRA & adapter of task~$t-1$ & memory $\mathcal{M}_{t-1}$ \\

@@ -127,7 +127,7 @@ def matrix_table(r, matrix_file="eval_matrix.csv", caption=None, label=None) -> 
     # matrix_file/caption/label: used for additional evaluations of a run (weight ensemble, App. A.3).
     rows = list(csv.reader(open(REPO / r["path"] / matrix_file, encoding="utf-8")))
     head, body = rows[0], rows[1:]
-    stages = ["Pre."] + [TASK_SHORT[h.replace("After ", "")] for h in head[2:]]
+    stages = ["Pre"] + [TASK_SHORT[h.replace("After ", "")] for h in head[2:]]
     order = [h.replace("After ", "") for h in head[2:]]
     if caption is None:                                   # "Evaluation matrix of sequential fine-tuning (...)" (2026-11-11)
         name = run_name(r)

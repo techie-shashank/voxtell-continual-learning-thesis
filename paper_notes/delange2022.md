@@ -29,6 +29,6 @@ Three families "based on how task specific information is stored and used":
 - Summary claim: task ordering "to have insignificant impact on performance" (Sec. 1, p. 2; Sec. 6.6) — for their classification benchmarks.
 
 ## 5. Analysis for this thesis (NOT from the paper)
-- Citable for: catastrophic forgetting definition and stability–plasticity dilemma (Sec. 1); scenario definitions (Sec. 2) for Ch. 2; the three families (Sec. 3) for Ch. 2; rehearsal mechanism (Sec. 3.1) for Ch. 3.3; joint training as soft upper bound (Sec. 5).
+- Citable for: catastrophic forgetting definition and stability–plasticity dilemma (Sec. 1); scenario definitions (Sec. 2) for Ch. 2; the three families (Sec. 3) for Ch. 2; rehearsal mechanism (Sec. 3.1) for Ch. 3.3; joint training as soft upper bound (Sec. 6.2.1 and 6.3.1; corrected 2026-11-12 by citation-verifier, Sec. 5 only lists the baselines).
 - The thesis's replay = rehearsal with randomly drawn stored samples (code `random.sample`); the survey does not state how R-FM/R-PM select samples in the parts read, so do not cite it for random selection.
 - Task-order finding (insignificant impact) is for classification; compare in Ch. 7 with own original/reverse results, without generalising.

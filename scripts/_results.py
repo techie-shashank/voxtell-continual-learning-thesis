@@ -120,7 +120,7 @@ def counterpart(run, runs):
 def strategy_name(run, with_rank: bool = True, math: str = "$") -> str:
     name = STRATEGY[run["strategy"]][0]
     if with_rank and run["lora_rank"]:
-        name += f" ({math}r={run['lora_rank']}{math})"
+        name += f" ({math}r = {run['lora_rank']}{math})"
     return name
 
 

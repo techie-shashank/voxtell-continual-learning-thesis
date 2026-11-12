@@ -28,18 +28,19 @@ Symbol & Meaning & Sec. \\
 \bottomrule
 \endfoot
 \multicolumn{3}{@{}l}{\textit{Tasks and data}} \\
-$T$ & number of tasks in the task sequence ($T = 6$) & \ref{sec:method-setting-protocol} \\
+$T$ & number of tasks in the task sequence ($T = 6$) & \ref{sec:bg-cl} \\
 $t$; $j$ & task index; stage index ($j = 0$: pretrained model, $j = t$: after training on task~$t$) & \ref{sec:bg-cl} \\
 $k$ & number of labelled training volumes per task in a few-shot setting & \ref{sec:intro-problem} \\
-$\mathcal{D}_t^{\mathrm{tr}}, \mathcal{D}_t^{\mathrm{val}}, \mathcal{D}_t^{\mathrm{te}}$ & training, validation and test set of task~$t$ & \ref{sec:method-setting-protocol} \\
+$\mathcal{D}_t^{\mathrm{tr}}, \mathcal{D}_t^{\mathrm{val}}, \mathcal{D}_t^{\mathrm{te}}$ & training, validation and test set of task~$t$ & \ref{sec:bg-cl}, \ref{sec:method-setting-protocol} \\
 $\mathcal{D}_c^{\mathrm{te}}$ & test set of the control task & \ref{sec:method-setting-protocol} \\
-$p$; $p_t$; $p_c$ & text prompt; text prompt of task~$t$; text prompt of the control task & \ref{sec:bg-segmentation} \\
+$p$ & text prompt & \ref{sec:bg-segmentation} \\
+$p_t$; $p_c$ & text prompt of task~$t$; text prompt of the control task & \ref{sec:bg-cl}, \ref{sec:method-setting-protocol} \\
 $\mat{X}$ & image volume or patch & \ref{sec:bg-segmentation} \\
 $\mat{Y}$; $\hat{\mat{Y}}$ & binary label mask; binary prediction & \ref{sec:bg-segmentation} \\
 $\Omega$; $v$ & voxel set of a volume or patch; voxel & \ref{sec:bg-segmentation} \\
 $y_v$; $z_v$; $\hat{y}_v$ & label, logit and predicted foreground probability of voxel~$v$ & \ref{sec:bg-segmentation} \\
 \addlinespace
-\multicolumn{3}{@{}l}{\textit{Model}} \\
+\multicolumn{3}{@{}l}{\textit{Model}} \\*
 $f_\theta$; $\theta$ & segmentation model; its parameters (for VoxTell all except those of the frozen text encoder) & \ref{sec:bg-segmentation}, \ref{subsec:bg-voxtell} \\
 $\mat{Z}$ & output logits of the model for a volume or patch & \ref{sec:bg-segmentation} \\
 $\sigma$ & logistic function & \ref{sec:bg-segmentation} \\
@@ -51,40 +52,44 @@ $\mat{U}$; $\mat{S}$ & query vectors and source vectors of an attention block (r
 $n_q$; $n_s$; $n_h$ & number of queries, of sources and of attention heads & \ref{subsec:bg-attention} \\
 $d$; $d_h$ & model dimension; dimension per attention head & \ref{subsec:bg-attention} \\
 $\mat{W}_q, \mat{W}_k, \mat{W}_v, \mat{W}_o$ & query, key, value and output projections of an attention block & \ref{subsec:bg-attention} \\
+$\operatorname{MHA}$; $\operatorname{head}_i$ & multi-head attention; output of attention head~$i$ & \ref{subsec:bg-attention} \\
 $\vec{x}$ & input of a linear projection $\vec{x} \mapsto \mat{W}\vec{x}$ & \ref{subsec:bg-attention} \\
 $f_{\mathrm{text}}$; $\vec{q}$ & frozen text encoder; text query $\vec{q} = f_{\mathrm{text}}(p)$ & \ref{subsec:bg-voxtell} \\
 $L_{\mathrm{dec}}$ & number of prompt-decoder layers ($L_{\mathrm{dec}} = 6$) & \ref{subsec:bg-voxtell} \\
 $G$; $\mat{E}_s$ & number of guidance vectors ($G = 32$); text-guidance matrix of stage~$s$ & \ref{subsec:bg-voxtell} \\
 $\mat{H}_s$; $\mat{H}'_s$ & decoder features of stage~$s$ after and before the fusion with the text guidance & \ref{subsec:bg-voxtell} \\
+$\operatorname{Up}$; $\operatorname{ConvBlock}$ & upsampling from stage~$s+1$ to the resolution of stage~$s$; convolutional layers of a decoder stage & \ref{subsec:bg-voxtell} \\
 \addlinespace
-\multicolumn{3}{@{}l}{\textit{Training}} \\
-$\mathcal{S}$ & continual-learning strategy & \ref{sec:method-setting-protocol} \\
+\multicolumn{3}{@{}l}{\textit{Training}} \\*
+$\mathcal{S}$ & strategy & \ref{sec:method-setting-protocol} \\
 $\phi$ & parameters trained by a strategy & \ref{sec:method-adaptation} \\
 $\mathcal{L}_{\mathrm{seg}}$ & segmentation loss & \ref{sec:bg-segmentation} \\
-$E$; $N_t$; $U$ & epochs per task; training samples per epoch of task~$t$; iterations per task, $U = E \cdot N_t$ & \ref{sec:method-adaptation} \\
+$E$; $N_t$; $U$ & epochs per task; training samples per epoch of task~$t$; updates (iterations) per task, $U = E \cdot N_t$ & \ref{sec:method-adaptation} \\
+$\mathcal{D}$; $u$; $\mathcal{L}$ & training data of a task including the samples added by the strategy; update counter; total training loss & \ref{sec:method-adaptation} \\
 $\eta_0$; $\mu$; $\omega$ & initial learning rate; momentum; weight decay & \ref{sec:method-adaptation} \\
 $\xi_{\mathcal{S},t}$ & factor on the gradient of strategy~$\mathcal{S}$ in task~$t$ (one except for the prompt-tuning strategy) & \ref{sec:method-adaptation} \\
 $\pi_{\mathrm{fg}}$ & probability that a training patch is centred on a voxel of the target structure & \ref{sec:method-adaptation} \\
 $\ell$; $\ell^{*}$; $\theta^{\mathrm{best}}$ & validation loss of an epoch; lowest validation loss so far; parameters with the lowest validation loss & \ref{sec:method-adaptation} \\
 \addlinespace
-\multicolumn{3}{@{}l}{\textit{Strategies}} \\
-$\mat{W}_0$ & frozen pretrained weight adapted by LoRA & \ref{subsec:bg-lora} \\
+\multicolumn{3}{@{}l}{\textit{Strategies}} \\*
+$\mat{W}_0$ & frozen pretrained weight adapted by LoRA & \ref{subsec:bg-lora} \\*
 $\mat{A}$, $\mat{B}$; $r$ & LoRA factors; rank & \ref{subsec:bg-lora} \\
 $d_{\mathrm{in}}$; $d_{\mathrm{out}}$ & input and output dimension of an adapted weight & \ref{subsec:bg-lora} \\
 $\alpha$; $\gamma_r$ & LoRA scaling hyperparameter; scaling factor $\gamma_r = \alpha / \sqrt{r}$ & \ref{subsec:bg-lora} \\
 $\mathcal{M}_t$; $\rho$; $M_{\max}$ & replay memory after task~$t$; replay fraction; capacity of the memory & \ref{subsec:method-replay} \\
-$\beta_t$; $\mathcal{C}_t$ & gradient scale of task (session)~$t$ in prompt tuning; set of classes of session~$t$ in CPE-CLIP & \ref{subsec:bg-prompt} \\
+$\beta_t$; $\mathcal{C}_t$ & gradient scale of CPE-CLIP in session~$t$; set of classes of session~$t$ in CPE-CLIP & \ref{subsec:bg-prompt} \\
 $\mat{V}_l$; $m$; $L_p$ & learned prompt tokens of prompt-decoder layer~$l$; tokens per layer; number of prompted layers & \ref{subsec:method-prompt} \\
 $h_\psi$; $\psi$ & meta-net; its parameters & \ref{subsec:method-prompt} \\
 $\vec{q}_l$ & query entering prompt-decoder layer~$l$, offset by the meta-net & \ref{subsec:method-prompt} \\
 $\bar{\vec{f}}$ & mean of the projected stage-4 image features, input of the meta-net & \ref{subsec:method-prompt} \\
-$\lambda$; $\mathcal{L}_{\mathrm{KD}}$ & weight of the distillation loss; distillation loss & \ref{subsec:bg-zscl} \\
-$\hat{\theta}_\nu$; $\nu$; $I_{\mathrm{we}}$ & weight ensemble after $\nu$ updates; number of ensemble updates; interval between updates in iterations & \ref{subsec:bg-zscl} \\
+$\lambda$ & weight of the distillation loss & \ref{subsec:bg-zscl} \\
+$\mathcal{L}_{\mathrm{KD}}$ & distillation loss & \ref{subsec:method-distillation} \\
+$\hat{\theta}_\nu$; $\nu$; $I_{\mathrm{we}}$ & weight ensemble after $\nu$ updates; number of ensemble updates; interval between ensemble updates in training updates & \ref{subsec:bg-zscl} \\
 $\vec{e}_g$ & $g$-th guidance vector of $\mat{E}_4$ & \ref{subsec:method-distillation} \\
 $\vec{f}_v$; $\Omega_4$ & stage-4 encoder feature at voxel~$v$; voxels of stage~4 & \ref{subsec:method-distillation} \\
-$q_{g,v}$; $\bar{q}_{g,v}$ & distribution over $\Omega_4$ for guidance vector~$g$ of the student; of the teacher & \ref{subsec:method-distillation} \\
+$w_{g,v}$; $\bar{w}_{g,v}$ & distribution over $\Omega_4$ for guidance vector~$g$ of the student; of the teacher & \ref{subsec:method-distillation} \\
 \addlinespace
-\multicolumn{3}{@{}l}{\textit{Evaluation}} \\
+\multicolumn{3}{@{}l}{\textit{Evaluation}} \\*
 $\operatorname{DSC}(\hat{\mat{Y}}, \mat{Y})$ & Dice similarity coefficient & \ref{sec:bg-metrics} \\
 $a_{i,j}$ & entry of the evaluation matrix: mean \glsxtrshort{dsc} on task~$i$ after stage~$j$ & \ref{sec:bg-metrics} \\
 $c_j$ & mean \glsxtrshort{dsc} on the control task after stage~$j$ & \ref{sec:bg-metrics} \\

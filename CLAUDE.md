@@ -7,22 +7,22 @@ This is my master's thesis at the Pattern Recognition Lab (LME), FAU Erlangen-N�
 - **Thesis type:** Master's thesis in Computer Science
 - **Author:** Shashank Shashank
 - **Advisors:** Prof. Dr.-Ing. habil. Andreas Maier, Dr.-Ing. Tomás Arias Vergara
-- **Started / submission deadline:** 15.04.2026 / 15.11.2026
-- **Language:** English, British spelling with -ise endings (matches my existing drafts)
+- **Started / finished (cover sheet):** 01.06.2026 / 30.11.2026 (author, 2026-11-12); personal submission target 15.11.2026
+- **Language:** English, British spelling with -ise endings (kept for consistency, decided 2026-11-12)
 
 **Research question**
 How do different continual-learning strategies trade off adaptation performance and catastrophic forgetting when adapting free-text promptable universal 3D medical image segmentation models under few-shot conditions?
 
 **Objectives** (as in Ch. 1, Sec. 1.3; reworded 2026-11-01: questions in terms known by Sec. 1.3, no terms that Sec. 1.4 introduces)
-1. Develop an evaluation protocol for the setting of the research question that measures adaptation, the forgetting of earlier tasks and the loss of pretrained ability separately (reworded 2026-11-06: adaptation added, setting no longer repeated).
+1. Develop an evaluation protocol for the setting of the research question that measures adaptation, the forgetting of earlier tasks, and the loss of pretrained ability separately (reworded 2026-11-06: adaptation added, setting no longer repeated; serial comma 2026-11-12).
 2. Compare continual-learning strategies with each other and with fine-tuning on each task in turn, and determine how they trade adaptation against forgetting (reworded 2026-11-06: tied to the research question).
 3. Investigate how the number of labelled volumes per task influences adaptation and forgetting, separating the effect of fewer volumes from that of fewer updates.
-4. Analyse how the order of the tasks and the design choices within the strategies influence adaptation and forgetting.
+4. Analyse how the order of the tasks and the rank of the LoRA adapters influence adaptation and forgetting (narrowed 2026-11-12 from 'the design choices within the strategies', fix list Q29: only the rank is varied in the main text).
 
 **Contributions — FINAL** (decided 2026-10-26, option A: descriptive, one per objective; reworded 2026-11-01: four items, each saying what was delivered and how, in the terms of Sec. 1.4; wording as in Ch. 1, Sec. 1.5). Findings belong in Ch. 6–8 with their caveats, not in the contributions.
 1. An evaluation protocol that measures the loss of pretrained ability separately from the forgetting of earlier tasks, through a held-out control task, with the pretrained model and joint fine-tuning as reference points (reworded 2026-11-06: states what the protocol makes possible).
-2. A comparison of sequential fine-tuning and five continual-learning strategies adapted to VoxTell under one shared training configuration, together with a diagnosis of why task-specific LoRA did not learn patellar cartilage.
-3. An analysis of how the amount of labelled data affects adaptation and forgetting, with three of the strategies and joint fine-tuning, which separates fewer volumes from fewer updates by training on five volumes with as many updates as on the full training split (reworded 2026-11-06).
+2. A comparison of sequential fine-tuning and five continual-learning strategies adapted to VoxTell under one shared training configuration, together with a diagnosis of the failure of task-specific LoRA on patellar cartilage (2026-11-12: 'why' dropped, the cause stays confounded, fix list Q17).
+3. An analysis of how the amount of labelled data affects adaptation and forgetting, with three of the strategies and joint fine-tuning. It separates fewer volumes from fewer updates by training on five volumes with as many updates as on the full training split (reworded 2026-11-06; split into two sentences 2026-11-12, fix list Q10).
 4. An analysis of how the task order and the rank of the LoRA adapters affect adaptation and forgetting, with two task orders and ranks from r = 4 to r = 2048 (reworded 2026-11-06: purpose first, scope brief; objective 4 kept, 'number of trainable parameters' rejected because rank and gamma_r are confounded; App. A components not a contribution, as decided 2026-11-05, since appendix-only; replay is reported with the comparison in Sec. 6.2 since 2026-11-04).
 
 Every objective must be addressed in the Method or Experiment & Results chapters, and every final contribution must be supported by the results.
@@ -61,13 +61,15 @@ Chapters 1 and 2 (current text) are the author's notes, not drafts (decision 202
 ## Chapter status
 | # | Chapter | File | Status |
 |---|---------|------|--------|
-| 1 | Introduction | `thesis/introduction.tex` | Author's notes — to be redrafted (decision 2026-10-22); objectives/contributions final after the results |
-| 2 | State of the Art | `thesis/related_work.tex` | Author's notes — to be redrafted (decision 2026-10-22), next |
-| 3 | Theoretical Background | `thesis/background.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`, 2026-10-22) — author rewrite pending |
-| 4 | Data Description | `thesis/data_description.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`, 2026-10-19) — author rewrite pending |
-| 5 | Method | `thesis/method.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`, 2026-10-21; restructured 2026-10-31, `outlines/ch5_method.md` v2: 5.1 Evaluation Protocol, 5.2 Adapting VoxTell to One Task, 5.3 strategies, 5.4 complexity) — author rewrite pending |
-| 6 | Experiment & Results | `thesis/experiment_results.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`; switched to the reruns 2026-10-26) — author rewrite pending. Appendix A drafted (38 runs). Sec. 6.8 Limitations and Generalisation added 2026-11-11 (from Ch. 7) |
-| 7 | Summary | `thesis/summary.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`; rewritten 2026-11-11; paras 6-9 restructured 2026-11-11 from Ch. 7) — author rewrite pending |
+| 1 | Introduction | `thesis/introduction.tex` | Final text (2026-11-12) — author PDF read pending |
+| 2 | State of the Art | `thesis/related_work.tex` | Final text (2026-11-12) — author PDF read pending |
+| 3 | Theoretical Background | `thesis/background.tex` | Final text (2026-11-12) — author PDF read pending |
+| 4 | Data Description | `thesis/data_description.tex` | Final text (2026-11-12) — author PDF read pending |
+| 5 | Method | `thesis/method.tex` | Final text (2026-11-12) — author PDF read pending |
+| 6 | Experiment & Results | `thesis/experiment_results.tex` | Final text (2026-11-12), including Appendix A — author PDF read pending |
+| 7 | Summary | `thesis/summary.tex` | Final text (2026-11-12) — author PDF read pending |
+
+"Final text (2026-11-12)": voice pass and final review passes D1–D7 and B4 applied, build clean. The `% CLAUDE-DRAFT` markers were removed at the author's request on 2026-11-12; `reviews/claude_draft_record.md` records every drafted paragraph.
 
 Structure decisions (provisional, to confirm with the supervisor):
 - **Method** is a separate chapter, although the supervisor's outline doesn't list one: the chair requires a practical part with algorithms, pseudocode and complexity, and this needs its own place.
@@ -204,6 +206,8 @@ Write every chapter as if the examiners will question each sentence. The chair g
 ## Writing style — must read as careful human academic writing
 The goal is clear, precise, concise writing in my voice. Good human writing is specific and plain; generic, inflated prose is what makes text look machine-generated. The chair gives style, syntax and punctuation high priority.
 
+**Voice:** `style/voice_sheet.md`, built from my own paper (Diagnostics submission, Jan 2026, the only text written entirely by me). Where the sheet conflicts with the rules in this file, the rules win (decided 2026-11-12).
+
 **Do**
 - Make concrete, specific statements: names, numbers, conditions, comparisons.
 - One idea per paragraph, starting with a clear topic sentence.
@@ -240,7 +244,7 @@ The goal is clear, precise, concise writing in my voice. Good human writing is s
 
 *Tier 3 — preferences*
 - Two sentences instead of a semicolon when the clauses are separate statements; keep a semicolon for short, tightly linked clauses. Don't let splitting make the prose choppy.
-- Subject first; avoid long participial openers and fronted clauses that hide the main claim.
+- Subject first; avoid long participial openers and fronted clauses that hide the main claim. Short context-setting openers are fine and part of my voice ("In the multi-label setting, …", "Regarding …, …"); "it can be observed that" and similar constructions that hide the subject are not (decided 2026-11-12).
 - Say what is actually measured (a property of a structure, not the structure); no clumsy doubles.
 - Paragraph openings pick up the previous paragraph's end, and a section opening continues from the previous section (most important in Ch. 1, 2, 7, 8; Method and Results sections may open with a plain statement of scope).
 - Claim → reason → definition or detail; a definition does not interrupt an argument.
@@ -306,6 +310,8 @@ Provisional choices; change them here if I decide otherwise, then apply everywhe
 - **continual learning** — not "lifelong learning" or "incremental learning" (unless citing a paper's own term)
 - **catastrophic forgetting** — loss of performance on earlier tasks after training on new ones
 - **few-shot** — training or adaptation with a small number of labeled examples per task; always state the number of shots
+- **text-promptable** — umbrella term for models that take a text prompt, whether from a fixed vocabulary or free text (used in Ch. 2 and for related work); not "text-prompted" (added 2026-11-12, fix list Q33)
+- **update** — one optimiser step on one patch (= one iteration); "update" in prose, "iteration" only where the algorithm counts them (2026-11-12, fix list Q33)
 - **free-text promptable segmentation** — segmentation guided by a free-text prompt naming the target structure; always "free-text promptable", not "text-guided" or "language-driven"
 - **universal segmentation model** — one model for many anatomical structures and/or modalities [CONFIRM DEFINITION]
 - **task** — one training stage on one target structure (one text prompt) of SKM-TEA in the continual-learning sequence; the model is trained on task 1, then task 2, and so on. In this thesis a task is not a dataset (the six tasks share one dataset)

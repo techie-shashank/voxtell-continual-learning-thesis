@@ -1,0 +1,10 @@
+# Proofread of Ch. 6 voice proposal, round 2 (Sec. 6.3–6.8), 2026-11-12
+
+Report from the proofreader subagent, saved by the main session. Counts: must fix 1, should fix 6, minor 14. Every table value in scope matches ch6_few_shot.tex, ch6_rank.tex, ch6_task_order.tex, ch6_compute.tex and cl_metrics.csv; all requested checks passed (0.056/0.032, 0.373/0.170, the 0.233 claim).
+
+Applied (21 fixes):
+- (must, pre-existing) Sec. 6.6 conclusion: "in both orders ... its adapter had not left its initial state after ten epochs" contradicted the original-order loss (0.69) and DSC (0.29): now "left its initial state only slowly in the original order and hardly at all in the reverse order" (author to approve).
+- (should) colon restored in "This illustrates the limit ...: an interval that excludes zero ..."; "In this setup, the adapters were trained with ..."; few-shot opening referent ("In this experiment ... We refer to it as ..."); "Whether the loss in the original order comes from ..." (pre-existing); "forgot almost as much" for 0.714 vs 0.782 (pre-existing); the "respectively" sentence with four values and two intervals split by strategy.
+- (minor) "the possible role of this starting point"; "Sequential fine-tuning ended with ..."; "(control-task drop: 0.305)"; "is about that of the pretrained model"; "close to the 0.68 of the pretrained model"; "the strategy with the highest Final Performance in this setting"; "per task"; colon restored in the Transfer explanation; Transfer values labelled by order; "the strategy forgot"; "above this value"; "the difference in retention"; "the difference between the two task-specific LoRA runs"; serial comma in the Chen et al. sentence.
+
+Not changed: short sentences in the patellar opening and in the task-specific LoRA paragraph (readable; merging would reintroduce ", and" joins). Numbers not checkable from the tables: 50.3/100.7 M (compute.csv has the exact counts), 0.048/0.021 (cl_differences.csv), VoxTell percentages (paper_notes/voxtell.md).

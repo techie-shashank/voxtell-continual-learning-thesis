@@ -1,0 +1,285 @@
+# Record of Claude-drafted paragraphs (2026-11-12)
+
+Saved before the `% CLAUDE-DRAFT` markers were removed at the author's request (2026-11-12).
+Each entry: file, line of the marker in the version before removal, and the first words of the paragraph that followed it.
+These paragraphs were drafted by Claude (outline, draft, voice pass in the author's style; see ai_use_log.md) and approved by the author.
+Total: 243 markers.
+
+## thesis/appendix.tex (19 markers)
+
+- l. 10: This appendix complements \cref{chap:experiments}.
+- l. 19: This section belongs to \cref{sec:data-splits,subsec:exp-data}.
+- l. 26: \caption[Few-shot training volumes and test volumes]{Few-shot training volumes and test volumes, named as in t
+- l. 36: This section belongs to \cref{subsec:exp-config}.
+- l. 41: The runs used PyTorch 2.8.0 with CUDA 12.6 and cuDNN 9.10.2, MONAI 1.5.2, nnU-Net 2.7.0, Transformers 4.57.6, 
+- l. 47: Runs that reached the 24-hour limit of a job were continued from their last checkpoint.
+- l. 57: \caption[Training and evaluation settings shared by all runs]{Training and evaluation settings shared by all r
+- l. 65: \caption[Parameters of the strategies]{Parameters of the strategies (\cref{sec:method-strategies}). Sequential
+- l. 75: This section belongs to \cref{sec:exp-main}.
+- l. 82: \caption[Additional evaluations]{Additional evaluations (full training split, original task order, one run eac
+- l. 94: This section belongs to \cref{sec:exp-main}.
+- l. 101: The weight ensemble follows \cref{eq:bg-we} and is updated every $I_{\mathrm{we}}$ training updates, counted a
+- l. 111: The weight ensemble of the distillation-based strategy reached half the Adaptation of the student, 0.376 again
+- l. 121: The per-task gradient scaling of the prompt-tuning strategy lowered its forgetting at a small cost in Adaptati
+- l. 130: Both components differ from their published form.
+- l. 140: This section belongs to \cref{chap:experiments}.
+- l. 162: This section belongs to \cref{sec:exp-task-order}.
+- l. 167: With $r = 1024$, the loss of the first task started at about 1.0, its value for an empty prediction, and fell 
+- l. 176: \caption[Training loss of the first two tasks of shared LoRA]{Training loss $\mathcal{L}_{\mathrm{seg}}$ of sh
+
+## thesis/background.tex (33 markers)
+
+- l. 14: This chapter introduces the concepts on which \cref{chap:method} builds.
+- l. 24: We consider the segmentation of one target structure in a 3D image volume.
+- l. 33: VoxTell implements $f_\theta$ with a volumetric encoder--decoder network and attention between the text prompt
+- l. 39: The 3D U-Net~\cite{3d_unet} is an encoder--decoder network for volumetric segmentation.
+- l. 46: A whole volume and its intermediate features often do not fit into the memory of a GPU, so volumetric segmenta
+- l. 54: Attention lets each of a set of query vectors collect information from a set of source vectors, weighting each
+- l. 72: In self-attention, the query vectors and the source vectors are the same ($\mat{S} = \mat{U}$).
+- l. 78: A transformer decoder layer combines attention blocks with a feed-forward network, two linear layers with a no
+- l. 86: VoxTell is a vision--language model that maps a 3D volume and a free-text prompt to a segmentation mask of the
+- l. 95: \caption[Architecture of VoxTell]{Architecture of VoxTell (adapted from~\cite[Fig.~2]{rokuss2025voxtellfreetex
+- l. 106: VoxTell is built on the nnU-Net framework~\cite[Suppl.~Sec.~A]{rokuss2025voxtellfreetextpromptableuniversal}, 
+- l. 115: The prompt decoder consists of $L_{\mathrm{dec}} = 6$ transformer decoder layers of the kind described in \cre
+- l. 122: The decoder upsamples the features stage by stage and fuses the guidance into every stage~\cite[Eqs.~4--6]{rok
+- l. 135: VoxTell was trained with a combination of the binary cross-entropy and the Dice loss~\cite[Sec.~3, Eq.~7, Supp
+- l. 153: This section states the continual-learning problem in the notation of this thesis and defines three common con
+- l. 162: In continual learning, a model is trained on a sequence of tasks $t = 1, \dots, T$, one after the other.
+- l. 168: Van de Ven et al.\ distinguish three continual-learning scenarios by whether the task identity of an input is 
+- l. 177: \Gls{lora} keeps a pretrained weight matrix $\mat{W}_0 \in \mathbb{R}^{d_{\mathrm{out}} \times d_{\mathrm{in}}
+- l. 190: In the original formulation, the scaling factor is $\alpha / r$ with a constant hyperparameter~$\alpha$~\cite[
+- l. 204: In knowledge distillation, a student model is trained to reproduce the output distribution of a teacher model,
+- l. 210: ZSCL changes two choices of LwF to preserve CLIP's zero-shot transfer during continual learning~\cite[Sec.~3.2
+- l. 227: Prompt learning adapts a frozen vision--language model by training a few input vectors instead of its weights.
+- l. 233: CPE-CLIP applies prompt learning to few-shot class-incremental learning~\cite[Secs.~1 and~3]{D_Alessandro_2023
+- l. 251: This section defines the segmentation metric and the continual-learning metrics computed from it.
+- l. 254: The overlap between a binary prediction $\hat{\mat{Y}}$ and the label mask $\mat{Y}$ is measured with the \gls
+- l. 265: Evaluating the model on every task after every stage shows how training on later tasks affects earlier ones~\c
+- l. 280: \caption[Entries of the evaluation matrix used by each metric]{Entries of the evaluation matrix used by each m
+- l. 289: We summarise the evaluation matrix with four metrics, three taken from the literature and one derived from it,
+- l. 294: Adaptation measures how well each task is learned when it is trained,
+- l. 304: Final Forgetting is the average forgetting of Chaudhry et al.\ after the last task~\cite[Sec.~3, Eq.~3]{Chaudh
+- l. 315: The control-task drop follows SPU, which uses a control set to measure how much of a pretrained model's genera
+- l. 326: Final Performance is the metric Last of ZSCL, the mean performance on all tasks after the last stage~\cite[Sec
+- l. 336: Transfer is the metric of the same name in ZSCL~\cite[Sec.~4, Fig.~4b]{zheng2023preventingzeroshottransferdegr
+
+## thesis/data_description.tex (11 markers)
+
+- l. 14: This chapter describes the two public datasets used in this thesis.
+- l. 31: The Stanford Knee MRI with Multi-Task Evaluation (SKM-TEA) dataset contains knee \gls{mri} scans of 155 patien
+- l. 37: All scans were acquired with the 3D \gls{qdess} sequence on one of two 3\,T GE MR750 scanners, with patient co
+- l. 46: Four tissues were segmented manually on all \gls{dicom} images, labelled as six structures: patellar cartilage
+- l. 55: Each of the six segmented structures defines one task.
+- l. 77: AeroPath contains 27 contrast-enhanced chest \gls{ct} scans (\gls{cta}) of patients undergoing diagnostic test
+- l. 92: We split each dataset once, at random.
+- l. 102: SKM-TEA also defines an official split of 86 training, 33 validation, and 36 test scans, whose test set consis
+- l. 108: For the few-shot settings, we reduce the training split to its first $k$ volumes in the order of the shuffled 
+- l. 120: We convert each SKM-TEA \gls{hdf5} file into two \gls{nifti} files, one for the first echo and one for the lab
+- l. 129: When a volume is loaded, it is reoriented according to its affine and cropped to the bounding box of its non-z
+
+## thesis/experiment_results.tex (69 markers)
+
+- l. 14: This chapter reports the experiments with which we answer the research question.
+- l. 24: \Cref{tab:ch6_experiments} lists the experiments and the objective of \cref{sec:intro-rq} that each addresses.
+- l. 36: In the original task order, the structures are trained in the sequence lateral tibial cartilage, medial tibial
+- l. 45: \caption[Overview of the experiments]{Overview of the experiments. Training volumes per task: 108 is the full 
+- l. 51: With $k = 5$, 10, or 20 volumes per task (\cref{sec:data-splits,sec:app-volumes}) and $E = 10$ epochs, a task 
+- l. 61: \Cref{sec:app-params} lists the settings that all runs share and the parameters of each strategy.
+- l. 67: Each run was trained on one NVIDIA A100 GPU with 40\,GB of memory on a cluster where a job may run for at most
+- l. 73: For the comparison of the strategies, we used rank $r = 4$ for task-specific LoRA and $r = 1024$ for shared Lo
+- l. 82: We report the five metrics of \cref{sec:bg-metrics}.
+- l. 89: For task-specific LoRA, the control-task drop is zero and Final Forgetting is near zero by construction (\cref
+- l. 96: Each configuration was trained once, so we cannot estimate how results vary with the training randomness or wi
+- l. 107: All runs are evaluated on the same test volumes, so the results of two runs are correlated, and overlapping in
+- l. 125: In the comparison of the strategies, we ask how the six strategies trade adaptation against forgetting when ea
+- l. 131: \caption[Results of the comparison of the strategies]{Results of the comparison of the strategies (full traini
+- l. 140: \caption[Metrics of the strategies]{Metrics of the strategies of \cref{tab:ch6_main} (full training split, ori
+- l. 145: In the primary metrics, the strategies formed two groups (\cref{tab:ch6_main,fig:ch6_main_metrics}).
+- l. 160: Within the first group, the distillation-based strategy forgot slightly less than sequential fine-tuning at th
+- l. 171: \caption[Evaluation matrices of the strategies]{Evaluation matrices of the strategies (full training split, or
+- l. 176: The last row of each matrix in \cref{fig:ch6_main_matrices} shows when the control task was lost.
+- l. 190: After the last task, sequential fine-tuning, the distillation-based strategy, and the prompt-tuning strategy s
+- l. 204: Of all strategies, task-specific LoRA reached the highest Final Performance (0.485), because each task keeps i
+- l. 214: In Transfer, the LoRA strategies stayed close to the pretrained model (task-specific LoRA: 0.129; shared LoRA:
+- l. 219: The distillation-based strategy was less effective in our setting than ZSCL in its own evaluation.
+- l. 227: Evaluating the checkpoint with the lowest validation loss instead of the parameters after the last epoch chang
+- l. 236: We also evaluated two components adopted from the published methods, the weight ensemble of the distillation-b
+- l. 243: No strategy combined the Adaptation of sequential fine-tuning with the retention of the LoRA strategies.
+- l. 257: Task-specific LoRA did not learn patellar cartilage in the task sequence.
+- l. 273: \caption[Training loss of the patellar diagnosis runs]{Mean training loss per epoch of task-specific LoRA trai
+- l. 278: With 10 epochs, every run ended with a \gls{dsc} of 0.000 on the 24 patellar test volumes (95\,\% bootstrap in
+- l. 291: Ten epochs were therefore too few for task-specific LoRA to leave the empty prediction on patellar cartilage.
+- l. 302: In this experiment, we ask how the amount of labelled data affects adaptation and forgetting.
+- l. 310: \caption[Results of the few-shot experiment]{Results of the few-shot experiment (original task order, one run 
+- l. 319: \caption[Metrics over the number of training volumes]{Metrics over the number of training volumes per task (lo
+- l. 324: Sequential fine-tuning learned every task in all three few-shot settings, and, with ten epochs per task, it fo
+- l. 334: With 5 and 10 volumes per task, neither LoRA strategy learned any task, whereas with the full training split t
+- l. 344: The equal-updates runs separate the number of volumes from the number of updates at $k = 5$.
+- l. 354: Joint fine-tuning reached a Final Performance between 0.585 and 0.753 with 5 to 20 volumes per task, against 0
+- l. 361: With ten epochs per task, sequential fine-tuning was the only one of the three strategies that learned the tas
+- l. 374: In the LoRA rank experiment, we ask how the rank of the LoRA adapters affects adaptation and forgetting.
+- l. 380: \caption[Results of the LoRA rank experiment]{Results of the LoRA rank experiment (full training split, origin
+- l. 389: \caption[Metrics of shared LoRA over the rank]{Metrics of shared LoRA over the rank $r$ (logarithmic axis; ful
+- l. 394: For shared LoRA, Adaptation, Final Forgetting, the control-task drop, and Final Performance changed monotonica
+- l. 403: The evaluation matrices show which tasks drive these trends (\cref{sec:app-matrices}).
+- l. 412: In shared LoRA, $\alpha = 32$ is the same for all ranks, so the scaling factor $\gamma_r = \alpha / \sqrt{r}$ 
+- l. 416: For task-specific LoRA, $r = 8$ reached a lower Adaptation than $r = 4$ (0.404 against 0.485).
+- l. 422: For shared LoRA with fixed $\alpha$, the rank sets a trade-off between adaptation and retention.
+- l. 436: In the task-order experiment, we ask whether the results depend on the order in which the structures are learn
+- l. 442: \caption[Results of the task-order experiment]{Results of the task-order experiment (full training split, one 
+- l. 451: \caption[Metrics in the original and the reverse task order]{Metrics in the original (plain bars) and the reve
+- l. 456: For sequential fine-tuning, no effect of the task order can be detected.
+- l. 464: For task-specific LoRA, the task order changes neither the data nor the settings of a task.
+- l. 477: For shared LoRA, the reverse order led to better retention.
+- l. 486: For shared LoRA in the original order, most of the control-task drop and of the forgetting arose in the last s
+- l. 496: In both orders, shared LoRA learned the first task poorly.
+- l. 504: The training loss of shared LoRA with $r = 1024$ (\cref{sec:app-shared-loss}) fell only slowly from its value 
+- l. 507: For sequential fine-tuning, the task order changed only Transfer, by 0.013, and the strategy forgot almost eve
+- l. 530: \caption[Measured cost of the strategies]{Measured cost of the strategies in the comparison (full training spl
+- l. 536: \Cref{tab:ch6_compute} reports the measured cost of the strategies in the comparison.
+- l. 549: Three limitations affect the conclusions most: the hyperparameters shared by all strategies, the single run of
+- l. 554: First, all strategies were trained with one set of hyperparameters, and neither the learning rate nor the numb
+- l. 563: Within the ten epochs per task used for all strategies, shared LoRA with $r = 1024$ learned little on its firs
+- l. 576: Second, each configuration was trained once, on one random split of each dataset and, in the few-shot settings
+- l. 584: Third, the scope of the study is narrow.
+- l. 597: Our results also cover only the strategies we evaluated, in the form we implemented them.
+- l. 603: The evaluation protocol has two further limits.
+- l. 612: Three further threats to internal validity come from how the runs were set up and evaluated.
+- l. 618: Finally, the data and the checkpoint limit how far our numbers carry over to other evaluations.
+- l. 630: The numerical results and the ranking of the strategies apply only to the setting studied here.
+- l. 636: The contrast between sequential fine-tuning and task-specific LoRA (\cref{sec:exp-main}) has also been reporte
+
+## thesis/introduction.tex (22 markers)
+
+- l. 16: Medical image segmentation assigns every voxel of an image either to a structure, such as an organ or a tissue
+- l. 23: Automatic segmentation with deep learning has commonly meant training one model for each dataset and its targe
+- l. 30: Text-promptable models differ in the text they accept.
+- l. 37: This thesis adapts VoxTell, which was trained on more than 62{,}000 \gls{ct}, \gls{mri}, and \gls{pet} volumes
+- l. 44: Automatic segmentation of the knee cartilages and menisci is useful because quantitative biomarkers for osteoa
+- l. 50: With few manual outlines available, VoxTell would have to learn the knee structures from a few labelled volume
+- l. 60: Instead of being retrained from scratch, the model can be adapted to one new structure at a time.
+- l. 67: The simplest way to learn a task is to fine-tune the model on its data.
+- l. 78: \caption[Setting of this thesis]{Setting of this thesis.
+- l. 88: With few labelled volumes per task, it is not clear in advance how the balance between stability and plasticit
+- l. 95: The continual-learning results we found do not show how few labelled volumes shift the balance between stabili
+- l. 101: In our literature search, we found no work that adapts a pretrained free-text promptable 3D segmentation model
+- l. 111: This thesis addresses the following research question:
+- l. 121: We pursue four objectives:
+- l. 134: We study the research question with VoxTell~\cite{rokuss2025voxtellfreetextpromptableuniversal} as the pretrai
+- l. 142: We compare sequential fine-tuning, the baseline, with five continual-learning strategies.
+- l. 156: All strategies are trained with the full training split.
+- l. 161: From the test results, we compute three primary metrics (\cref{sec:bg-metrics}): Adaptation, the \gls{dsc} on 
+- l. 167: The study uses one model, one dataset for the tasks, one control task, one fixed text prompt per structure, an
+- l. 178: The contributions of this thesis are:
+- l. 187: Sequential fine-tuning, LoRA, replay~\cite[Sec.~3.1]{delange2022}, ZSCL, and CPE-CLIP are existing methods, an
+- l. 196: \Cref{chap:sota} reviews text-promptable medical image segmentation and few-shot adaptation of segmentation mo
+
+## thesis/method.tex (43 markers)
+
+- l. 14: This chapter describes how we address the research question and the reasons for the main design choices.
+- l. 24: We consider a sequence of $T = 6$ tasks built from SKM-TEA.
+- l. 30: Each task has one fixed text prompt, which names its target structure during training and at inference, so the
+- l. 36: The control task (\cref{sec:bg-metrics}) is the segmentation of the lung in the AeroPath test volumes $\mathca
+- l. 45: The protocol trains a strategy on the $T$ tasks in sequence and, after every stage~$j$, evaluates it on the te
+- l. 51: Each entry $a_{i,j}$ or $c_j$ is the per-volume \gls{dsc} between the binary prediction and the label mask, av
+- l. 60: All entries of all runs use the same test volumes: the 24 SKM-TEA test volumes for the tasks and the 4 AeroPat
+- l. 65: \Cref{alg:protocol} summarises the protocol.
+- l. 91: The protocol has two variables that are set per run.
+- l. 99: As a reference, we apply the same metrics to the pretrained model itself, treating it as if it had been evalua
+- l. 104: As an upper reference, we use joint fine-tuning, which trains one model on the training sets of all six tasks 
+- l. 118: This section describes VoxTell as we use it and the procedure \textsc{Adapt}, which adapts it to task~$t$ in s
+- l. 121: We start every run from version~1.1 of the released VoxTell checkpoint~\cite{rokuss2025voxtellfreetextpromptab
+- l. 129: \caption[VoxTell as used in this thesis and the parts changed by the strategies]{VoxTell as used in this thesi
+- l. 139: Two properties of the released implementation determine where the strategies of \cref{sec:method-strategies} a
+- l. 152: \textsc{Adapt} (\cref{alg:adapt}) starts from the parameters~$\theta_{t-1}$ of the previous stage and trains o
+- l. 194: In every epoch, each training volume contributes one patch of $192^3$ voxels.
+- l. 201: The loss $\mathcal{L}_{\mathrm{seg}}$ is the unweighted sum of the binary cross-entropy and the soft Dice loss
+- l. 208: The trainable parameters are optimised by \gls{sgd} with Nesterov momentum~$\mu$, weight decay~$\omega$, and i
+- l. 219: All strategies are evaluated with the parameters after the last epoch.
+- l. 231: We compare five continual-learning strategies with sequential fine-tuning, the baseline, which has no mechanis
+- l. 242: \Cref{tab:method-strategies} summarises how the six strategies differ in the steps of \cref{alg:adapt}.
+- l. 248: Sequential fine-tuning trains all parameters except those of the frozen text encoder on each task in turn, and
+- l. 257: Both LoRA strategies keep all pretrained weights frozen and train a low-rank update $\gamma_r\mat{B}\mat{A}$ (
+- l. 262: The scaling factor is the rank-stabilised $\gamma_r = \alpha / \sqrt{r}$ of rsLoRA (\cref{eq:bg-rslora})~\cite
+- l. 268: We apply LoRA to the query and value projections $\mat{W}_q$ and $\mat{W}_v$ of the cross-attention in all $L_
+- l. 275: The two strategies differ in how the adapters are used across tasks.
+- l. 285: At stage~$j$ of the protocol, task-specific LoRA evaluates a task $i \le j$ with the adapter trained on task~$
+- l. 296: Shared LoRA with replay adds to shared LoRA a memory of training samples from earlier tasks, which are trained
+- l. 304: Let $\mathcal{M}_t$ be the memory after task~$t$.
+- l. 312: We draw the stored samples at random so that the comparison with shared LoRA shows the effect of replay itself
+- l. 320: The prompt-tuning strategy is adapted from CPE-CLIP~\cite{D_Alessandro_2023} (\cref{subsec:bg-prompt}).
+- l. 334: The second component is a meta-net $h_\psi$, a two-layer perceptron with a hidden width of 2048, parameters~$\
+- l. 346: One set of tokens and one meta-net are trained through all tasks and used for every task at inference, so the 
+- l. 360: The distillation-based strategy is adapted from ZSCL~\cite{zheng2023preventingzeroshottransferdegradation} (\c
+- l. 366: The loss compares how the stage-4 guidance relates to the stage-4 image features (\cref{fig:ch5_voxtell}).
+- l. 387: \caption[Overview of the strategies]{Steps of \cref{alg:adapt} in which the six strategies differ. The column 
+- l. 393: The loss is computed on the patches of the current task instead of a reference dataset, so the strategy needs 
+- l. 399: The strategy also maintains a weight ensemble following \cref{eq:bg-we}, from which the next task is not train
+- l. 409: \Cref{alg:protocol} calls \textsc{Adapt} $T$ times and evaluates $T+1$ stages, each on the $T$ task test sets 
+- l. 416: Adapting to task~$t$ takes $E\,N_t$ updates and, with one validation pass after every epoch, $E\,|\mathcal{D}_
+- l. 426: In asymptotic terms, every strategy needs $O(E\,N_t)$ forward and backward passes per task, and the distillati
+- l. 433: Memory depends mainly on whether the backward pass reaches the image encoder, because only then are the activa
+
+## thesis/related_work.tex (30 markers)
+
+- l. 14: This thesis adapts a pretrained free-text promptable 3D segmentation model to a sequence of new target structu
+- l. 23: Promptable segmentation models differ in how the target is selected: either by a spatial prompt marked in the 
+- l. 32: Several text-promptable models select their target from a fixed vocabulary.
+- l. 43: VoxTell, the model adapted in this thesis, accepts a text prompt that may be a single anatomical term or a ful
+- l. 49: The VoxTell authors report robustness to synonyms, rephrasings, and typos~\cite{rokuss2025voxtellfreetextpromp
+- l. 58: Each task in this thesis comes with only a few labelled training volumes, so this section reviews how pretrain
+- l. 66: Silva-Rodríguez et al.\ fine-tuned a Swin UNETR, pretrained on partially labelled \gls{ct} scans, to one organ
+- l. 73: For vision--language models, CLIP-LoRA adds rank-2 LoRA modules to the query, key, and value projections of ev
+- l. 84: The works above adapt a model to one target or dataset at a time, each time starting from the same pretrained 
+- l. 94: VoxTell combines a frozen text encoder with an image encoder and lets the encoded text prompt attend to the im
+- l. 99: Continual-learning scenarios differ in whether the task identity of an input is given at inference~\cite{van_d
+- l. 107: The multimodal replay method reviewed here avoids storing real images by generating the replayed data.
+- l. 113: ZSCL, a cross-modal regularisation method, showed that continual fine-tuning of CLIP also lowers its zero-shot
+- l. 124: PRIMED transfers ZSCL's distillation on reference data to medical 2D image classification with BiomedCLIP~\cit
+- l. 131: Parameter-efficient methods freeze most of the pretrained model and train a small set of added parameters~\cit
+- l. 144: Other methods train learned prompt tokens, which are vectors added to the input of a frozen model.
+- l. 154: The distillation and prompt-learning methods do not carry over directly to VoxTell.
+- l. 165: Unlike the methods for vision--language models, which classify images or generate text, the methods reviewed i
+- l. 175: Early work on continual learning for medical image segmentation applied regularisation and distillation.
+- l. 181: In natural-image segmentation, MiB was the first method to explicitly address background shift, by treating ol
+- l. 188: Replay methods for segmentation either store selected parts of earlier data or generate the replayed data.
+- l. 196: Parameter-isolation methods keep separate parts of the model for different tasks or structures.
+- l. 205: Some studies compare existing methods instead of proposing a new one.
+- l. 219: SAM-Med3D-MoE and CA-SAM add task-specific parts to a pretrained \gls{sam}-based model, which is prompted with
+- l. 229: Two works adapt pretrained 3D models without spatial prompts.
+- l. 242: Three recent works by Gao and colleagues are the closest to this thesis.
+- l. 249: MedCRP-CL clusters the tasks by the CLIP embeddings of their text prompts and trains one LoRA module per clust
+- l. 265: Text-promptable 3D models such as SAT and VoxTell are trained once on many structures, and VoxTell's zero-shot
+- l. 274: In our search\footnote{Keyword queries in OpenAlex, PubMed, and arXiv and a search of the works citing VoxTell
+- l. 280: Unlike the closest works, which each propose a new method, this thesis adapts existing methods to VoxTell and 
+
+## thesis/summary.tex (11 markers)
+
+- l. 14: Universal segmentation models such as VoxTell~\cite{rokuss2025voxtellfreetextpromptableuniversal} segment many
+- l. 26: We compared sequential fine-tuning, the baseline, with five continual-learning strategies that build on existi
+- l. 31: No strategy adapted as well as sequential fine-tuning while retaining as much as the LoRA strategies.
+- l. 46: With the full training split and in the original task order, only two of the LoRA strategies kept most of what
+- l. 55: With 5 volumes and as many updates as on the full training split, task-specific and shared LoRA reached an Ada
+- l. 65: The task order and the rank mainly affected shared LoRA (\cref{sec:exp-task-order,sec:exp-rank}).
+- l. 73: The control task showed an effect that Final Forgetting alone would have missed (\cref{sec:exp-rank}).
+- l. 80: Several limitations should be considered (\cref{sec:exp-limitations}).
+- l. 89: The main extension of this work is a strategy that adapts as well as sequential fine-tuning while retaining as
+- l. 97: For shared LoRA with replay, runs in other task orders and at other ranks would show whether its benefit holds
+- l. 105: Equal-updates runs with 10 and 20 volumes per task and few-shot runs of the distillation-based and prompt-tuni
+
+## thesis/tables/ch2_positioning.tex (1 markers)
+
+- l. 3: \begin{table}[!tb]  [(table content)]
+
+## thesis/tables/ch2_sota.tex (1 markers)
+
+- l. 4: {\footnotesize  [(table content)]
+
+## thesis/tables/ch5_strategies.tex (1 markers)
+
+- l. 6: \small\renewcommand{\arraystretch}{1.2}\setlength{\tabcolsep}{4pt}
+
+## thesis/thesis_main.tex (2 markers)
+
+- l. 138: {\selectlanguage{german}%  [(translation of the approved English abstract, 2026-11-12; to be checked by a native German speaker)]
+- l. 161: Universal segmentation models such as VoxTell segment many anatomical structures named by a free-text prompt,   [(content approved by the author 2026-11-12: problem, setup, trade-off with Adaptation 0.781 vs at most 0.485, few-shot result, control task, open question from the Summary)]

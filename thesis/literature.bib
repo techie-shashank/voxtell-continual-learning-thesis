@@ -27,29 +27,19 @@
 	pages = {203--211},
 }
 
+% universeg: completed 2026-11-12 by Claude (bib-entry-adder); title acronym protected; sources: publisher (IEEE), address (Paris, France), eventdate (2023-10-01 to 2023-10-06), month, pages (21381-21394, dash fixed) <- https://api.crossref.org/works/10.1109/iccv51070.2023.01960; omitted (not verifiable): editor (none listed by IEEE)
 @INPROCEEDINGS{universeg,
   author={Butoi, Victor Ion and Gonzalez Ortiz, Jose Javier and Ma, Tianyu and Sabuncu, Mert R. and Guttag, John and Dalca, Adrian V.},
-  booktitle={2023 IEEE/CVF International Conference on Computer Vision (ICCV)}, 
-  title={UniverSeg: Universal Medical Image Segmentation}, 
+  booktitle={2023 IEEE/CVF International Conference on Computer Vision (ICCV)},
+  title={{UniverSeg}: Universal Medical Image Segmentation},
   year={2023},
-  volume={},
-  number={},
-  pages={21381-21394},
+  month=oct,
+  publisher={IEEE},
+  address={Paris, France},
+  eventdate={2023-10-01/2023-10-06},
+  pages={21381--21394},
   keywords={Training;Deep learning;Image segmentation;Computer vision;Source coding;Computational modeling;Task analysis},
   doi={10.1109/ICCV51070.2023.01960}}
-
-@article{Zhao_2024,
-   title={A foundation model for joint segmentation, detection and recognition of biomedical objects across nine modalities},
-   volume={22},
-   ISSN={1548-7105},
-   url={http://dx.doi.org/10.1038/s41592-024-02499-w},
-   DOI={10.1038/s41592-024-02499-w},
-   number={1},
-   journal={Nature Methods},
-   publisher={Springer Science and Business Media LLC},
-   author={Zhao, Theodore and Gu, Yu and Yang, Jianwei and Usuyama, Naoto and Lee, Ho Hin and Kiblawi, Sid and Naumann, Tristan and Gao, Jianfeng and Crabtree, Angela and Abel, Jacob and Moung-Wen, Christine and Piening, Brian and Bifulco, Carlo and Wei, Mu and Poon, Hoifung and Wang, Sheng},
-   year={2024},
-   month=Nov, pages={166–176} }
 
 @misc{dolz2019hyperdensenethyperdenselyconnectedcnn,
       title={HyperDense-Net: A hyper-densely connected CNN for multi-modal image segmentation}, 
@@ -215,6 +205,7 @@ doi = {10.1038/s43018-023-00619-7}
   issn = {1523-9829},
 }
 
+% 3d_unet: completed 2026-11-12 by Claude (bib-entry-adder); title acronyms protected; sources: doi, pages <- https://api.crossref.org/works/10.1007/978-3-319-46723-8_49; series (Lecture Notes in Computer Science), booktitle subtitle (19th International Conference, Athens, Greece, October 17-21, 2016, Proceedings, Part II), editor, publisher, address (Cham) <- https://api.crossref.org/works/10.1007/978-3-319-46723-8; volume 9901 <- https://link.springer.com/chapter/10.1007/978-3-319-46723-8_49 (LNIP subseries of LNCS, volume 9901); eventdate <- book subtitle; omitted (not verifiable): none
 @InProceedings{3d_unet,
 author="{\c{C}}i{\c{c}}ek, {\"O}zg{\"u}n
 and Abdulkadir, Ahmed
@@ -226,12 +217,16 @@ and Joskowicz, Leo
 and Sabuncu, Mert R.
 and Unal, Gozde
 and Wells, William",
-title="3D U-Net: Learning Dense Volumetric Segmentation from Sparse Annotation",
-booktitle="Medical Image Computing and Computer-Assisted Intervention -- MICCAI 2016",
+title="{3D} {U-Net}: Learning Dense Volumetric Segmentation from Sparse Annotation",
+booktitle="Medical Image Computing and Computer-Assisted Intervention -- {MICCAI} 2016. 19th International Conference, Athens, Greece, October 17--21, 2016, Proceedings, Part {II}",
+series="Lecture Notes in Computer Science",
+volume="9901",
 year="2016",
+eventdate="2016-10-17/2016-10-21",
 publisher="Springer International Publishing",
 address="Cham",
 pages="424--432",
+doi="10.1007/978-3-319-46723-8_49",
 abstract="This paper introduces a network for volumetric segmentation that learns from sparsely annotated volumetric images. We outline two attractive use cases of this method: (1) In a semi-automated setup, the user annotates some slices in the volume to be segmented. The network learns from these sparse annotations and provides a dense 3D segmentation. (2) In a fully-automated setup, we assume that a representative, sparsely annotated training set exists. Trained on this data set, the network densely segments new volumetric images. The proposed network extends the previous u-net architecture from Ronneberger et al. by replacing all 2D operations with their 3D counterparts. The implementation performs on-the-fly elastic deformations for efficient data augmentation during training. It is trained end-to-end from scratch, i.e., no pre-trained network is required. We test the performance of the proposed method on a complex, highly variable 3D structure, the Xenopus kidney, and achieve good results for both use cases.",
 isbn="978-3-319-46723-8"
 }
@@ -278,6 +273,7 @@ isbn="978-3-319-46723-8"
       url={https://arxiv.org/abs/1812.04103}, 
 }
 
+% Ma_2024: completed 2026-11-12 by Claude (bib-entry-adder); sources: pages (article number 654) <- https://api.crossref.org/works/10.1038/s41467-024-44824-z (article-number 654), as in PMC10803759; omitted (not verifiable): none
 @article{Ma_2024,
    title={Segment anything in medical images},
    volume={15},
@@ -289,10 +285,11 @@ isbn="978-3-319-46723-8"
    publisher={Springer Science and Business Media LLC},
    author={Ma, Jun and He, Yuting and Li, Feifei and Han, Lin and You, Chenyu and Wang, Bo},
    year={2024},
-   month=Jan }
+   month=Jan,
+   pages={654} }
 
 @misc{cheng2023sammed2d,
-      title={SAM-Med2D}, 
+      title={{SAM-Med2D}},
       author={Junlong Cheng and Jin Ye and Zhongying Deng and Jianpin Chen and Tianbin Li and Haoyu Wang and Yanzhou Su and Ziyan Huang and Jilong Chen and Lei Jiang and Hui Sun and Junjun He and Shaoting Zhang and Min Zhu and Yu Qiao},
       year={2023},
       eprint={2308.16184},
@@ -337,7 +334,7 @@ isbn="978-3-319-46723-8"
    publisher={National Academy of Sciences},
    author={Kirkpatrick, James and Pascanu, Razvan and Rabinowitz, Neil and Veness, Joel and Desjardins, Guillaume and Rusu, Andrei A. and Milan, Kieran and Quan, John and Ramalho, Tiago and Grabska-Barwinska, Agnieszka and Hassabis, Demis and Clopath, Claudia and Kumaran, Dharshan and Hadsell, Raia},
    year={2017},
-   month=Mar, pages={3521–3526} }
+   month=Mar, pages={3521--3526} }
 
 @INPROCEEDINGS{icarl2017,
   author={Rebuffi, Sylvestre-Alvise and Kolesnikov, Alexander and Sperl, Georg and Lampert, Christoph H.},
@@ -380,6 +377,7 @@ abstract = {Humans and animals have the ability to continually acquire, fine-tun
   journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
   title={A Continual Learning Survey: Defying Forgetting in Classification Tasks}, 
   year={2022},
+  shorthand={DeL+22},
   volume={44},
   number={7},
   pages={3366-3385},
@@ -387,7 +385,7 @@ abstract = {Humans and animals have the ability to continually acquire, fine-tun
   doi={10.1109/TPAMI.2021.3057446}}
 
 @misc{liu2026continuallearningvlmssurvey,
-      title={Continual Learning for VLMs: A Survey and Taxonomy Beyond Forgetting}, 
+      title={Continual Learning for {VLMs}: A Survey and Taxonomy Beyond Forgetting},
       author={Yuyang Liu and Qiuhe Hong and Linlan Huang and Alexandra Gomez-Villa and Dipam Goswami and Tiantian Peng and Xialei Liu and Joost van de Weijer and Yonghong Tian},
       year={2026},
       eprint={2508.04227},
@@ -397,19 +395,22 @@ abstract = {Humans and animals have the ability to continually acquire, fine-tun
 }
 
 
+% gonzalez2023lifelong: completed 2026-11-12 by Claude (bib-entry-adder); title acronym protected; sources: doi, month <- https://api.crossref.org/works/10.1038/s41598-023-34484-2 (volume 13, issue 1, article number 9381 confirmed); publisher <- https://www.nature.com/articles/s41598-023-34484-2 (citation_publisher "Nature Publishing Group"); omitted (not verifiable): publisher place (not stated by the publisher page; "UK London" removed)
 @article{gonzalez2023lifelong,
-  title={Lifelong nnU-Net: a framework for standardized medical continual learning},
+  title={Lifelong {nnU-Net}: a framework for standardized medical continual learning},
   author={Gonz{\'a}lez, Camila and Ranem, Amin and Pinto dos Santos, Daniel and Othman, Ahmed and Mukhopadhyay, Anirban},
   journal={Scientific Reports},
   volume={13},
   number={1},
   pages={9381},
   year={2023},
-  publisher={Nature Publishing Group UK London}
+  month=jun,
+  publisher={Nature Publishing Group},
+  doi={10.1038/s41598-023-34484-2}
 }
 
 @misc{chen2026fewshotcontinuallearning3d,
-      title={Few-Shot Continual Learning for 3D Brain MRI with Frozen Foundation Models}, 
+      title={Few-Shot Continual Learning for {3D} Brain {MRI} with Frozen Foundation Models},
       author={Chi-Sheng Chen and Xinyu Zhang and Guan-Ying Chen and Qiuzhe Xie and Fan Zhang and En-Jui Kuo},
       year={2026},
       eprint={2602.23533},
@@ -420,7 +421,7 @@ abstract = {Humans and animals have the ability to continually acquire, fine-tun
 
 % Zhang_2025: completed 2026-10-23 by Claude (bib-entry-adder); sources: address (conference place Dublin, Ireland), pages (7500-7509, dash fixed) <- https://api.crossref.org/works/10.1145/3746027.3754917 (event MM '25, Dublin Ireland); omitted (not verifiable): editor (Crossref/ACM record lists none; ACM DL blocked automated access), eventdate (not in Crossref)
 @inproceedings{Zhang_2025, series={MM ’25},
-   title={Contrastive Regularization over LoRA for Multimodal Biomedical Image Incremental Learning},
+   title={Contrastive Regularization over {LoRA} for Multimodal Biomedical Image Incremental Learning},
    url={http://dx.doi.org/10.1145/3746027.3754917},
    DOI={10.1145/3746027.3754917},
    booktitle={Proceedings of the 33rd ACM International Conference on Multimedia},
@@ -544,16 +545,19 @@ keywords = {Continual learning, medical, survey, types of continual learning}
   publisher={Elsevier}
 }
 
-@inbook{van_de_Ven_2025,
+% van_de_Ven_2025: completed 2026-11-12 by Claude (bib-entry-adder); entry type changed from @inbook to @incollection (chapter by other authors in an edited reference work); sources: title, booktitle, publisher, pages (153-168, dash fixed), isbn, doi <- https://api.crossref.org/works/10.1016/b978-0-443-15754-7.00073-0; editor (John T. Wixted, Editor in Chief), edition (3rd) <- https://shop.elsevier.com/books/learning-and-memory-a-comprehensive-reference/wixted/978-0-443-15754-7; DOI case as in the publisher URL; omitted (not verifiable): address (no place stated by Elsevier)
+@incollection{van_de_Ven_2025,
    title={Continual learning and catastrophic forgetting},
    ISBN={9780443157554},
    url={http://dx.doi.org/10.1016/B978-0-443-15754-7.00073-0},
-   DOI={10.1016/b978-0-443-15754-7.00073-0},
+   DOI={10.1016/B978-0-443-15754-7.00073-0},
    booktitle={Learning and Memory: A Comprehensive Reference},
+   editor={Wixted, John T.},
+   edition={3},
    publisher={Elsevier},
    author={van de Ven, Gido M. and Soures, Nicholas and Kudithipudi, Dhireesha},
    year={2025},
-   pages={153–168} }
+   pages={153--168} }
 
 @article{Litjens_2017,
    title={A survey on deep learning in medical image analysis},
@@ -568,6 +572,7 @@ keywords = {Continual learning, medical, survey, types of continual learning}
    month=Dec, pages={60–88} }
 
 
+% theekshana26fewshot: completed 2026-11-12 by Claude (bib-entry-adder); sources: journal (full name "ACM Computing Surveys"), pages (article number 11, printed like the other article-number entries; Crossref page range 1-36 = numpages) <- https://api.crossref.org/works/10.1145/3746224 and the existing articleno field (ACM); year kept at 2025 (Crossref published 2025-09; issue date January 2026); omitted (not verifiable): none
 @article{theekshana26fewshot,
 author = {Dissanayake, Theekshana and George, Yasmeen and Mahapatra, Dwarikanath and Sridharan, Shridha and Fookes, Clinton and Ge, Zongyuan},
 title = {Few-Shot Learning for Medical Image Segmentation: A Review and Comparative Study},
@@ -581,29 +586,36 @@ issn = {0360-0300},
 url = {https://doi.org/10.1145/3746224},
 doi = {10.1145/3746224},
 abstract = {Medical image segmentation plays a crucial role in assisting clinicians with diagnosing critical medical conditions. In deep learning, few-shot learning methods aim to replicate human learning by leveraging fewer examples for determining a prediction for a novel class. Researchers in the medical imaging community have also explored novel methods for few-shot medical image segmentation, leveraging meta-learning, foundation models and self-supervised learning (SSL). Acknowledging this growing interest, we review the literature on few-shot medical image segmentation from 2020 to early 2025, focusing on architectural modifications, loss-inspired learning strategies, and meta-learning frameworks. We further divide each category into fine-grained deep learning-oriented solutions, including self-supervised learning, contrastive learning, regularization, and foundation models providing in-depth discussions on architectural improvements and representation learning strategies. Additionally, we present preliminary results from several few-shot segmentation models across both medical and computer vision domains, evaluating their strengths and limitations for medical image applications. Finally, based on the limitations observed, advancements from the natural image domain, and empirical findings, we outline future research directions, providing specific insights into data-efficient learning, rapid adaptation of foundation models and generalization. The code is available here.},
-journal = {ACM Comput. Surv.},
+journal = {ACM Computing Surveys},
 month = sep,
+pages = {11},
 articleno = {11},
 numpages = {36},
 keywords = {Segmentation, medical image, few-shot learning, deep learning}
 }
 
-@misc{støverud2023aeropathairwaysegmentationbenchmark,
-      title={AeroPath: An airway segmentation benchmark dataset with challenging pathology}, 
-      author={Karen-Helene Støverud and David Bouget and Andre Pedersen and Håkon Olav Leira and Thomas Langø and Erlend Fagertun Hofstad},
-      year={2023},
-      eprint={2311.01138},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2311.01138}, 
+% støverud2023aeropathairwaysegmentationbenchmark: upgraded 2026-11-12 by Claude (bib-entry-adder) from arXiv 2311.01138 to the PLOS ONE version, key kept; sources: author, title, journal, year, volume, number, pages (article number), doi <- https://api.crossref.org/works/10.1371/journal.pone.0311416, cross-checked on https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0311416; omitted (not verifiable): none
+@article{støverud2023aeropathairwaysegmentationbenchmark,
+  author  = {St{\o}verud, Karen-Helene and Bouget, David and Pedersen, Andr\'{e} and Leira, H\aa{}kon Olav and Amundsen, Tore and Lang{\o}, Thomas and Hofstad, Erlend Fagertun},
+  title   = {{AeroPath}: An airway segmentation benchmark dataset with challenging pathology and baseline method},
+  journal = {PLOS ONE},
+  year    = {2024},
+  volume  = {19},
+  number  = {10},
+  pages   = {e0311416},
+  doi     = {10.1371/journal.pone.0311416},
 }
 
-@inproceedings{
-desai2021skmtea,
+% desai2021skmtea: completed 2026-11-12 by Claude (bib-entry-adder); key moved onto the @inproceedings line; sources: booktitle, editor, volume, year, author spelling "R{\'e}" <- https://datasets-benchmarks-proceedings.neurips.cc/paper_files/paper/125-/bibtex (official BibTeX; abstract page https://datasets-benchmarks-proceedings.neurips.cc/paper_files/paper/2021/hash/03c6b06952c750899bb03d998e631860-Abstract-round2.html, publication date 2021-12-06); address (Virtual), eventdate (December 6-14, 2021) <- https://neurips.cc/Conferences/2021 ("NeurIPS 2021 is a Virtual-only Conference", Monday December 6 through Tuesday December 14); url (OpenReview forum) kept; omitted (not verifiable): pages (official BibTeX has an empty pages field), publisher (not stated in the official record), doi (none issued)
+@inproceedings{desai2021skmtea,
 title={{SKM}-{TEA}: A Dataset for Accelerated {MRI} Reconstruction with Dense Image Labels for Quantitative Clinical Evaluation},
-author={Arjun D Desai and Andrew M Schmidt and Elka B Rubin and Christopher Michael Sandino and Marianne Susan Black and Valentina Mazzoli and Kathryn J Stevens and Robert Boutin and Christopher Re and Garry E Gold and Brian Hargreaves and Akshay Chaudhari},
-booktitle={Thirty-fifth Conference on Neural Information Processing Systems Datasets and Benchmarks Track (Round 2)},
+author={Arjun D Desai and Andrew M Schmidt and Elka B Rubin and Christopher Michael Sandino and Marianne Susan Black and Valentina Mazzoli and Kathryn J Stevens and Robert Boutin and Christopher R{\'e} and Garry E Gold and Brian Hargreaves and Akshay Chaudhari},
+booktitle={Proceedings of the Neural Information Processing Systems Track on Datasets and Benchmarks},
+editor={J. Vanschoren and S. Yeung},
+volume={1},
 year={2021},
+address={Virtual},
+eventdate={2021-12-06/2021-12-14},
 url={https://openreview.net/forum?id=YDMFgD_qJuA}
 }
 
@@ -671,11 +683,11 @@ isbn="978-3-031-72111-3"
   doi       = {10.1007/978-3-032-04971-1_29},
 }
 
-% Liu_2023: completed 2026-10-23 by Claude (bib-entry-adder); sources: address, eventdate (Paris, France, 2023-10-01 to 2023-10-06), pages (21095-21107, dash fixed) <- https://api.crossref.org/works/10.1109/iccv51070.2023.01934; omitted (not verifiable): editor (none listed by IEEE)
+% Liu_2023: completed 2026-10-23 by Claude (bib-entry-adder); sources: address, eventdate (Paris, France, 2023-10-01 to 2023-10-06), pages (21095-21107, dash fixed) <- https://api.crossref.org/works/10.1109/iccv51070.2023.01934; omitted (not verifiable): editor (none listed by IEEE). 2026-11-12: {CLIP} brace-protected, DOI written in IEEE case as in the url field
 @inproceedings{Liu_2023,
-   title={CLIP-Driven Universal Model for Organ Segmentation and Tumor Detection},
+   title={{CLIP}-Driven Universal Model for Organ Segmentation and Tumor Detection},
    url={http://dx.doi.org/10.1109/ICCV51070.2023.01934},
-   DOI={10.1109/iccv51070.2023.01934},
+   DOI={10.1109/ICCV51070.2023.01934},
    booktitle={2023 IEEE/CVF International Conference on Computer Vision (ICCV)},
    publisher={IEEE},
    address={Paris, France},
@@ -796,17 +808,23 @@ doi = {10.1038/nn.4393}
   doi     = {10.1109/TPAMI.2017.2773081},
 }
 
-@inbook{Chaudhry_2018,
-   title={Riemannian Walk for Incremental Learning: Understanding Forgetting and Intransigence},
+% Chaudhry_2018: completed 2026-11-12 by Claude (bib-entry-adder); entry type changed from @inbook to @inproceedings (ECCV conference paper); "Riemannian" brace-protected; sources: pages (556-572, dash fixed), doi <- https://api.crossref.org/works/10.1007/978-3-030-01252-6_33; booktitle with subtitle (15th European Conference, Munich, Germany, September 8-14, 2018, Proceedings, Part XI), series (Lecture Notes in Computer Science), editor, publisher, address (Cham) <- https://api.crossref.org/works/10.1007/978-3-030-01252-6; volume 11215 <- https://link.springer.com/chapter/10.1007/978-3-030-01252-6_33 (LNIP subseries of LNCS, volume 11215); eventdate <- book subtitle; omitted (not verifiable): none
+@inproceedings{Chaudhry_2018,
+   title={{Riemannian} Walk for Incremental Learning: Understanding Forgetting and Intransigence},
    ISBN={9783030012526},
    ISSN={1611-3349},
    url={http://dx.doi.org/10.1007/978-3-030-01252-6_33},
    DOI={10.1007/978-3-030-01252-6_33},
-   booktitle={Computer Vision – ECCV 2018},
+   booktitle={Computer Vision -- {ECCV} 2018. 15th European Conference, Munich, Germany, September 8--14, 2018, Proceedings, Part {XI}},
+   editor={Ferrari, Vittorio and Hebert, Martial and Sminchisescu, Cristian and Weiss, Yair},
+   series={Lecture Notes in Computer Science},
+   volume={11215},
    publisher={Springer International Publishing},
+   address={Cham},
+   eventdate={2018-09-08/2018-09-14},
    author={Chaudhry, Arslan and Dokania, Puneet K. and Ajanthan, Thalaiyasingam and Torr, Philip H. S.},
    year={2018},
-   pages={556–572} }
+   pages={556--572} }
 
 
 % cermelli2020modelingbackgroundincrementallearning: upgraded 2026-10-23 by Claude (bib-entry-adder) from arXiv:2002.00718; sources: author, title, booktitle, pages, year, month, publisher, doi, address, eventdate <- https://api.crossref.org/works?query.bibliographic=Modeling+the+Background+for+Incremental+Learning+in+Semantic+Segmentation (DOI 10.1109/cvpr42600.2020.00925; event Seattle, WA, USA, 2020-06-13 to 2020-06-19); author name "Rota Bul{\`o}" kept with accent from the arXiv entry (Crossref writes "Bulo"); omitted (not verifiable): editor (none listed by IEEE)
@@ -823,8 +841,8 @@ doi = {10.1038/nn.4393}
   doi       = {10.1109/CVPR42600.2020.00925},
 }
 
-% Ozdemir_2018: completed 2026-10-23 by Claude (bib-entry-adder); sources: editor, booktitle subtitle (Part IV, Granada, Spain, September 16-20, 2018), address (Cham) <- https://api.crossref.org/works/10.1007/978-3-030-00937-3; pages (361-369, dash fixed) <- https://api.crossref.org/works/10.1007/978-3-030-00937-3_42; eventdate <- book subtitle; omitted (not verifiable): none
-@inbook{Ozdemir_2018,
+% Ozdemir_2018: completed 2026-10-23 by Claude (bib-entry-adder); sources: editor, booktitle subtitle (Part IV, Granada, Spain, September 16-20, 2018), address (Cham) <- https://api.crossref.org/works/10.1007/978-3-030-00937-3; pages (361-369, dash fixed) <- https://api.crossref.org/works/10.1007/978-3-030-00937-3_42; eventdate <- book subtitle; omitted (not verifiable): none. 2026-11-12: entry type changed from @inbook to @inproceedings (MICCAI conference paper); series (Lecture Notes in Computer Science) <- Crossref book record above; volume 11073 <- https://link.springer.com/chapter/10.1007/978-3-030-00937-3_42 (LNIP subseries of LNCS, volume 11073)
+@inproceedings{Ozdemir_2018,
    title={Learn the New, Keep the Old: Extending Pretrained Models with New Anatomy and Images},
    ISBN={9783030009373},
    ISSN={1611-3349},
@@ -832,6 +850,8 @@ doi = {10.1038/nn.4393}
    DOI={10.1007/978-3-030-00937-3_42},
    booktitle={Medical Image Computing and Computer Assisted Intervention -- {MICCAI} 2018. 21st International Conference, Granada, Spain, September 16--20, 2018, Proceedings, Part {IV}},
    editor={Frangi, Alejandro F. and Schnabel, Julia A. and Davatzikos, Christos and Alberola-L{\'o}pez, Carlos and Fichtinger, Gabor},
+   series={Lecture Notes in Computer Science},
+   volume={11073},
    publisher={Springer International Publishing},
    address={Cham},
    eventdate={2018-09-16/2018-09-20},
@@ -869,7 +889,7 @@ doi = {10.1038/nn.4393}
   doi       = {10.1007/978-3-031-43895-0_5},
 }
 
-% memory_replay_cropping: completed 2026-10-23 by Claude (bib-entry-adder); editors already present; sources: booktitle subtitle with conference place (Part IV, Vancouver, BC, Canada, October 8-12, 2023), eventdate <- https://api.crossref.org/works/10.1007/978-3-031-43901-8 (book ISBN matches the entry); omitted (not verifiable): none
+% memory_replay_cropping: completed 2026-10-23 by Claude (bib-entry-adder); editors already present; sources: booktitle subtitle with conference place (Part IV, Vancouver, BC, Canada, October 8-12, 2023), eventdate <- https://api.crossref.org/works/10.1007/978-3-031-43901-8 (book ISBN matches the entry); omitted (not verifiable): none. 2026-11-12: doi (pages 513-522 confirmed) <- https://api.crossref.org/works/10.1007/978-3-031-43901-8_49; series (Lecture Notes in Computer Science) <- Crossref book record above; volume 14223 <- https://link.springer.com/chapter/10.1007/978-3-031-43901-8_49 (LNCS, volume 14223); MICCAI and Part IV brace-protected in booktitle
 @InProceedings{memory_replay_cropping,
 author="Bera, Sutanu
 and Ummadi, Vinay
@@ -883,13 +903,16 @@ and Salcudean, Septimiu
 and Duncan, James
 and Syeda-Mahmood, Tanveer
 and Taylor, Russell",
-title="Memory Replay for Continual Medical Image Segmentation Through Atypical Sample Selection",
-booktitle="Medical Image Computing and Computer Assisted Intervention -- MICCAI 2023. 26th International Conference, Vancouver, BC, Canada, October 8--12, 2023, Proceedings, Part IV",
+title="Memory Replay for Continual Medical Image Segmentation Through Atypical Sample Selection",
+booktitle="Medical Image Computing and Computer Assisted Intervention -- {MICCAI} 2023. 26th International Conference, Vancouver, BC, Canada, October 8--12, 2023, Proceedings, Part {IV}",
+series="Lecture Notes in Computer Science",
+volume="14223",
 eventdate="2023-10-08/2023-10-12",
 year="2023",
 publisher="Springer Nature Switzerland",
 address="Cham",
 pages="513--522",
+doi="10.1007/978-3-031-43901-8_49",
 abstract="Medical image segmentation is critical for accurate diagnosis, treatment planning and disease monitoring. Existing deep learning-based segmentation models can suffer from catastrophic forgetting, especially when faced with varying patient populations and imaging protocols. Continual learning (CL) addresses this challenge by enabling the model to learn continuously from a stream of incoming data without the need to retrain from scratch. In this work, we propose a continual learning-based approach for medical image segmentation using a novel memory replay-based learning scheme. The approach uses a simple and effective algorithm for image selection to create the memory bank by ranking and selecting images based on their contribution to the learning process. We evaluate our proposed algorithm on three different problems and compare it with several baselines, showing significant improvements in performance. Our study highlights the potential of continual learning-based algorithms for medical image segmentation and underscores the importance of efficient sample selection in creating memory banks.",
 isbn="978-3-031-43901-8"
 }
@@ -930,7 +953,7 @@ series = {ICIMH '22}
 }
 
 @misc{guo2025continuallearningdrivenmodelaccurate,
-      title={A Continual Learning-driven Model for Accurate and Generalizable Segmentation of Clinically Comprehensive and Fine-grained Whole-body Anatomies in CT}, 
+      title={A Continual Learning-driven Model for Accurate and Generalizable Segmentation of Clinically Comprehensive and Fine-grained Whole-body Anatomies in {CT}},
       author={Dazhou Guo and Zhanghexuan Ji and Yanzhou Su and Dandan Zheng and Heng Guo and Puyang Wang and Ke Yan and Yirui Wang and Qinji Yu and Zi Li and Minfeng Xu and Jianfeng Zhang and Haoshen Li and Jia Ge and Tsung-Ying Ho and Bing-Shen Huang and Tashan Ai and Kuaile Zhao and Na Shen and Qifeng Wang and Yun Bian and Tingyu Wu and Peng Du and Hua Zhang and Feng-Ming Kong and Alan L. Yuille and Cher Heng Tan and Chunyan Miao and Perry J. Pickhardt and Senxiang Yan and Ronald M. Summers and Le Lu and Dakai Jin and Xianghua Ye},
       year={2025},
       eprint={2503.12698},
@@ -970,7 +993,7 @@ series = {ICIMH '22}
 }
 
 @misc{liu2026medsam3delvingsegmentmedical,
-      title={MedSAM3: Delving into Segment Anything with Medical Concepts}, 
+      title={{MedSAM3}: Delving into Segment Anything with Medical Concepts},
       author={Anglin Liu and Xu R. Cao and Yifan Shen and Yi Lu and Xiang Li and Qianqian Chen and Jintai Chen},
       year={2026},
       eprint={2511.19046},
@@ -1060,13 +1083,13 @@ series = {ICIMH '22}
   url       = {https://aclanthology.org/2023.findings-emnlp.715/},
 }
 
-% che2026loraloraparameterefficientarchitecture: upgraded 2026-10-23 by Claude (bib-entry-adder) from arXiv:2508.06202; 4th author corrected to "Cheems Wang" (was "Qi Wang"); sources: author, title, journal, volume, number, pages, year, month, doi, publisher <- https://api.crossref.org/works/10.1609/aaai.v40i24.39082; address, eventdate <- https://aaai.org/conference/aaai/aaai-26/ (Singapore EXPO, January 20-27, 2026); entry type inproceedings with booktitle as for kemker2017 (Crossref files AAAI proceedings as a journal-like series); omitted (not verifiable): editor (AAAI lists none)
+% che2026loraloraparameterefficientarchitecture: upgraded 2026-10-23 by Claude (bib-entry-adder) from arXiv:2508.06202; 4th author corrected to "Cheems Wang" (was "Qi Wang"); sources: author, title, journal, volume, number, pages, year, month, doi, publisher <- https://api.crossref.org/works/10.1609/aaai.v40i24.39082; address, eventdate <- https://aaai.org/conference/aaai/aaai-26/ (Singapore EXPO, January 20-27, 2026); entry type inproceedings with booktitle as for kemker2017 (Crossref files AAAI proceedings as a journal-like series); omitted (not verifiable): editor (AAAI lists none). 2026-11-12: number 24 moved to issue (on @inproceedings, number printed as "volume 40 of number 24"; issue is not printed by trad-alpha, the issue stays in the DOI)
 @inproceedings{che2026loraloraparameterefficientarchitecture,
   author    = {Che, Chang and Wang, Ziqi and Yang, Pengwan and Wang, Cheems and Ma, Hui and Shi, Zenglin},
   title     = {{LoRA} in {LoRA}: Towards Parameter-Efficient Architecture Expansion for Continual Visual Instruction Tuning},
   booktitle = {Proceedings of the {AAAI} Conference on Artificial Intelligence},
   volume    = {40},
-  number    = {24},
+  issue     = {24},
   pages     = {19978--19986},
   year      = {2026},
   month     = mar,
@@ -1105,11 +1128,11 @@ series = {ICIMH '22}
   doi     = {10.1109/TNNLS.2025.3547882},
 }
 
-% D_Alessandro_2023: completed 2026-10-23 by Claude (bib-entry-adder); sources: address, eventdate (Paris, France, 2023-10-02 to 2023-10-06), pages (3385-3395, dash fixed) <- https://api.crossref.org/works/10.1109/iccvw60793.2023.00364; omitted (not verifiable): editor (none listed by IEEE)
+% D_Alessandro_2023: completed 2026-10-23 by Claude (bib-entry-adder); sources: address, eventdate (Paris, France, 2023-10-02 to 2023-10-06), pages (3385-3395, dash fixed) <- https://api.crossref.org/works/10.1109/iccvw60793.2023.00364; omitted (not verifiable): editor (none listed by IEEE). 2026-11-12: DOI written in IEEE case as in the url field
 @inproceedings{D_Alessandro_2023,
    title={Multimodal Parameter-Efficient Few-Shot Class Incremental Learning},
    url={http://dx.doi.org/10.1109/ICCVW60793.2023.00364},
-   DOI={10.1109/iccvw60793.2023.00364},
+   DOI={10.1109/ICCVW60793.2023.00364},
    booktitle={2023 IEEE/CVF International Conference on Computer Vision Workshops (ICCVW)},
    publisher={IEEE},
    address={Paris, France},
@@ -1142,13 +1165,18 @@ series = {ICIMH '22}
       url={https://arxiv.org/abs/2302.00487}, 
 }
 
+% Zhang_2024_CVPR: completed 2026-11-12 by Claude (bib-entry-adder); sources: booktitle (IEEE proceedings title), publisher (IEEE), address (Seattle, WA, USA), eventdate (2024-06-16 to 2024-06-22), doi, pages (24046-24056, same as CVF, dash fixed) <- https://api.crossref.org/works/10.1109/cvpr52733.2024.02270; omitted (not verifiable): editor (none listed by IEEE/CVF)
 @InProceedings{Zhang_2024_CVPR,
     author    = {Zhang, Wenxuan and Janson, Paul and Aljundi, Rahaf and Elhoseiny, Mohamed},
     title     = {Overcoming Generic Knowledge Loss with Selective Parameter Update},
-    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    booktitle = {2024 {IEEE/CVF} Conference on Computer Vision and Pattern Recognition ({CVPR})},
     month     = jun,
     year      = {2024},
-    pages     = {24046-24056}
+    eventdate = {2024-06-16/2024-06-22},
+    publisher = {IEEE},
+    address   = {Seattle, WA, USA},
+    pages     = {24046--24056},
+    doi       = {10.1109/CVPR52733.2024.02270}
 }
 
 @misc{wang2023tracecomprehensivebenchmarkcontinual,
@@ -1191,7 +1219,7 @@ series = {ICIMH '22}
 }
 
 @misc{kalajdzievski2023rankstabilizationscalingfactor,
-      title={A Rank Stabilization Scaling Factor for Fine-Tuning with LoRA}, 
+      title={A Rank Stabilization Scaling Factor for Fine-Tuning with {LoRA}},
       author={Damjan Kalajdzievski},
       year={2023},
       eprint={2312.03732},
@@ -1208,19 +1236,25 @@ series = {ICIMH '22}
       url={https://openreview.net/forum?id=nZeVKeeFYf9}
 }
 
+% zhou2022cocoop: completed 2026-11-12 by Claude (bib-entry-adder); switched to the IEEE Xplore record so that DOI and pages match; sources: booktitle, month, publisher (IEEE), address (New Orleans, LA, USA), eventdate (2022-06-18 to 2022-06-24), doi, pages (16795-16804) <- https://api.crossref.org/works/10.1109/cvpr52688.2022.01631; previous pages 16816--16825 are the CVF open-access pagination; omitted (not verifiable): editor (none listed by IEEE/CVF)
 @inproceedings{zhou2022cocoop,
     title={Conditional Prompt Learning for Vision-Language Models},
     author={Zhou, Kaiyang and Yang, Jingkang and Loy, Chen Change and Liu, Ziwei},
-    booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    booktitle={2022 {IEEE/CVF} Conference on Computer Vision and Pattern Recognition ({CVPR})},
     year={2022},
-    pages={16816--16825}
+    month=jun,
+    eventdate={2022-06-18/2022-06-24},
+    publisher={IEEE},
+    address={New Orleans, LA, USA},
+    pages={16795--16804},
+    doi={10.1109/CVPR52688.2022.01631}
 }
 
-% NIPS2017_3f5ee243: completed 2026-10-22 by Claude (bib-entry-adder); sources: author, booktitle, editor, publisher, title, url, volume, year <- https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Bibtex.bib (unchanged); pages <- https://papers.nips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Metadata.json (page_first 5998, page_last 6008); address <- paper PDF p. 1 footer ("31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA."); eventdate <- https://neurips.cc/Conferences/2017 (Dec 4th through 9th); omitted (not verifiable): doi (none issued)
+% NIPS2017_3f5ee243: completed 2026-10-22 by Claude (bib-entry-adder); sources: author, booktitle, editor, publisher, title, url, volume, year <- https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Bibtex.bib (unchanged); pages <- https://papers.nips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Metadata.json (page_first 5998, page_last 6008); address <- paper PDF p. 1 footer ("31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA."); eventdate <- https://neurips.cc/Conferences/2017 (Dec 4th through 9th); omitted (not verifiable): doi (none issued). 2026-11-12: editor "U. Von Luxburg" rewritten as "von Luxburg, U." so biber parses "von" as name prefix (spelling as on https://www.tml.cs.uni-tuebingen.de/team/luxburg/)
 @inproceedings{NIPS2017_3f5ee243,
  author = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N and Kaiser, \L ukasz and Polosukhin, Illia},
  booktitle = {Advances in Neural Information Processing Systems},
- editor = {I. Guyon and U. Von Luxburg and S. Bengio and H. Wallach and R. Fergus and S. Vishwanathan and R. Garnett},
+ editor = {I. Guyon and von Luxburg, U. and S. Bengio and H. Wallach and R. Fergus and S. Vishwanathan and R. Garnett},
  pages = {5998--6008},
  address = {Long Beach, CA, USA},
  eventdate = {2017-12-04/2017-12-09},
@@ -1354,7 +1388,7 @@ series = {ICIMH '22}
 % wang2024sammed3dmoe: added 2026-10-23 by Claude (bib-entry-adder); peer-reviewed MICCAI 2024 version of arXiv:2407.04938; sources: author, title, pages, doi, publisher <- https://api.crossref.org/works?query.bibliographic=SAM-Med3D-MoE (DOI 10.1007/978-3-031-72114-4_53); series volume 15009, address (Cham) <- https://link.springer.com/chapter/10.1007/978-3-031-72114-4_53 ("Cite this paper"); editor, booktitle subtitle (Part IX, Marrakesh, Morocco, October 6-10, 2024) <- https://api.crossref.org/works/10.1007/978-3-031-72114-4; omitted (not verifiable): none
 @inproceedings{wang2024sammed3dmoe,
   author    = {Wang, Guoan and Ye, Jin and Cheng, Junlong and Li, Tianbin and Chen, Zhaolin and Cai, Jianfei and He, Junjun and Zhuang, Bohan},
-  title     = {{SAM-Med3D-MoE}: Towards a Non-Forgetting Segment Anything Model via Mixture of Experts for {3D} Medical Image Segmentation},
+  title     = {{SAM-Med3D-MoE}: Towards a Non-Forgetting {Segment Anything Model} via Mixture of Experts for {3D} Medical Image Segmentation},
   booktitle = {Medical Image Computing and Computer Assisted Intervention -- {MICCAI} 2024. 27th International Conference, Marrakesh, Morocco, October 6--10, 2024, Proceedings, Part {IX}},
   editor    = {Linguraru, Marius George and Dou, Qi and Feragen, Aasa and Giannarou, Stamatia and Glocker, Ben and Lekadir, Karim and Schnabel, Julia A.},
   series    = {Lecture Notes in Computer Science},
@@ -1557,13 +1591,18 @@ series = {ICIMH '22}
   issn      = {1053-8119}
 }
 
+% Kirillov_2023_ICCV: completed 2026-11-12 by Claude (bib-entry-adder); switched to the IEEE Xplore record so that DOI and pages match; sources: booktitle, month (oct), publisher (IEEE), address (Paris, France), eventdate (2023-10-01 to 2023-10-06), doi, pages (3992-4003) <- https://api.crossref.org/works/10.1109/iccv51070.2023.00371; previous pages 4015-4026 are the CVF open-access pagination; omitted (not verifiable): editor (none listed by IEEE/CVF)
 @InProceedings{Kirillov_2023_ICCV,
     author    = {Kirillov, Alexander and Mintun, Eric and Ravi, Nikhila and Mao, Hanzi and Rolland, Chloe and Gustafson, Laura and Xiao, Tete and Whitehead, Spencer and Berg, Alexander C. and Lo, Wan-Yen and Dollar, Piotr and Girshick, Ross},
-    title     = {Segment Anything},
-    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
-    month     = {10},
+    title     = {{Segment Anything}},
+    booktitle = {2023 {IEEE/CVF} International Conference on Computer Vision ({ICCV})},
+    month     = oct,
     year      = {2023},
-    pages     = {4015-4026}
+    eventdate = {2023-10-01/2023-10-06},
+    publisher = {IEEE},
+    address   = {Paris, France},
+    pages     = {3992--4003},
+    doi       = {10.1109/ICCV51070.2023.00371}
 }
 
 % skmtea_dataset_doc: added 2026-10-30 by Claude (bib-entry-adder); sources: title <- https://github.com/StanfordMIMI/skm-tea/blob/main/DATASET.md (top heading); author <- https://github.com/StanfordMIMI (organisation display name, owner of the repository); url <- the document itself; urldate <- access date already stated in the thesis; omitted (not verifiable): date/year (the document carries no publication date), version (only the dataset's "Latest Version: v1.0.0", not a document version)
@@ -1592,7 +1631,7 @@ series = {ICIMH '22}
 
 % Added 2026-11-01 (initialisation schemes and GELU, Ch. 5.3.2/5.3.4). Fields from:
 % glorot2010: proceedings.mlr.press/v9/glorot10a.html (PMLR BibTeX); he2015delving: CVF Open Access
-% (booktitle, pages 1026--1034), DOI from mlanthology.org/iccv/2015/he2015iccv-delving, place not verified so omitted;
+% (booktitle, pages 1026--1034), DOI from mlanthology.org/iccv/2015/he2015iccv-delving, place not verified so omitted (completed 2026-11-12 from Crossref, see the comment above the entry);
 % hendrycks2016gelu: arxiv.org/abs/1606.08415 (v5, no journal-ref; no peer-reviewed version).
 @inproceedings{glorot2010understanding,
   title     = {Understanding the difficulty of training deep feedforward neural networks},
@@ -1608,17 +1647,22 @@ series = {ICIMH '22}
   url       = {https://proceedings.mlr.press/v9/glorot10a.html}
 }
 
+% he2015delving: completed 2026-11-12 by Claude (bib-entry-adder); sources: booktitle (IEEE proceedings title), month (dec), publisher (IEEE), address (Santiago, Chile), eventdate (2015-12-07 to 2015-12-13), pages (1026-1034 confirmed), doi confirmed <- https://api.crossref.org/works/10.1109/iccv.2015.123; omitted (not verifiable): editor (none listed by IEEE)
 @inproceedings{he2015delving,
   title     = {Delving Deep into Rectifiers: Surpassing Human-Level Performance on {ImageNet} Classification},
   author    = {He, Kaiming and Zhang, Xiangyu and Ren, Shaoqing and Sun, Jian},
-  booktitle = {Proceedings of the IEEE International Conference on Computer Vision (ICCV)},
+  booktitle = {2015 {IEEE} International Conference on Computer Vision ({ICCV})},
   pages     = {1026--1034},
   year      = {2015},
+  month     = dec,
+  eventdate = {2015-12-07/2015-12-13},
+  publisher = {IEEE},
+  address   = {Santiago, Chile},
   doi       = {10.1109/ICCV.2015.123}
 }
 
 @misc{hendrycks2016gelu,
-  title         = {Gaussian Error Linear Units ({GELUs})},
+  title         = {{Gaussian} Error Linear Units ({GELUs})},
   author        = {Hendrycks, Dan and Gimpel, Kevin},
   year          = {2016},
   eprint        = {1606.08415},
@@ -1641,7 +1685,7 @@ series = {ICIMH '22}
 
 % rokuss2026voxtellmodelcard: added 2026-11-07 by Claude (bib-entry-adder); sources: title <- https://huggingface.co/mrokuss/VoxTell/raw/main/README.md (main heading); repository owner mrokuss (titleaddon) <- https://huggingface.co/api/models/mrokuss/VoxTell; organization, url, urldate <- caller; omitted (not verifiable): author (the card names no author; only the handle mrokuss owns the repository), date (the card states none; API lastModified 2026-10-02 is a commit date, not a publication date)
 @online{rokuss2026voxtellmodelcard,
-	title = {[{CVPR2026}] {VoxTell}: Free-Text Promptable Universal {3D} Medical Image Segmentation},
+	title = {{VoxTell}: Free-Text Promptable Universal {3D} Medical Image Segmentation},
 	titleaddon = {Model card of the {mrokuss/VoxTell} model repository},
 	label = {Hug26},
 	sorttitle = {VoxTell model card},
@@ -1665,4 +1709,30 @@ series = {ICIMH '22}
   year      = {2025},
   doi       = {10.52202/085713-1565},
   url       = {https://proceedings.neurips.cc/paper_files/paper/2025/file/4309616aaed8e848009bc4a7ef73b493-Paper-Conference.pdf},
+}
+
+% isensee2026nnunet: added 2026-11-12 by Claude (bib-entry-adder); sources: author (pyproject "authors": Fabian Isensee; Helmholtz Imaging Applied Computer Vision Lab), title (project name nnU-Net, description "nnU-Net is a framework for out-of-the box image segmentation."), version 2.7.0 <- https://raw.githubusercontent.com/MIC-DKFZ/nnUNet/v2.7.0/pyproject.toml; date 2026-04-09 <- tag v2.7.0 = commit 566198c4f3f8190b0d52a10172c84a5cd8f78db2 (git ls-remote; commit date https://github.com/MIC-DKFZ/nnUNet/commit/566198c4f3f8190b0d52a10172c84a5cd8f78db2.patch) and PyPI upload https://pypi.org/pypi/nnunetv2/2.7.0/json; version used in the thesis runs <- thesis_notes.md (nnU-Net 2.7.0); url = tag tree; urldate = access date; omitted (not verifiable): none
+@online{isensee2026nnunet,
+	author = {Isensee, Fabian and {Helmholtz Imaging Applied Computer Vision Lab}},
+	title = {{nnU-Net}},
+	titleaddon = {Source code of the nnunetv2 package in the {MIC-DKFZ/nnUNet} repository},
+	version = {2.7.0},
+	date = {2026-04-09},
+	organization = {GitHub},
+	url = {https://github.com/MIC-DKFZ/nnUNet/tree/v2.7.0},
+	urldate = {2026-11-12},
+	langid = {english},
+}
+
+% bommasani2021opportunities: added 2026-11-12 by Claude (bib-entry-adder); sources: author (114 names, order as listed), title, year (v1 submitted 2021-08-16), eprint, primaryClass, version (v3 of 2022-07-12, the version the page locators refer to) <- https://export.arxiv.org/api/query?id_list=2108.07258; note (authoring centre) <- arXiv comment and title page of https://arxiv.org/pdf/2108.07258v3; no peer-reviewed version: Crossref search and https://crfm.stanford.edu/report.html (recommended citation is the arXiv report); omitted (not verifiable): none
+@misc{bommasani2021opportunities,
+	author = {Bommasani, Rishi and Hudson, Drew A. and Adeli, Ehsan and Altman, Russ and Arora, Simran and von Arx, Sydney and Bernstein, Michael S. and Bohg, Jeannette and Bosselut, Antoine and Brunskill, Emma and Brynjolfsson, Erik and Buch, Shyamal and Card, Dallas and Castellon, Rodrigo and Chatterji, Niladri and Chen, Annie and Creel, Kathleen and Davis, Jared Quincy and Demszky, Dora and Donahue, Chris and Doumbouya, Moussa and Durmus, Esin and Ermon, Stefano and Etchemendy, John and Ethayarajh, Kawin and Fei-Fei, Li and Finn, Chelsea and Gale, Trevor and Gillespie, Lauren and Goel, Karan and Goodman, Noah and Grossman, Shelby and Guha, Neel and Hashimoto, Tatsunori and Henderson, Peter and Hewitt, John and Ho, Daniel E. and Hong, Jenny and Hsu, Kyle and Huang, Jing and Icard, Thomas and Jain, Saahil and Jurafsky, Dan and Kalluri, Pratyusha and Karamcheti, Siddharth and Keeling, Geoff and Khani, Fereshte and Khattab, Omar and Koh, Pang Wei and Krass, Mark and Krishna, Ranjay and Kuditipudi, Rohith and Kumar, Ananya and Ladhak, Faisal and Lee, Mina and Lee, Tony and Leskovec, Jure and Levent, Isabelle and Li, Xiang Lisa and Li, Xuechen and Ma, Tengyu and Malik, Ali and Manning, Christopher D. and Mirchandani, Suvir and Mitchell, Eric and Munyikwa, Zanele and Nair, Suraj and Narayan, Avanika and Narayanan, Deepak and Newman, Ben and Nie, Allen and Niebles, Juan Carlos and Nilforoshan, Hamed and Nyarko, Julian and Ogut, Giray and Orr, Laurel and Papadimitriou, Isabel and Park, Joon Sung and Piech, Chris and Portelance, Eva and Potts, Christopher and Raghunathan, Aditi and Reich, Rob and Ren, Hongyu and Rong, Frieda and Roohani, Yusuf and Ruiz, Camilo and Ryan, Jack and R{\'e}, Christopher and Sadigh, Dorsa and Sagawa, Shiori and Santhanam, Keshav and Shih, Andy and Srinivasan, Krishnan and Tamkin, Alex and Taori, Rohan and Thomas, Armin W. and Tram{\`e}r, Florian and Wang, Rose E. and Wang, William and Wu, Bohan and Wu, Jiajun and Wu, Yuhuai and Xie, Sang Michael and Yasunaga, Michihiro and You, Jiaxuan and Zaharia, Matei and Zhang, Michael and Zhang, Tianyi and Zhang, Xikun and Zhang, Yuhui and Zheng, Lucia and Zhou, Kaitlyn and Liang, Percy},
+	title = {On the Opportunities and Risks of Foundation Models},
+	year = {2021},
+	version = {3},
+	eprint = {2108.07258},
+	archivePrefix = {arXiv},
+	primaryClass = {cs.LG},
+	note = {Center for Research on Foundation Models ({CRFM}), Stanford University},
+	url = {https://arxiv.org/abs/2108.07258},
 }

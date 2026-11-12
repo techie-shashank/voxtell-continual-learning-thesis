@@ -58,7 +58,7 @@ Notation as in the paper: V ∈ R^{H×W×D} input volume; S scales.
 ### Lung content (relevant to the control task)
 - Table 10 (chest): lung (3427), left lung (4404), right lung (4404), plus lobes (3454 each).
 
-## 5. Training configuration (Sec. 4 Implementation details p. 5; S-p. 1, A.1/A.3)
+## 5. Training configuration (Sec. 5 Experiments, "Implementation Details", p. 5 — corrected 2026-11-12, was "Sec. 4"; S-p. 1, A.1/A.3)
 - Framework: **nnU-Net** ("We leverage the nnU-Net [77] framework", S-p. 1).
 - Final model: **64 NVIDIA A100 (40 GB)**, batch size **128** (2 per GPU), ~**six days** (p. 5). Ablations: one A100, batch 2.
 - **2,000 epochs × 250 iterations**, **SGD**, initial LR **1 × 10⁻⁴**, polynomial decay (S-p. 1).

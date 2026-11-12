@@ -12,6 +12,14 @@
 % fp - Forschungspraktikum
 % pa - Projektarbeit
 %\documentclass[german,bt]{lmedoc/lmedoc}
+% Obsolete package options set by the template (lmedoc/packages.sty, not edited) and a
+% datatool dialect notice; filtered so the archived build is free of warnings (2026-11-12).
+\RequirePackage{silence}
+\WarningFilter{xcolor}{Package option `usenames' is obsolete}
+\ExplSyntaxOn
+\msg_redirect_name:nnn { siunitx } { option-removed } { none }
+\ExplSyntaxOff
+\WarningFilter{tracklang}{No `datatool' support for dialect}
 \documentclass[english,mt]{lmedoc/lmedoc}
 
 
@@ -44,9 +52,6 @@
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 % \vec and \mat (bold) are already defined by the template in lmedoc/math.sty
-% Open points during writing (CLAUDE.md: \todo{...}); remove all \todo before submission.
-\setlength{\marginparwidth}{2cm}
-\usepackage{todonotes}
 % put in this file your abbreviations
 \input{abbreviations.tex}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -84,11 +89,11 @@
     \Titel{Continual Learning for Promptable Universal 3D Medical Image Segmentation in Few-Shot Settings} % Title
     \Name{Shashank} % Last name
     \Vorname{Shashank} % Given name
-    \Geburtsort{India} % Place of birth
+    \Geburtsort{Pehowa, India} % Place of birth
     \Geburtsdatum{25.03.1998} % Date of birth
     \Betreuer{Prof. Dr.-Ing. habil. Andreas Maier, Dr.-Ing. Tomás Arias Vergara} % Advisor
-    \Start{15.05.2026} % Start of thesis
-    \Ende{15.11.2026} % End of thesis
+    \Start{01.06.2026} % Start of thesis
+    \Ende{30.11.2026} % End of thesis
     %\ZweitInstitut{ZweitInstitut} % Cooperation partner
   \end{deckblatt}
 
@@ -130,8 +135,21 @@ Die Richtlinien des Lehrstuhls f"ur Examensarbeiten habe ich gelesen und anerkan
 \normalfont
 \end{center}
 
+% Abstracts shortened 2026-11-12 (author's wording for the English; German translated from it, to be checked by a native speaker); both on one page, each at most half a page (chair Sec. 1.3)
+{\selectlanguage{german}%
+VoxTell, ein universelles Modell für die durch Freitext-Prompts gesteuerte Segmentierung, segmentiert die Knorpel und Menisken des Knies nur unzureichend.
+Wird es nacheinander an solche Strukturen angepasst, droht es frühere Strukturen und vortrainierte Fähigkeiten zu vergessen.
+Wir haben VoxTell an sechs Kniestrukturen des Datensatzes SKM-TEA angepasst und sequenzielles Fine-Tuning mit fünf Strategien des kontinuierlichen Lernens verglichen, davon drei auf Basis der Low-Rank Adaptation (LoRA), mit 108 annotierten Volumen pro Struktur.
+Sequenzielles Fine-Tuning und zwei der LoRA-Strategien wurden zusätzlich mit nur 5, 10 und 20 Volumen pro Struktur trainiert.
+Eine zurückgehaltene Kontrollaufgabe, die Segmentierung der Lunge im CT, maß den Verlust vortrainierter Fähigkeiten getrennt vom Vergessen früherer Strukturen.
+Sequenzielles Fine-Tuning passte sich am besten an, vergaß aber die meisten früheren Strukturen und verlor die Kontrollaufgabe, während die LoRA-Strategien deutlich mehr behielten und sich deutlich weniger anpassten.
+Keine Strategie verband die Anpassung des sequenziellen Fine-Tunings mit dem Erhalt der LoRA-Strategien.
+Mit wenigen Volumen und zehn Epochen pro Struktur lernte nur sequenzielles Fine-Tuning die Strukturen.
+Ob die Lücke zwischen Anpassung und Erhalt auf die Strategien oder auf die gemeinsame Trainingskonfiguration zurückgeht, ist noch zu prüfen.
+\par}
 
-\vspace{5.0cm}
+
+% template placeholder gap \vspace{5.0cm} removed so that both abstracts fit on one page (author decision 2026-11-12)
 
 \begin{center}
 \bfseries
@@ -140,9 +158,20 @@ Die Richtlinien des Lehrstuhls f"ur Examensarbeiten habe ich gelesen und anerkan
 \normalfont
 \end{center}
 
+VoxTell, a universal model for free-text promptable segmentation, segments the cartilages and menisci of the knee poorly.
+Adapting it to such structures one after another risks forgetting earlier structures and pretrained abilities.
+We adapted VoxTell to six knee structures of the SKM-TEA dataset and compared sequential fine-tuning with five continual-learning strategies, three of them based on low-rank adaptation (LoRA), using 108 labelled volumes per structure.
+Sequential fine-tuning and two of the LoRA strategies were also trained with only 5, 10, and 20 volumes per structure.
+A held-out control task, lung segmentation in CT, measured the loss of pretrained ability separately from the forgetting of earlier structures.
+Sequential fine-tuning adapted best but forgot most earlier structures and lost the control task, whereas the LoRA strategies retained much more and adapted much less.
+No strategy combined the adaptation of sequential fine-tuning with the retention of the LoRA strategies.
+With few volumes and ten epochs per structure, only sequential fine-tuning learned the structures.
+Whether the gap between adaptation and retention stems from the strategies or from the shared training configuration remains to be tested.
+
 
 \cleardoublepage
 
+\setcounter{tocdepth}{3} % chair: table of contents depth 3
 \tableofcontents
 
 \cleardoublepage
@@ -194,5 +223,6 @@ Die Richtlinien des Lehrstuhls f"ur Examensarbeiten habe ich gelesen und anerkan
 %\selectlanguage{german}{\addcontentsline{toc}{chapter}{\bibname}}
 \selectlanguage{english}{\addcontentsline{toc}{chapter}{\bibname}}
 
-\printbibliography
+{\setlength{\emergencystretch}{2em}% avoids overfull lines from long titles and URLs (2026-11-12)
+\printbibliography}
 \end{document}

@@ -1,0 +1,104 @@
+diff --git a/thesis/introduction.tex b/reviews/voice/ch1_introduction.tex
+index 054bcfd..56393bb 100644
+--- a/thesis/introduction.tex
++++ b/reviews/voice/ch1_introduction.tex
+@@ -17,4 +17,4 @@
+Medical image segmentation assigns every voxel of an image either to a structure, such as an organ or a tissue, or to the [-background.-]
+[-The-]{+background, and the+} voxels assigned to a structure form its mask.
+Masks can be drawn by [-hand, but-]{+hand.+}
+{+However,+} this is laborious, [-because-]{+since+} in a three-dimensional (3D) volume the structure has to be outlined on every slice in which it appears.
+[-Different readers also draw them differently~\cite{desai2021skmtea}.-]{+In addition, masks of the same structure differ between readers~\cite{desai2021skmtea}.+}
+@@ -25,3 +25,3 @@ Universal segmentation models replace these per-dataset models with one network
+For [-example,-]{+instance,+} the developers of the universal model SAT compared it with 72 nnU-Nets, one trained on each of their datasets~\cite{zhao2025sat}.
+[-The-]{+In such models, the+} structure to segment is specified by an additional input, the prompt~\cite{zhao2025sat,rokuss2025voxtellfreetextpromptableuniversal}.
+[-The-]{+This+} prompt can be spatial, such as a point or a box marked in the image~\cite{Ma_2024,cheng2023sammed2d}, or text that names the target.
+@@ -31,5 +31,4 @@ Text-promptable models differ in the text they accept.
+SAT is prompted with terms from a fixed [-vocabulary~\cite{zhao2025sat}.-]
+[-In contrast,-]{+vocabulary~\cite{zhao2025sat}, whereas+} VoxTell accepts both a single anatomical term and a full clinical sentence~\cite{rokuss2025voxtellfreetextpromptableuniversal}.
+We call models of [-this-]{+the latter+} kind \emph{free-text promptable}.
+In both models, {+however,+} the structure to segment is not tied to an output channel of the network.
+[-The-]{+Instead, the+} same weights serve every structure, and the text prompt alone selects the target~\cite{zhao2025sat,rokuss2025voxtellfreetextpromptableuniversal}.
+@@ -38,5 +37,4 @@ The same weights serve every structure, and the text prompt alone selects the ta
+This thesis adapts VoxTell, which was trained on more than 62{,}000 \gls{ct}, [-\gls{mri}-]{+\gls{mri},+} and \gls{pet} volumes~\cite{rokuss2025voxtellfreetextpromptableuniversal}.
+On datasets it was not trained on, [-it-]{+VoxTell+} reached a mean \gls{dsc} of 70.85\,\%, where the \gls{dsc} measures the overlap between the predicted and the reference mask.
+On knee \gls{mri} from the SKM-TEA dataset~\cite{desai2021skmtea}, {+however,+} its mean \gls{dsc} was [-10.72\,\%, averaged-]{+only 10.72\,\% (averaged+} over four cartilages and two [-menisci~\cite[Suppl.~Table~9]{rokuss2025voxtellfreetextpromptableuniversal}.-]{+menisci)~\cite[Suppl.~Table~9]{rokuss2025voxtellfreetextpromptableuniversal}.+}
+The VoxTell authors attribute this low value to the small share of knee images in the training data and to structures missing from [-it~\cite[Sec.~6]{rokuss2025voxtellfreetextpromptableuniversal}.-]
+[-As future work,-]{+it, and+} they suggest adapting the model with a few labelled [-examples.-]{+examples as future work~\cite[Sec.~6]{rokuss2025voxtellfreetextpromptableuniversal}.+}
+@@ -47,2 +45 @@ One example is the T2 relaxation time, which reflects the degeneration of collag
+These values can only be read out once the structures are [-outlined.-]
+[-The-]{+outlined, and the+} SKM-TEA authors name manual outlining as one obstacle to the use of quantitative \gls{mri}.
+@@ -52,3 +49,2 @@ With few manual outlines available, VoxTell would have to learn the knee structu
+[-New-]{+In addition, new+} structures may[-also-] become relevant over time, and the model would then have to adapt to each of them in turn.
+[-Retraining-]{+Although retraining+} VoxTell from scratch on its training data together with each new structure would be expected to preserve most of what it could segment [-before.-]
+[-However,-]{+before,+} training the published model took about six days on 64 NVIDIA A100 GPUs~\cite{rokuss2025voxtellfreetextpromptableuniversal}.
+@@ -62 +58 @@ Instead of being retrained from scratch, the model can be adapted to one new str
+We call the learning of one new [-structure,-]{+structure a \emph{task}, where each structure is+} named by one text [-prompt, a \emph{task}.-]{+prompt.+}
+@@ -65 +61 @@ After each task, the model has to segment the new structure while keeping the st
+[-It also-]{+In addition, it+} has to keep what it could segment before the first task, which we call its pretrained ability (\cref{fig:ch1_setting}).
+@@ -70,2 +66 @@ However, training on later tasks can lower the performance on earlier ones, an e
+For pretrained vision--language models, continual fine-tuning can also lower the zero-shot accuracy on data the model was not trained [-on~\cite{zheng2023preventingzeroshottransferdegradation}.-]
+[-In-]{+on~\cite{zheng2023preventingzeroshottransferdegradation}, which in+} our [-setting, this-]{+setting+} corresponds to a loss of pretrained ability.
+@@ -73 +68 @@ The more the model is allowed to change, the better it can learn the new structu
+De Lange et al.\ call this conflict the stability--plasticity dilemma, [-with-]{+where+} stability [-meaning-]{+means+} the retention of previous knowledge and plasticity the integration of new knowledge~\cite[Sec.~1]{delange2022}.
+@@ -90,3 +85,4 @@ With few labelled volumes per task, it is not clear in advance how the balance b
+[-Fewer volumes mean fewer updates when-]{+When+} the number of training epochs is [-fixed.-]
+[-Fewer-]{+fixed, fewer volumes mean fewer updates.+}
+{+On the one hand, fewer+} updates give the model less opportunity to learn the new [-structure, but-]{+structure.+}
+{+On the other hand,+} they may also change less of what it knew.
+[-Here,-]{+In this thesis,+} \emph{few-shot} means training the model on $k$ labelled volumes per task, {+where+} one shot [-being-]{+is+} one labelled training volume.
+@@ -98 +94 @@ In medical image segmentation, many continual-learning methods give each new tas
+{+In contrast,+} VoxTell needs no such components, [-because-]{+since+} a new structure is named by a new text prompt and segmented with the same weights.
+@@ -102,2 +98,3 @@ In our literature search, we found no work that adapts a pretrained free-text pr
+The closest works {+either+} use a two-dimensional (2D) model with full training sets~\cite{gao2026medcrpcl,gao2025paewc,gao2026medpeftcl} or a 3D model without text [-prompts~\cite{chen2026fewshotcontinuallearning3d}, and-]{+prompts~\cite{chen2026fewshotcontinuallearning3d}.+}
+{+Moreover,+} none of them measures how much of the pretrained ability is kept.
+Other works measure it for CLIP~\cite{Zhang_2024_CVPR} and for segmentation models prompted with points or boxes~\cite{wang2025casam,wang2024sammed3dmoe}, and our [-control task-]{+evaluation+} builds on this [-idea.-]{+idea (\cref{sec:intro-approach}).+}
+@@ -114,3 +111,3 @@ This thesis addresses the following research question:
+By \emph{adaptation [-performance}-]{+performance},+} we mean how well the model segments a new structure right after it has been trained on it.
+In the research question, \emph{forgetting} covers {+both+} the loss on earlier tasks of the sequence [-as well as-]{+and+} the loss of pretrained ability.
+[-Few-shot conditions are-]{+As few-shot conditions, we use+} $k = 5$, [-10-]{+10,+} and 20 labelled volumes per [-task, which we-]{+task and+} compare {+them+} with the full training split of 108 volumes per task.
+@@ -121 +118 @@ We pursue four objectives:
+  \item Develop an evaluation protocol for the setting of the research question that measures adaptation, the forgetting of earlier [-tasks-]{+tasks,+} and the loss of pretrained ability separately.
+@@ -132,4 +129,4 @@ We pursue four objectives:
+[-We-]{+To+} study the research [-question with-]{+question, we use+} VoxTell~\cite{rokuss2025voxtellfreetextpromptableuniversal} as the pretrained model and six structures of the SKM-TEA knee \gls{mri} dataset~\cite{desai2021skmtea} as tasks.
+These are [-the patellar,-]{+four cartilages (patellar,+} femoral, medial [-tibial-]{+tibial,+} and lateral [-tibial cartilage-]{+tibial)+} and [-the medial-]{+two menisci (medial+} and [-lateral meniscus.-]
+[-The tasks are trained-]{+lateral).+}
+{+To see whether the results depend on the order of the tasks, we train them+} in two task orders, an original order chosen at random and its [-reverse, to see whether the results depend on the order.-]{+reverse.+}
+The lung in the chest \gls{ct} volumes of AeroPath~\cite{støverud2023aeropathairwaysegmentationbenchmark} serves as a [-control task.-]{+\emph{control task}.+}
+@@ -141,2 +138 @@ The baseline is sequential fine-tuning, which trains all parameters on each task
+Three strategies are based on [-\gls{lora}~\cite{hu2022lora}.-]
+[-\gls{lora}-]{+\gls{lora}~\cite{hu2022lora}, which+} keeps the pretrained weights frozen and trains only a low-rank update of them, called the adapter.
+@@ -145,3 +141,2 @@ Task-specific LoRA trains one adapter of rank $r = 4$ per task and selects it by
+[-Shared-]{+In contrast, shared+} LoRA trains one adapter of rank $r = 1024$ for all tasks, and shared LoRA with replay adds a memory of training samples from earlier tasks.
+The prompt-tuning strategy (adapted from CPE-CLIP~\cite{D_Alessandro_2023}) {+also+} freezes the pretrained weights and trains learned prompt [-tokens.-]
+[-It also trains-]{+tokens together with+} a meta-net, a small network that shifts the encoded text prompt.
+@@ -150 +145 @@ The distillation-based strategy (adapted from ZSCL~\cite{zheng2023preventingzero
+Together, the strategies cover replay, [-regularisation-]{+regularisation,+} and parameter-efficient adaptation, the three families of continual-learning methods for vision--language models~\cite[Sec.~4]{liu2026continuallearningvlmssurvey}.
+@@ -154,4 +149,2 @@ All strategies except task-specific LoRA use one parameter set for all tasks.
+All strategies are trained with the full training [-split.-]
+[-Sequential-]{+split, and sequential+} fine-tuning, task-specific [-LoRA-]{+LoRA,+} and shared LoRA are also trained with $k = 5$, [-10-]{+10,+} and 20 volumes per task.
+[-With a fixed number-]{+To separate the effect+} of[-epochs,-] fewer volumes [-also mean-]{+from that of+} fewer [-updates.-]
+[-Further-]{+updates, further+} runs keep the number of updates of the full training split[-and so separate the two effects-] (\cref{subsec:exp-data}).\todo{defense: the research question names few-shot conditions, but the distillation-based and prompt-tuning strategies are run only with the full training split (D46)}
+@@ -165 +158 @@ Together, Final Forgetting and the control-task drop measure retention, the perf
+[-We also-]{+In addition, we+} report two secondary metrics.
+@@ -167,3 +160,2 @@ Final Performance is the mean \gls{dsc} on all tasks after the last task, and Tr
+[-The-]{+As reference points, we evaluate the+} pretrained model[-is evaluated-] in the same way and [-serves-]{+use joint fine-tuning+} as [-a reference.-]
+[-As an-]{+the+} upper [-reference, joint-]{+reference.+}
+{+Joint+} fine-tuning trains the model on all six tasks at [-once.-]
+[-It-]{+once and+} was run with the full training split and with each~$k$.
+@@ -172,3 +164,3 @@ It was run with the full training split and with each~$k$.
+The study uses one model, one dataset for the tasks, one control task, one fixed text prompt per [-structure-]{+structure,+} and one draw of training volumes per~$k$.
+[-Each-]{+Since each+} configuration was trained once,[-so-] the only variability we can estimate is that over the test volumes (\cref{subsec:exp-metrics}).
+[-The-]{+Therefore, the+} conclusions are[-therefore-] limited to this setting (\cref{sec:exp-limitations}).
+@@ -192,2 +184,2 @@ The contributions of this thesis are:
+Sequential fine-tuning, LoRA, replay~\cite[Sec.~3.1]{delange2022}, [-ZSCL-]{+ZSCL,+} and CPE-CLIP are existing methods.
+[-The-]{+Our+} work {+consists+} of[-this thesis is-] their application to VoxTell with the changes described in \cref{sec:method-strategies}, the evaluation [-protocol-]{+protocol,+} and all experiments.
+@@ -203,3 +195,3 @@ It ends with the gap that this thesis addresses.
+\Cref{chap:background} introduces VoxTell, states the continual-learning problem in formal terms, describes the published methods on which the strategies are [-based-]{+based,+} and defines the evaluation metrics.
+\Cref{chap:data} describes the SKM-TEA and AeroPath data, the [-tasks-]{+tasks,+} and the data splits.
+\Cref{chap:method} defines the evaluation protocol, the adaptation of VoxTell to one [-task-]{+task,+} and the strategies with their complexity.
+@@ -207 +199,2 @@ It ends with the gap that this thesis addresses.
+It compares the strategies, diagnoses why task-specific LoRA did not learn patellar cartilage, and reports the experiments on the amount of labelled data, the LoRA [-rank-]{+rank,+} and the task order, as well as the training [-cost, and-]{+cost.+}
+{+The chapter+} ends with the limitations of the experiments and the results that may generalise beyond them.
+@@ -209 +202,2 @@ It compares the strategies, diagnoses why task-specific LoRA did not learn patel
+The appendix lists the training and test volumes and the parameters of all runs [-(\cref{sec:app-volumes,sec:app-params}),-]{+(\cref{sec:app-volumes,sec:app-params}) and+} reports the additional evaluations, including two components adopted from ZSCL and CPE-CLIP [-(\cref{sec:app-additional,sec:exp-components}), and-]{+(\cref{sec:app-additional,sec:exp-components}).+}
+{+It also+} gives the evaluation matrices of all runs and the training loss of shared LoRA (\cref{sec:app-matrices,sec:app-shared-loss}).

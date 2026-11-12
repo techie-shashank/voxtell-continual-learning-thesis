@@ -195,7 +195,7 @@ def hparams_table(runs):
         ("Initial learning rate", r"$\eta_0$", f"${num(t('optimizer', 'lr'))}$"),
         ("Momentum", r"$\mu$", f"${num(t('optimizer', 'momentum'))}$"),
         ("Weight decay", r"$\omega$", f"${num(t('optimizer', 'weight_decay'))}$"),
-        ("Learning-rate schedule", "", f"polynomial, exponent {num(t('optimizer', 'poly_power'))}, per iteration, "
+        ("Learning-rate schedule", "", f"linear (polynomial, exponent {num(t('optimizer', 'poly_power'))}), per iteration, "
                                        "restarted for every task"),
         ("Epochs per task", "$E$", epochs_text),
         ("Batch size", "", f"{uniform(runs, 'dataset', 'batch_size')}"),
@@ -203,6 +203,8 @@ def hparams_table(runs):
         ("Foreground-centred patches", r"$\pi_{\mathrm{fg}}$", "0.85"),
         ("Loss", r"$\mathcal{L}_{\mathrm{seg}}$", "binary cross-entropy + soft Dice (smoothing $10^{-5}$), weights 1:1"),
         ("Deep supervision", "", "off"),
+        # dropout of the prompt-decoder layers: VoxTell model definition, not in the run configs (thesis_notes.md section 2; cpe_clip/model.py:89-92, lora/common/layers.py:353)
+        ("Dropout in the prompt decoder", "", "0.1; inactive in the prompt-tuning strategy, 0 on the attention weights in the LoRA strategies"),
         ("Data augmentation", "", "none"),
         ("Random seed (training, split)", "", f"{t('seed')}, {uniform(runs, 'dataset', 'seed')}"),
         ("Sliding-window step", "", "0.5 of the patch size"),
@@ -238,7 +240,7 @@ def strategy_table(runs):
             # The rank used in the comparison of the strategies is set in bold.
             rows.append((name(s), "Rank", "$r$", ", ".join(rf"\textbf{{{k}}}" if k in main else str(k)
                                                             for k in ranks)))
-            rows.append(("", "Scaling constant", r"$\alpha$", f"{num(alpha)}"))
+            rows.append(("", "LoRA scaling hyperparameter", r"$\alpha$", f"{num(alpha)}"))
             rows.append(("", "Scaling factor", r"$\gamma_r$", gam))
             rows.append(("", "Dropout (low-rank path)", "", f"{num(drop)}"))
             rows.append(("", "Adapted projections", "",
@@ -250,7 +252,7 @@ def strategy_table(runs):
                 rows.append(("Shared LoRA + replay", "Rank (otherwise as shared LoRA)", "$r$",
                              ", ".join(map(str, rk))))
                 rows.append(("", "Replay fraction", r"$\rho$", ", ".join(num(x) for x in sorted(fr))))
-                rows.append(("", "Maximum memory size", r"$M_{\max}$", ", ".join(map(str, sorted(mx)))))
+                rows.append(("", "Memory capacity", r"$M_{\max}$", ", ".join(map(str, sorted(mx)))))
         elif s == "zscl":
             z = {(c["zscl"]["distillation_weight"], c["zscl"]["weight_ensemble_interval"]) for c in cont}
             if len(z) != 1:
