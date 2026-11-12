@@ -36,6 +36,8 @@
 %Load additional packages
 \usepackage{lmedoc/packages}
 \usepackage{tabularx}
+% \FloatBarrier, used in the appendix so that each section's tables appear before the next section (no options: no effect elsewhere)
+\usepackage{placeins}
 % Pseudocode for the Method chapter (chair guidelines: "strukto" or "algorithmic")
 \usepackage{algorithm}
 \usepackage{algorithmic}
@@ -160,9 +162,7 @@ Die Richtlinien des Lehrstuhls f"ur Examensarbeiten habe ich gelesen und anerkan
 \cleardoublepage
 \include{experiment_results}   % Chapter 6: Experiment & Results
 \cleardoublepage
-\include{discussion}   % Chapter 7: Discussion
-\cleardoublepage
-\include{summary}   % Chapter 8: Summary
+\include{summary}   % Chapter 7: Summary (Ch. 7 Discussion dissolved 2026-11-11)
 \cleardoublepage
 
 \appendix

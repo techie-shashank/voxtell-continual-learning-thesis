@@ -1,3 +1,5 @@
+> **Superseded 2026-11-11 by `outlines/restructure_ch6_ch8.md`** (Ch. 7 Discussion dissolved into Ch. 6 and the Summary).
+
 # Ch. 8 Summary — outline revision 2 (APPROVED 2026-11-11; drafted 2026-11-11)
 
 Author decisions 2026-11-11: framing of Sec. 7.1 (trade-off with one parameter set, exceptions with their costs); own work in the wording of the Ch. 1.5 contributions, no method details; one or two key numbers per result; no practical recommendation (removed 2026-11-10). Target about 3 pages (chair Sec. 1.7: 3-4 pages); drafted at about 1,060 words.

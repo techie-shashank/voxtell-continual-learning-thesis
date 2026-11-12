@@ -171,7 +171,7 @@ It was run with the full training split and with each~$k$.
 % CLAUDE-DRAFT
 The study uses one model, one dataset for the tasks, one control task, one fixed text prompt per structure and one draw of training volumes per~$k$.
 Each configuration was trained once, so the only variability we can estimate is that over the test volumes (\cref{subsec:exp-metrics}).
-The conclusions are therefore limited to this setting (\cref{sec:disc-limitations}).
+The conclusions are therefore limited to this setting (\cref{sec:exp-limitations}).
 Clinical deployment and studies with clinical users are outside the scope of this thesis, but we report the training cost of the strategies (\cref{sec:exp-compute}).
 
 % ---------------------------------------------------------------------
@@ -204,8 +204,8 @@ It ends with the gap that this thesis addresses.
 \Cref{chap:data} describes the SKM-TEA and AeroPath data, the tasks and the data splits.
 \Cref{chap:method} defines the evaluation protocol, the adaptation of VoxTell to one task and the strategies with their complexity.
 \Cref{chap:experiments} gives the experimental setup and the results.
-It compares the strategies, diagnoses why task-specific LoRA did not learn patellar cartilage, and reports the experiments on the amount of labelled data, the LoRA rank and the task order, as well as the training cost.
-\Cref{chap:discussion} discusses the results across the experiments, answers the research question and states the limitations, and \cref{chap:summary} summarises the thesis.
+It compares the strategies, diagnoses why task-specific LoRA did not learn patellar cartilage, and reports the experiments on the amount of labelled data, the LoRA rank and the task order, as well as the training cost, and ends with the limitations of the experiments and the results that may generalise beyond them.
+\Cref{chap:summary} summarises the results, answers the research question and outlines future work.
 The appendix lists the training and test volumes and the parameters of all runs (\cref{sec:app-volumes,sec:app-params}), reports the additional evaluations, including two components adopted from ZSCL and CPE-CLIP (\cref{sec:app-additional,sec:exp-components}), and gives the evaluation matrices of all runs and the training loss of shared LoRA (\cref{sec:app-matrices,sec:app-shared-loss}).
 
 % =====================================================================

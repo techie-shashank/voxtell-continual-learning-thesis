@@ -861,3 +861,72 @@ Format: `YYYY-MM-DD | chapter/section | what was done (outline / feedback / expl
 2026-11-11 | Ch. 1 Sec. 1.4, Ch. 8 para 1 | text edit: control task 'not trained on during the adaptation' (AeroPath is in the training data of checkpoint v1.1), on author approval
 2026-11-11 | Ch. 8 paras 3-6 | text edit: sentences copied from Sec. 7.1 reworded (few-shot para led by the equal-updates result; rank and protocol sentences rephrased), content unchanged, on author approval
 2026-11-11 | Ch. 8 | text edit: review fixes (few-shot scope 'other two strategies run with few volumes'; referent of the 0.233 sentence; paragraph 3 opens with the answer to the research question; protocol topic sentence covers both examples; 'main reason'; VoxTell cited at first mention), on author approval
+2026-11-11 | Ch. 7 / Ch. 8 structure | feedback: assessed proposal to move 7.2/7.3 into Ch. 6 and merge 7.1 with Ch. 8 (no edits)
+2026-11-11 | Ch. 6-8 structure | outline: paragraph-by-paragraph mapping for dissolving Ch. 7 into Ch. 6 and the Summary (outlines/restructure_ch6_ch8.md); no thesis text changed
+2026-11-11 | Ch. 6-8 structure | outline revision: recommendations on the four open choices; 7.3 generalisation paragraphs kept together in 6.8 (Chen et al. no longer moved to 6.2)
+2026-11-11 | Ch. 6 Sec. 6.8 | LaTeX restructure: Sec. 7.2 and 7.3 P1-P2 moved verbatim into new Sec. 6.8 'Limitations and Generalisation'; one opening sentence drafted (CLAUDE-DRAFT); references repointed, on author approval
+2026-11-11 | Ch. 6 Sec. 6.2, 6.4, 6.5, 6.6 | LaTeX restructure: prior-work sentences moved from Sec. 7.1 into the conclusions; one sentence added to 6.6 (ranking unchanged, from ch6_task_order.tex) and a half-sentence to 6.2, on author approval
+2026-11-11 | Ch. 8 Summary paras 6-9 | draft: protocol paragraph extended (SPU sentence moved from 7.1), limits cut to two sentences, future work rewritten from Sec. 7.3 (compressed), on author approval
+2026-11-11 | Ch. 1, Ch. 6, thesis_main | LaTeX restructure: Ch. 7 Discussion removed; Ch. 1 outline paragraph and Ch. 6 opening updated (one sentence each, CLAUDE-DRAFT); build checked, on author approval
+2026-11-11 | CLAUDE.md, tracker, outlines | bookkeeping after the restructure: chapter table, structure decision, chapter deliverables, tracker locations, superseded outlines, on author approval
+2026-11-11 | Summary para 2 | draft: contributions paragraph shortened to the statement of own work (repeated Sec. 1.5 wording and '38 runs' sentence removed), on author approval
+2026-11-11 | Summary para 2 | text edit: 'diagnosis of the patellar failure' -> 'diagnosis of why task-specific LoRA did not learn patellar cartilage', on author approval
+2026-11-11 | Summary paras 2-3 | text edit: strategies introduced ('We compared six strategies'), both data settings named in the opening of para 3 (108 vs 5-20 volumes), para 3 split before the two exceptions ('ended above 0.233'), on author approval
+2026-11-11 | Summary para 2 | text edit: baseline and the five strategies named with the methods they build on; 'adaptation of these methods to VoxTell', on author approval
+2026-11-11 | Ch. 6 / Summary | feedback: checked which results of Summary paras 3-7 Ch. 6 explains (explained / candidates untested / open); no edits
+2026-11-11 | Ch. 6.2 | explanation: one-line answer to the research question from the results of Sec. 6.2; no edits
+2026-11-11 | Summary paras 3-4 | draft: answer to the research question reframed (two groups by outcome, ceiling and exceptions with costs, joint FT lost the control task), after author's critique round; tracker D68, D69 added, on author approval
+2026-11-11 | Ch. 6 Sec. 6.2, 6.6 | text edit: 6.2 conclusion aligned with the Summary (prompt-tuning link to Ch. 5, LoRA retention wording); 6.6 conclusion: 0.233 ceiling sentence restored from former 7.1 after checking cl_metrics.csv, on author approval
+2026-11-11 | Summary paras 8-9 | draft: main extension reframed as the adaptation gap of the LoRA strategies (universality sentence removed); generated-replay clause (C2GR) added to future work, on author approval
+2026-11-11 | Summary future work (paras 8-9) | feedback: critique of the two future-work paragraphs and proposed restructure (no edits)
+2026-11-11 | Summary future work | explanation: reason for citing nested learning taken from paper_notes/nested_learning.md; version mismatch (notes arXiv v1, bib NeurIPS) flagged
+2026-11-11 | paper_notes/nested_learning.md | notes: NeurIPS 2025 version read (CMS Sec. 3, forgetting argument App. C, no CL experiment in this version); reason for citing nested learning in Summary future work checked
+2026-11-11 | Summary future work | outline: revised structure of the two future-work paragraphs (main extension with tests, task identity in one sentence, scope)
+2026-11-11 | Summary future work (paras 8-9) | draft: two paragraphs redrafted from the approved outline
+2026-11-11 | Summary future work (paras 8-10), Sec. 6.8 | draft: future work reframed (gap first tested against the configuration, new strategies conditional), split into three paragraphs; one sentence on the tests added to 6.8
+2026-11-11 | Summary future work (paras 8-9) | text edit: test-runs sentence cut (repeated Sec. 6.8), para 9 reordered, on author approval
+2026-11-11 | Summary future work (para 8) | text edit: candidates reduced to MoE-Adapters and nested learning, task-specific LoRA sentence removed, on author approval
+2026-11-11 | Summary future work | draft: separate replay paragraph (other configurations, sample selection, generated replay), para on further runs reduced, on author approval
+2026-11-11 | Summary future work | text edit: paragraphs reordered (main extension, further runs, replay, scope), on author approval
+2026-11-11 | Summary future work | feedback: paragraph split checked, no merge recommended (no edits)
+2026-11-11 | Summary future work (replay para) | text edit: replay paragraph compressed to two sentences, on author approval
+2026-11-11 | Summary (whole chapter) | feedback: honest critique of the full chapter, numbers checked against ch6 tables (no edits)
+2026-11-11 | Ch. 6.8 opening | text edit: two overview paragraphs merged into one, 'configuration' clash removed (also first para), on author approval
+2026-11-11 | Summary (RQ answer, paras 3, 5, 6, future work) | draft: explicit answer paragraph and evidence paragraphs reworded on author approval; claims checked in eval matrices
+2026-11-11 | Ch. 6.8 (scope of few-shot runs) | text edit: reason 'time available' added as opening phrase on author approval; advice on whether to state it
+2026-11-11 | Ch. 6.8 (scope of few-shot runs) | text edit: reason reworded as priority to the full-split comparison, author's choice
+2026-11-11 | Summary (paras 3-6) | text edit: evidence cut to key numbers, exceptions paragraph rebuilt, on author approval; 'kept most' checked in eval matrices
+2026-11-11 | Summary (protocol, few-shot, limits, future work) | text edit: points 5-6 of the critique applied on author approval
+2026-11-11 | Summary (whole chapter) | feedback: honest assessment on author request, no edits
+2026-11-11 | Summary (answer, exceptions paragraphs) | text edit: one-sentence answer restored as topic sentence; exceptions opener refined, on author approval
+2026-11-11 | Summary (answer paragraph) | text edit: Final Performance comparison sentence added on author approval; checked in eval matrices
+2026-11-11 | Summary (paras 3-4) | feedback: re-check of the author's fixes for points 1-3, no edits
+2026-11-11 | Summary (several paragraphs) | feedback on reviewer comments + text edits: seven fixes applied (comparison for joint FT, consistency, confound, ranking scope, protocol evidence, framing, source for l. 15)
+2026-11-11 | Summary (future work) | text edit: further-runs and scope paragraphs merged, replay moved before them, on author approval
+2026-11-11 | Summary (whole chapter) | feedback: third check after author's edits, no edits
+2026-11-11 | Summary (l. 15) | feedback: checked support for the label-scarcity claim, no edits
+2026-11-11 | Summary (l. 15) | text edit: scarcity claim replaced by conditional wording, on author approval
+2026-11-11 | Summary (l. 15) | feedback: advised against 'annotation scarcity' wording, no edits
+2026-11-11 | Summary (l. 15) | feedback: recommended dropping the few-labelled-volumes clause, no edits
+2026-11-11 | Summary (l. 15) | text edit: few-labelled-volumes clause dropped, on author approval
+2026-11-11 | Summary (paras 3 and 5) | text edit: few-shot results merged into one paragraph, patellar sentence shortened, on author approval
+2026-11-11 | Summary (few-shot paragraph) | text edit: patellar sentence split into two for readability, on author request
+2026-11-11 | Summary (few-shot paragraph) | text edit: grammar and flow of the patellar sentences, on author request
+2026-11-11 | Appendix A (float placement) | LaTeX fix: placeins loaded, \FloatBarrier before each appendix section so tables appear before the next section; Table A.4 placement [!tb]
+2026-11-11 | Appendix A.1 | text edit: removed two sentences that repeated Sec. 4 (same set per k, nested, same test volumes); provenance kept as source comment, on author approval
+2026-11-11 | Appendix A.1 (Table A.1 caption) | text edit: caption states that volumes are named as in the dataset releases, on author approval
+2026-11-11 | Appendix A.2 | text edit: sentence on how the parameter tables are generated turned into a source comment, on author request
+2026-11-11 | Sec. 6.2 / App. A.2 | text edit: sentence on the unlogged distillation term moved from App. A.2 to Sec. 6.2 after the lambda sentence, on author approval
+2026-11-11 | Appendix A.2 | text edit: run history (reruns, code-version dates, task-boundary evidence) removed, software and resume paragraphs shortened to reproduction info; defense point D32 updated, on author approval
+2026-11-11 | Appendix A.2 | LaTeX fix: unescaped underscore in a \todo (introduced by Claude) removed; corrupted aux files cleaned and thesis rebuilt
+2026-11-11 | Appendix A.2/A.3 (Tables A.3, A.4 captions) | text edit: captions corrected and tightened (ensemble-interval row explained, xi = 1 for the no-scaling run, run history removed, references attached to the right terms), on author request
+2026-11-11 | Appendix A.3 (Table A.4 caption) | text edit: no-scaling explanation shortened, on author approval
+2026-11-11 | Appendix A.4 | text edit: section shortened (opening, untested 1/t explanation and conclusion paragraph removed; closing caveat for both components), defense point D70 added, on author approval
+2026-11-11 | Appendix A (all sections) | text edit: style pass (insertions, tense, informal wording, wrong reference to parameters in A.3, ranks added to Fig. A.1 caption); script: matrix captions as "Evaluation matrix of <strategy>" in make_appendix_tables.py, tables regenerated; on author approval
+2026-11-11 | Appendix A.5 | text edit: sentence explaining the run identifiers in the matrix captions, on author approval
+2026-11-11 | Appendix A.5 | script: matrix sort key with replay and epoch tie-breakers (consistent order in the few-shot group), tables regenerated; LaTeX fix: \raggedbottom for the matrix pages
+2026-11-12 | Appendix A.6 | text edit: provenance clause removed from the opening; Fig. A.1 caption names the loss and pairs the tasks with their order, on author approval
+2026-11-12 | Ch. 2 (Table 2.2) / List of Tables | LaTeX fix: short caption for Table 2.2 so the List of Tables shows one line
+2026-11-12 | Ch. 4, Ch. 6 | text edit: experiment names aligned (few-shot experiment introduced in Sec. 6.4; "LoRA rank experiment"; Ch. 4 "few-shot settings"; gamma_r statement in 6.8 extended to the whole rank experiment), on author approval
+2026-11-12 | List of Abbreviations (abbreviations.tex; Ch. 1, 3, 5, 6) | LaTeX fix: entries sorted alphabetically, unused IQR removed, CPU/GPU/SGD added and their uses converted to \gls; template untouched
+2026-11-12 | List of Abbreviations / CLAUDE.md | LaTeX fix: CPU and GPU removed from the list and written plainly again (author decision); CLAUDE.md acronym rule extended by this exception

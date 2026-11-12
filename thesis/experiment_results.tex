@@ -15,6 +15,7 @@
 This chapter reports the experiments with which we answer the research question.
 \Cref{sec:exp-setup} gives the setup: the experiments, the data settings, the values of all parameters and the metrics.
 The following sections present the experiments, each with its results and its conclusion.
+\Cref{sec:exp-limitations} states the limitations that apply across the experiments and which results may generalise.
 
 % ---------------------------------------------------------------------
 \section{Experimental Setup}
@@ -71,7 +72,7 @@ We train each task for $E = 10$ epochs so that 12 of the 17 runs with the full t
 
 % CLAUDE-DRAFT
 For the comparison of the strategies, we use rank $r = 4$ for task-specific LoRA and $r = 1024$ for shared LoRA.
-We chose these ranks from the test results of the rank experiment, for the reasons given in \cref{sec:exp-rank}.
+We chose these ranks from the test results of the LoRA rank experiment, for the reasons given in \cref{sec:exp-rank}.
 The choice therefore favours the two LoRA configurations in the comparison, and we report the run with $r = 8$ for task-specific LoRA as well, so that the alternative is visible.\todo{defense: main-comparison ranks chosen on test-split results (optimistic bias)}
 
 \subsection{Metrics and Statistical Analysis}
@@ -154,6 +155,7 @@ Within the first group, the distillation-based strategy forgot slightly less tha
 Its Final Forgetting was 0.048 lower $[0.039, 0.055]$ at an Adaptation lower by 0.035 $[0.027, 0.041]$, its Final Performance was 0.005 higher $[0.001, 0.009]$, and its control-task drop was the same.
 % source: cl_differences.csv, exp_20261022_171452_65011743 - exp_20261022_171452_a9f4ca56
 These differences are small compared with the gap to the LoRA strategies and hold for the configuration evaluated here, with an untuned distillation weight $\lambda = 0.01$ (\cref{subsec:method-distillation}).\todo{defense: distillation weight lambda = 0.01 untuned; result holds only for this configuration}
+The training logs of the distillation-based strategy record only its total loss, so the contribution of the distillation term cannot be determined.\todo{defense: distillation term not logged separately (moved from Sec. 6.2, then Sec. 7.3, then App. A.2)}
 
 \begin{figure}[tbp] % [p] allowed: too tall to share a page with text
 \centering
@@ -199,6 +201,14 @@ This is 0.367 more than task-specific LoRA and 0.722 more than sequential fine-t
 In Transfer, the LoRA strategies stayed close to the pretrained model, with 0.129, 0.174 and 0.175 against 0.137, whereas sequential fine-tuning, the distillation-based and the prompt-tuning strategy reached only 0.001, 0.002 and 0.043.
 Before a task was trained, these three strategies segmented almost none of it.
 
+% Moved 2026-11-11 from Sec. 7.1 (restructure, outlines/restructure_ch6_ch8.md)
+% CLAUDE-DRAFT
+The distillation-based strategy was less effective in our setting than ZSCL in its own evaluation.
+In ZSCL, adding distillation to sequential fine-tuning raised Transfer from 44.6 to 58.9\,\%~\cite[Table~2]{zheng2023preventingzeroshottransferdegradation}, whereas our distillation-based strategy reached 0.002, against 0.001 for sequential fine-tuning.
+Of the differences between the two methods (\cref{subsec:method-distillation}), distillation on current-task data is unlikely to explain the gap on its own, because in ZSCL's ablation it kept Transfer at the level of a reference dataset (\cref{sec:cl-vlm}).
+% source: paper_notes/zscl.md l. 33 (Table 1b: current task 56.7 vs ImageNet 56.8 Transfer), l. 41 (Table 2: 44.6 -> 58.9), l. 46 (Transfer = tasks not yet trained); related_work.tex l. 116; method.tex l. 374-376 (differences); ch6_main.tex (Transfer: distillation-based 0.002, seq. FT 0.001)
+The untuned weight $\lambda = 0.01$, the missing weight-consolidation loss and the move from classifying images to segmenting 3D volumes remain as possible causes, and we did not test which one explains the gap.
+
 % CLAUDE-DRAFT
 Evaluating the checkpoint with the lowest validation loss instead of the parameters after the last epoch changed the results noticeably only for sequential fine-tuning.
 Its Adaptation was 0.059 lower and its Final Forgetting 0.070 lower at the same Final Performance (\cref{sec:app-additional}).
@@ -217,9 +227,14 @@ Two components adopted from the published methods, the weight ensemble of the di
 No strategy combined the Adaptation of sequential fine-tuning with the retention of the LoRA strategies.
 Sequential fine-tuning and the distillation-based strategy lost the control task, and joint fine-tuning lost it as well, without a task sequence.
 The prompt-tuning strategy lost most of it although its pretrained weights stay frozen.
-The LoRA strategies retained much more at a lower Adaptation, task-specific LoRA by construction.
+Its learned prompt tokens and meta-net change the output for every text prompt, including that of the control task (\cref{subsec:method-prompt}).
+The LoRA strategies adapted less but kept more of the earlier tasks and much more of the control task.
+Task-specific LoRA does so by construction, because it keeps one adapter per task and evaluates the control task with the pretrained model.
 Task-specific LoRA, the only strategy that uses the task identity, reached the highest Final Performance, and of the strategies with one parameter set, shared LoRA with replay came closest and kept most of the control task.
-% The explanation by the training configuration (ten epochs per task) was moved out of this conclusion 2026-11-04 (author): it draws on sec:exp-few-shot and is argued in sec:disc-limitations.\todo{defense: one run per strategy; conclusion drafted from Claude's suggestions accepted by the author}
+These results agree with the Beyond Forgetting benchmark on 2D medical segmentation, in which replay gave the best balance between retaining earlier tasks and learning new ones, and parameter isolation avoided forgetting at the cost of a growing model~\cite[Sec.~5]{wang2026beyondforgetting}.
+In MedPEFT-CL, which adapts a 2D text-prompted model with LoRA, replay likewise reduced forgetting more than any other component~\cite[Table~8]{gao2026medpeftcl}, and in Lifelong nnU-Net, which trains a 3D nnU-Net on sequences of \gls{mri} datasets, it forgot the least~\cite{gonzalez2023lifelong}.
+% source: paper_notes/cards/NEW_beyondforgetting2026.md l. 17 (Abstract; Sec. 5, p. 10: replay best stability-plasticity balance; parameter isolation removes forgetting at the cost of growing model size); method.tex l. 274 (task-specific LoRA evaluates the control task without an adapter); Lifelong nnU-Net: paper_notes/gonzalez2023lifelong.md l. 46, 50 (all 3D, nnU-Net 3D full-resolution), related_work.tex l. 205 (rehearsal least forgetting)
+% The explanation by the training configuration (ten epochs per task) was moved out of this conclusion 2026-11-04 (author): it draws on sec:exp-few-shot and is argued in sec:exp-limitations.\todo{defense: one run per strategy; conclusion drafted from Claude's suggestions accepted by the author}
 
 % ---------------------------------------------------------------------
 \section{Diagnosis of the Patellar Failure}
@@ -231,7 +246,7 @@ Task-specific LoRA did not learn patellar cartilage in the task sequence: the \g
 The pretrained model does not segment patellar cartilage either (\gls{dsc} 0.00), and task-specific LoRA starts every task from this model with a new adapter, whereas the shared adapter has already been trained on three tasks when it reaches patellar cartilage.
 To find the cause, we trained task-specific LoRA on patellar cartilage alone, first with the settings of the sequence and then with one setting changed at a time: the rank, the learning rate, the training seed and the number of epochs.
 Each change tests one explanation: too little capacity, too small steps, an unlucky initialisation or too little training.
-The diagnosis does not vary the starting point of the adapter; \cref{sec:disc-limitations} discusses its possible role.
+The diagnosis does not vary the starting point of the adapter; \cref{sec:exp-limitations} discusses its possible role.
 \Cref{fig:ch6_patellar_loss} shows the training loss of all runs.
 % Table of the patellar diagnosis removed 2026-11-05 (author decision): all its values are in the prose and in the legend of fig:ch6_patellar_loss; configurations of all runs in App. A (matrix captions).
 
@@ -264,6 +279,7 @@ For the comparison of the strategies, the result means that the Adaptation of ta
 \label{sec:exp-few-shot}
 % CLAUDE-DRAFT
 This experiment asks how the amount of labelled data affects adaptation and forgetting (\cref{tab:ch6_experiments}).
+We refer to it as the few-shot experiment.
 It uses the few-shot settings and the equal-updates runs of \cref{subsec:exp-data}, with joint fine-tuning on the same $k$ volumes as the reference.
 \Cref{tab:ch6_few_shot} gives all metrics, \cref{fig:ch6_few_shot} the main ones, and \cref{sec:app-matrices} the evaluation matrices from which the per-task values below are taken.
 
@@ -318,6 +334,8 @@ Its control-task drop rose with the total number of updates (\cref{tab:ch6_few_s
 % CLAUDE-DRAFT
 With ten epochs per task, sequential fine-tuning was the only one of the three strategies that learned the tasks in the few-shot settings, with 50 to 200 updates per task.
 At $k = 5$, the fixed epoch budget explains most of the failure of the LoRA strategies, which learned the tasks with the update count of the full split.
+In the few-shot study of Silva-Rodríguez et al., which used a different model and different data, LoRA learned new structures from 10 labelled volumes when trained for up to 200 epochs~\cite[Sec.~4.3.2]{silvarodriguez2023fseft}.
+% source: ch6_few_shot.tex (seq. FT 5 (50): Final Forgetting 0.382 vs 0.782; equal updates: LoRA Adaptation 0.429 / 0.438, seq. FT Final Forgetting 0.714); papers/t2_few_shot/NEW_silvarodriguez2023fseft.pdf, Sec. 4.3.2 (up to 200 epochs), checked 2026-11-06; moved here from Sec. 7.2 on 2026-11-10
 For sequential fine-tuning, the lower forgetting and the kept control task with few volumes are consistent with an effect of the number of updates rather than of the amount of data, so we read its higher Final Performance with 5 volumes as that of a less trained model, not as a benefit of less data.
 These conclusions rest on the equal-updates runs at $k = 5$; for $k = 10$ and $k = 20$, the number of volumes and the number of updates remain confounded.
 Each configuration was trained once, on one draw of volumes and with a learning rate that was not tuned.\todo{defense: data and updates separated only at k = 5; one support set; one seed; learning rate untuned}
@@ -372,6 +390,8 @@ Each rank was trained once, so we cannot determine whether such differences betw
 
 % CLAUDE-DRAFT
 For shared LoRA with fixed $\alpha$, the rank sets a trade-off between adaptation and retention: higher ranks forget less, both of the trained tasks and of the control task, at a cost in Adaptation.
+The fall in Adaptation contrasts with rsLoRA, whose scaling factor we use and which improved with increasing rank when fine-tuning a large language model~\cite[Sec.~4]{kalajdzievski2023rankstabilizationscalingfactor}.
+We did not test which of the differences in model, task and training configuration explains the opposite trend.
 Why higher ranks retain more remains open.
 For the comparison of the strategies, we use $r = 1024$ for shared LoRA.
 It has half the trainable parameters of $r = 2048$ (50.3 against 100.7 million) and the same Final Performance, and its Adaptation and Final Forgetting differ by less than 0.01.
@@ -454,8 +474,15 @@ For shared LoRA with $r = 4$ in the original order, by contrast, the loss of the
 For sequential fine-tuning, the task order changed only Transfer, by 0.013, and it forgot almost everything in both orders.
 For task-specific LoRA, the task order has no effect beyond the variation between two runs, as its design implies.
 For shared LoRA, the task order has a strong effect: in the reverse order, the adapter retained more of the earlier tasks and of the control task, at a lower Adaptation.
+In the reverse order, shared LoRA ended with a Final Performance of 0.345, above the 0.233 that no run of a strategy with one parameter set trained only on current-task data exceeded in the original order, at any rank or number of training volumes (\cref{sec:exp-main,sec:exp-few-shot,sec:exp-rank}).
+% source: thesis/tables/cl_metrics.csv, reported runs (role set) in the original order with one parameter set and current-task data only: max Final Performance 0.2329 (shared LoRA r = 2048), 0.2326 (r = 1024); above it only task-specific LoRA, replay, joint FT and shared LoRA reverse (0.3447); checked 2026-11-11 (restored from former Sec. 7.1)
 With two orders, we cannot determine which property of the order causes this difference in retention.
-In both orders, the first task was learned poorly, and the training loss shows that its adapter had not left its initial state after ten epochs; a possible explanation, which connects this observation with the rank, patellar and few-shot experiments, is discussed in \cref{sec:disc-limitations}.
+The ranking of the three strategies was the same in both orders for every metric.
+% source: thesis/tables/ch6_task_order.tex (Adaptation, Final Forgetting, control-task drop, Final Performance, Transfer: same order of the three strategies in both task orders)
+Over ten orders of 2D prostate segmentation tasks, the Beyond Forgetting benchmark likewise found that the task order affects some strategies more than others~\cite[Sec.~4.4]{wang2026beyondforgetting}.
+A ranking obtained from one or two orders may therefore not hold in others.
+% source: ch6_task_order.tex (shared LoRA original / reverse: Final Forgetting 0.289 / 0.124, Adaptation 0.471 / 0.439); paper_notes/cards/NEW_beyondforgetting2026.md (Sec. 4.4, Fig. 2, p. 9-10: Domain-CL, ten random orders; EWC and LwF vary most, GSS least)
+In both orders, the first task was learned poorly, and the training loss shows that its adapter had not left its initial state after ten epochs; a possible explanation, which connects this observation with the LoRA rank, patellar and few-shot experiments, is discussed in \cref{sec:exp-limitations}.
 
 \section{Computational Cost}
 \label{sec:exp-compute}
@@ -478,3 +505,91 @@ The distillation-based strategy costs more than sequential fine-tuning because i
 % source: code/src/continual/strategies/zscl/strategy.py:141,144 (teacher moved to the GPU for each step and back to the CPU)
 All strategies fit on a single 40\,GB GPU and took about the same time per volume at inference.
 % source: compute.csv, columns epoch_minutes, peak_gpu_mib, eval_seconds_per_volume
+
+% ---------------------------------------------------------------------
+\section{Limitations and Generalisation}
+\label{sec:exp-limitations}
+% Moved 2026-11-11 from Ch. 7 (Sec. 7.2 and the first two paragraphs of Sec. 7.3), outlines/restructure_ch6_ch8.md; backup backups/discussion_2026-11-11_before_restructure.tex
+
+% CLAUDE-DRAFT
+Three limitations affect the conclusions most: the hyperparameters shared by all strategies, the single run of each configuration and the narrow scope of the study.
+The remaining limitations concern the strategies we did not evaluate, the evaluation protocol, the setup of the runs and the data.
+The section ends with the parts of this work that may hold beyond the setting studied here.
+
+% CLAUDE-DRAFT
+First, all strategies were trained with one set of hyperparameters, and neither the learning rate nor the number of epochs was tuned per strategy, so our comparison measures the strategies under one budget, not each at its best setting (\cref{sec:method-adaptation}).
+Three experiments also change a second factor together with the one they study: the few-shot settings reduce the number of updates together with the number of volumes, the LoRA rank experiment changes the scaling factor $\gamma_r$ together with the rank, and the 50-epoch patellar run decays the learning rate more slowly, together with the larger number of updates (\cref{sec:exp-few-shot,sec:exp-rank,sec:exp-patellar}).
+In these experiments, a difference cannot be attributed to the studied factor alone, except for volumes and updates at $k = 5$, which the equal-updates runs separate for three strategies.
+
+% CLAUDE-DRAFT
+Within the ten epochs per task used for all strategies, shared LoRA with $r = 1024$ learned little on its first task in both task orders, and task-specific LoRA learned nothing on patellar cartilage at any rank tested, as in the few-shot settings (\cref{sec:exp-task-order,sec:exp-patellar,sec:exp-few-shot}).
+We see two possible explanations, but none of our runs tests either of them.
+The first is the zero initialisation of $\mat{B}$, which leaves the prediction of the model unchanged at the start of training (\cref{subsec:method-lora}).
+The second is a training setup that was not tuned for LoRA: the adapters were trained with stochastic gradient descent, whereas Hu et al.\ motivate the scaling of LoRA for training with Adam~\cite[Sec.~4.1]{hu2022lora}, and the scaling factor $\gamma_r$ of shared LoRA falls as the rank rises.
+The low Adaptation of the LoRA strategies may therefore reflect our training setup as much as the strategies themselves.
+Initialising the adapters from an adapter trained on another structure would test the first explanation, and training them with Adam or varying $\alpha$ at a fixed rank would test the second.\todo{defense: zero-initialisation and training-setup explanations untested; tests named here, future work in \cref{chap:summary}}
+% source: Ch. 6.6 l. 450 (shared LoRA r = 4, first task: loss 0.38 after ten epochs; r = 1024: 0.69); tab:app-strategy-params (gamma_r 16 at r = 4, 1 at r = 1024); tab:app-params (SGD, Nesterov, eta_0 = 1e-4); paper_notes/lora_hu.md l. 16 (Sec. 4.1: with Adam, tuning alpha ~ tuning the learning rate), l. 31 (SGD instead of Adam)
+
+% CLAUDE-DRAFT
+Second, each configuration was trained once, on one random split of each dataset and, in the few-shot settings, on one draw of training volumes, so our bootstrap intervals cover only the choice of test volumes (\cref{subsec:exp-metrics}).
+The two task-specific LoRA runs of the task-order experiment differ only in the initialisation of the adapters, yet the bootstrap interval of their difference in Adaptation excludes zero (\cref{sec:exp-task-order}).
+% source: thesis/tables/cl_differences.csv (adaptation, TIL-LoRA r = 4 original - reverse: 0.006 [0.004, 0.008]); Ch. 6 l. 413-419
+Small differences between single runs can therefore come from training randomness alone, even when their interval excludes zero.
+% source: thesis/tables/ch6_rank.tex (shared LoRA Final Forgetting 0.546 -> 0.284, control-task drop 0.978 -> 0.091), ch6_task_order.tex (shared LoRA Final Forgetting 0.289 / 0.124)
+The effects of the rank and the task order on shared LoRA are many times larger than this difference, but we did not repeat any configuration of shared LoRA, so its variation between runs is unknown.
+Our bootstrap intervals are also not adjusted for multiple comparisons.
+
+% CLAUDE-DRAFT
+Third, the scope of the study is narrow.
+We adapted one model, VoxTell, to six structures of one knee \gls{mri} dataset in two task orders, without data augmentation and with one fixed text prompt per structure for both training and evaluation (\cref{sec:data-skmtea}).
+Our evaluation therefore cannot show whether the adapted models remain as robust to rephrased text prompts as the pretrained VoxTell (\cref{sec:text-promptable-seg}).
+We gave priority to the comparison of all six strategies on the full training split and ran the distillation-based and the prompt-tuning strategies only in this setting and in the original task order.
+The few-shot part of the research question is therefore answered only for sequential fine-tuning, task-specific LoRA and shared LoRA (\cref{tab:ch6_experiments}).
+% reason: author 2026-11-11 (D46): priority to the full-split comparison within the time of the thesis; stated only here, not in 6.1.1, to avoid repeating the scope (Ch. 1.4, Table 6.1, Summary answer paragraph)
+Shared LoRA with replay was likewise run only with the full training split, in the original task order and at $r = 1024$.
+The effect of replay in other configurations is unknown, because the task order and the rank strongly changed how shared LoRA balanced adaptation and retention (\cref{sec:exp-rank,sec:exp-task-order}).
+The same uncertainty applies to the smaller control-task drop with replay, which arose in the last task and whose cause we did not test (\cref{sec:exp-main}).
+
+% CLAUDE-DRAFT
+Our results also cover only the strategies we evaluated, in the form we implemented them.
+The distillation-based and prompt-tuning strategies are adaptations of ZSCL and CPE-CLIP (\cref{subsec:method-distillation,subsec:method-prompt}), so their results do not describe the original methods.
+Our distillation teacher is the pretrained model, as in ZSCL, and we did not test other teachers, such as the model of the previous task used by PRIMED (\cref{sec:cl-vlm}).
+We also did not evaluate sharing adapters between tasks with similar text prompts, as MedCRP-CL does by clustering the tasks by the embeddings of their text prompts~\cite{gao2026medcrpcl}, or the other methods named in \cref{sec:method-strategies}.
+
+% CLAUDE-DRAFT
+The evaluation protocol has two further limits.
+The control task measures the loss of pretrained ability with a single large, high-contrast structure, the lung in \gls{ct}, so it cannot show how the strategies affect the many other structures and modalities that VoxTell was trained on.
+With only four test volumes, its \gls{dsc} is also less certain than that of the SKM-TEA tasks, which are evaluated on 24 volumes.
+The origin of its reference labels is not documented (\cref{sec:data-aeropath}).
+Because AeroPath is among the training sources of checkpoint v1.1, the control task also measures the loss on data the model was trained on, not on unseen data (\cref{sec:data-aeropath}).
+The second limit is the joint reference: it covers all six tasks only, so the intransigence measure of Chaudhry et al.\ cannot be computed (\cref{sec:method-setting-protocol}).
+
+% CLAUDE-DRAFT
+Three further threats to internal validity come from how the runs were set up and evaluated.
+The ranks of the two LoRA strategies in the comparison were chosen from the test results of the LoRA rank experiment (\cref{subsec:exp-config}), so the results favour these two configurations.\todo{defense: main-comparison ranks chosen on test-split results (optimistic bias); repeated from Sec. 6.1.2}
+The two LoRA strategies were also run with different values of $\alpha$ and of the dropout rate (\cref{subsec:method-lora}), so a difference between them cannot be attributed to the sharing of the adapter alone.\todo{defense: alpha and dropout differ between the two LoRA variants (moved from Sec. 6.1.2)}
+The choice of the evaluated checkpoint can also reverse close comparisons.
+At the last epoch, the distillation-based strategy forgot 0.048 less than sequential fine-tuning, but at the checkpoint with the lowest validation loss it forgot 0.021 more $[0.012, 0.029]$ (\cref{tab:ch6_main,tab:ch6_components}).
+% source: thesis/tables/cl_differences.csv (exp_20261022_171452_65011743:best_validation - exp_20261022_171452_a9f4ca56:best_validation, final_forgetting +0.021 [0.012, 0.029]); ch6_main.tex, ch6_components.tex
+
+% CLAUDE-DRAFT
+Finally, the data and the checkpoint limit how far our numbers carry over to other evaluations.
+We used our own random split of SKM-TEA instead of the official one, so our numbers cannot be compared with published SKM-TEA results.
+The SKM-TEA files store no orientation, so the volumes reach the model in their stored axis order, which may differ from that of the knee volumes in VoxTell's training data and may lower the results of the pretrained model (\cref{sec:data-preprocessing}).
+The model also sees only the first \gls{qdess} echo, although the annotators used both echoes to separate neighbouring cartilage and meniscus voxels~\cite[App.~A.4]{desai2021skmtea}.
+On our test volumes, the pretrained model segmented femoral cartilage with a \gls{dsc} of 0.68 but none of the other five structures (\cref{sec:exp-main}), whereas the VoxTell authors report 46.45\,\% for femoral cartilage and at most 14.78\,\% for the others with checkpoint v1.0~\cites[Suppl.~Table~9]{rokuss2025voxtellfreetextpromptableuniversal}{rokuss2026voxtellmodelcard}.
+% source: Pretrained column of eval_matrix.csv (e.g. exp_20260926_095539_90e8b4e6); paper_notes/voxtell.md (Table 9)
+We use checkpoint v1.1, which differs from v1.0 in its training data.
+Its added sources include ``Stanford Knee''~\cite{rokuss2026voxtellissue15}, the name the VoxTell paper uses for SKM-TEA, so our test volumes may have been part of its training data, although the pretrained model did not segment five of the six structures.\todo{defense: v1.1 lists Stanford Knee (= SKM-TEA in the VoxTell paper) among added training sources; volumes and labels unknown}
+% source: github.com/MIC-DKFZ/VoxTell/issues/15 ('Stanford Knee' in 'Datasets added in v1.1'); VoxTell paper main text and Suppl. ('Stanford Knee dataset [50]', [50] = SKM-TEA); huggingface.co/mrokuss/VoxTell (v1.0 'used for the experiments in the paper'), checked 2026-11-07
+
+% CLAUDE-DRAFT
+The numerical results and the ranking of the strategies apply only to the setting studied here.
+The evaluation protocol (\cref{sec:method-setting-protocol}) depends less on this setting.
+It requires only a task sequence, a held-out control task that the pretrained model segments well, and the pretrained model and joint fine-tuning as references.
+It can therefore be applied to other free-text promptable models, where it would show which of our observations depend on VoxTell, and to other task sequences.
+
+% CLAUDE-DRAFT
+The contrast between sequential fine-tuning and task-specific LoRA (\cref{sec:exp-main}) has also been reported in another setting and may therefore hold more generally.
+With a 3D brain-\gls{mri} model, two tasks and 16 or 32 labelled samples per task, Chen et al.\ found that sequential fine-tuning forgot most of the first task, whereas task-specific LoRA modules kept it~\cite{chen2026fewshotcontinuallearning3d}.
+Because such modules keep earlier tasks by construction, this agreement concerns mainly the forgetting of sequential fine-tuning.

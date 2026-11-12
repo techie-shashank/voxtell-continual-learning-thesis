@@ -1,3 +1,5 @@
+> **Superseded 2026-11-11 by `outlines/restructure_ch6_ch8.md`** (Ch. 7 Discussion dissolved into Ch. 6 and the Summary).
+
 # Ch. 7 Discussion — outline revision 5 (PROPOSED 2026-11-10, awaiting author approval); older outlines and collected notes below
 
 ## Sec. 7.3 rewrite outline (APPROVED by the author 2026-11-10; label sec:disc-generalisation kept; ~1.5-1.75 p)

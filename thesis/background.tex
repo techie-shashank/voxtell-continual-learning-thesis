@@ -136,7 +136,7 @@ At the full resolution, $s = 0$, the decoder features are combined with the guid
 VoxTell was trained with the sum of the binary cross-entropy and the Dice loss~\cite[Sec.~3, Eq.~7, Suppl.~Sec.~A]{rokuss2025voxtellfreetextpromptableuniversal}.
 With deep supervision, the loss was applied to the outputs of all five decoder stages, with weights from 1 at the full resolution down to $1/16$ as in nnU-Net.
 Training used patches of $192^3$ voxels, of which 85\,\% were sampled to contain foreground.
-It used the data augmentation of nnU-Net without left--right mirroring and SGD with an initial learning rate of $10^{-4}$ and polynomial decay.
+It used the data augmentation of nnU-Net without left--right mirroring and \gls{sgd} with an initial learning rate of $10^{-4}$ and polynomial decay.
 Each training image was paired with three prompts, two naming structures present in the image and one naming an absent structure, so that the model also learns to return an empty mask.
 Each prompt was the default name of its concept with probability 0.25 and a rephrased variant otherwise.
 
@@ -193,7 +193,7 @@ The resulting rank-stabilised LoRA (rsLoRA) sets
 \gamma_r = \frac{\alpha}{\sqrt{r}}.
 \label{eq:bg-rslora}
 \end{equation}
-In fine-tuning experiments with a large language model and ranks up to 2048, rsLoRA improved with increasing rank while standard LoRA did not, and the gradient norms showed the same pattern with SGD as with AdamW~\cite[Sec.~4]{kalajdzievski2023rankstabilizationscalingfactor}.
+In fine-tuning experiments with a large language model and ranks up to 2048, rsLoRA improved with increasing rank while standard LoRA did not, and the gradient norms showed the same pattern with \gls{sgd} as with AdamW~\cite[Sec.~4]{kalajdzievski2023rankstabilizationscalingfactor}.
 
 \subsection{Knowledge Distillation and ZSCL}
 \label{subsec:bg-zscl}

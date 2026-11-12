@@ -66,13 +66,12 @@ Chapters 1 and 2 (current text) are the author's notes, not drafts (decision 202
 | 3 | Theoretical Background | `thesis/background.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`, 2026-10-22) — author rewrite pending |
 | 4 | Data Description | `thesis/data_description.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`, 2026-10-19) — author rewrite pending |
 | 5 | Method | `thesis/method.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`, 2026-10-21; restructured 2026-10-31, `outlines/ch5_method.md` v2: 5.1 Evaluation Protocol, 5.2 Adapting VoxTell to One Task, 5.3 strategies, 5.4 complexity) — author rewrite pending |
-| 6 | Experiment & Results | `thesis/experiment_results.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`; switched to the reruns 2026-10-26) — author rewrite pending. Appendix A drafted (38 runs) |
-| 7 | Discussion | `thesis/discussion.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`, 2026-10-24; switched to the reruns 2026-10-26) — author rewrite pending |
-| 8 | Summary | `thesis/summary.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`; rewritten 2026-11-11 from `outlines/ch8_summary.md` rev. 2) — author rewrite pending |
+| 6 | Experiment & Results | `thesis/experiment_results.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`; switched to the reruns 2026-10-26) — author rewrite pending. Appendix A drafted (38 runs). Sec. 6.8 Limitations and Generalisation added 2026-11-11 (from Ch. 7) |
+| 7 | Summary | `thesis/summary.tex` | Full draft (all paragraphs `% CLAUDE-DRAFT`; rewritten 2026-11-11; paras 6-9 restructured 2026-11-11 from Ch. 7) — author rewrite pending |
 
 Structure decisions (provisional, to confirm with the supervisor):
 - **Method** is a separate chapter, although the supervisor's outline doesn't list one: the chair requires a practical part with algorithms, pseudocode and complexity, and this needs its own place.
-- **Discussion** is a separate but compact chapter (approved by the author 2026-10-24; neither guideline prescribes it, but the chair grades critical discussion, limitations and generalisation, and its Summary is results-only, 3-4 pages; fallback: last section of Ch. 6). Each experiment's own conclusion stays in Experiment & Results (supervisor); the Discussion covers what spans all experiments.
+- **No separate Discussion** (decided 2026-11-11, reverses 2026-10-24; `outlines/restructure_ch6_ch8.md`): the supervisor's outline has none, and its cross-experiment answer overlapped with the Summary by necessity. Comparison with prior work goes in the conclusion of each experiment in Ch. 6; limitations and generalisation in Sec. 6.8; the answer to the research question and future work in the Summary.
 - The last chapter is called **Summary**, as both the supervisor's outline and the chair guidelines name it.
 
 ## Build
@@ -166,7 +165,7 @@ After every LaTeX edit, compile and fix any errors you introduced, including und
 
 ## Authorship and originality
 - The ideas, argument, interpretations and conclusions are mine. Do not invent research ideas, interpretations of results, limitations or future work and present them as settled. If something is missing, ask me, or offer options clearly marked as suggestions for me to choose from.
-- Before drafting reasoning-heavy text (motivation, design decisions, conclusions of experiments, Discussion, Summary), interview me first: ask short, specific questions and build the text from my answers.
+- Before drafting reasoning-heavy text (motivation, design decisions, conclusions of experiments, limitations (6.8), Summary), interview me first: ask short, specific questions and build the text from my answers.
 - Prefer these modes, in this order: (1) questions and outlines, (2) feedback and critique on my text, (3) explaining concepts so I can write about them, (4) drafting. Draft prose only when I ask for it.
 - Mark every paragraph you draft with a LaTeX comment `% CLAUDE-DRAFT` on the line above it. I remove the marker only after I have rewritten the paragraph in my own words. Never remove these markers yourself.
 - Never copy or closely paraphrase text from papers or other sources. Direct quotes must be in quotation marks with a citation, and should be rare. Everything taken over literally or in meaning must be marked as such (required by the signed declaration).
@@ -236,7 +235,7 @@ The goal is clear, precise, concise writing in my voice. Good human writing is s
 *Tier 2 — depends on the chapter*
 - Detail belongs where it is defined or used: Introduction and problem statement stay conceptual; Method and Experiment & Results give every parameter the text uses; the complete parameter lists may go to the appendix (decided 2026-11-02, chair Sec. 1.9: technical details in the appendix).
 - A caption contains what is needed to read the figure, using only terms already defined: short in Ch. 1; self-contained in results chapters (metric, task order, $k$, number of runs). Figures don't repeat a paragraph or contradict the text's definitions.
-- Each point once within an argument and across neighbouring paragraphs; deliberate recaps are expected in chapter openings, Discussion and Summary.
+- Each point once within an argument and across neighbouring paragraphs; deliberate recaps are expected in chapter openings, Sec. 6.8 and Summary.
 - Each definition in one place; later chapters may remind in a half-sentence with a reference, never redefine differently.
 
 *Tier 3 — preferences*
@@ -252,7 +251,7 @@ The goal is clear, precise, concise writing in my voice. Good human writing is s
 - Notation: one symbol per quantity, defined before first use, listed in the table of notation.
 - Person: "we" for my own work and decisions ("we propose", "we evaluate"); passive only where the actor doesn't matter ("the volumes were resampled to…"). Never "I".
 - Spelling: British with -ise endings (e.g. normalisation, generalisation, analyse, labelled, behaviour, modelling). Keep established names and quoted titles in their original spelling. Tense: present for describing the method and what results show; past for what was done in experiments.
-- Acronyms defined once at first use in the main text [using `\gls{}` / `\acrshort{}` if glossaries is used].
+- Acronyms defined once at first use in the main text, except universally known computing terms such as CPU and GPU, which are written plainly and not listed (decided 2026-11-12) [using `\gls{}` / `\acrshort{}` if glossaries is used].
 - Figures and tables share one visual style: fonts, colours, axis labels with units, self-contained captions.
 - Cross-references with `\autoref{}` / `\figurename~\ref{}` and `~\cite{}`. One sentence per line in `.tex` files.
 
@@ -262,11 +261,10 @@ The goal is clear, precise, concise writing in my voice. Good human writing is s
 - **Theoretical Background:** concepts relevant to the problem, the ML/DL methods used, evaluation metrics, with figures explaining concepts and architectures (supervisor). Readers are experts (chair): explain what is needed to understand my work, cite standard textbook methods instead of re-deriving them.
 - **Data Description:** number of samples, how the data was captured, link if open source, metadata summary table, figures of the data and its distributions (supervisor); splits, preprocessing, quality issues, licensing/ethics where relevant.
 - **Method:** what I did and why; algorithms as language-independent pseudocode with complexity, runtime and memory (chair); justified design choices; enough detail to reproduce.
-- **Experiment & Results:** setup, the parameters the text uses (complete lists in Appendix A), baselines, metrics and why they fit; results with the conclusion of each experiment (supervisor); bar plots where tables are dense.
-- **Discussion (compact):** what spans all experiments: answers to each research question, comparison with prior work, merits and limitations, threats to validity, generalisation and extensions. Don't repeat the per-experiment conclusions.
-- **Summary:** most important results, stating clearly which results are my original work; 3–4 pages (chair); answers each research question; future work; no new results.
+- **Experiment & Results:** setup, the parameters the text uses (complete lists in Appendix A), baselines, metrics and why they fit; results with the conclusion of each experiment (supervisor); comparison with prior work in each conclusion; limitations, threats to validity and generalisation in the last section (6.8); bar plots where tables are dense.
+- **Summary:** most important results, stating clearly which results are my original work; 3–4 pages (chair); answers the research question across the experiments; future work and extensions; no new results.
 
-Every research question raised in the Introduction must be answered explicitly in the Discussion and Summary.
+Every research question raised in the Introduction must be answered explicitly in the Summary.
 
 ## Revising existing drafts (any finished draft; no longer chapters 1 and 2, which are redrafted, decision 2026-10-22)
 1. **Diagnose first, no edits.** Review the chapter against the guidelines, this file and the section checklist below. Output an issue list grouped as structure, content and argument, citations, and language, each with file and line and a severity (must fix / should fix / minor).
@@ -322,6 +320,7 @@ Provisional choices; change them here if I decide otherwise, then apply everywhe
 - **DSC** — Dice similarity coefficient (`\gls{dsc}`), not "Dice score". Own results as fractions with three decimals (0.979); values quoted from a paper keep that paper's % form (10.72 %)
 - **background shift** — in continual segmentation, a structure that is foreground in the masks of one task is labelled as background in the masks of another (term cited to MiB, Ch. 2.4; decided 2026-10-27). Does not arise in this thesis (one binary mask per text prompt). Not "background conflict"
 - **control task** — a held-out task that is never trained on and is used only to measure the loss of pretrained ability (AeroPath, prompt "lung", test split). Term follows SPU's "control set". Not "retention task" and not "zero-shot" (lung is a known concept for VoxTell; AeroPath was held out in the paper (v1.0) but is among the training sources of the checkpoint we use, v1.1, GitHub issue #15; decided 2026-11-07). "Held-out" means never trained on in our adaptation
+- **experiment names** — section titles of Ch. 6 and rows of Table 6.1 (Comparison of the Strategies, Diagnosis of the Patellar Failure, Amount of Labelled Data, LoRA Rank, Task Order); in running text "the few-shot experiment" (introduced in the opening of Sec. 6.4), "the LoRA rank experiment", "the task-order experiment". "Few-shot settings" for the k = 5, 10, 20 conditions themselves (decided 2026-11-12)
 - **control-task drop** — Dice on the control task of the pretrained model minus that of the final checkpoint; absolute, positive = loss. Not "retention drop"
 
 Strategies (decided 2026-10-18; names describe the mechanism, not a CL scenario):

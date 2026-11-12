@@ -169,7 +169,7 @@ The shared steps follow the pretraining of VoxTell in the patch size, the share 
   \FOR{each volume $(\mat{X}, \mat{Y}, p)$ of $\mathcal{D}$ in random order}
     \STATE $(\mat{X}', \mat{Y}') \gets \textsc{SamplePatch}(\mat{X}, \mat{Y}, \pi_{\mathrm{fg}})$
     \STATE $\mathcal{L} \gets \mathcal{L}_{\mathrm{seg}}(f_\theta(\mat{X}', p), \mat{Y}') + \textsc{ExtraLoss}_{\mathcal{S}}(\mat{X}', p, \theta)$
-    \STATE update $\phi$ by one SGD step on $\xi_{\mathcal{S},t} \nabla_\phi \mathcal{L}$ with learning rate $\eta_0 (1 - u/U)$, momentum $\mu$, weight decay $\omega$; \quad $u \gets u + 1$
+    \STATE update $\phi$ by one \gls{sgd} step on $\xi_{\mathcal{S},t} \nabla_\phi \mathcal{L}$ with learning rate $\eta_0 (1 - u/U)$, momentum $\mu$, weight decay $\omega$; \quad $u \gets u + 1$
   \ENDFOR
   \STATE $\ell \gets$ mean of $\mathcal{L}_{\mathrm{seg}}$ over one sampled patch per volume of $\mathcal{D}_t^{\mathrm{val}}$
   \IF{$\ell < \ell^{*}$}

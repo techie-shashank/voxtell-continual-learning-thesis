@@ -102,7 +102,7 @@ We use our own random split instead, which, unlike the official split, does not 
 For comparing continual-learning strategies with each other, it is sufficient that all strategies use the same split.
 
 % CLAUDE-DRAFT
-For the few-shot experiments, we reduce the training split to its first $k$ volumes in the order of the shuffled list, where $k \in \{5, 10, 20\}$ is the number of labelled training volumes per task.
+For the few-shot settings, we reduce the training split to its first $k$ volumes in the order of the shuffled list, where $k \in \{5, 10, 20\}$ is the number of labelled training volumes per task.
 The subsets are therefore nested, with the 5 volumes contained in the 10 and the 10 contained in the 20.
 For each $k$, all six tasks use the same $k$ volumes.
 Only one subset is drawn for each $k$, so we cannot measure how much the results depend on which volumes are chosen.

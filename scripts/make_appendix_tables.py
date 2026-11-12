@@ -129,7 +129,12 @@ def matrix_table(r, matrix_file="eval_matrix.csv", caption=None, label=None) -> 
     head, body = rows[0], rows[1:]
     stages = ["Pre."] + [TASK_SHORT[h.replace("After ", "")] for h in head[2:]]
     order = [h.replace("After ", "") for h in head[2:]]
-    title = caption or f"Evaluation matrix: {run_name(r)}"
+    if caption is None:                                   # "Evaluation matrix of sequential fine-tuning (...)" (2026-11-11)
+        name = run_name(r)
+        name = name[0].lower() + name[1:]
+        if name.split(" (")[0].endswith("strategy"):
+            name = "the " + name
+    title = caption or f"Evaluation matrix of {name}"
     lines = [r"\noindent\begin{minipage}{\linewidth}\centering\small",
              rf"\captionof{{table}}{{{title}; run \texttt{{{r['experiment_id'].replace('_', r'\_')}}}.}}"
              + (rf"\label{{{label}}}" if label else ""),
@@ -168,7 +173,9 @@ def matrices(runs) -> str:
         group = sorted([r for r in runs if wanted & set(roles(r)) and r["experiment_id"] not in done],
                        key=lambda r: (diag_key(r) if role == "Convergence Diagnosis" else 0,
                                       STRATEGY_ORDER.index(r["strategy"]), int(r["lora_rank"] or 0),
-                                      r["task_order"], int(r["train_max_cases"] or 999)))
+                                      r["task_order"], int(r["train_max_cases"] or 999),
+                                      # tie-breakers (2026-11-11): without replay before with, 10 epochs before 216
+                                      bool(r["replay_fraction"]), int(r["epochs"] or 0)))
         if not group:
             continue
         out.append(rf"\subsection*{{{title}}}")
