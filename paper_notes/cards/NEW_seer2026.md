@@ -16,7 +16,7 @@
   - SAT: BrainMetShare 22.16 → 0.69 (worst 0.00, std 2.53); PENGWIN 96.05 → 0.01 (std 0.13).
   - BiomedParseV2: 18.66 → 2.53 (std 7.27); 1.35 → 8.53 (std 7.50). Text3DSAM: 0.10 → 0.41; 24.75 → 0.01. MedSAM3: 11.33 → 16.62 (worst 10.56, std 5.17); 18.26 → 5.75 (worst 3.67, std 6.40).
   - SEER: BrainMetShare label 51.70, free-text 53.83, worst 51.44, std 1.67; PENGWIN 97.56, 97.39, 95.47, 0.98.
-- Ablation on PENGWIN with VoxTell as backbone (Table 2, p. 8): VoxTell alone 92.26 / worst 79.34 / std 7.49; + vanilla VLM 84.84 / 61.90 / 14.15; + fine-tuned VLM with grounded reasoning 95.92 / 88.27 / 3.84; + SEER-Loop 97.39 / 95.47 / 0.98. So the main SEER results use VoxTell as the frozen backbone.
+- Ablation on PENGWIN (Table 2, p. 8): "Baseline" 92.26 / worst 79.34 / std 7.49; + vanilla VLM 84.84 / 61.90 / 14.15; + fine-tuned VLM with grounded reasoning 95.92 / 88.27 / 3.84; + SEER-Loop 97.39 / 95.47 / 0.98. INFERENCE (not stated in the paper, checked 2026-11-13): the Baseline row equals VoxTell's free-text row of Table 1, so the main SEER results most likely use VoxTell as the frozen backbone; the paper never names its default backbone (only the MedSAM3 swap, p. 8). Do not state it as a fact in the thesis.
 - Headline: "reduces performance variance by 81.94 % and improves worst-case Dice by 18.60 %" (Abstract); how these two percentages are computed is not stated.
 - Cross-backbone (p. 8): with MedSAM3 on PENGWIN, Dice 5.75 (std 6.40) → 19.97 (std 13.30), worst 3.67 → 3.94.
 - Qualitative (Fig. 2, p. 7): three perturbation types shown: typo noise ("sacrun"), spatial specifier, clinical order.

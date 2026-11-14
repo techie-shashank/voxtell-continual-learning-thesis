@@ -187,7 +187,7 @@ In continual learning, distillation serves as a regulariser.
 Learning without Forgetting (LwF) trains on the data of the new task only and uses the outputs of the model before this task as soft labels for the earlier tasks~\cite{li2017learningforgetting}.
 The teacher is thus the previous model, and the distillation data are those of the current task.
 
-ZSCL changes two choices of LwF to preserve CLIP's zero-shot transfer during continual learning~\cite[Sec.~3.2, Eqs.~2--4]{zheng2023preventingzeroshottransferdegradation}.
+ZSCL changes two choices of LwF to preserve the zero-shot transfer of CLIP~\cite{radford2021learningtransferablevisualmodels} during continual learning~\cite[Sec.~3.2, Eqs.~2--4]{zheng2023preventingzeroshottransferdegradation}.
 The teacher is the initial pretrained model instead of the previous one, and the distillation data are a separate reference dataset of unlabelled public images and arbitrary texts instead of the current task's data.
 For each image, a softmax turns CLIP's similarities to a set of texts into a distribution, and the loss compares the distributions of student and teacher by a cross-entropy.
 A second term does the same for each text, with a distribution over the images of a batch, and both terms are added to the task loss with a weight~$\lambda$.

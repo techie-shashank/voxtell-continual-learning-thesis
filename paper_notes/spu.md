@@ -25,4 +25,4 @@ Partial notes: problem setting and evaluation metrics. Sections 1–2 are what t
 
 ## 3. Analysis for this thesis (NOT from the paper)
 - Control-task drop = c_0 − c_T follows Eq. 6 for one sequence (N_D = 1), with the final checkpoint as M_i, DSC instead of accuracy.
-- Difference: SPU's control set is sampled from the pre-training distribution; the thesis's control task (AeroPath lung) is a dataset VoxTell did **not** train on, but a concept it knows well. Say "follows SPU's control set", not "is a control set in SPU's sense" without this caveat.
+- Similarity (updated 2026-11-13, after the decision of 2026-11-07): SPU's control set is sampled from the pre-training distribution; the thesis's control task (AeroPath lung) is likewise from VoxTell's training data, since AeroPath is among the training sources of checkpoint v1.1 (GitHub issue #15; it was held out only in the paper, v1.0). Ch. 5 (method.tex, Sec. 5.1) states this parallel. Earlier version of this line said AeroPath was not trained on; that was true only for v1.0.

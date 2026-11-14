@@ -15,14 +15,13 @@
 
 Medical image segmentation assigns every voxel of an image either to a structure, such as an organ or a tissue, or to the background.
 The voxels assigned to a structure form its mask.
-Masks can be drawn by hand.
-However, drawing them is laborious, since in a three-dimensional (3D) volume the structure has to be outlined on every slice in which it appears.
+Drawing masks by hand is laborious, since in a three-dimensional (3D) volume the structure has to be outlined on every slice in which it appears.
 Masks of the same structure also differ between readers~\cite{desai2021skmtea}.
 
 Automatic segmentation with deep learning has commonly meant training one model for each dataset and its target structures, for example with nnU-Net~\cite{isensee2018nnunetselfadaptingframeworkunetbased}.
 Universal segmentation models replace these per-dataset models with one network that segments many structures.
-For instance, the developers of the universal model SAT compared it with 72 nnU-Nets, one trained on each of their datasets~\cite{zhao2025sat}.
-In such models, the structure to segment is specified by an additional input, the prompt~\cite{zhao2025sat,rokuss2025voxtellfreetextpromptableuniversal}.
+For instance, the SAT authors report that their single model performs comparably to 72 nnU-Nets, one per dataset~\cite{zhao2025sat}.
+Many universal models receive the structure to segment as an additional input, the prompt~\cite{zhao2025sat,rokuss2025voxtellfreetextpromptableuniversal}.
 This prompt can be spatial, such as a point or a box marked in the image~\cite{Ma_2024,cheng2023sammed2d}, or text that names the target.
 
 Text-promptable models differ in the text they accept.
@@ -37,14 +36,13 @@ On knee \gls{mri} from the SKM-TEA dataset~\cite{desai2021skmtea}, however, its 
 The VoxTell authors attribute this low value to the small share of knee images in the training data and to structures missing from it.
 As future work, they suggest adapting the model with a few labelled examples~\cite[Sec.~6]{rokuss2025voxtellfreetextpromptableuniversal}.
 
-Automatic segmentation of the knee cartilages and menisci is useful because quantitative biomarkers for osteoarthritis are measured within these structures~\cite{desai2021skmtea}.
-One example is the T2 relaxation time, which reflects the degeneration of collagen-rich tissue~\cite[Sec.~2]{desai2021skmtea}.
-These values are measured within the segmented structures.
+Automatic segmentation of the knee cartilages and menisci is useful because quantitative \gls{mri} measures biomarkers for osteoarthritis within these structures~\cite{desai2021skmtea}.
+One example is the T2 relaxation time, which changes with the degeneration of collagen-rich tissue~\cite[Sec.~2]{desai2021skmtea}.
 The SKM-TEA authors name manual outlining as one obstacle to the use of quantitative \gls{mri}~\cite[Sec.~2]{desai2021skmtea}.
 
 With few manual outlines available, VoxTell would have to learn the knee structures from a few labelled volumes.
 New structures may also become relevant over time, and the model would then have to adapt to each of them in turn.
-Retraining VoxTell from scratch on its training data together with each new structure would be expected to preserve most of what it could segment before.
+Retraining VoxTell from scratch on its training data together with each new structure would probably preserve most of what it could segment before.
 However, training the published model took about six days on 64 NVIDIA A100 GPUs~\cite[Sec.~5]{rokuss2025voxtellfreetextpromptableuniversal}.
 
 % ---------------------------------------------------------------------
@@ -54,13 +52,13 @@ However, training the published model took about six days on 64 NVIDIA A100 GPUs
 Instead of being retrained from scratch, the model can be adapted to one new structure at a time.
 We call the learning of one new structure, named by one text prompt, a \emph{task}.
 In the task-incremental setting of continual learning, a model learns from a sequence of tasks, using the data of the current task and limited or no data of earlier tasks~\cite[Sec.~2]{delange2022}.
+At inference, it is known which task an input belongs to, its task identity~\cite[Sec.~1]{delange2022}.
 After each task, the model has to segment the new structure while keeping the structures learned earlier in the sequence.
 It also has to keep what it could segment before the first task, which we call its pretrained ability (\cref{fig:ch1_setting}).
 
 The simplest way to learn a task is to fine-tune the model on its data.
 However, training on later tasks can lower the performance on earlier ones, an effect known as catastrophic forgetting~\cite[Sec.~1]{delange2022}.
-For pretrained vision--language models, continual fine-tuning can also lower the zero-shot accuracy on data the model was not trained on~\cite{zheng2023preventingzeroshottransferdegradation}.
-In our setting, such a lowering corresponds to a loss of pretrained ability.
+For pretrained vision--language models, fine-tuning on one task after another can also lower the zero-shot accuracy on data the model was not trained on~\cite{zheng2023preventingzeroshottransferdegradation}.
 The more the model is allowed to change, the better it can learn the new structure, but the more it may lose of what it knew.
 De Lange et al.\ call this conflict the stability--plasticity dilemma, with plasticity ``referring to the ability of integrating new knowledge'' and stability ``retaining previous knowledge while encoding it''~\cite[Sec.~1]{delange2022}.
 
@@ -69,9 +67,9 @@ De Lange et al.\ call this conflict the stability--plasticity dilemma, with plas
 \includegraphics{figures/ch1_setting.pdf}
 \caption[Setting of this thesis]{Setting of this thesis.
 The pretrained VoxTell segments the lung well but the knee structures poorly (\gls{dsc} from our evaluation; for the knee, the mean over its six structures).
-It is then adapted to the six knee structures one after another, each named by a text prompt and learned from a few labelled volumes.
+It is then adapted to the six knee structures one after another, each named by a text prompt and learned from labelled volumes of that structure.
 Tasks~3 to~5 are not shown.
-After every task, the same model has to segment all of these structures, with the lung standing for its pretrained ability.
+The lung stands for the pretrained ability of the model.
 Images: example volumes of \cref{fig:ch4_examples} with their reference masks.}
 \label{fig:ch1_setting}
 \end{figure}
@@ -80,9 +78,8 @@ With few labelled volumes per task, it is not clear in advance how the balance b
 When the number of training epochs is fixed, fewer volumes mean fewer updates.
 On the one hand, fewer updates give the model less opportunity to learn the new structure.
 On the other hand, they may change less of what it knew.
-In this thesis, \emph{few-shot} means training the model on $k$ labelled volumes per task, where one shot is one labelled training volume.
 
-The continual-learning results we found do not show how few labelled volumes shift the balance between stability and plasticity, because they were obtained in other settings.
+Published continual-learning results do not show where the balance between stability and plasticity lies for a model like VoxTell, with many or with few labelled volumes, because they were obtained in other settings.
 The methods for pretrained vision--language models reviewed in \cref{sec:cl-vlm} were developed and evaluated on classification or on tasks with text output.
 In medical image segmentation, many continual-learning methods give each new task or class components of its own, such as a decoder or an output head~\cite{ji2023continualsegmentsingleunified,guo2025continuallearningdrivenmodelaccurate,zhang2023continuallearningabdominalmultiorgan,ye2025medseqft}.
 In contrast, VoxTell needs no such components, since a new structure is named by a new text prompt and segmented with the same weights.
@@ -90,7 +87,7 @@ In contrast, VoxTell needs no such components, since a new structure is named by
 In our literature search, we found no work that adapts a pretrained free-text promptable 3D segmentation model to a sequence of new structures with few labelled volumes per task (\cref{sec:sota-summary}).
 The closest works use either a two-dimensional (2D) model with full training sets~\cite{gao2026medcrpcl,gao2025paewc,gao2026medpeftcl} or a 3D model without text prompts~\cite{chen2026fewshotcontinuallearning3d}.
 None of them measures how much of the pretrained ability is kept.
-Other works measure it for CLIP~\cite{Zhang_2024_CVPR} and for segmentation models prompted with points or boxes~\cite{wang2025casam,wang2024sammed3dmoe}, and our evaluation builds on this idea (\cref{sec:intro-approach}).
+Other works measure it on data outside the task sequence, for a pretrained vision--language model~\cite{Zhang_2024_CVPR} and for segmentation models prompted with points or boxes~\cite{wang2025casam,wang2024sammed3dmoe}, and our evaluation builds on this approach.
 
 % ---------------------------------------------------------------------
 \section{Research Question and Objectives}
@@ -102,8 +99,8 @@ This thesis addresses the following research question:
 \end{quote}
 By \emph{adaptation performance}, we mean how well the model segments a new structure right after it has been trained on it.
 In the research question, \emph{forgetting} covers both the loss on earlier tasks of the sequence and the loss of pretrained ability.
-As few-shot conditions, we use $k = 5$, 10, and 20 labelled volumes per task.
-We read them against the full training split of 108 volumes per task, which serves as the reference setting and is the only one in which all strategies are compared.
+By \emph{few-shot conditions}, we mean training the model on $k = 5$, 10, or 20 labelled volumes per task, where one shot is one labelled training volume.
+We read them against the full training split of 108 volumes per task, which serves as the reference setting.
 
 We pursue four objectives:
 \begin{enumerate}
@@ -166,7 +163,6 @@ The contributions of this thesis are:
 
 Sequential fine-tuning, LoRA, replay~\cite[Sec.~3.1]{delange2022}, ZSCL, and CPE-CLIP are existing methods, and the metrics and the idea of a held-out control set come from prior work (\cref{sec:bg-metrics}).
 Our work consists of the application of these methods to VoxTell with the changes described in \cref{sec:method-strategies}, the evaluation protocol that combines these metrics with a control task and a pretrained-model reference, and all experiments.
-The works reviewed in \cref{sec:sota-summary} do not study the setting of \cref{sec:intro-problem}.
 
 % ---------------------------------------------------------------------
 \section{Thesis Outline}
@@ -181,5 +177,5 @@ It ends with the gap that this thesis addresses.
 It compares the strategies, diagnoses the failure of task-specific LoRA on patellar cartilage, and reports the experiments on the amount of labelled data, the LoRA rank, and the task order, as well as the training cost.
 The chapter ends with the limitations of the experiments and the results that may generalise beyond them.
 \Cref{chap:summary} summarises the results, answers the research question, and outlines future work.
-The appendix lists the training and test volumes and the parameters of all runs (\cref{sec:app-volumes,sec:app-params}) and reports the additional evaluations, including two components adopted from ZSCL and CPE-CLIP (\cref{sec:app-additional,sec:exp-components}).
-It also gives the evaluation matrices of all runs and the training loss of shared LoRA (\cref{sec:app-matrices,sec:app-shared-loss}).
+The appendix lists the training and test volumes and the parameters of all runs and reports the additional evaluations, including two components adopted from ZSCL and CPE-CLIP.
+It also gives the evaluation matrices of all runs and the training loss of shared LoRA.

@@ -6,7 +6,7 @@
 \renewcommand{\arraystretch}{1.0}
 \setlength{\LTcapwidth}{\linewidth}
 \begin{longtable}{@{}L{0.16\linewidth}L{0.19\linewidth}L{0.29\linewidth}L{0.32\linewidth}@{}}
-\caption[Summary of the reviewed works]{Works reviewed in this chapter, grouped by section. Works cited only for a definition, a method or a single finding are not listed. Results are given as reported by the authors, in the paper's metric, with the main comparison in parentheses; settings are named in the paper's own terms. FT: fine-tuning; seq.: sequential; TIL, DIL, CIL: task-, domain- and class-incremental learning (\cref{sec:bg-cl}); MTIL: the eleven-dataset benchmark of ZSCL; FSCIL: few-shot class-incremental learning.}
+\caption[Summary of the reviewed works]{Works reviewed in this chapter, grouped by section. Works cited only for a definition, a method or a single finding are not listed. Results are given as reported by the authors, in the paper's metric, with the main comparison in parentheses; settings are named in the paper's own terms. FT: fine-tuning; seq.: sequential; TIL, DIL, CIL: task-, domain- and class-incremental learning (\cref{sec:bg-cl}); MTIL: multi-domain task-incremental learning, a benchmark of eleven datasets from ZSCL; FSCIL: few-shot class-incremental learning.}
 \label{tab:sota-summary}\\
 \toprule
 \textbf{Work} & \textbf{Data} & \textbf{Approach and setting} & \textbf{Metric: best reported result}\\
@@ -31,7 +31,7 @@ VoxTell \mbox{}\cite{rokuss2025voxtellfreetextpromptableuniversal} & $>$62{,}000
 \midrule
 \multicolumn{4}{@{}l}{\textit{Few-shot adaptation of segmentation models (\cref{sec:sota-few-shot})}}\\*
 \midrule
-Silva-Rodríguez et al. \mbox{}\cite{silvarodriguez2023fseft} & TotalSegmentator, FLARE'22; 3D & Parameter-efficient vs.\ full FT; one target at a time; 1, 5, 10 (30) volumes & Mean \gls{dsc}, 9 organs, 10 shots: 77.79\,\%, LoRA (full FT 76.93\,\%)\\
+Silva-Rodríguez et al. \mbox{}\cite{silvarodriguez2023fseft} & TotalSegmentator, FLARE'22; 3D & Parameter-efficient vs.\ full FT; one target at a time; 1, 5, 10 (30) volumes & Mean \gls{dsc}, 9 known organs, 10 shots: LoRA 77.79\,\% (full FT 76.93\,\%)\\
 CLIP-LoRA \mbox{}\cite{zanella2024lowrankfewshotadaptationvisionlanguage} & 11 classification datasets; 2D & Rank-2 LoRA in both CLIP encoders; 1--16 shots per class; not continual & Top-1 accuracy, mean: 72.5\,\% (1 shot), 83.0\,\% (16 shots)\\
 \midrule
 \multicolumn{4}{@{}l}{\textit{Continual learning for pretrained vision--language models (\cref{sec:cl-vlm})}}\\*
@@ -45,15 +45,15 @@ CPE-CLIP \mbox{}\cite{D_Alessandro_2023} & CIFAR100, miniImageNet, CUB200; 2D & 
 \midrule
 \multicolumn{4}{@{}l}{\textit{Continual learning for medical image segmentation (\cref{sec:cl-medseg})}}\\*
 \midrule
-Bera et al. \mbox{}\cite{memory_replay_cropping} & Prostate, spleen, hippocampus datasets; 3D & Replay of selected crops; DIL, ``task incremental'' & Average \gls{dsc}, three organs: $83.3 \pm 1.3$\,\% (random replay $78.3 \pm 1.3$\,\%)\\
+Bera et al. \mbox{}\cite{memory_replay_cropping} & Prostate, spleen, hippocampus datasets; 3D & Replay of selected crops; DIL, TIL & Average \gls{dsc}, three organs: $83.3 \pm 1.3$\,\% (random replay $78.3 \pm 1.3$\,\%)\\
 C$^2$GR \mbox{}\cite{li2026c2gr} & 20 tasks, 8 modalities; 2D & Diffusion replay, fixed task template, trained from scratch; TIL & Mean \gls{dsc}, final: 83.62\,\% (joint 86.06\,\%)\\
-Zhang et al., Liu et al. \mbox{}\cite{zhang2023continuallearningabdominalmultiorgan,liu2024universalextensible} & Private \gls{ct}, BTCV, LiTS; 3D & Fixed CLIP class names, head per class, pseudo-labels; class-incremental & \gls{dsc}, BTCV organs / LiTS tumour: 0.817 / 0.466 (PLOP 0.799 / 0.362)\\
+Zhang et al. \mbox{}\cite{zhang2023continuallearningabdominalmultiorgan} & Private \gls{ct}, BTCV, LiTS; 3D & Fixed CLIP class names, head per class, pseudo-labels; CIL & \gls{dsc}, BTCV organs / LiTS tumour: 0.817 / 0.466 (pseudo-labels only 0.770 / 0.456)\\
 Lifelong nnU-Net \mbox{}\cite{gonzalez2023lifelong} & Hippocampus, prostate, cardiac \gls{mri}; 3D & Five methods compared; DIL & Rehearsal forgets least (\gls{dsc})\\
-Beyond Forgetting \mbox{}\cite{wang2026beyondforgetting} & Prostate \gls{mri}, MMWHS, four organs; 2D & 15 methods; Domain-, Class-, Organ-CL & Mean final \gls{dsc}, Domain-CL: 0.789, PNN (joint 0.830)\\
+Beyond Forgetting \mbox{}\cite{wang2026beyondforgetting} & Prostate \gls{mri}, MMWHS, four organs; 2D & 15 methods; Domain-, Class-, Organ-CL & Mean final \gls{dsc}, Domain-CL: PNN 0.789 (joint 0.830)\\
 SAM-Med3D-MoE \mbox{}\cite{wang2024sammed3dmoe} & SPPIN2023, poorly segmented classes; 3D & Points or boxes; decoder experts with a gate; not sequential & \gls{dsc}, box prompts: poorly segmented 0.564 (0.532); without expert 0.400 (0.541)\\
 CA-SAM \mbox{}\cite{wang2025casam} & Nine datasets; 2D & Boxes; alignment layer per task, autoencoder router & Final IoU: 76.12\,\% (joint 78.43\,\%)\\
 MedSeqFT \mbox{}\cite{ye2025medseqft} & Five \gls{ct}, five \gls{mri} tasks; 3D & Seq.\ FT with distillation and LoRA refinement & Mean \gls{dsc}, \gls{ct} tasks: 68.3\,\% (parallel FT 65.3\,\%)\\
-Chen et al. \mbox{}\cite{chen2026fewshotcontinuallearning3d} & BraTS, IXI; 3D & LoRA and head per task, task identity given; 16, 32, 64 samples per task; task-incremental & \gls{dsc}, tumour, 32 samples: $0.60 \pm 0.08$ (seq.\ FT $0.16 \pm 0.19$ after task 2)\\
+Chen et al. \mbox{}\cite{chen2026fewshotcontinuallearning3d} & BraTS, IXI; 3D & LoRA and head per task, task identity given; 16, 32, 64 samples per task; TIL & \gls{dsc}, tumour, 32 samples: $0.60 \pm 0.08$ (seq.\ FT $0.16 \pm 0.19$ after task 2)\\
 MedCRP-CL \mbox{}\cite{gao2026medcrpcl} & 16 tasks, four modalities; 2D & CLIPSeg; LoRA per prompt cluster, EWC & Mean \gls{dsc} / forgetting: 73.3 / 4.1\,\% (MoE-Adapters 65.3 / 7.1\,\%)\\
 PA-EWC \mbox{}\cite{gao2025paewc} & Kvasir, ISIC, CheXlocalize, BUSI, CAMUS; 2D & CLIPSeg; EWC weighted by prompt complexity & Mean \gls{dsc}: 75.34\,\% (ZSCL 73.02\,\%)$^{a}$\\
 MedPEFT-CL \mbox{}\cite{gao2026medpeftcl} & Ten datasets; 2D & CLIPSeg; LoRA reused by prompt similarity, replay, EWC & Mean \gls{dsc}: 78.19\,\% (MoE-Adapters 74.15\,\%)\\
